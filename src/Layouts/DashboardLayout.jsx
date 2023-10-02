@@ -83,7 +83,7 @@ const DashboardLayout = ({ children }) => {
               <Link href="/dashboard">Inventory</Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<FaCalendarAlt />}>
-              <Link href="/dashboard/book/add-book">Product</Link>
+              <Link href="/dashboard/product/add-product">Product</Link>
             </Menu.Item>
             <Menu.Item key="4" icon={<MdLocalOffer />}>
               <Link href="/dashboard/category">All Category</Link>

@@ -18,7 +18,7 @@ const Navbar = () => {
   const [isAdmin] = useAdmin();
 
   return (
-    <nav className="bg-[#ffffff] md:px-4 border-b py-2 flex items-center text-black container">
+    <nav className="bg-[#FAFAFA] md:px-4 border-b py-2 flex items-center text-black container">
       <div className="container flex items-center justify-between mx-auto">
         <div className="flex items-center gap-4">
           <Link className='text-2xl font-bold text-black' href="/">

@@ -1,6 +1,5 @@
 import useBook from "@/src/Hooks/useProducts";
 import useCategory from "@/src/Hooks/useCategory";
-import Paginetion from "@/src/Shared/Pagination/Pagination";
 import React from "react";
 
 const ManageCategory = () => {

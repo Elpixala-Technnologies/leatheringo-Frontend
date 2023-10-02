@@ -1,0 +1,693 @@
+[
+    {
+        "name": "Casual Sneakers",
+        "images": [
+            "sneaker1.jpg",
+            "sneaker2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d639",
+        "categories": "6519f24a2bd1fa30e053d63c",
+        "brand": "Nike",
+        "price": 75.0,
+        "discount": 15,
+        "quantity": 100,
+        "size": [
+            "S",
+            "M",
+            "L"
+        ],
+        "details": "Comfortable and stylish casual sneakers for everyday wear.",
+        "features": [
+            "Breathable",
+            "Non-slip sole"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            },
+            {
+                "name": "White",
+                "image": "white.jpg"
+            }
+        ],
+        "coupon": [
+            "COUPON123",
+            "DISCOUNT456"
+        ]
+    },
+    {
+        "name": "Running Shoes",
+        "images": [
+            "run1.jpg",
+            "run2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d639",
+        "categories": "6519f24a2bd1fa30e053d63d",
+        "brand": "Adidas",
+        "price": 90.0,
+        "discount": 20,
+        "quantity": 80,
+        "size": [
+            "S",
+            "M",
+            "L"
+        ],
+        "details": "High-performance running shoes for athletes.",
+        "features": [
+            "Lightweight",
+            "Shock-absorbing"
+        ],
+        "colors": [
+            {
+                "name": "Blue",
+                "image": "blue.jpg"
+            },
+            {
+                "name": "Red",
+                "image": "red.jpg"
+            }
+        ],
+        "coupon": [
+            "SALE20",
+            "RUNFAST"
+        ]
+    },
+    {
+        "name": "Leather Boots",
+        "images": [
+            "boots1.jpg",
+            "boots2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63a",
+        "categories": "6519f24a2bd1fa30e053d63e",
+        "brand": "Timberland",
+        "price": 120.0,
+        "discount": 10,
+        "quantity": 50,
+        "size": [
+            "8",
+            "9",
+            "10"
+        ],
+        "details": "Stylish leather boots for a rugged look.",
+        "features": [
+            "Waterproof",
+            "Durable"
+        ],
+        "colors": [
+            {
+                "name": "Brown",
+                "image": "brown.jpg"
+            },
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            }
+        ],
+        "coupon": [
+            "TIMBER10",
+            "BOOTSALE"
+        ]
+    },
+    {
+        "name": "High Heels",
+        "images": [
+            "heels1.jpg",
+            "heels2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63b",
+        "categories": "6519f24a2bd1fa30e053d63f",
+        "brand": "Jimmy Choo",
+        "price": 250.0,
+        "discount": 5,
+        "quantity": 30,
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "details": "Elegant high-heeled shoes for special occasions.",
+        "features": [
+            "Genuine leather",
+            "Stiletto heel"
+        ],
+        "colors": [
+            {
+                "name": "Silver",
+                "image": "silver.jpg"
+            },
+            {
+                "name": "Gold",
+                "image": "gold.jpg"
+            }
+        ],
+        "coupon": [
+            "JIMMY5OFF",
+            "ELEGANCE"
+        ]
+    },
+    {
+        "name": "Flip Flops",
+        "images": [
+            "flip1.jpg",
+            "flip2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d639",
+        "categories": "6519f24a2bd1fa30e053d640",
+        "brand": "Havaianas",
+        "price": 20.0,
+        "discount": 0,
+        "quantity": 200,
+        "size": [
+            "S",
+            "M",
+            "L"
+        ],
+        "details": "Comfortable flip flops for casual wear.",
+        "features": [
+            "Rubber sole",
+            "Variety of colors"
+        ],
+        "colors": [
+            {
+                "name": "Green",
+                "image": "green.jpg"
+            },
+            {
+                "name": "Pink",
+                "image": "pink.jpg"
+            }
+        ],
+        "coupon": []
+    },
+    {
+        "name": "Hiking Boots",
+        "images": [
+            "hike1.jpg",
+            "hike2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63a",
+        "categories": "6519f24a2bd1fa30e053d641",
+        "brand": "Merrell",
+        "price": 110.0,
+        "discount": 15,
+        "quantity": 60,
+        "size": [
+            "8",
+            "9",
+            "10"
+        ],
+        "details": "Durable hiking boots for outdoor adventures.",
+        "features": [
+            "Waterproof",
+            "Grip sole"
+        ],
+        "colors": [
+            {
+                "name": "Gray",
+                "image": "gray.jpg"
+            },
+            {
+                "name": "Brown",
+                "image": "brown.jpg"
+            }
+        ],
+        "coupon": [
+            "HIKE15",
+            "ADVENTURE"
+        ]
+    },
+    {
+        "name": "Ankle Boots",
+        "images": [
+            "ankle1.jpg",
+            "ankle2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63a",
+        "categories": "6519f24a2bd1fa30e053d642",
+        "brand": "Steve Madden",
+        "price": 85.0,
+        "discount": 10,
+        "quantity": 70,
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "details": "Stylish ankle boots for a trendy look.",
+        "features": [
+            "Suede finish",
+            "Block heel"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            },
+            {
+                "name": "Tan",
+                "image": "tan.jpg"
+            }
+        ],
+        "coupon": [
+            "MADDEN10",
+            "TRENDY"
+        ]
+    },
+    {
+        "name": "Slip-On Shoes",
+        "images": [
+            "slip1.jpg",
+            "slip2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d639",
+        "categories": "6519f24a2bd1fa30e053d643",
+        "brand": "Vans",
+        "price": 55.0,
+        "discount": 10,
+        "quantity": 90,
+        "size": [
+            "S",
+            "M",
+            "L"
+        ],
+        "details": "Classic slip-on shoes for everyday comfort.",
+        "features": [
+            "Canvas upper",
+            "Elastic side gussets"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            },
+            {
+                "name": "Checkerboard",
+                "image": "checkerboard.jpg"
+            }
+        ],
+        "coupon": [
+            "VANS10",
+            "COMFY"
+        ]
+    },
+    {
+        "name": "Wedge Sandals",
+        "images": [
+            "wedge1.jpg",
+            "wedge2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63b",
+        "categories": "6519f24a2bd1fa30e053d644",
+        "brand": "Michael Kors",
+        "price": 150.0,
+        "discount": 5,
+        "quantity": 40,
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "details": "Stylish wedge sandals for a summer look.",
+        "features": [
+            "Leather straps",
+            "Cork wedge heel"
+        ],
+        "colors": [
+            {
+                "name": "Navy",
+                "image": "navy.jpg"
+            },
+            {
+                "name": "Beige",
+                "image": "beige.jpg"
+            }
+        ],
+        "coupon": [
+            "MK5OFF",
+            "SUMMERSTYLE"
+        ]
+    },
+    {
+        "name": "Classic Loafers",
+        "images": [
+            "loafer1.jpg",
+            "loafer2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d639",
+        "categories": "6519f24a2bd1fa30e053d645",
+        "brand": "Gucci",
+        "price": 350.0,
+        "discount": 0,
+        "quantity": 25,
+        "size": [
+            "9",
+            "10",
+            "11"
+        ],
+        "details": "Luxurious classic loafers for a sophisticated look.",
+        "features": [
+            "Genuine leather",
+            "Tassel accent"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            },
+            {
+                "name": "Brown",
+                "image": "brown.jpg"
+            }
+        ],
+        "coupon": []
+    },
+    {
+        "name": "Espadrille Flats",
+        "images": [
+            "espadrille1.jpg",
+            "espadrille2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63b",
+        "categories": "6519f24a2bd1fa30e053d646",
+        "brand": "Tory Burch",
+        "price": 95.0,
+        "discount": 10,
+        "quantity": 60,
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "details": "Comfortable espadrille flats for a casual chic look.",
+        "features": [
+            "Canvas upper",
+            "Rope sole"
+        ],
+        "colors": [
+            {
+                "name": "Blue Stripe",
+                "image": "blue.jpg"
+            },
+            {
+                "name": "Beige",
+                "image": "beige.jpg"
+            }
+        ],
+        "coupon": [
+            "TB10",
+            "CHICCOMFORT"
+        ]
+    },
+    {
+        "name": "Suede Pumps",
+        "images": [
+            "suede1.jpg",
+            "suede2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63b",
+        "categories": "6519f24a2bd1fa30e053d647",
+        "brand": "Stuart Weitzman",
+        "price": 180.0,
+        "discount": 15,
+        "quantity": 35,
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "details": "Elegant suede pumps for a versatile style.",
+        "features": [
+            "Suede upper",
+            "Pointed toe"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            },
+            {
+                "name": "Nude",
+                "image": "nude.jpg"
+            }
+        ],
+        "coupon": [
+            "SW15",
+            "ELEGANT"
+        ]
+    },
+    {
+        "name": "Canvas Sneakers",
+        "images": [
+            "canvas1.jpg",
+            "canvas2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d639",
+        "categories": "6519f24a2bd1fa30e053d648",
+        "brand": "Converse",
+        "price": 60.0,
+        "discount": 0,
+        "quantity": 70,
+        "size": [
+            "S",
+            "M",
+            "L"
+        ],
+        "details": "Classic canvas sneakers for a timeless look.",
+        "features": [
+            "Canvas upper",
+            "Rubber toe cap"
+        ],
+        "colors": [
+            {
+                "name": "White",
+                "image": "white.jpg"
+            },
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            }
+        ],
+        "coupon": []
+    },
+    {
+        "name": "Rain Boots",
+        "images": [
+            "rain1.jpg",
+            "rain2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63a",
+        "categories": "6519f24a2bd1fa30e053d649",
+        "brand": "Hunter",
+        "price": 85.0,
+        "discount": 10,
+        "quantity": 50,
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "details": "Waterproof rain boots for wet weather protection.",
+        "features": [
+            "Rubber construction",
+            "Adjustable buckle"
+        ],
+        "colors": [
+            {
+                "name": "Green",
+                "image": "green.jpg"
+            },
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            }
+        ],
+        "coupon": [
+            "HUNTER10",
+            "RAINYDAYS"
+        ]
+    },
+    {
+        "name": "Moccasin Slippers",
+        "images": [
+            "moccasin1.jpg",
+            "moccasin2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d639",
+        "categories": "6519f24a2bd1fa30e053d64a",
+        "brand": "Minnetonka",
+        "price": 45.0,
+        "discount": 5,
+        "quantity": 80,
+        "size": [
+            "S",
+            "M",
+            "L"
+        ],
+        "details": "Cozy moccasin slippers for indoor comfort.",
+        "features": [
+            "Suede upper",
+            "Faux fur lining"
+        ],
+        "colors": [
+            {
+                "name": "Tan",
+                "image": "tan.jpg"
+            },
+            {
+                "name": "Chocolate",
+                "image": "chocolate.jpg"
+            }
+        ],
+        "coupon": [
+            "MINNE5OFF",
+            "COZY"
+        ]
+    },
+    {
+        "name": "Platform Sandals",
+        "images": [
+            "platform1.jpg",
+            "platform2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63b",
+        "categories": "6519f24a2bd1fa30e053d64b",
+        "brand": "Steve Madden",
+        "price": 95.0,
+        "discount": 10,
+        "quantity": 60,
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "details": "Trendy platform sandals for a bold look.",
+        "features": [
+            "Faux leather straps",
+            "Cork platform heel"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            },
+            {
+                "name": "Rose Gold",
+                "image": "rosegold.jpg"
+            }
+        ],
+        "coupon": [
+            "MADDEN10",
+            "BOLDSTYLE"
+        ]
+    },
+    {
+        "name": "Snow Boots",
+        "images": [
+            "snow1.jpg",
+            "snow2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63a",
+        "categories": "6519f24a2bd1fa30e053d64c",
+        "brand": "Columbia",
+        "price": 130.0,
+        "discount": 15,
+        "quantity": 45,
+        "size": [
+            "8",
+            "9",
+            "10"
+        ],
+        "details": "Warm and waterproof snow boots for winter adventures.",
+        "features": [
+            "Insulated",
+            "Omni-Grip sole"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            },
+            {
+                "name": "Gray",
+                "image": "gray.jpg"
+            }
+        ],
+        "coupon": [
+            "WINTER15",
+            "SNOWFUN"
+        ]
+    },
+    {
+        "name": "Clog Sandals",
+        "images": [
+            "clog1.jpg",
+            "clog2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d63b",
+        "categories": "6519f24a2bd1fa30e053d64d",
+        "brand": "Birkenstock",
+        "price": 75.0,
+        "discount": 0,
+        "quantity": 90,
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "details": "Comfortable clog sandals for a laid-back style.",
+        "features": [
+            "Birko-Flor upper",
+            "Cork footbed"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            },
+            {
+                "name": "Brown",
+                "image": "brown.jpg"
+            }
+        ],
+        "coupon": []
+    },
+    {
+        "name": "Basketball Shoes",
+        "images": [
+            "basketball1.jpg",
+            "basketball2.jpg"
+        ],
+        "mainCategories": "6519f2112bd1fa30e053d639",
+        "categories": "6519f24a2bd1fa30e053d64e",
+        "brand": "Jordan",
+        "price": 170.0,
+        "discount": 10,
+        "quantity": 40,
+        "size": [
+            "9",
+            "10",
+            "11"
+        ],
+        "details": "High-performance basketball shoes for the court.",
+        "features": [
+            "Air cushioning",
+            "Durable rubber outsole"
+        ],
+        "colors": [
+            {
+                "name": "Red",
+                "image": "red.jpg"
+            },
+            {
+                "name": "Black",
+                "image": "black.jpg"
+            }
+        ],
+        "coupon": [
+            "JORDAN10",
+            "HOOPS"
+        ]
+    }
+]

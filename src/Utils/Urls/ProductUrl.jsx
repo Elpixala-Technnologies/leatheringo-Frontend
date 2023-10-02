@@ -11,6 +11,7 @@ export const updateProductsUrl = (id) => basedUrl + `/products/update-product/${
 export const deleteProductUrl = (id) => basedUrl + `/products/delete-product/${id}`
 
 export const getProductByCategoryUrl = (category) => basedUrl + `/products/get-product-by-categories-id/${category}`
+
 export const getProductBySubCategoryUrl = (subcategory) => basedUrl + `/products/get-product-by-sub-categories-id/${subcategory}`
 
 // ======== copoun 
@@ -32,6 +33,8 @@ export const createCategoryUrl = basedUrl + '/products/create-categories'
 export const createSubCategoryUrl = (id) => basedUrl + `/products/create-subcategories${id}`
 
 export const getAllCategoryUrl = basedUrl + '/products/get-all-categories'
+
+export const getAllCategorySubCategoryUrl = basedUrl + '/products/get-all-categories-with-subcategories'
 
 export const getSingelCategoryUrl = (id) => basedUrl + `/products/get-singel-categories/${id}`
 

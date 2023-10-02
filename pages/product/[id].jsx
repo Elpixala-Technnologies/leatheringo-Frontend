@@ -11,13 +11,13 @@ import { useContext, useState } from 'react';
 import RootLayout from '@/src/Layouts/RootLayout';
 import RecomendationProduct from '@/src/Components/Shop/RecomendationProduct/RecomendationProduct';
 import CopuonSlider from '@/src/Components/Shop/CopuonSlider/CopuonSlider';
-import useBook from '@/src/Hooks/useProducts';
 import { addToCartUrl } from '@/src/Utils/Urls/ProductUrl';
 import Swal from 'sweetalert2';
 import { AuthContext } from '@/src/Context/UserContext';
+import useProducts from '@/src/Hooks/useProducts';
 
 const ProductDetails = () => {
-  const { bookData } = useBook();
+  const { bookData } = useProducts();
   const { user } = useContext(AuthContext);
   const router = useRouter();
   const { id } = router.query;

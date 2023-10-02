@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 
-const CouponSlider = ({ coupon }) => {
+const CouponSlider = () => {
     const [copiedCoupon, setCopiedCoupon] = useState(null);
 
     // Define your coupon data here

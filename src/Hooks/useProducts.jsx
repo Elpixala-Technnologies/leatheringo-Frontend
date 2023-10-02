@@ -1,19 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import { deleteBookUrl, getBooksUrl, getAllCategoryUrl, deleteCategoryUrl, getAllLevelUrl, deleteLevelUrl, getAllCouponUrl, deleteCouponUrl } from "../Utils/Urls/ProductUrl";
+import { deleteProductUrl, getAllCategoryUrl, deleteCategoryUrl, getAllLevelUrl, deleteLevelUrl, getAllCouponUrl, deleteCouponUrl, getProductsUrl } from "../Utils/Urls/ProductUrl";
 
 const useProducts = () => {
   const {
-    data: bookData,
-    isLoading: bookLoaded,
-    refetch: refetchBooks,
+    data: productData,
+    isLoading: productLoaded,
+    refetch: refetchProducts,
   } = useQuery({
-    queryKey: ["bookData"],
+    queryKey: ["productData"],
     queryFn: async () => {
       try {
-        const res = await fetch(getBooksUrl);
+        const res = await fetch(getProductsUrl);
         if (!res.ok) {
-          throw new Error("Failed to fetch book data");
+          throw new Error("Failed to fetch product data");
         }
         const data = await res.json();
         return data?.data;
@@ -65,7 +65,7 @@ const useProducts = () => {
 
 
 
-  const handelBookDelete = async (id) => {
+  const handelProductDelete = async (id) => {
     const confirmed = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -77,7 +77,7 @@ const useProducts = () => {
     });
 
     if (confirmed.isConfirmed) {
-      const res = await fetch(deleteBookUrl(id), {
+      const res = await fetch(deleteProductUrl(id), {
         method: "DELETE",
       });
       const data = await res.json();
@@ -115,7 +115,7 @@ const useProducts = () => {
           showConfirmButton: false,
           timer: 3500,
         });
-        refetchBooks();
+        refetchProducts();
       }
     }
   };
@@ -288,10 +288,10 @@ const useProducts = () => {
 
 
   return {
-    handelBookDelete,
-    refetchBooks,
-    bookLoaded,
-    bookData,
+    handelProductDelete,
+    refetchProducts,
+    productLoaded,
+    productData,
 
     handelCategoryDelete,
     refetchCategory,

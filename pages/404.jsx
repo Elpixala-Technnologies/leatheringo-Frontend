@@ -12,12 +12,16 @@ const NotFoundPage = () => {
   }, 3000)
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center" }}
+    className='flex flex-col items-center justify-center h-screen bg-[#F6F4F0]'
+    >
       <Head>
         <title>404 Not Found</title>
         <meta
           name="description"
-          content="This is news portal of programming hero made by next-js"
+          content="
+          404 Not Found
+          "
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -28,6 +32,7 @@ const NotFoundPage = () => {
         height={500}
         alt="error_image"
         style={{ display: "flex", margin: "50px auto" }}
+        className="bg-[#F6F4F0]"
       />
       <Link href="/">
         <button>Back To Home</button>

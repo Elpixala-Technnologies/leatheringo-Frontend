@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa';
 import { BsFillGridFill } from 'react-icons/bs';
 import Link from 'next/link';
-import { Grid } from '@material-ui/core';
 import useBook from '@/src/Hooks/useProducts';
 const BottomNav = () => {
     const [on, setOn] = useState(true)

@@ -1,4 +1,4 @@
-import Home from '@/src/Components/Home/Home/Home'
+import HomeComponent from '@/src/Components/Home/Home/Home'
 import RootLayout from '@/src/Layouts/RootLayout'
 import Head from 'next/head'
 
@@ -13,8 +13,8 @@ export default function HomePage() {
       </Head>
       <RootLayout>
         <main>
-          home page
-        </main> 
+          <HomeComponent />
+        </main>
       </RootLayout>
     </>
   )

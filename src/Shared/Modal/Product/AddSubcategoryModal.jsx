@@ -1,31 +1,31 @@
-import useBook from '@/src/Hooks/useProducts';
-import { createLevelUrl } from '@/src/Utils/Urls/ProductUrl';
+import useProducts from '@/src/Hooks/useProducts';
+import { createSubCategoryUrl } from '@/src/Utils/Urls/ProductUrl';
 import { Modal } from 'antd';
 import { useForm } from 'react-hook-form';
 import Swal from "sweetalert2";
 
-const AddLavelModal = ({ setIsLevelModalOpen, isLevelModalOpen }) => {
+const AddSubcategoryModal = ({ isSubCategoryModalOpen, setIsSubCategoryModalOpen }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { refetchLevel } = useBook()
+  const { refetchAllCategory, allCategoryData } = useProducts()
 
   const handleCancel = () => {
-    setIsLevelModalOpen(false);
+    setIsSubCategoryModalOpen(false);
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
-    const res = await fetch(createLevelUrl, {
+    const res = await fetch(createSubCategoryUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        level: data.level,
+        name: data.name,
+        parentId : data.parentCategory
       }),
     });
 
@@ -68,7 +68,7 @@ const AddLavelModal = ({ setIsLevelModalOpen, isLevelModalOpen }) => {
         showConfirmButton: false,
         timer: 3500,
       });
-      refetchLevel();
+      refetchAllCategory();
     }
 
   }
@@ -76,24 +76,42 @@ const AddLavelModal = ({ setIsLevelModalOpen, isLevelModalOpen }) => {
 
   return (
     <div>
-      <Modal title="Add Level" open={isLevelModalOpen} okButtonProps={{ style: { display: 'none' } }} onCancel={handleCancel}>
+      <Modal title="Add Level" open={isSubCategoryModalOpen} okButtonProps={{ style: { display: 'none' } }} onCancel={handleCancel}>
         <div className="shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-6">
+
+            <select
+              name="category"
+              id="category"
+              className="border-2 border-gray-300 rounded-md p-2 w-full"
+              {...register("parentCategory")}
+            >
+              <option value="category">Parent Category</option>
+              {allCategoryData && allCategoryData?.map((category) => (
+                <option
+                  key={category?._id}
+                  value={category?._id}
+                  className="border-2 border-gray-300 rounded-md p-4 my-2"
+                >
+                  {category?.name}
+                </option>
+              ))}
+            </select>
+
+            <div className="my-6">
               <div className="w-full">
                 <input
                   type="text"
-                  className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
-                  placeholder="Level"
-                  name="level"
-                  {...register("level")}
-                  required
+                  className=" text-[15px] font-[500] text-gray-700  w-full border-2 border-gray-300 rounded-lg shadow-md pl-10 pr-2.5 py-3"
+                  placeholder="Subcategory Name"
+                  name="Subcategory"
+                  {...register("name")}
                 />
               </div>
             </div>
 
             <div className="">
-              <button className="mb-5 common-btn">Create Level</button>
+              <button className="mb-5 common-btn">Create Subcategory</button>
             </div>
           </form>
         </div>
@@ -102,4 +120,4 @@ const AddLavelModal = ({ setIsLevelModalOpen, isLevelModalOpen }) => {
   );
 };
 
-export default AddLavelModal;
+export default AddSubcategoryModal;

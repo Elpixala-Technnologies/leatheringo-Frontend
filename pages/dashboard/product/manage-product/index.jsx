@@ -1,17 +1,17 @@
-import ManageBook from '@/src/Components/Dashboard/Book/ManageBook/ManageBook';
+import ManageProduct from '@/src/Components/Dashboard/Product/ManageProduct/ManageProduct';
 import DashboardLayout from '@/src/Layouts/DashboardLayout';
 
-const ManageBookPage = () => {
+const ManagePorductPage = () => {
   return (
     <DashboardLayout>
-      <div className='manage-book-section container'>
-        <div className='manage-book-title my-2'>
-          <h2 className='font-bold text-2xl'>Update Books</h2>
+      <div className='manage-Porduct-section container'>
+        <div className='manage-porduct-title my-2'>
+          <h2 className='font-bold text-2xl'>Update Porducts</h2>
         </div>
-        <ManageBook />
+        <ManageProduct />
       </div>
     </DashboardLayout>
   );
 };
 
-export default ManageBookPage;
+export default ManagePorductPage;

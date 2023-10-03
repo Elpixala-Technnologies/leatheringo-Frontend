@@ -1,9 +1,8 @@
-import useBook from "@/src/Hooks/useProducts";
-import useCategory from "@/src/Hooks/useCategory";
 import React from "react";
+import useProducts from "@/src/Hooks/useProducts";
 
 const ManageCategory = () => {
-  const { handelCategoryDelete, refetchCategory,categoryData } = useBook();
+  const { handelCategoryDelete, refetchAllCategory, allCategoryData } = useProducts();
 
 
   return (
@@ -39,8 +38,8 @@ const ManageCategory = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                    {categoryData &&
-                      categoryData?.map((category, Index) => {
+                    {allCategoryData &&
+                      allCategoryData?.map((category, Index) => {
                         return (
                           <tr key={Index}>
                             <td className="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
@@ -49,7 +48,7 @@ const ManageCategory = () => {
                               </div>
                             </td>
                             <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                              {category?.category}
+                              {category?.name}
                             </td>
 
                             <td className="px-4 py-4 text-sm whitespace-nowrap">

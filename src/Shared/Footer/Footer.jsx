@@ -10,7 +10,7 @@ const Footer = () => {
     const { allCategoryData } = useProducts();
 
     return (
-        <div className='bg-[#F5F5F5] text-[#000] px-4 py-16 grid md:grid-cols-5 gap-4'>
+        <div className='bg-[#F5F5F5] text-[#000] px-4 py-16 grid sm:grid-cols-1 grid-cols-2 md:grid-cols-5 gap-4'>
             <div className="">
                 <Link href="/">
                     <Image src={MainLogo}
@@ -18,6 +18,10 @@ const Footer = () => {
                         height={150}
                         alt="" className='w-[150px] cursor-pointer' />
                 </Link>
+
+                <p className='my-4'>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptas.
+                </p>
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>

@@ -3,7 +3,7 @@ import { Button, Modal } from 'antd';
 import { useForm } from 'react-hook-form';
 import Swal from "sweetalert2";
 import { createCategoryUrl } from '@/src/Utils/Urls/ProductUrl';
-import useBook from '@/src/Hooks/useProducts';
+import useProducts from '@/src/Hooks/useProducts';
 
 const AddCategoryModal = ({ isCategoryModalOpen, setIsCategoryModalOpen }) => {
   const {
@@ -12,7 +12,7 @@ const AddCategoryModal = ({ isCategoryModalOpen, setIsCategoryModalOpen }) => {
     formState: { errors },
   } = useForm();
 
-  const {refetchCategory} = useBook()
+  const {refetchAllCategory} = useProducts()
 
   const handleCancel = () => {
     setIsCategoryModalOpen(false);
@@ -26,7 +26,7 @@ const AddCategoryModal = ({ isCategoryModalOpen, setIsCategoryModalOpen }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        category: data.category,
+        name: data.category,
       }),
     });
 
@@ -69,7 +69,7 @@ const AddCategoryModal = ({ isCategoryModalOpen, setIsCategoryModalOpen }) => {
         showConfirmButton: false,
         timer: 3500,
       });
-      refetchCategory();
+      refetchAllCategory();
     }
 
   }

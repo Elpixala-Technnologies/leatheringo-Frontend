@@ -1,18 +1,18 @@
-import useBook from '@/src/Hooks/useProducts';
+import usePorduct from '@/src/Hooks/useProducts';
 import DashboardLayout from '@/src/Layouts/DashboardLayout';
-import { getSingelBookUrl, updateBooksUrl } from '@/src/Utils/Urls/ProductUrl';
+import { getSingelPorductUrl, updatePorductsUrl } from '@/src/Utils/Urls/ProductUrl';
 import { Button, Select } from 'antd';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
-const UpdateBookPage = () => {
+const UpdatePorductPage = () => {
     const router = useRouter();
-    const { bookId } = router.query;
-    const [singelBookData, setSingelBookData] = useState({});
+    const { PorductId } = router.query;
+    const [singelPorductData, setSingelPorductData] = useState({});
     const [couponSelected, setCouponSelected] = useState([]);
-    const { categoryData, levelData, couponData } = useBook()
+    const { categoryData, levelData, couponData } = usePorduct()
     const {
         register,
         handleSubmit,
@@ -22,16 +22,16 @@ const UpdateBookPage = () => {
 
 
     useEffect(() => {
-        if (bookId) {
-            const getBook = async () => {
-                const reqBook = await fetch(getSingelBookUrl(bookId));
-                const resBook = await reqBook.json();
-                setSingelBookData(resBook?.data);
-                console.log(resBook);
+        if (PorductId) {
+            const getPorduct = async () => {
+                const reqPorduct = await fetch(getSingelPorductUrl(PorductId));
+                const resPorduct = await reqPorduct.json();
+                setSingelPorductData(resPorduct?.data);
+                console.log(resPorduct);
             }
-            getBook();
+            getPorduct();
         }
-    }, [bookId]);
+    }, [PorductId]);
 
     const couponOptions = couponData?.map((couponResponse) => {
         const { _id, coupon } = couponResponse;
@@ -44,7 +44,7 @@ const UpdateBookPage = () => {
         setCouponSelected(value);
     }
 
-    const couponDefaultValue = singelBookData?.coupon?.map((couponResponse) => {
+    const couponDefaultValue = singelPorductData?.coupon?.map((couponResponse) => {
         const { coupon } = couponResponse;
         return coupon;
     })
@@ -97,7 +97,7 @@ const UpdateBookPage = () => {
             }
             setUploadedImageUrls(uploadedUrls);
 
-            const bookUpdateData = {
+            const PorductUpdateData = {
                 category: valueData.category,
                 name: valueData.name,
                 price: valueData.price,
@@ -110,15 +110,15 @@ const UpdateBookPage = () => {
                 features: features,
                 author: valueData.author,
                 coupon: couponSelected,
-                image: uploadedUrls || singelBookData?.image,
+                image: uploadedUrls || singelPorductData?.image,
             }
 
-            const res = await fetch(updateBooksUrl(bookId), {
+            const res = await fetch(updatePorductsUrl(PorductId), {
                 method: 'PATCH',
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(bookUpdateData),
+                body: JSON.stringify(PorductUpdateData),
             });
             const dataRes = await res.json();
             if (!res) {
@@ -170,31 +170,31 @@ const UpdateBookPage = () => {
             <section>
                 <div>
                     <h1>
-                        Update Book
+                        Update Porduct
                     </h1>
                 </div>
                 <section className="my-4">
-                    <div className="flex flex-col w-full gap-4 mx-auto add-book-form">
+                    <div className="flex flex-col w-full gap-4 mx-auto add-Porduct-form">
                         <form
                             onSubmit={handleSubmit(onSubmit)}
-                            className="add-book-form w-full md:w-full mx-auto flex flex-col gap-4 "
+                            className="add-Porduct-form w-full md:w-full mx-auto flex flex-col gap-4 "
                         >
                             <input
-                                placeholder="Book Name"
+                                placeholder="Porduct Name"
                                 name="name"
                                 type="text"
                                 className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
-                                defaultValue={singelBookData?.name}
+                                defaultValue={singelPorductData?.name}
                                 {...register("name")}
                             />
 
                             <select
                                 {...register("category")}
                                 className='border-2 border-gray-300 rounded-md p-2'
-                                defaultValue={singelBookData?.category}
+                                defaultValue={singelPorductData?.category}
                             >
                                 <option value="">
-                                    {singelBookData?.category}
+                                    {singelPorductData?.category}
                                 </option>
                                 {categoryData && categoryData.map((categoryResponse) => {
                                     const { _id, category } = categoryResponse;
@@ -212,7 +212,7 @@ const UpdateBookPage = () => {
                                 name="price"
                                 type="text"
                                 className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
-                                defaultValue={singelBookData?.price}
+                                defaultValue={singelPorductData?.price}
                                 {...register("price")}
                             />
                             <input
@@ -220,7 +220,7 @@ const UpdateBookPage = () => {
                                 name="discountPercentage"
                                 className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                                 type="text"
-                                defaultValue={singelBookData?.discountPercentage}
+                                defaultValue={singelPorductData?.discountPercentage}
                                 {...register("discountPercentage")}
                             />
                             <input
@@ -228,7 +228,7 @@ const UpdateBookPage = () => {
                                 type="text"
                                 name="author"
                                 className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
-                                defaultValue={singelBookData?.author}
+                                defaultValue={singelPorductData?.author}
                                 {...register("author")}
                             />
                             <input
@@ -236,17 +236,17 @@ const UpdateBookPage = () => {
                                 className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                                 type="text"
                                 name="cover"
-                                defaultValue={singelBookData?.cover}
+                                defaultValue={singelPorductData?.cover}
                                 {...register("cover")}
                             />
 
                             <select
                                 {...register("levelOption")}
                                 className='border-2 border-gray-300 rounded-md p-2'
-                                defaultValue={singelBookData?.level}
+                                defaultValue={singelPorductData?.level}
                             >
                                 <option value="">
-                                    {singelBookData?.level}
+                                    {singelPorductData?.level}
                                 </option>
                                 {levelData && levelData?.map((levelResponse) => {
                                     const { _id, level } = levelResponse;
@@ -278,7 +278,7 @@ const UpdateBookPage = () => {
                                 className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                                 type="text"
                                 name="quantity"
-                                defaultValue={singelBookData?.quantity}
+                                defaultValue={singelPorductData?.quantity}
                                 {...register("quantity")}
                             />
                             <input
@@ -286,19 +286,19 @@ const UpdateBookPage = () => {
                                 className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                                 type="text"
                                 name="language"
-                                defaultValue={singelBookData?.language}
+                                defaultValue={singelPorductData?.language}
                                 {...register("language")}
                             />
                             <textarea id="txtid" name="txtname" rows="4" cols="50" maxlength="200"
                                 placeholder="Description"
-                                defaultValue={singelBookData?.description}
+                                defaultValue={singelPorductData?.description}
                                 {...register("description")}
                                 className="border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                             >
                             </textarea>
                             <textarea name="txtname" rows="4" cols="50" maxlength="200"
                                 placeholder="Features"
-                                defaultValue={singelBookData?.features}
+                                defaultValue={singelPorductData?.features}
                                 onChange={
                                     (e) => {
                                         const featuresArray = e.target.value.split(',');
@@ -337,7 +337,7 @@ const UpdateBookPage = () => {
                                                 className="px-4 pb-4"
                                                 name="images"
                                                 accept="image/*"
-                                                defaultValue={singelBookData?.image}
+                                                defaultValue={singelPorductData?.image}
                                                 multiple
                                                 onChange={handleFileChange}
                                             />
@@ -346,7 +346,7 @@ const UpdateBookPage = () => {
                                 </div>
                                 <div>
                                     <div className="flex flex-wrap gap-4 my-4 justify-center items-center">
-                                        {singelBookData && singelBookData?.image?.map((uploadedImageUrl, index) => (
+                                        {singelPorductData && singelPorductData?.image?.map((uploadedImageUrl, index) => (
                                             <div key={index} className="relative flex  flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
                                                 <a
                                                     className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
@@ -368,7 +368,7 @@ const UpdateBookPage = () => {
                                 marginTop: '20px',
                             }}>
                                 {
-                                    loading ? 'Loading...' : 'Update Book'
+                                    loading ? 'Loading...' : 'Update Porduct'
                                 }
                             </Button>
                         </form>
@@ -379,4 +379,4 @@ const UpdateBookPage = () => {
     );
 };
 
-export default UpdateBookPage;
+export default UpdatePorductPage;

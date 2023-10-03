@@ -6,15 +6,13 @@ import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 
 const ManageProduct = () => {
     const {handelProductDelete, productData } = useProducts();
-
-
     return (
         <section>
             <div className="grid md:grid-cols-3 gap-4 justify-center items-center">
-                {bookData &&
-                    bookData.length &&
-                    bookData.map((bookData) => {
-                        const { _id, name, price, images, discount } = bookData;
+                {productData &&
+                    productData.length &&
+                    productData.map((porductData) => {
+                        const { _id, name, price, images, discount } = porductData;
                         return (
                             <div className="relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
                                 key={_id}
@@ -44,7 +42,7 @@ const ManageProduct = () => {
                                         <p>
                                             <span className="text-3xl font-bold text-slate-900">{price}</span>
                                             <span className="text-sm text-slate-900 line-through">
-                                                {price + (price * discountPercentage) / 100}
+                                                {price + (price * discount) / 100}
                                             </span>
                                         </p>
                                     </div>

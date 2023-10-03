@@ -102,7 +102,7 @@ const PopualrCategory = () => {
                                         className="color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500"
                                         key={id}
                                     >
-                                        <Link href={`/category-product/${categoryId}`}>
+                                        <Link href={`/category-product/${categoryName}`}>
                                             <Image
                                                 alt="image"
                                                 src={image}

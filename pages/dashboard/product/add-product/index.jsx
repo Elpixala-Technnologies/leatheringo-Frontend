@@ -7,7 +7,7 @@ const AddPorductPage = () => {
         <DashboardLayout>
            <section>
                 <div className="add-Porduct-container">
-                    <Link href="/dashboard/porduct/manage-porduct" className="common-btn">
+                    <Link href="/dashboard/product/manage-product" className="common-btn">
                         Update Porduct
                      </Link>   
                 </div>

@@ -166,7 +166,7 @@ const ProductDetails = () => {
               <div className="flex mt-5 items-center space-x-4">
                 <button
                   onClick={() => addToCart(_id)}
-                  className="px-4 py-2 bg-blue-500 text-white rounded  hover:bg-blue-600 focus:outline-none cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100"
+                  className="common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                 >
                   Add to Cart
                 </button>
@@ -192,11 +192,28 @@ const ProductDetails = () => {
 
 
               <div className="flex  items-center gap-2 mt-2">
-                <button className='bg-[#1db7ff] text-white px-12 py-2 rounded'>Buy</button>
+                <button className='common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Buy</button>
               </div>
               <p className="text-gray-400 text-sm my-4">
                 {details?.slice(0, 200)}...
               </p>
+              <hr />
+
+              <div className="mt-5">
+                <h4 className="text-lg font-semibold capitalize">Available Colors</h4>
+                <div className="flex items-center gap-2 my-4">
+                  {colors && colors?.map((color, index) => (
+                    <div
+                      key={index}
+                      className="w-8 h-8 rounded-full cursor-pointer"
+                      style={{
+                        backgroundColor: color,
+                      }}
+                      title={color}
+                    ></div>
+                  ))}
+                </div>
+              </div>
               <hr />
               <div className='my-4'>
                 {/* {
@@ -282,7 +299,7 @@ const ProductDetails = () => {
                               Category :
                             </td>
                             <td className="whitespace-nowrap px-6 py-4">
-                              {categories?.name}
+                              {categories}
                             </td>
                           </tr>
                         </tbody>

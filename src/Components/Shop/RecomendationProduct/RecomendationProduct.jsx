@@ -70,7 +70,7 @@ const RecomendationProduct = () => {
                             spaceBetween: 40,
                         },
                         1024: {
-                            slidesPerView: 4,
+                            slidesPerView: 3,
                             spaceBetween: 30,
                         },
                     }}
@@ -79,7 +79,7 @@ const RecomendationProduct = () => {
                     onSlideChange={() => { }}
                     onSwiper={(swiper) => { }}
                 >
-                    <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 justify-center items-center mx-auto  gap-4">
                         {productData &&
                             productData?.map((product) => {
                                 return (

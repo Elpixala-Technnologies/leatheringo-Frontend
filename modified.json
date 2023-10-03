@@ -1,0 +1,638 @@
+[
+    {
+        "name": "Classic Black Leather Oxfords",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Shoes",
+        "categories": "Formal",
+        "brand": "Elegance Shoes",
+        "price": 129.99,
+        "discount": 10,
+        "quantity": 50,
+        "type": "Lace-up",
+        "status": "Best Seller",
+        "size": [
+            "US 7",
+            "US 8",
+            "US 9"
+        ],
+        "details": "Handcrafted black leather oxfords for formal occasions.",
+        "features": [
+            "Genuine leather",
+            "Cushioned insole"
+        ],
+        "colors": [
+            "Black"
+        ],
+        "coupon": [
+            "SAVE10",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Casual Canvas Sneakers",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Shoes",
+        "categories": "Sneakers",
+        "brand": "ComfortWalk",
+        "price": 59.99,
+        "discount": 5,
+        "quantity": 30,
+        "type": "Lace-up",
+        "status": "New Arrival",
+        "size": [
+            "US 6",
+            "US 7",
+            "US 8"
+        ],
+        "details": "Comfortable and stylish canvas sneakers for everyday wear.",
+        "features": [
+            "Canvas upper",
+            "Rubber sole"
+        ],
+        "colors": [
+            "White",
+            "Navy"
+        ],
+        "coupon": [
+            "SALE5",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Premium Leather Laptop Bag",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Bags",
+        "categories": "Laptop Bags",
+        "brand": "TechCarry",
+        "price": 149.99,
+        "discount": 15,
+        "quantity": 20,
+        "type": "Shoulder Bag",
+        "status": "Tranding",
+        "size": [
+            "15-inch",
+            "17-inch"
+        ],
+        "details": "A luxurious leather laptop bag with ample storage.",
+        "features": [
+            "Genuine leather",
+            "Padded compartments"
+        ],
+        "colors": [
+            "Brown",
+            "Black"
+        ],
+        "coupon": [
+            "TECH15",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Slim Leather Card Holder",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Card Holders",
+        "categories": "Card Holders",
+        "brand": "CardMinder",
+        "price": 19.99,
+        "discount": 0,
+        "quantity": 100,
+        "type": "Bi-fold",
+        "status": "Popular",
+        "size": [
+            "One Size"
+        ],
+        "details": "A compact and stylish leather card holder for your essentials.",
+        "features": [
+            "Genuine leather",
+            "Multiple card slots"
+        ],
+        "colors": [
+            "Black",
+            "Brown"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "WoMens Fashion Tote Bag",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Bags",
+        "categories": "Ladies Bags",
+        "brand": "ChicStyle",
+        "price": 79.99,
+        "discount": 0,
+        "quantity": 40,
+        "type": "Tote Bag",
+        "status": "Featured",
+        "size": [
+            "One Size"
+        ],
+        "details": "A trendy and spacious tote bag for woMens daily use.",
+        "features": [
+            "Durable fabric",
+            "Interior pockets"
+        ],
+        "colors": [
+            "Pink",
+            "Beige"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Mens Genuine Leather Belt",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Belts",
+        "categories": "Mens",
+        "brand": "BeltCraft",
+        "price": 29.99,
+        "discount": 0,
+        "quantity": 60,
+        "type": "Casual",
+        "status": "Best Seller",
+        "size": [
+            "30-32",
+            "34-36",
+            "38-40"
+        ],
+        "details": "A classic leather belt to complete your outfit.",
+        "features": [
+            "Genuine leather",
+            "Silver buckle"
+        ],
+        "colors": [
+            "Black",
+            "Brown"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "WoMens Fashion Wallet",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Wallets",
+        "categories": "Wallets",
+        "brand": "FashionPurse",
+        "price": 39.99,
+        "discount": 0,
+        "quantity": 50,
+        "type": "Bi-fold",
+        "status": "Tranding",
+        "size": [
+            "One Size"
+        ],
+        "details": "A stylish and functional wallet for women.",
+        "features": [
+            "Faux leather",
+            "Multiple card slots"
+        ],
+        "colors": [
+            "Red",
+            "Black"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Classic Brown Leather Oxfords",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Shoes",
+        "categories": "Formal",
+        "brand": "Elegance Shoes",
+        "price": 129.99,
+        "discount": 10,
+        "quantity": 45,
+        "type": "Lace-up",
+        "status": "New Arrival",
+        "size": [
+            "US 7",
+            "US 8",
+            "US 9"
+        ],
+        "details": "Handcrafted brown leather oxfords for formal occasions.",
+        "features": [
+            "Genuine leather",
+            "Cushioned insole"
+        ],
+        "colors": [
+            "Brown"
+        ],
+        "coupon": [
+            "SAVE10",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Sporty Running Shoes",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Shoes",
+        "categories": "Sneakers",
+        "brand": "ActiveStride",
+        "price": 69.99,
+        "discount": 0,
+        "quantity": 25,
+        "type": "Running",
+        "status": "Featured",
+        "size": [
+            "US 6",
+            "US 7",
+            "US 8"
+        ],
+        "details": "Comfortable and durable running shoes for sports enthusiasts.",
+        "features": [
+            "Breathable mesh",
+            "Shock-absorbing sole"
+        ],
+        "colors": [
+            "Black",
+            "Blue"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Canvas Laptop Messenger Bag",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Bags",
+        "categories": "Laptop Bags",
+        "brand": "TechCarry",
+        "price": 89.99,
+        "discount": 5,
+        "quantity": 15,
+        "type": "Messenger Bag",
+        "status": "Popular",
+        "size": [
+            "15-inch",
+            "17-inch"
+        ],
+        "details": "A versatile canvas laptop bag with a vintage look.",
+        "features": [
+            "Durable canvas",
+            "Adjustable strap"
+        ],
+        "colors": [
+            "Khaki",
+            "Olive"
+        ],
+        "coupon": [
+            "SALE5",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Sleek Minimalist Card Holder",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Card Holders",
+        "categories": "Card Holders",
+        "brand": "ModaSleek",
+        "price": 24.99,
+        "discount": 0,
+        "quantity": 75,
+        "type": "Slim",
+        "status": "Best Seller",
+        "size": [
+            "One Size"
+        ],
+        "details": "A modern and slim card holder for your essentials.",
+        "features": [
+            "Minimalist design",
+            "RFID protection"
+        ],
+        "colors": [
+            "Navy",
+            "Gray"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Designer Leather Tote Bag",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Bags",
+        "categories": "Ladies Bags",
+        "brand": "GlamourStyle",
+        "price": 99.99,
+        "discount": 0,
+        "quantity": 35,
+        "type": "Tote Bag",
+        "status": "Featured",
+        "size": [
+            "One Size"
+        ],
+        "details": "A high-fashion leather tote bag for a touch of luxury.",
+        "features": [
+            "Genuine leather",
+            "Detachable shoulder strap"
+        ],
+        "colors": [
+            "Black",
+            "Red"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Mens Reversible Leather Belt",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Belts",
+        "categories": "Mens",
+        "brand": "VersaBelt",
+        "price": 34.99,
+        "discount": 0,
+        "quantity": 55,
+        "type": "Reversible",
+        "status": "Tranding",
+        "size": [
+            "32-34",
+            "36-38",
+            "40-42"
+        ],
+        "details": "A versatile reversible leather belt with a modern twist.",
+        "features": [
+            "Genuine leather",
+            "Silver-tone buckle"
+        ],
+        "colors": [
+            "Black/Brown",
+            "Navy/Gray"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "WoMens Compact Bifold Wallet",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Wallets",
+        "categories": "Wallets",
+        "brand": "ElegancePurse",
+        "price": 29.99,
+        "discount": 0,
+        "quantity": 60,
+        "type": "Bi-fold",
+        "status": "Best Seller",
+        "size": [
+            "One Size"
+        ],
+        "details": "A compact and elegant bi-fold wallet for women.",
+        "features": [
+            "Faux leather",
+            "Snap closure"
+        ],
+        "colors": [
+            "Blue",
+            "Pink"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Brown Leather Monk Shoes",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Shoes",
+        "categories": "Monks",
+        "brand": "Heritage Craft",
+        "price": 139.99,
+        "discount": 10,
+        "quantity": 35,
+        "type": "Double Monk",
+        "status": "Popular",
+        "size": [
+            "US 7",
+            "US 8",
+            "US 9"
+        ],
+        "details": "Handcrafted brown leather double monk strap shoes.",
+        "features": [
+            "Genuine leather",
+            "Buckle closure"
+        ],
+        "colors": [
+            "Brown"
+        ],
+        "coupon": [
+            "SAVE10",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Canvas Laptop Backpack",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Bags",
+        "categories": "Laptop Bags",
+        "brand": "TechCarry",
+        "price": 69.99,
+        "discount": 5,
+        "quantity": 25,
+        "type": "Backpack",
+        "status": "New Arrival",
+        "size": [
+            "15-inch",
+            "17-inch"
+        ],
+        "details": "A rugged canvas laptop backpack for daily commuting.",
+        "features": [
+            "Durable canvas",
+            "Padded laptop compartment"
+        ],
+        "colors": [
+            "Gray",
+            "Olive"
+        ],
+        "coupon": [
+            "SALE5",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Leather Card Holder Wallet",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Card Holders",
+        "categories": "Card Holders",
+        "brand": "CardMaster",
+        "price": 24.99,
+        "discount": 0,
+        "quantity": 80,
+        "type": "Bi-fold",
+        "status": "Tranding",
+        "size": [
+            "One Size"
+        ],
+        "details": "A versatile leather card holder with a built-in wallet.",
+        "features": [
+            "Genuine leather",
+            "Multiple card slots"
+        ],
+        "colors": [
+            "Black",
+            "Brown"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Fashionable Shoulder Bag",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Bags",
+        "categories": "Ladies Bags",
+        "brand": "TrendyChic",
+        "price": 59.99,
+        "discount": 0,
+        "quantity": 45,
+        "type": "Shoulder Bag",
+        "status": "Featured",
+        "size": [
+            "One Size"
+        ],
+        "details": "A trendy and spacious shoulder bag for everyday use.",
+        "features": [
+            "Synthetic leather",
+            "Adjustable strap"
+        ],
+        "colors": [
+            "Black",
+            "Beige"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "Mens Formal Leather Belt",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Belts",
+        "categories": "Mens",
+        "brand": "FormalElegance",
+        "price": 34.99,
+        "discount": 0,
+        "quantity": 70,
+        "type": "Formal",
+        "status": "Best Seller",
+        "size": [
+            "32-34",
+            "36-38",
+            "40-42"
+        ],
+        "details": "A classic formal leather belt with a timeless design.",
+        "features": [
+            "Genuine leather",
+            "Gold-tone buckle"
+        ],
+        "colors": [
+            "Black",
+            "Brown"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    },
+    {
+        "name": "WoMens Stylish Clutch Wallet",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "Wallets",
+        "categories": "Wallets",
+        "brand": "ChicClutch",
+        "price": 29.99,
+        "discount": 0,
+        "quantity": 60,
+        "type": "Clutch",
+        "status": "Popular",
+        "size": [
+            "One Size"
+        ],
+        "details": "A fashionable clutch wallet for women who value style.",
+        "features": [
+            "Faux leather",
+            "Zipper closure"
+        ],
+        "colors": [
+            "Red",
+            "Black"
+        ],
+        "coupon": [
+            "N/A",
+            "FREESHIP"
+        ]
+    }
+]

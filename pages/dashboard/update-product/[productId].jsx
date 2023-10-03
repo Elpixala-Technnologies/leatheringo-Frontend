@@ -1,6 +1,6 @@
-import usePorduct from '@/src/Hooks/useProducts';
+import useProducts from '@/src/Hooks/useProducts';
 import DashboardLayout from '@/src/Layouts/DashboardLayout';
-import { getSingelPorductUrl, updatePorductsUrl } from '@/src/Utils/Urls/ProductUrl';
+import { getSingelProductUrl, updateProductsUrl } from '@/src/Utils/Urls/ProductUrl';
 import { Button, Select } from 'antd';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -9,29 +9,28 @@ import Swal from 'sweetalert2';
 
 const UpdatePorductPage = () => {
     const router = useRouter();
-    const { PorductId } = router.query;
+    const { productId } = router.query;
     const [singelPorductData, setSingelPorductData] = useState({});
     const [couponSelected, setCouponSelected] = useState([]);
-    const { categoryData, levelData, couponData } = usePorduct()
-    const {
-        register,
-        handleSubmit,
-    } = useForm();
-    const [loading, setLoading] = useState(false);
+    const { handleSubmit, register } = useForm();
+    const { allCategoryData, couponData, categoryData } = useProducts()
     const [features, setFeatures] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [size, setSize] = useState([]);
+    const [color, setColor] = useState([]);
 
 
     useEffect(() => {
-        if (PorductId) {
+        if (productId) {
             const getPorduct = async () => {
-                const reqPorduct = await fetch(getSingelPorductUrl(PorductId));
+                const reqPorduct = await fetch(getSingelProductUrl(productId));
                 const resPorduct = await reqPorduct.json();
                 setSingelPorductData(resPorduct?.data);
                 console.log(resPorduct);
             }
             getPorduct();
         }
-    }, [PorductId]);
+    }, [productId]);
 
     const couponOptions = couponData?.map((couponResponse) => {
         const { _id, coupon } = couponResponse;
@@ -67,13 +66,15 @@ const UpdatePorductPage = () => {
         setImageFiles(updatedFiles);
     };
 
-    const onSubmit = async (valueData) => {
+    const onSubmit = async (inputValue) => {
         try {
             setLoading(true);
             const uploadedUrls = [];
             for (const imageFile of imageFiles) {
                 const formData = new FormData();
                 formData.append('file', imageFile);
+                formData.append('upload_preset',
+                    `${cloud_folder}/Product/${imageFile?.name}`);
                 formData.append('upload_preset', upload_preset);
                 formData.append('cloud_name', cloud_name);
 
@@ -98,22 +99,24 @@ const UpdatePorductPage = () => {
             setUploadedImageUrls(uploadedUrls);
 
             const PorductUpdateData = {
-                category: valueData.category,
-                name: valueData.name,
-                price: valueData.price,
-                quantity: valueData.quantity,
-                discountPercentage: valueData.discountPercentage,
-                description: valueData.description,
-                language: valueData.language,
-                level: valueData.levelOption,
-                cover: valueData.cover,
+                name: inputValue.name,
+                categories: inputValue.categories,
+                mainCategories: inputValue.mainCategories,
+                brand: inputValue.brand,
+                price: inputValue.price,
+                discount: inputValue.discount,
+                quantity: inputValue.quantity,
+                type: inputValue.type,
+                status: inputValue.status,
+                size: size,
+                details: inputValue.details,
                 features: features,
-                author: valueData.author,
+                colors: color,
                 coupon: couponSelected,
-                image: uploadedUrls || singelPorductData?.image,
+                images: uploadedUrls || singelPorductData?.image,
             }
 
-            const res = await fetch(updatePorductsUrl(PorductId), {
+            const res = await fetch(updateProductsUrl(productId), {
                 method: 'PATCH',
                 headers: {
                     "Content-Type": "application/json",
@@ -189,110 +192,129 @@ const UpdatePorductPage = () => {
                             />
 
                             <select
-                                {...register("category")}
-                                className='border-2 border-gray-300 rounded-md p-2'
-                                defaultValue={singelPorductData?.category}
+                                name="main-category"
+                                id="main-category"
+                                className="border-2 border-gray-300 rounded-md p-2"
+                                defaultValue={singelPorductData?.mainCategories}
+                                {...register("mainCategories")}
                             >
-                                <option value="">
-                                    {singelPorductData?.category}
+                                <option value="main-category">
+                                    {singelPorductData?.mainCategories}
                                 </option>
-                                {categoryData && categoryData.map((categoryResponse) => {
-                                    const { _id, category } = categoryResponse;
-                                    return (
-                                        <option value={category}
-                                            className='border-2 border-gray-300 rounded-md p-4 my-2'
-                                            key={_id}
-                                        >{category}</option>
-                                    )
-                                })}
+                                {categoryData && categoryData?.map((category) => (
+                                    <option
+                                        key={category._id}
+                                        value={category?.name}
+                                        className="border-2 border-gray-300 rounded-md p-4 my-2"
+                                    >
+                                        {category.name}
+                                    </option>
+                                ))}
                             </select>
 
-                            <input
+                            <select
+                                name="category"
+                                id="category"
+                                className="border-2 border-gray-300 rounded-md p-2"
+                                defaultValue={singelPorductData?.categories}
+                                {...register("categories")}
+                            >
+                                <option value="category">
+                                    {singelPorductData?.categories}
+                                </option>
+                                {allCategoryData && allCategoryData?.map((category) => (
+                                    <option
+                                        key={category._id}
+                                        value={category?.name}
+                                        className="border-2 border-gray-300 rounded-md p-4 my-2"
+                                    >
+                                        {category?.name}
+                                    </option>
+                                ))}
+                            </select>
+
+                            <input type="text"
+                                placeholder="Brand"
+                                className='border-2 border-gray-300 rounded-md p-2'
+                                defaultValue={singelPorductData?.brand}
+                                {...register("brand")}
+                            />
+
+                            <input type="number"
                                 placeholder="Price"
-                                name="price"
-                                type="text"
-                                className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
+                                className='border-2 border-gray-300 rounded-md p-2'
                                 defaultValue={singelPorductData?.price}
                                 {...register("price")}
                             />
-                            <input
+
+                            <input type="number"
                                 placeholder="Discount Percentage"
-                                name="discountPercentage"
-                                className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
-                                type="text"
-                                defaultValue={singelPorductData?.discountPercentage}
-                                {...register("discountPercentage")}
-                            />
-                            <input
-                                placeholder="Author"
-                                type="text"
-                                name="author"
-                                className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
-                                defaultValue={singelPorductData?.author}
-                                {...register("author")}
-                            />
-                            <input
-                                placeholder="Cover"
-                                className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
-                                type="text"
-                                name="cover"
-                                defaultValue={singelPorductData?.cover}
-                                {...register("cover")}
+                                className='border-2 border-gray-300 rounded-md p-2'
+                                defaultValue={singelPorductData?.discount}
+                                {...register("discount")}
                             />
 
-                            <select
-                                {...register("levelOption")}
+                            <select name="status" id="status"
                                 className='border-2 border-gray-300 rounded-md p-2'
-                                defaultValue={singelPorductData?.level}
+                                defaultValue={singelPorductData?.status}
+                                {...register("status")}
                             >
-                                <option value="">
-                                    {singelPorductData?.level}
+                                <option value="status">
+                                    {singelPorductData?.status}
                                 </option>
-                                {levelData && levelData?.map((levelResponse) => {
-                                    const { _id, level } = levelResponse;
-                                    return (
-                                        <option value={level}
-                                            className='border-2 border-gray-300 rounded-md p-4 my-2'
-                                            key={_id}
-                                        >{level}</option>
-                                    )
-                                })}
+                                <option value="Tranding"
+                                    className='border-2 border-gray-300 rounded-md p-4 my-2'
+                                >Tranding</option>
+                                <option value="New Arrival"
+                                    className='border-2 border-gray-300 rounded-md p-4 my-2'
+                                >New Arrival</option>
+                                <option value="Best Seller"
+                                    className='border-2 border-gray-300 rounded-md p-4 my-2'>Best Seller</option>
+                                <option value="Featured"
+                                    className='border-2 border-gray-300 rounded-md p-4 my-2'>Featured</option>
+
+                                <option value="Popular"
+                                    className='border-2 border-gray-300 rounded-md p-4 my-2'>Popular</option>
                             </select>
 
                             <Select
-                                mode="multiple"
+                                mode="tags"
                                 style={{
                                     width: '100%',
                                 }}
-                                defaultValue={
-                                    couponDefaultValue
-                                }
-                                defaultOpen={true}
+                                placeholder="Coupon"
+                                defaultValue={couponDefaultValue}
                                 onChange={handelCouponChange}
                                 options={couponOptions}
                             />
 
-
-                            <input
+                            <input type="number"
                                 placeholder="Quantity"
-                                className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
-                                type="text"
-                                name="quantity"
-                                defaultValue={singelPorductData?.quantity}
+                                className='border-2 border-gray-300 rounded-md p-2'
                                 {...register("quantity")}
                             />
                             <input
-                                placeholder="Language"
-                                className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                                 type="text"
-                                name="language"
-                                defaultValue={singelPorductData?.language}
-                                {...register("language")}
+                                placeholder="Size"
+                                className='border-2 border-gray-300 rounded-md p-2'
+                                value={size}
+                                defaultValue={singelPorductData?.size}
+                                onChange={(e) => setSize(e.target.value)}
                             />
+
+                            <input
+                                type="text"
+                                placeholder="Colors"
+                                className='border-2 border-gray-300 rounded-md p-2'
+                                value={color}
+                                defaultValue={singelPorductData?.colors}
+                                onChange={(e) => setColor(e.target.value)}
+                            />
+
                             <textarea id="txtid" name="txtname" rows="4" cols="50" maxlength="200"
                                 placeholder="Description"
-                                defaultValue={singelPorductData?.description}
-                                {...register("description")}
+                                defaultValue={singelPorductData?.details}
+                                {...register("details")}
                                 className="border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                             >
                             </textarea>
@@ -337,7 +359,7 @@ const UpdatePorductPage = () => {
                                                 className="px-4 pb-4"
                                                 name="images"
                                                 accept="image/*"
-                                                defaultValue={singelPorductData?.image}
+                                                defaultValue={singelPorductData?.images}
                                                 multiple
                                                 onChange={handleFileChange}
                                             />
@@ -346,7 +368,7 @@ const UpdatePorductPage = () => {
                                 </div>
                                 <div>
                                     <div className="flex flex-wrap gap-4 my-4 justify-center items-center">
-                                        {singelPorductData && singelPorductData?.image?.map((uploadedImageUrl, index) => (
+                                        {singelPorductData && singelPorductData?.images?.map((uploadedImageUrl, index) => (
                                             <div key={index} className="relative flex  flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
                                                 <a
                                                     className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"

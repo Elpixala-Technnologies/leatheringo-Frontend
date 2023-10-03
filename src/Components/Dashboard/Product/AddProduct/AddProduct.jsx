@@ -24,76 +24,7 @@ const AddProduct = () => {
   const [loading, setLoading] = useState(false);
   const [description, setDescription] = useState(null);
   const [size, setSize] = useState([]);
-
-  // ===== Color =====
-
-  const colorFromTamplet = {
-    color: '',
-    image: '',
-  };
-  const [color, setColor] = useState([colorFromTamplet]);
-  const addMore = () => {
-    setColor([...color, colorFromTamplet]);
-  };
-
-  // const onChange = (event, index) => {
-  //   const updatedProduct = color.map((color, i) =>
-  //     index === i
-  //       ? Object.assign(color, { [event.target.name]: event.target.value })
-  //       : color
-  //   );
-  //   setColor(updatedProduct);
-  // };
-
-  const onChange = async (event, index) => {
-    if (event.target.name === 'color') {
-      const updatedColors = [...color];
-      updatedColors[index].color = event.target.value;
-      setColor(updatedColors);
-    } else if (event.target.name === 'colorImage') {
-      const selectedFile = event.target.files[0];
-      const publicId = `${cloud_folder}/${selectedFile.name.replace(/\s+/g, '_')}`;
-
-      const formData = new FormData();
-      formData.append('file', selectedFile);
-      formData.append('upload_preset', upload_preset);
-      formData.append('cloud_name', cloud_name);
-      formData.append('public_id', publicId); // Add public_id with folder name
-
-
-
-      try {
-        const imgRes = await fetch(cloud_api, {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (!imgRes.ok) {
-          throw new Error(`Error uploading image: ${imgRes.status} - ${imgRes.statusText}`);
-        }
-
-        const imgData = await imgRes.json();
-        const imgurl = imgData?.secure_url;
-
-        if (imgurl) {
-          const updatedColors = [...color];
-          updatedColors[index].image = selectedFile.name; // Store the image filename
-          updatedColors[index].imageUrl = imgurl; // Store the Cloudinary image URL
-          setColor(updatedColors);
-        } else {
-          throw new Error('Failed to retrieve the image URL from Cloudinary response.');
-        }
-      } catch (error) {
-        console.error('Error uploading color image to Cloudinary:', error);
-      }
-    }
-  };
-
-  const removeColor = (index) => {
-    const newReturned = color.filter((color, i) => i !== index);
-    setColor(newReturned);
-  };
-
+  const [color, setColor] = useState([]);
 
   // === coupon ===
   const couponOptions = couponData?.map((coupon) => ({
@@ -109,11 +40,7 @@ const AddProduct = () => {
 
   const handleFileChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
-    const updatedFiles = selectedFiles.map((file) => {
-      const publicId = `${cloud_folder}/${file.name.replace(/\s+/g, '_')}`;
-      file.uploadPreset = publicId;
-      return file;
-    });
+    const updatedFiles = [...imageFiles, ...selectedFiles];
     setImageFiles(updatedFiles);
   };
 
@@ -125,6 +52,7 @@ const AddProduct = () => {
       for (const imageFile of imageFiles) {
         const formData = new FormData();
         formData.append('file', imageFile);
+        formData.append("public_id", `${cloud_folder}/Product/${imageFile?.name}`)
         formData.append('upload_preset', upload_preset);
         formData.append('cloud_name', cloud_name);
 
@@ -147,11 +75,12 @@ const AddProduct = () => {
         }
       }
 
+      
       const productData = {
         name: inputValue.name,
         images: uploadedUrls,
         categories: inputValue.category,
-        mainCategories: mainCategories.mainCategories,
+        mainCategories: inputValue.mainCategories,
         brand: inputValue.brand,
         price: inputValue.price,
         discount: inputValue.discountPercentage,
@@ -164,6 +93,8 @@ const AddProduct = () => {
         colors: color,
         coupon: coupon,
       }
+
+      console.log(productData);
 
       const res = await fetch(createProductUrl, {
         method: "POST",
@@ -239,7 +170,7 @@ const AddProduct = () => {
             {categoryData && categoryData?.map((category) => (
               <option
                 key={category._id}
-                value={`${category?._id}-${category?.name}`}
+                value={category?.name}
                 className="border-2 border-gray-300 rounded-md p-4 my-2"
               >
                 {category.name}
@@ -257,7 +188,7 @@ const AddProduct = () => {
             {allCategoryData && allCategoryData?.map((category) => (
               <option
                 key={category._id}
-                value={`${category?._id}-${category?.name}`}
+                value={category?.name}
                 className="border-2 border-gray-300 rounded-md p-4 my-2"
               >
                 {category?.name}
@@ -325,6 +256,14 @@ const AddProduct = () => {
             value={size}
             onChange={(e) => setSize(e.target.value)}
           />
+
+          <input
+            type="text"
+            placeholder="Colors"
+            className='border-2 border-gray-300 rounded-md p-2'
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
           <TextArea
             rows={4}
             placeholder="Description"
@@ -337,56 +276,6 @@ const AddProduct = () => {
             value={features}
             onChange={(e) => setFeatures(e.target.value)}
           />
-
-          <section>
-            {color?.map((color, index) => {
-              return (
-                <section
-                  key={index}
-                  className="flex flex-col gap-4 border-2 border-gray-300 rounded-md p-4 my-2"
-                >
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text">Color: </span>
-                    </label>
-                    <input
-                      type="text"
-                      name="color"
-                      onChange={(event) => onChange(event, index)}
-                      value={color.color}
-                      placeholder="Color"
-                      className='border-2 border-gray-300 rounded-md p-2'
-                    />
-                  </div>
-
-                  <div className="form-control w-full max-w-xs">
-                    <input type="file" name="colorImagee" id="colorImage"
-                      onChange={(event) => onChange(event, index)}
-                      value={color.image}
-                    />
-                  </div>
-
-                  <div className="flex">
-                    <button
-                      className="common-btn flex items-center justify-center"
-                      onClick={() => removeColor(index)}
-                    >
-                      <FaTrashAlt className="text-2xl mr-2"></FaTrashAlt>
-                      Delete
-                    </button>
-                  </div>
-                </section>
-              );
-            })}
-
-            <div>
-              <button className="btn btn-primary mx-4" onClick={() => addMore()}>
-                Add More
-              </button>
-            </div>
-          </section>
-
-
           <div className="w-full h-full">
             <div className="rounded-lg shadow-xl bg-gray-50 p-4">
               <label className="inline-block mb-2 text-gray-500">Upload Product Image</label>

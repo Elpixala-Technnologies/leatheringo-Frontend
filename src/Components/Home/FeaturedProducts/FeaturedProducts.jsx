@@ -41,22 +41,22 @@ const FeaturedProducts = () => {
 
     return (
         <section>
-            <div className='title mb-6 flex flex-col justify-center items-center'>
+            <div className='flex flex-col items-center justify-center mb-6 title'>
                 <h2 className=" text-[1rem] md:text-[1.8rem] text-center md:text-left  xxs:text-2xl  text-black font-bold">
                     Featured Products
                 </h2>
-                <p className='text-muted my-2'>
+                <p className='my-2 text-muted'>
                     Summer Collection New Modern Design
                 </p>
             </div>
-            <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-3 lg:grid-cols-3 gap-4">
+            <div className="grid items-center justify-center grid-cols-1 gap-4 mx-auto md:grid-cols-3 lg:grid-cols-3">
                 {productsToDisplay && productsToDisplay?.map((product, index) => {
                     return (
                         <div
                             key={index}
                             className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
                         >
-                            <div className="productImage p-2">
+                            <div className="p-2 productImage">
                                 <Image
                                     src={product?.images[0]}
                                     width={280}
@@ -66,8 +66,8 @@ const FeaturedProducts = () => {
                                 />
                             </div>
                             <hr className="w-full bg-slate-400" />
-                            <div className="productInfo mt-2 p-2">
-                                <h2 className="productName font-bold ">
+                            <div className="p-2 mt-2 productInfo">
+                                <h2 className="font-bold productName ">
                                     {product?.name}
                                 </h2>
                                 <div className='flex items-center gap-4'>
@@ -77,17 +77,17 @@ const FeaturedProducts = () => {
                                             : `₹ ${Math.floor(product?.price)}`
                                         }
                                     </h1>
-                                    <span className="text-sm text-slate-900 line-through mt-1">
+                                    <span className="mt-1 text-sm line-through text-slate-900">
                                         ₹ {Math.floor(product?.price)}
                                     </span>
                                     <span className='text-[#eec75b]'>
                                         {Math.floor(product?.discount)} % off
                                     </span>
                                 </div>
-                                <p className="productDescription py-3">
+                                <p className="py-3 productDescription">
                                     {product?.details?.slice(0, 100)}
                                 </p>
-                                <div className="productAddToCart flex gap-5 items-center">
+                                <div className="flex items-center gap-5 productAddToCart">
                                     <div>
                                         <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
                                             <FaCartPlus />

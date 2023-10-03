@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { deleteProductUrl, getAllCategoryUrl, deleteCategoryUrl, getAllCouponUrl, deleteCouponUrl, getProductsUrl, getAllCategorySubCategoryUrl } from "../Utils/Urls/ProductUrl";
+import { corsAnywhereUrl } from "../Utils/Network/Network";
 
 const useProducts = () => {
   const {
@@ -11,6 +12,8 @@ const useProducts = () => {
     queryKey: ["productData"],
     queryFn: async () => {
       try {
+
+
         const res = await fetch(getProductsUrl);
         if (!res.ok) {
           throw new Error("Failed to fetch product data");

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { deletePopularCategoryUrl, getPopularCategoryUrl } from "../Utils/Urls/CategoryUrl";
 import Swal from "sweetalert2";
+import { corsAnywhereUrl } from "../Utils/Network/Network";
 
 const usePopularCategory = () => {
     const {

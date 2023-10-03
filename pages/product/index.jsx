@@ -1,12 +1,12 @@
 import RootLayout from '@/src/Layouts/RootLayout';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { BsFilter } from 'react-icons/bs';
-import useproduct from '@/src/Hooks/useProducts';
+import { useState,useEffect } from 'react';
 import ProductSlider from '@/src/Components/Product/ProductSlider/ProductSlider';
 import useProducts from '@/src/Hooks/useProducts';
 import { FaArrowLeft, FaArrowRight, FaCartPlus } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ProductPage = () => {
     const [show, setShow] = useState(false);
@@ -23,6 +23,8 @@ const ProductPage = () => {
     const clearFilter = () => {
         setSelectedCategory(null);
     };
+
+
 
     // Pagination state
     const [page, setPage] = useState(1);
@@ -52,12 +54,21 @@ const ProductPage = () => {
         }
     };
 
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Animation duration in milliseconds
+            once: true, // Only trigger the animation once
+        });
+    }, []);
+
+    console.log(productData);
+
 
 
     return (
         <RootLayout>
             <ProductSlider /> <br />
-            <div className="flex md:flex-row flex-col gap-2 md:container">
+            <div className="flex flex-col gap-2 md:flex-row md:container">
                 {/* <div className="md:block hidden p-3 bg-slate-200 rounded h-[75%]">
                     <div>
                         <h2 className="text-lg font-bold"
@@ -66,19 +77,19 @@ const ProductPage = () => {
                             isCloups && <div className="flex flex-col gap-2">
                                 {categoryData && categoryData?.map((categoryresult) => (
                                     <div
-                                        className="flex items-center space-x-2 mt-3 cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100"
+                                        className="flex items-center mt-3 space-x-2 transition duration-500 ease-in-out transform cursor-pointer hover:animate-pulse hover:-translate-y-1 hover:scale-100"
                                         key={categoryresult?._id}
                                     >
                                         <input
                                             type="checkbox"
                                             id={categoryresult?.category}
-                                            className="form-checkbox h-5 w-5 text-blue-600"
+                                            className="w-5 h-5 text-blue-600 form-checkbox"
                                             value={categoryresult?.category}
                                             onChange={() => setSelectedCategory(categoryresult?.category)}
                                         />
                                         <label
                                             htmlFor={categoryresult?.category}
-                                            className="text-gray-700  cursor-pointer"
+                                            className="text-gray-700 cursor-pointer"
                                         >
                                             {categoryresult?.category}
                                         </label>
@@ -88,7 +99,7 @@ const ProductPage = () => {
                         }
                         <button
                             onClick={() => selectedCategory && clearFilter()}
-                            className="bg-red-500 text-white mt-4 p-2 rounded-md hover:bg-red-600"
+                            className="p-2 mt-4 text-white bg-red-500 rounded-md hover:bg-red-600"
                         >
                             Clear Filter
                         </button>
@@ -97,12 +108,12 @@ const ProductPage = () => {
                 </div> */}
 
                 <div className="col-span-4 p-4 bg-[#e8eaeb00]">
-                    <div className="md:hidden relative flex w-full items-center justify-end">
+                    <div className="relative flex items-center justify-end w-full md:hidden">
                         {/* <button
                             onClick={() => setShow(!show)}
                             className="bg-[#4c667200] p-1 rounded-sm flex items-center gap-2"
                         >
-                            <h2 className="text-md font-semibold">Sort Out </h2>
+                            <h2 className="font-semibold text-md">Sort Out </h2>
                             <BsFilter className="text-3xl" />
                         </button> */}
                         {/* <div
@@ -110,19 +121,19 @@ const ProductPage = () => {
                         >
                             {categoryData?.map((category) => (
                                 <div
-                                    className="flex items-center space-x-2 mt-3"
+                                    className="flex items-center mt-3 space-x-2"
                                     key={category?.id}
                                 >
                                     <input
                                         type="checkbox"
                                         id={category?.category}
-                                        className="form-checkbox h-5 w-5 text-blue-600"
+                                        className="w-5 h-5 text-blue-600 form-checkbox"
                                         value={category?.category}
                                         onChange={() => setSelectedCategory(category?.category)}
                                     />
                                     <label
                                         htmlFor={category?.category}
-                                        className="text-gray-700  cursor-pointer"
+                                        className="text-gray-700 cursor-pointer"
                                     >
                                         {category?.category}
                                     </label>
@@ -130,7 +141,7 @@ const ProductPage = () => {
                             ))}
                             <button
                                 onClick={() => selectedCategory && clearFilter()}
-                                className="bg-red-500 text-white mt-4 p-2 rounded-md hover:bg-red-600"
+                                className="p-2 mt-4 text-white bg-red-500 rounded-md hover:bg-red-600"
                             >
                                 Clear Filter
                             </button>
@@ -138,14 +149,14 @@ const ProductPage = () => {
                         </div> */}
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
                         {productsToDisplay && productsToDisplay.map((product) => {
                             return (
                                 <Link key={product?.id} href={`/product/${product?.id}`}>
                                     <div
                                         className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
                                     >
-                                        <div className="productImage p-2">
+                                        <div className="p-2 productImage">
                                             <Image
                                                 src={product?.images[0]}
                                                 width={280}
@@ -155,8 +166,8 @@ const ProductPage = () => {
                                             />
                                         </div>
                                         <hr className="w-full bg-slate-400" />
-                                        <div className="productInfo mt-2 p-2">
-                                            <h2 className="productName font-bold ">
+                                        <div className="p-2 mt-2 productInfo">
+                                            <h2 className="font-bold productName ">
                                                 {product?.name}
                                             </h2>
                                             <div className='flex items-center gap-4'>
@@ -166,17 +177,17 @@ const ProductPage = () => {
                                                         : `₹ ${Math.floor(product?.price)}`
                                                     }
                                                 </h1>
-                                                <span className="text-sm text-slate-900 line-through mt-1">
+                                                <span className="mt-1 text-sm line-through text-slate-900">
                                                     ₹ {Math.floor(product?.price)}
                                                 </span>
                                                 <span className='text-[#eec75b]'>
                                                     {Math.floor(product?.discount)} % off
                                                 </span>
                                             </div>
-                                            <p className="productDescription py-3">
+                                            <p className="py-3 productDescription">
                                                 {product?.details?.slice(0, 100)}
                                             </p>
-                                            <div className="productAddToCart flex gap-5 items-center">
+                                            <div className="flex items-center gap-5 productAddToCart">
                                                 <div>
                                                     <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
                                                         <FaCartPlus />
@@ -192,7 +203,7 @@ const ProductPage = () => {
                     </div>
 
                     {/* Pagination */}
-                    <div className={`items-center justify-center gap-4 mt-11 mb-16`}>
+                    <div className={`items-center justify-center gap-4 mt-11 mb-16`} data-aos="fade-up" data-aos-delay="200">
                         <div className="flex items-center justify-center text-gray-400 ">
                             <button
                                 title="Previous"

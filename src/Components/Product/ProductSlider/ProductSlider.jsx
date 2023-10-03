@@ -12,6 +12,8 @@ import {
     MobileBannerOne,
     MobileBannerTwo,
 } from '@/src/Assets';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ProductSlider = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -40,7 +42,6 @@ const ProductSlider = () => {
             desktopImage: HomeSliderTwo,
             mobileImage: MobileBannerTwo, // Add mobile image for slide 2
         },
-
     ];
 
     return (
@@ -59,7 +60,7 @@ const ProductSlider = () => {
                 {slidesData &&
                     slidesData.map((slide) => {
                         return (
-                            <SwiperSlide key={slide.id}>
+                            <SwiperSlide key={slide.id} data-aos="fade-up"> {/* Add data-aos attribute */}
                                 <div className="slider-images">
                                     <Image
                                         src={isMobile ? slide.mobileImage : slide.desktopImage}

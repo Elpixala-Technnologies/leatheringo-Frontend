@@ -4,11 +4,14 @@ import MainLogo from "./Logo/logo.png";
 import NotFoundIcon from "./Images/NotFoundImag.png";
 import AuthIcons from "./Images/usersignUp.jpeg";
 
-import HeroSliderImage from "./slider/main.png";
+import HomeSliderOne from "./slider/home-slider-01.png";
+import HomeSliderTwo from "./slider/home-slider-02.png";
 
-import HomeSliderOne from "./slider/slider_1.jpg";
-import HomeSliderTwo from "./slider/slider_2.jpg";
-import HomeSliderThree from "./slider/slider_3.png";
+import MobileBannerOne from "./slider/mobile-bannder-01.png";
+import MobileBannerTwo from "./slider/mobile-banner-02.png";
+
+import OfferBannerImage from "./banner/offer-banner.jpg"
+
 
 import FreeShippingIcon from "./features/FreeShipping.png";
 import SupportIcon from "./features/Support.png";
@@ -28,19 +31,19 @@ import Wallets from "./category-icons/Wallets.png";
 import ChelseaBoots from "./category-icons/ChelseaBoots.png";
 
 
-
-
-
 export {
     PreLoaderIcon,
     MainLogo,
     NotFoundIcon,
     AuthIcons,
-    HeroSliderImage,
 
     HomeSliderOne,
     HomeSliderTwo,
-    HomeSliderThree,
+
+    MobileBannerOne,
+    MobileBannerTwo,
+
+    OfferBannerImage,
 
     FreeShippingIcon,
     SupportIcon,
@@ -58,10 +61,6 @@ export {
     Sneakers,
     Wallets,
     ChelseaBoots,
-    
-
-
-
 
 }
 

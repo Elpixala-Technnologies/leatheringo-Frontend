@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import { deleteProductUrl, getAllCategoryUrl, deleteCategoryUrl, getAllLevelUrl, deleteLevelUrl, getAllCouponUrl, deleteCouponUrl, getProductsUrl } from "../Utils/Urls/ProductUrl";
+import { deleteProductUrl, getAllCategoryUrl, deleteCategoryUrl, getAllCouponUrl, deleteCouponUrl, getProductsUrl, getAllCategorySubCategoryUrl } from "../Utils/Urls/ProductUrl";
 
 const useProducts = () => {
   const {
@@ -36,19 +36,19 @@ const useProducts = () => {
     },
   });
 
-
   const {
-    data: levelData,
-    isLoading: levelLoaded,
-    refetch: refetchLevel,
+    data: allCategoryData,
+    isLoading: allCategoryLoaded,
+    refetch: refetchAllCategory,
   } = useQuery({
-    queryKey: ["levelData"],
+    queryKey: ["allCategoryData"],
     queryFn: async () => {
-      const res = await fetch(getAllLevelUrl);
+      const res = await fetch(getAllCategorySubCategoryUrl);
       const data = await res.json();
       return data.data;
     },
   });
+
 
   const {
     data: couponData,
@@ -176,61 +176,6 @@ const useProducts = () => {
   };
 
 
-  const handelLevelDelete = async (id) => {
-    const confirmed = await Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    });
-
-    if (confirmed.isConfirmed) {
-      const res = await fetch(deleteLevelUrl(id), {
-        method: "DELETE",
-      });
-      const data = await res.json();
-      if (!data) {
-        Swal.fire({
-          position: "center",
-          timerProgressBar: true,
-          title: data.message,
-          iconColor: "#ED1C24",
-          toast: true,
-          icon: "error",
-          showClass: {
-            popup: "animate__animated animate__fadeInRight",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutRight",
-          },
-          showConfirmButton: false,
-          timer: 3500,
-        });
-      } else {
-        Swal.fire({
-          position: "center",
-          timerProgressBar: true,
-          title: "Successfully Delete  !",
-          iconColor: "#ED1C24",
-          toast: true,
-          icon: "success",
-          showClass: {
-            popup: "animate__animated animate__fadeInRight",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutRight",
-          },
-          showConfirmButton: false,
-          timer: 3500,
-        });
-        refetchLevel();
-      }
-    }
-  };
-
   const handelCouponDelete = async (id) => {
     const confirmed = await Swal.fire({
       title: "Are you sure?",
@@ -298,11 +243,9 @@ const useProducts = () => {
     categoryData,
     categoryLoaded,
 
-
-    refetchLevel,
-    levelLoaded,
-    levelData,
-    handelLevelDelete,
+    allCategoryData,
+    allCategoryLoaded,
+    refetchAllCategory,
 
     handelCouponDelete,
     couponData,

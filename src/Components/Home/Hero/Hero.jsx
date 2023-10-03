@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -8,7 +8,9 @@ import Image from "next/image";
 import {
     HomeSliderOne,
     HomeSliderTwo,
-    HomeSliderThree,
+
+    MobileBannerOne,
+    MobileBannerTwo,
 } from "@/src/Assets";
 
 const Hero = () => {
@@ -16,19 +18,32 @@ const Hero = () => {
         {
             id: 1,
             brandSliderImage: HomeSliderOne,
+            mobileSliderImage: MobileBannerOne,
             details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
         },
         {
             id: 2,
             brandSliderImage: HomeSliderTwo,
+            mobileSliderImage: MobileBannerTwo,
             details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-        },
-        {
-            id: 3,
-            brandSliderImage: HomeSliderThree,
-            details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-        },
+        }
     ]
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768); // Define your mobile breakpoint
+        };
+
+        handleResize(); // Check the initial screen width
+        window.addEventListener("resize", handleResize); // Listen for window resize events
+
+        return () => {
+            window.removeEventListener("resize", handleResize); // Remove the event listener when the component unmounts
+        };
+    }, []);
+
 
     return (
         <>
@@ -48,12 +63,11 @@ const Hero = () => {
                         return (
                             <SwiperSlide key={slide.id}>
                                 <Image
-                                    src={slide.brandSliderImage}
-                                    alt="Red Rose Auto Trading"
-                                    layout="responsive"
-                                    width={750}
-                                    height={300}
-                                    className="w-[100%] h-[100%]"
+                                    src={isMobile ? slide?.mobileSliderImage : slide?.brandSliderImage}
+                                    alt="Banner Image"
+                                    className="w-full h-full"
+                                    width={isMobile ? 768 : 1920}
+                                    height={isMobile ? 768 : 500}
                                 />
                             </SwiperSlide>
                         );

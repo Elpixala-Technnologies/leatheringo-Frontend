@@ -75,9 +75,9 @@ const PopualrCategory = () => {
     return (
         <section>
             <div className="">
-                <div className="md:w-[100%] mx-auto mt-7 md:mt-10 mb-5 md:mb-20 md:block ">
+                <div className="md:w-[100%] mx-auto mt-7 md:mt-10  md:block ">
                     <div className="text-center leading-10 mb-5 md:mb-8">
-                        <h1 className="lg:text-3xl uppercase xxs:text-2xl  text-black font-bold">
+                        <h1 className="lg:text-3xl xxs:text-2xl  text-black font-bold">
                             Popular Categories
                         </h1>
                     </div>

@@ -1,693 +1,1020 @@
 [
     {
-        "name": "Casual Sneakers",
+        "name": "Classic Leather Men's Shoes",
         "images": [
-            "sneaker1.jpg",
-            "sneaker2.jpg"
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
         ],
-        "mainCategories": "6519f2112bd1fa30e053d639",
-        "categories": "6519f24a2bd1fa30e053d63c",
-        "brand": "Nike",
-        "price": 75.0,
-        "discount": 15,
+        "mainCategories": "651b24b5128fafb26980d28b",
+        "categories": "651b25d7d5bb68ee3141d3e0",
+        "brand": "ABC Shoes",
+        "price": 89.99,
+        "discount": 10,
         "quantity": 100,
+        "type": "Formal",
+        "status": "Best Seller",
         "size": [
-            "S",
-            "M",
-            "L"
+            "US 8",
+            "US 9",
+            "US 10"
         ],
-        "details": "Comfortable and stylish casual sneakers for everyday wear.",
+        "details": "Premium leather shoes for a sophisticated look.",
         "features": [
-            "Breathable",
-            "Non-slip sole"
+            "Genuine leather",
+            "Comfortable insole"
         ],
         "colors": [
             {
                 "name": "Black",
-                "image": "black.jpg"
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             },
             {
-                "name": "White",
-                "image": "white.jpg"
+                "name": "Brown",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             }
         ],
         "coupon": [
-            "COUPON123",
-            "DISCOUNT456"
+            "SAVE10",
+            "FREESHIP"
         ]
     },
     {
-        "name": "Running Shoes",
+        "name": "Double Monk Strap Shoes",
         "images": [
-            "run1.jpg",
-            "run2.jpg"
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
         ],
-        "mainCategories": "6519f2112bd1fa30e053d639",
-        "categories": "6519f24a2bd1fa30e053d63d",
-        "brand": "Adidas",
-        "price": 90.0,
-        "discount": 20,
+        "mainCategories": "651b24b5128fafb26980d28b",
+        "categories": "651b2627d5bb68ee3141d3e8",
+        "brand": "XYZ Footwear",
+        "price": 109.99,
+        "discount": 15,
+        "quantity": 75,
+        "type": "Formal",
+        "status": "Best Seller",
+        "size": [
+            "US 7",
+            "US 8",
+            "US 9"
+        ],
+        "details": "Elegant double monk strap shoes for men.",
+        "features": [
+            "High-quality leather",
+            "Durable sole"
+        ],
+        "colors": [
+            {
+                "name": "Tan",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "SAVE15",
+            "SHIPFREE"
+        ]
+    },
+    {
+        "name": "Casual Canvas Sneakers",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b24b5128fafb26980d28b",
+        "categories": "651b2690d5bb68ee3141d3fa",
+        "brand": "CoolKicks",
+        "price": 49.99,
+        "discount": 15,
+        "quantity": 120,
+        "type": "Casual",
+        "status": "Featured",
+        "size": [
+            "US 6",
+            "US 7",
+            "US 8"
+        ],
+        "details": "Comfortable and stylish canvas sneakers.",
+        "features": [
+            "Breathable fabric",
+            "Rubber outsole"
+        ],
+        "colors": [
+            {
+                "name": "Navy Blue",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Gray",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "SALE20"
+        ]
+    },
+    {
+        "name": "Men's Slim Fit Dress Shirt",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b24b5128fafb26980d28b",
+        "categories": "651b25d7d5bb68ee3141d3e0",
+        "brand": "Formal Wear Co.",
+        "price": 59.99,
+        "discount": 15,
         "quantity": 80,
+        "type": "Formal",
+        "status": "Featured",
+        "size": [
+            "M",
+            "L",
+            "XL"
+        ],
+        "details": "A classic slim fit dress shirt for men.",
+        "features": [
+            "100% cotton",
+            "Button-down collar"
+        ],
+        "colors": [
+            {
+                "name": "White",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Blue",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "FORMAL10"
+        ]
+    },
+    {
+        "name": "Women's Floral Print Dress",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b24b5128fafb26980d28b",
+        "categories": "651b2690d5bb68ee3141d3fa",
+        "brand": "Fashionista",
+        "price": 69.99,
+        "discount": 15,
+        "quantity": 65,
+        "type": "Casual",
+        "status": "Best Seller",
         "size": [
             "S",
             "M",
             "L"
         ],
-        "details": "High-performance running shoes for athletes.",
+        "details": "A stylish floral print dress for women.",
         "features": [
-            "Lightweight",
-            "Shock-absorbing"
+            "Soft and flowy fabric",
+            "V-neck design"
+        ],
+        "colors": [
+            {
+                "name": "Red Floral",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Navy Floral",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "SUMMER20"
+        ]
+    },
+    {
+        "name": "Smartphone Stand Holder",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b27bdd5bb68ee3141d430",
+        "categories": "651b27e4d5bb68ee3141d434",
+        "brand": "Tech Innovations",
+        "price": 14.99,
+        "discount": 15,
+        "quantity": 150,
+        "type": "Gadgets",
+        "status": "Featured",
+        "size": null,
+        "details": "A versatile smartphone stand holder.",
+        "features": [
+            "Adjustable angle",
+            "Non-slip base"
+        ],
+        "colors": null,
+        "coupon": [
+            "TECHSALE"
+        ]
+    },
+    {
+        "name": "Men's Leather Wallet",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b27bdd5bb68ee3141d430",
+        "categories": "651b27e4d5bb68ee3141d434",
+        "brand": "LeatherCraft",
+        "price": 29.99,
+        "discount": 15,
+        "quantity": 90,
+        "type": "Accessories",
+        "status": "Best Seller",
+        "size": null,
+        "details": "A stylish and functional men's leather wallet.",
+        "features": [
+            "Genuine leather",
+            "Multiple card slots"
+        ],
+        "colors": [
+            {
+                "name": "Brown",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "WALLET15"
+        ]
+    },
+    {
+        "name": "Women's Running Shoes",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b24b5128fafb26980d28b",
+        "categories": "651b2690d5bb68ee3141d3fa",
+        "brand": "FitActive",
+        "price": 69.99,
+        "discount": 15,
+        "quantity": 110,
+        "type": "Sports",
+        "status": "Best Seller",
+        "size": [
+            "US 6",
+            "US 7",
+            "US 8"
+        ],
+        "details": "Comfortable and supportive running shoes for women.",
+        "features": [
+            "Breathable mesh upper",
+            "Cushioned sole"
+        ],
+        "colors": [
+            {
+                "name": "Pink",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Gray",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "SPORTS10"
+        ]
+    },
+    {
+        "name": "Wireless Bluetooth Earbuds",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b27bdd5bb68ee3141d430",
+        "categories": "651b27e4d5bb68ee3141d434",
+        "brand": "SoundWave",
+        "price": 49.99,
+        "discount": 15,
+        "quantity": 120,
+        "type": "Electronics",
+        "status": "Featured",
+        "size": null,
+        "details": "High-quality wireless earbuds with long battery life.",
+        "features": [
+            "Bluetooth 5.0",
+            "Noise-cancellation"
+        ],
+        "colors": [
+            {
+                "name": "White",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "SOUND10"
+        ]
+    },
+    {
+        "name": "Designer Sunglasses",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b24b5128fafb26980d28b",
+        "categories": "651b2690d5bb68ee3141d3fa",
+        "brand": "Chic Shades",
+        "price": 79.99,
+        "discount": 15,
+        "quantity": 60,
+        "type": "Accessories",
+        "status": "Featured",
+        "size": null,
+        "details": "Fashionable designer sunglasses for women.",
+        "features": [
+            "UV protection",
+            "Stylish frame"
+        ],
+        "colors": [
+            {
+                "name": "Tortoiseshell",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "SUN20"
+        ]
+    },
+    {
+        "name": "Stainless Steel Water Bottle",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b27bdd5bb68ee3141d430",
+        "categories": "651b27e4d5bb68ee3141d434",
+        "brand": "HydroFlask",
+        "price": 24.99,
+        "discount": 15,
+        "quantity": 140,
+        "type": "Fitness",
+        "status": "Best Seller",
+        "size": null,
+        "details": "Durable stainless steel water bottle for outdoor activities.",
+        "features": [
+            "Insulated",
+            "Leak-proof cap"
         ],
         "colors": [
             {
                 "name": "Blue",
-                "image": "blue.jpg"
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             },
             {
-                "name": "Red",
-                "image": "red.jpg"
+                "name": "Green",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             }
         ],
         "coupon": [
-            "SALE20",
-            "RUNFAST"
+            "HYDRO10"
         ]
     },
     {
-        "name": "Leather Boots",
+        "name": "Digital Camera",
         "images": [
-            "boots1.jpg",
-            "boots2.jpg"
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
         ],
-        "mainCategories": "6519f2112bd1fa30e053d63a",
-        "categories": "6519f24a2bd1fa30e053d63e",
-        "brand": "Timberland",
-        "price": 120.0,
-        "discount": 10,
-        "quantity": 50,
-        "size": [
-            "8",
-            "9",
-            "10"
-        ],
-        "details": "Stylish leather boots for a rugged look.",
+        "mainCategories": "651b24b5128fafb26980d28b",
+        "categories": "651b25d7d5bb68ee3141d3e0",
+        "brand": "TechPro",
+        "price": 299.99,
+        "discount": 15,
+        "quantity": 30,
+        "type": "Electronics",
+        "status": "Featured",
+        "size": null,
+        "details": "High-resolution digital camera for photography enthusiasts.",
         "features": [
-            "Waterproof",
-            "Durable"
+            "20MP sensor",
+            "4K video recording"
         ],
         "colors": [
             {
-                "name": "Brown",
-                "image": "brown.jpg"
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             },
             {
-                "name": "Black",
-                "image": "black.jpg"
+                "name": "Silver",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             }
         ],
         "coupon": [
-            "TIMBER10",
-            "BOOTSALE"
+            "CAMERA15"
         ]
     },
     {
-        "name": "High Heels",
+        "name": "Portable Power Bank",
         "images": [
-            "heels1.jpg",
-            "heels2.jpg"
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
         ],
-        "mainCategories": "6519f2112bd1fa30e053d63b",
-        "categories": "6519f24a2bd1fa30e053d63f",
-        "brand": "Jimmy Choo",
-        "price": 250.0,
-        "discount": 5,
-        "quantity": 30,
-        "size": [
-            "6",
-            "7",
-            "8"
-        ],
-        "details": "Elegant high-heeled shoes for special occasions.",
+        "mainCategories": "651b27bdd5bb68ee3141d430",
+        "categories": "651b27e4d5bb68ee3141d434",
+        "brand": "PowerUp",
+        "price": 19.99,
+        "discount": 15,
+        "quantity": 100,
+        "type": "Electronics",
+        "status": "Featured",
+        "size": null,
+        "details": "Compact and high-capacity power bank for charging on the go.",
         "features": [
-            "Genuine leather",
-            "Stiletto heel"
+            "10,000mAh capacity",
+            "Dual USB ports"
+        ],
+        "colors": [
+            {
+                "name": "Blue",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Red",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "POWERUP20"
+        ]
+    },
+    {
+        "name": "Men's Casual Hoodie",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b24b5128fafb26980d28b",
+        "categories": "651b25d7d5bb68ee3141d3e8",
+        "brand": "UrbanGear",
+        "price": 39.99,
+        "discount": 15,
+        "quantity": 85,
+        "type": "Casual",
+        "status": "Featured",
+        "size": [
+            "S",
+            "M",
+            "L"
+        ],
+        "details": "A comfortable and stylish hoodie for men.",
+        "features": [
+            "Soft cotton blend",
+            "Kangaroo pocket"
+        ],
+        "colors": [
+            {
+                "name": "Gray",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Navy Blue",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "HOODIE10"
+        ]
+    },
+    {
+        "name": "Yoga Mat",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b27bdd5bb68ee3141d430",
+        "categories": "651b27e4d5bb68ee3141d434",
+        "brand": "YogaLife",
+        "price": 29.99,
+        "discount": 15,
+        "quantity": 75,
+        "type": "Fitness",
+        "status": "New Arrival",
+        "size": null,
+        "details": "Non-slip yoga mat for your workout sessions.",
+        "features": [
+            "Eco-friendly material",
+            "Carrying strap included"
+        ],
+        "colors": [
+            {
+                "name": "Purple",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Blue",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "YOGA15"
+        ]
+    },
+    {
+        "name": "Wireless Gaming Mouse",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b27bdd5bb68ee3141d430",
+        "categories": "651b27e4d5bb68ee3141d434",
+        "brand": "GameTech",
+        "price": 49.99,
+        "discount": 15,
+        "quantity": 50,
+        "type": "Gaming",
+        "status": "New Arrival",
+        "size": null,
+        "details": "High-precision wireless gaming mouse for gamers.",
+        "features": [
+            "Adjustable DPI",
+            "RGB lighting"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Red",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "GAMER10"
+        ]
+    },
+    {
+        "name": "Kitchen Knife Set",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d417",
+        "brand": "Chef's Choice",
+        "price": 79.99,
+        "discount": 15,
+        "quantity": 40,
+        "type": "Kitchen",
+        "status": "New Arrival",
+        "size": null,
+        "details": "High-quality kitchen knife set for culinary enthusiasts.",
+        "features": [
+            "Stainless steel blades",
+            "Wooden block"
+        ],
+        "colors": null,
+        "coupon": [
+            "COOKING20"
+        ]
+    },
+    {
+        "name": "Wireless Charging Pad",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b27bdd5bb68ee3141d430",
+        "categories": "651b27e4d5bb68ee3141d434",
+        "brand": "ChargePro",
+        "price": 24.99,
+        "discount": 15,
+        "quantity": 120,
+        "type": "Electronics",
+        "status": "New Arrival",
+        "size": null,
+        "details": "Fast and convenient wireless charging pad for smartphones.",
+        "features": [
+            "Qi-compatible",
+            "LED indicator"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "White",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "CHARGE10"
+        ]
+    },
+    {
+        "name": "Women's Crossbody Bag",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d418",
+        "brand": "TrendyStyle",
+        "price": 34.99,
+        "discount": 15,
+        "quantity": 95,
+        "type": "Fashion",
+        "status": "New Arrival",
+        "size": null,
+        "details": "Stylish and compact crossbody bag for women.",
+        "features": [
+            "Adjustable strap",
+            "Multiple compartments"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Brown",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "FASHION15"
+        ]
+    },
+    {
+        "name": "Bluetooth Portable Speaker",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b27bdd5bb68ee3141d430",
+        "categories": "651b27e4d5bb68ee3141d434",
+        "brand": "SoundWave",
+        "price": 39.99,
+        "discount": 15,
+        "quantity": 70,
+        "type": "Electronics",
+        "status": "New Arrival",
+        "size": null,
+        "details": "Portable Bluetooth speaker for music lovers.",
+        "features": [
+            "Wireless connectivity",
+            "Built-in rechargeable battery"
+        ],
+        "colors": [
+            {
+                "name": "Red",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Blue",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "MUSIC20"
+        ]
+    },
+    {
+        "name": "Men's Sports Watch",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d419",
+        "brand": "SportTech",
+        "price": 79.99,
+        "discount": 15,
+        "quantity": 50,
+        "type": "Watches",
+        "status": "New Arrival",
+        "size": null,
+        "details": "Durable and stylish sports watch for men.",
+        "features": [
+            "Chronograph function",
+            "Water-resistant"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Blue",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "SPORTWATCH10"
+        ]
+    },
+    {
+        "name": "Home Security Camera System",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d417",
+        "brand": "SafeGuard",
+        "price": 149.99,
+        "discount": 15,
+        "quantity": 25,
+        "type": "Home & Security",
+        "status": "New Arrival",
+        "size": null,
+        "details": "Complete home security camera system with remote monitoring.",
+        "features": [
+            "HD cameras",
+            "Night vision"
+        ],
+        "colors": null,
+        "coupon": [
+            "SAFEHOME15"
+        ]
+    },
+    {
+        "name": "Women's Leather Tote Bag",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d418",
+        "brand": "LeatherLux",
+        "price": 69.99,
+        "discount": 15,
+        "quantity": 65,
+        "type": "Fashion",
+        "status": "New Arrival",
+        "size": null,
+        "details": "Elegant and spacious leather tote bag for women.",
+        "features": [
+            "High-quality leather",
+            "Zipper closure"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Brown",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "LUXURY10"
+        ]
+    },
+    {
+        "name": "Fitness Tracker Watch",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d419",
+        "brand": "FitTech",
+        "price": 49.99,
+        "discount": 15,
+        "quantity": 80,
+        "type": "Watches",
+        "status": "Tranding",
+        "size": null,
+        "details": "Multi-functional fitness tracker watch for tracking your health.",
+        "features": [
+            "Heart rate monitor",
+            "Step counter"
+        ],
+        "colors": [
+            {
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Purple",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "FITNESS10"
+        ]
+    },
+    {
+        "name": "Electric Kettle",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d417",
+        "brand": "KitchenPro",
+        "price": 29.99,
+        "discount": 15,
+        "quantity": 60,
+        "type": "Kitchen",
+        "status": "Tranding",
+        "size": null,
+        "details": "Fast-boiling electric kettle for your kitchen needs.",
+        "features": [
+            "Stainless steel construction",
+            "Auto-shutoff"
         ],
         "colors": [
             {
                 "name": "Silver",
-                "image": "silver.jpg"
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             },
             {
-                "name": "Gold",
-                "image": "gold.jpg"
+                "name": "Black",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             }
         ],
         "coupon": [
-            "JIMMY5OFF",
-            "ELEGANCE"
+            "KITCHEN15"
         ]
     },
     {
-        "name": "Flip Flops",
+        "name": "Men's Duffel Bag",
         "images": [
-            "flip1.jpg",
-            "flip2.jpg"
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
         ],
-        "mainCategories": "6519f2112bd1fa30e053d639",
-        "categories": "6519f24a2bd1fa30e053d640",
-        "brand": "Havaianas",
-        "price": 20.0,
-        "discount": 0,
-        "quantity": 200,
-        "size": [
-            "S",
-            "M",
-            "L"
-        ],
-        "details": "Comfortable flip flops for casual wear.",
-        "features": [
-            "Rubber sole",
-            "Variety of colors"
-        ],
-        "colors": [
-            {
-                "name": "Green",
-                "image": "green.jpg"
-            },
-            {
-                "name": "Pink",
-                "image": "pink.jpg"
-            }
-        ],
-        "coupon": []
-    },
-    {
-        "name": "Hiking Boots",
-        "images": [
-            "hike1.jpg",
-            "hike2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d63a",
-        "categories": "6519f24a2bd1fa30e053d641",
-        "brand": "Merrell",
-        "price": 110.0,
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d418",
+        "brand": "TravelGear",
+        "price": 54.99,
         "discount": 15,
-        "quantity": 60,
-        "size": [
-            "8",
-            "9",
-            "10"
-        ],
-        "details": "Durable hiking boots for outdoor adventures.",
+        "quantity": 45,
+        "type": "Travel",
+        "status": "Tranding",
+        "size": null,
+        "details": "Spacious and durable men's duffel bag for travel enthusiasts.",
         "features": [
-            "Waterproof",
-            "Grip sole"
-        ],
-        "colors": [
-            {
-                "name": "Gray",
-                "image": "gray.jpg"
-            },
-            {
-                "name": "Brown",
-                "image": "brown.jpg"
-            }
-        ],
-        "coupon": [
-            "HIKE15",
-            "ADVENTURE"
-        ]
-    },
-    {
-        "name": "Ankle Boots",
-        "images": [
-            "ankle1.jpg",
-            "ankle2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d63a",
-        "categories": "6519f24a2bd1fa30e053d642",
-        "brand": "Steve Madden",
-        "price": 85.0,
-        "discount": 10,
-        "quantity": 70,
-        "size": [
-            "6",
-            "7",
-            "8"
-        ],
-        "details": "Stylish ankle boots for a trendy look.",
-        "features": [
-            "Suede finish",
-            "Block heel"
+            "Multiple compartments",
+            "Detachable shoulder strap"
         ],
         "colors": [
             {
                 "name": "Black",
-                "image": "black.jpg"
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             },
             {
-                "name": "Tan",
-                "image": "tan.jpg"
+                "name": "Navy Blue",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             }
         ],
         "coupon": [
-            "MADDEN10",
-            "TRENDY"
+            "TRAVEL10"
         ]
     },
     {
-        "name": "Slip-On Shoes",
+        "name": "Smart Home Thermostat",
         "images": [
-            "slip1.jpg",
-            "slip2.jpg"
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
         ],
-        "mainCategories": "6519f2112bd1fa30e053d639",
-        "categories": "6519f24a2bd1fa30e053d643",
-        "brand": "Vans",
-        "price": 55.0,
-        "discount": 10,
-        "quantity": 90,
-        "size": [
-            "S",
-            "M",
-            "L"
-        ],
-        "details": "Classic slip-on shoes for everyday comfort.",
-        "features": [
-            "Canvas upper",
-            "Elastic side gussets"
-        ],
-        "colors": [
-            {
-                "name": "Black",
-                "image": "black.jpg"
-            },
-            {
-                "name": "Checkerboard",
-                "image": "checkerboard.jpg"
-            }
-        ],
-        "coupon": [
-            "VANS10",
-            "COMFY"
-        ]
-    },
-    {
-        "name": "Wedge Sandals",
-        "images": [
-            "wedge1.jpg",
-            "wedge2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d63b",
-        "categories": "6519f24a2bd1fa30e053d644",
-        "brand": "Michael Kors",
-        "price": 150.0,
-        "discount": 5,
-        "quantity": 40,
-        "size": [
-            "6",
-            "7",
-            "8"
-        ],
-        "details": "Stylish wedge sandals for a summer look.",
-        "features": [
-            "Leather straps",
-            "Cork wedge heel"
-        ],
-        "colors": [
-            {
-                "name": "Navy",
-                "image": "navy.jpg"
-            },
-            {
-                "name": "Beige",
-                "image": "beige.jpg"
-            }
-        ],
-        "coupon": [
-            "MK5OFF",
-            "SUMMERSTYLE"
-        ]
-    },
-    {
-        "name": "Classic Loafers",
-        "images": [
-            "loafer1.jpg",
-            "loafer2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d639",
-        "categories": "6519f24a2bd1fa30e053d645",
-        "brand": "Gucci",
-        "price": 350.0,
-        "discount": 0,
-        "quantity": 25,
-        "size": [
-            "9",
-            "10",
-            "11"
-        ],
-        "details": "Luxurious classic loafers for a sophisticated look.",
-        "features": [
-            "Genuine leather",
-            "Tassel accent"
-        ],
-        "colors": [
-            {
-                "name": "Black",
-                "image": "black.jpg"
-            },
-            {
-                "name": "Brown",
-                "image": "brown.jpg"
-            }
-        ],
-        "coupon": []
-    },
-    {
-        "name": "Espadrille Flats",
-        "images": [
-            "espadrille1.jpg",
-            "espadrille2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d63b",
-        "categories": "6519f24a2bd1fa30e053d646",
-        "brand": "Tory Burch",
-        "price": 95.0,
-        "discount": 10,
-        "quantity": 60,
-        "size": [
-            "6",
-            "7",
-            "8"
-        ],
-        "details": "Comfortable espadrille flats for a casual chic look.",
-        "features": [
-            "Canvas upper",
-            "Rope sole"
-        ],
-        "colors": [
-            {
-                "name": "Blue Stripe",
-                "image": "blue.jpg"
-            },
-            {
-                "name": "Beige",
-                "image": "beige.jpg"
-            }
-        ],
-        "coupon": [
-            "TB10",
-            "CHICCOMFORT"
-        ]
-    },
-    {
-        "name": "Suede Pumps",
-        "images": [
-            "suede1.jpg",
-            "suede2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d63b",
-        "categories": "6519f24a2bd1fa30e053d647",
-        "brand": "Stuart Weitzman",
-        "price": 180.0,
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d417",
+        "brand": "SmartHomeTech",
+        "price": 129.99,
         "discount": 15,
         "quantity": 35,
-        "size": [
-            "6",
-            "7",
-            "8"
-        ],
-        "details": "Elegant suede pumps for a versatile style.",
+        "type": "Home & Security",
+        "status": "Tranding",
+        "size": null,
+        "details": "Wi-Fi enabled smart thermostat for home climate control.",
         "features": [
-            "Suede upper",
-            "Pointed toe"
+            "Remote temperature control",
+            "Energy-saving mode"
         ],
-        "colors": [
-            {
-                "name": "Black",
-                "image": "black.jpg"
-            },
-            {
-                "name": "Nude",
-                "image": "nude.jpg"
-            }
-        ],
+        "colors": null,
         "coupon": [
-            "SW15",
-            "ELEGANT"
+            "SMARTHOME20"
         ]
     },
     {
-        "name": "Canvas Sneakers",
+        "name": "Kids' Bicycle Helmet",
         "images": [
-            "canvas1.jpg",
-            "canvas2.jpg"
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
         ],
-        "mainCategories": "6519f2112bd1fa30e053d639",
-        "categories": "6519f24a2bd1fa30e053d648",
-        "brand": "Converse",
-        "price": 60.0,
-        "discount": 0,
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d419",
+        "brand": "KidSafe",
+        "price": 19.99,
+        "discount": 15,
         "quantity": 70,
-        "size": [
-            "S",
-            "M",
-            "L"
-        ],
-        "details": "Classic canvas sneakers for a timeless look.",
+        "type": "Sports",
+        "status": "Tranding",
+        "size": null,
+        "details": "Safety-certified bicycle helmet for kids.",
         "features": [
-            "Canvas upper",
-            "Rubber toe cap"
+            "Adjustable straps",
+            "Cute design"
+        ],
+        "colors": [
+            {
+                "name": "Pink",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Blue",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "SAFETY10"
+        ]
+    },
+    {
+        "name": "Men's Cargo Shorts",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d418",
+        "brand": "AdventureWear",
+        "price": 34.99,
+        "discount": 15,
+        "quantity": 90,
+        "type": "Fashion",
+        "status": "Tranding",
+        "size": [
+            "30",
+            "32",
+            "34"
+        ],
+        "details": "Durable and versatile cargo shorts for men.",
+        "features": [
+            "Multiple pockets",
+            "Adjustable waistband"
+        ],
+        "colors": [
+            {
+                "name": "Khaki",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            },
+            {
+                "name": "Olive Green",
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+            }
+        ],
+        "coupon": [
+            "OUTDOOR10"
+        ]
+    },
+    {
+        "name": "Digital Alarm Clock",
+        "images": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "mainCategories": "651b26f9d5bb68ee3141d411",
+        "categories": "651b270fd5bb68ee3141d417",
+        "brand": "TimeMaster",
+        "price": 12.99,
+        "discount": 15,
+        "quantity": 120,
+        "type": "Home & Living",
+        "status": "Tranding",
+        "size": null,
+        "details": "Digital alarm clock with LED display for your bedside.",
+        "features": [
+            "Snooze function",
+            "Dimmable display"
         ],
         "colors": [
             {
                 "name": "White",
-                "image": "white.jpg"
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             },
             {
                 "name": "Black",
-                "image": "black.jpg"
-            }
-        ],
-        "coupon": []
-    },
-    {
-        "name": "Rain Boots",
-        "images": [
-            "rain1.jpg",
-            "rain2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d63a",
-        "categories": "6519f24a2bd1fa30e053d649",
-        "brand": "Hunter",
-        "price": 85.0,
-        "discount": 10,
-        "quantity": 50,
-        "size": [
-            "6",
-            "7",
-            "8"
-        ],
-        "details": "Waterproof rain boots for wet weather protection.",
-        "features": [
-            "Rubber construction",
-            "Adjustable buckle"
-        ],
-        "colors": [
-            {
-                "name": "Green",
-                "image": "green.jpg"
-            },
-            {
-                "name": "Black",
-                "image": "black.jpg"
+                "image": "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
             }
         ],
         "coupon": [
-            "HUNTER10",
-            "RAINYDAYS"
-        ]
-    },
-    {
-        "name": "Moccasin Slippers",
-        "images": [
-            "moccasin1.jpg",
-            "moccasin2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d639",
-        "categories": "6519f24a2bd1fa30e053d64a",
-        "brand": "Minnetonka",
-        "price": 45.0,
-        "discount": 5,
-        "quantity": 80,
-        "size": [
-            "S",
-            "M",
-            "L"
-        ],
-        "details": "Cozy moccasin slippers for indoor comfort.",
-        "features": [
-            "Suede upper",
-            "Faux fur lining"
-        ],
-        "colors": [
-            {
-                "name": "Tan",
-                "image": "tan.jpg"
-            },
-            {
-                "name": "Chocolate",
-                "image": "chocolate.jpg"
-            }
-        ],
-        "coupon": [
-            "MINNE5OFF",
-            "COZY"
-        ]
-    },
-    {
-        "name": "Platform Sandals",
-        "images": [
-            "platform1.jpg",
-            "platform2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d63b",
-        "categories": "6519f24a2bd1fa30e053d64b",
-        "brand": "Steve Madden",
-        "price": 95.0,
-        "discount": 10,
-        "quantity": 60,
-        "size": [
-            "6",
-            "7",
-            "8"
-        ],
-        "details": "Trendy platform sandals for a bold look.",
-        "features": [
-            "Faux leather straps",
-            "Cork platform heel"
-        ],
-        "colors": [
-            {
-                "name": "Black",
-                "image": "black.jpg"
-            },
-            {
-                "name": "Rose Gold",
-                "image": "rosegold.jpg"
-            }
-        ],
-        "coupon": [
-            "MADDEN10",
-            "BOLDSTYLE"
-        ]
-    },
-    {
-        "name": "Snow Boots",
-        "images": [
-            "snow1.jpg",
-            "snow2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d63a",
-        "categories": "6519f24a2bd1fa30e053d64c",
-        "brand": "Columbia",
-        "price": 130.0,
-        "discount": 15,
-        "quantity": 45,
-        "size": [
-            "8",
-            "9",
-            "10"
-        ],
-        "details": "Warm and waterproof snow boots for winter adventures.",
-        "features": [
-            "Insulated",
-            "Omni-Grip sole"
-        ],
-        "colors": [
-            {
-                "name": "Black",
-                "image": "black.jpg"
-            },
-            {
-                "name": "Gray",
-                "image": "gray.jpg"
-            }
-        ],
-        "coupon": [
-            "WINTER15",
-            "SNOWFUN"
-        ]
-    },
-    {
-        "name": "Clog Sandals",
-        "images": [
-            "clog1.jpg",
-            "clog2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d63b",
-        "categories": "6519f24a2bd1fa30e053d64d",
-        "brand": "Birkenstock",
-        "price": 75.0,
-        "discount": 0,
-        "quantity": 90,
-        "size": [
-            "6",
-            "7",
-            "8"
-        ],
-        "details": "Comfortable clog sandals for a laid-back style.",
-        "features": [
-            "Birko-Flor upper",
-            "Cork footbed"
-        ],
-        "colors": [
-            {
-                "name": "Black",
-                "image": "black.jpg"
-            },
-            {
-                "name": "Brown",
-                "image": "brown.jpg"
-            }
-        ],
-        "coupon": []
-    },
-    {
-        "name": "Basketball Shoes",
-        "images": [
-            "basketball1.jpg",
-            "basketball2.jpg"
-        ],
-        "mainCategories": "6519f2112bd1fa30e053d639",
-        "categories": "6519f24a2bd1fa30e053d64e",
-        "brand": "Jordan",
-        "price": 170.0,
-        "discount": 10,
-        "quantity": 40,
-        "size": [
-            "9",
-            "10",
-            "11"
-        ],
-        "details": "High-performance basketball shoes for the court.",
-        "features": [
-            "Air cushioning",
-            "Durable rubber outsole"
-        ],
-        "colors": [
-            {
-                "name": "Red",
-                "image": "red.jpg"
-            },
-            {
-                "name": "Black",
-                "image": "black.jpg"
-            }
-        ],
-        "coupon": [
-            "JORDAN10",
-            "HOOPS"
+            "WAKEUP10"
         ]
     }
 ]

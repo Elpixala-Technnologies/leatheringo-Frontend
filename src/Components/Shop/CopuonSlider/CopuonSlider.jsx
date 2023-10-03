@@ -33,7 +33,7 @@ const CouponSlider = () => {
         navigator.clipboard.writeText(couponCode)
             .then(() => {
                 setCopiedCoupon(couponCode);
-                setTimeout(() => setCopiedCoupon(null), 2000); // Clear copied status after 2 seconds
+                setTimeout(() => setCopiedCoupon(null), 2000);
             })
             .catch((err) => console.error('Failed to copy:', err));
     };

@@ -1,4 +1,4 @@
-import useProducts from '@/src/Hooks/useProducts';
+import useBook from '@/src/Hooks/useBook';
 import { addPopularCategoryUrl } from '@/src/Utils/Urls/CategoryUrl';
 import { Button } from 'antd';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ const AddPopularCategory = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const { allCategoryData } = useProducts();
+    const { categoryData } = useBook();
     const [loading, setLoading] = useState(false);
 
     // ==== Cloudinary ==== 
@@ -44,9 +44,9 @@ const AddPopularCategory = () => {
             const { popularCategory, popularCategoryDetail } = data;
 
             const popularCategoryData = {
-                categories: popularCategory,
-                detail: popularCategoryDetail,
-                image: imgurl,
+                popularCategory,
+                popularCategoryDetail,
+                popularCategoryImage: imgurl,
             }
 
             const res = await fetch(addPopularCategoryUrl, {
@@ -117,17 +117,16 @@ const AddPopularCategory = () => {
                 >
                     <select
                         {...register("popularCategory")}
-                        className='border-2 border-gray-300 rounded-md p-2 h-full w-full'
+                        className='border-2 border-gray-300 rounded-md p-2'
                     >
                         <option value="">Select Category</option>
-                        {allCategoryData && allCategoryData?.map((categoryResponse) => {
-                            const { _id, name } = categoryResponse;
+                        {categoryData && categoryData.map((categoryResponse) => {
+                            const { _id, category } = categoryResponse;
                             return (
-                                <option
-                                    value={`${_id}-${name}`}
+                                <option value={category}
                                     className='border-2 border-gray-300 rounded-md p-4 my-2'
                                     key={_id}
-                                >{name}</option>
+                                >{category}</option>
                             )
                         })}
                     </select>

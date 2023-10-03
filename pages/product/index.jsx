@@ -1,43 +1,64 @@
-import ProductSlider from '@/src/Components/Home/Products/ProductSlider/ProductSlider';
 import RootLayout from '@/src/Layouts/RootLayout';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { BsFilter } from 'react-icons/bs';
-import useBook from '@/src/Hooks/useProducts';
+import useproduct from '@/src/Hooks/useProducts';
+import ProductSlider from '@/src/Components/Product/ProductSlider/ProductSlider';
+import useProducts from '@/src/Hooks/useProducts';
+import { FaArrowLeft, FaArrowRight, FaCartPlus } from 'react-icons/fa';
 
 const ProductPage = () => {
     const [show, setShow] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const { bookData, categoryData } = useBook();
+    const { productData, categoryData } = useProducts();
     const itemsPerPage = 9;
     const [currentPage, setCurrentPage] = useState(1);
     const [isCloups, setIsCloups] = useState(true);
 
-    const filteredBooks = selectedCategory
-        ? bookData.filter((book) => book.category === selectedCategory)
-        : bookData;
+    const filteredproducts = selectedCategory
+        ? productData.filter((product) => product.category === selectedCategory)
+        : productData;
 
     const clearFilter = () => {
         setSelectedCategory(null);
     };
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+    // Pagination state
+    const [page, setPage] = useState(1);
+    const productsPerPage = 9; // Number of products per page
 
-    const currentBooks = filteredBooks?.slice(startIndex, endIndex);
+    // Calculate total pages
+    const totalPages = Math.ceil(productData?.length / productsPerPage);
 
-    const totalPages = Math.ceil(filteredBooks?.length / itemsPerPage);
+    // Calculate the index range for the current page
+    const startIndex = (page - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
 
-    const changePage = (page) => {
-        setCurrentPage(page);
+    // Filter products for the current page
+    const productsToDisplay = productData?.slice(startIndex, endIndex);
+
+    // Function to handle previous page
+    const handlePrevPage = () => {
+        if (page > 1) {
+            setPage(page - 1);
+        }
     };
+
+    // Function to handle next page
+    const handleNextPage = () => {
+        if (page < totalPages) {
+            setPage(page + 1);
+        }
+    };
+
+
 
     return (
         <RootLayout>
             <ProductSlider /> <br />
             <div className="flex md:flex-row flex-col gap-2 md:container">
-                <div className="md:block hidden p-3 bg-slate-200 rounded h-[75%]">
+                {/* <div className="md:block hidden p-3 bg-slate-200 rounded h-[75%]">
                     <div>
                         <h2 className="text-lg font-bold"
                         >Sort Out :</h2>
@@ -73,18 +94,18 @@ const ProductPage = () => {
                         </button>
 
                     </div>
-                </div>
+                </div> */}
 
                 <div className="col-span-4 p-4 bg-[#e8eaeb00]">
                     <div className="md:hidden relative flex w-full items-center justify-end">
-                        <button
+                        {/* <button
                             onClick={() => setShow(!show)}
                             className="bg-[#4c667200] p-1 rounded-sm flex items-center gap-2"
                         >
                             <h2 className="text-md font-semibold">Sort Out </h2>
                             <BsFilter className="text-3xl" />
-                        </button>
-                        <div
+                        </button> */}
+                        {/* <div
                             className={`${show ? 'block' : 'hidden'} bg-[#ffffff] w-[300px] p-3 border rounded shadow-xl absolute right-0 top-9 z-10`}
                         >
                             {categoryData?.map((category) => (
@@ -114,43 +135,54 @@ const ProductPage = () => {
                                 Clear Filter
                             </button>
 
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
-                        {currentBooks && currentBooks.map((book) => {
+                        {productsToDisplay && productsToDisplay.map((product) => {
                             return (
-                                <Link key={book?.id} href={`/product/${book?.id}`}>
-                                    <div className="card w-full bg-white px-3 pt-2 shadow-lg cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded">
-                                        <div className="bg-[#ebeef0]">
+                                <Link key={product?.id} href={`/product/${product?.id}`}>
+                                    <div
+                                        className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
+                                    >
+                                        <div className="productImage p-2">
                                             <Image
-                                                src={book?.image[0]}
-                                                width={400}
-                                                height={500}
-                                                alt={book?.name}
-                                                className=" rounded w-full h-full"
+                                                src={product?.images[0]}
+                                                width={280}
+                                                height={280}
+                                                className="w-full h-full"
+                                                alt="Product Image"
                                             />
                                         </div>
-
-                                        <div className="pb-4">
-                                            <h4 className='font-bold my-2'>
-                                                {book.category}
-                                            </h4>
-                                            <h4 className="text-lg">{book?.name?.slice(0, 28) + ".."}</h4>
+                                        <hr className="w-full bg-slate-400" />
+                                        <div className="productInfo mt-2 p-2">
+                                            <h2 className="productName font-bold ">
+                                                {product?.name}
+                                            </h2>
                                             <div className='flex items-center gap-4'>
-                                                <h1 className="text-xl font-bold text-slate-900">
-                                                    {
-                                                        book?.discountPercentage
-                                                            ? `₹ ${book?.price - (book?.price * book?.discountPercentage) / 100}`
-                                                            : `₹ ${book?.price}`
+                                                <h1 className="font-bold text-slate-900">
+                                                    {product?.discount
+                                                        ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
+                                                        : `₹ ${Math.floor(product?.price)}`
                                                     }
                                                 </h1>
                                                 <span className="text-sm text-slate-900 line-through mt-1">
-                                                    ₹ {book?.price}
+                                                    ₹ {Math.floor(product?.price)}
                                                 </span>
                                                 <span className='text-[#eec75b]'>
-                                                    {book?.discountPercentage} % off
+                                                    {Math.floor(product?.discount)} % off
                                                 </span>
+                                            </div>
+                                            <p className="productDescription py-3">
+                                                {product?.details?.slice(0, 100)}
+                                            </p>
+                                            <div className="productAddToCart flex gap-5 items-center">
+                                                <div>
+                                                    <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
+                                                        <FaCartPlus />
+                                                        Product Detail
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -159,20 +191,43 @@ const ProductPage = () => {
                         })}
                     </div>
 
-                    {/* Responsive Pagination */}
-                    <div className="flex justify-center mt-4">
-                        {Array.from({ length: totalPages }, (_, i) => (
+                    {/* Pagination */}
+                    <div className={`items-center justify-center gap-4 mt-11 mb-16`}>
+                        <div className="flex items-center justify-center text-gray-400 ">
                             <button
-                                key={i}
-                                onClick={() => changePage(i + 1)}
-                                className={`mx-2 px-4 py-2 rounded-md ${currentPage === i + 1
-                                    ? 'bg-blue-500 text-white'
-                                    : 'bg-gray-200 hover:bg-gray-300 text-gray-800'
-                                    }`}
+                                title="Previous"
+                                className={`h-14 w-14 text-center ${page === 1 ? "bg-gray-400 cursor-not-allowed" : "hover:bg-red-10"
+                                    } text-white bg-black-10 rounded-l-md border ${page === 1 ? "bg-gray-400" : "bg-red-500"
+                                    } flex items-center justify-center`}
+                                onClick={handlePrevPage}
+                                disabled={page === 1}
                             >
-                                {i + 1}
+                                <FaArrowLeft className="text-white" />
                             </button>
-                        ))}
+                            {Array.from({ length: totalPages }).map((_, index) => (
+                                <button
+                                    key={index}
+                                    className={`h-14 w-14 hover:text-white bg-red-500 ${page === index + 1 ? "text-white bg-red-600" : "bg-black-10"
+                                        } text-center hover:bg-red-10 text-white border`}
+                                    onClick={() => setPage(index + 1)}
+                                    disabled={page === index + 1}
+                                >
+                                    {index + 1}
+                                </button>
+                            ))}
+                            <button
+                                title="Next"
+                                className={`h-14 w-14 text-center ${page === totalPages
+                                    ? "bg-gray-400 cursor-not-allowed"
+                                    : "hover:bg-red-10"
+                                    } text-white bg-black-10 rounded-r-md border ${page === totalPages ? "bg-gray-400" : "bg-red-500"
+                                    } flex items-center justify-center`}
+                                onClick={handleNextPage}
+                                disabled={page === totalPages}
+                            >
+                                <FaArrowRight className="text-white" />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,13 @@
-import useBook from '@/src/Hooks/useProducts';
 import { Facebook, LinkedIn, WhatsApp } from '@material-ui/icons';
 import Link from 'next/link';
 import React from 'react';
 import { FaDiscord } from 'react-icons/fa';
 import Image from 'next/image';
 import { MainLogo } from '@/src/Assets';
+import useProducts from '@/src/Hooks/useProducts';
 
 const Footer = () => {
-    const { categoryData } = useBook();
+    const { allCategoryData } = useProducts();
 
     return (
         <div className='bg-[#F5F5F5] text-[#000] px-4 py-16 grid md:grid-cols-5 gap-4'>
@@ -24,13 +24,17 @@ const Footer = () => {
                     <li className='font-semibold text-lg text-[#000]'>
                         <Link href="">Categories</Link>
                     </li>
-                    {/* {
-                        categoryData?.slice(0, 6).map(itm => (
-                            <li key={itm?.id} className='mt-3 font-[300]'>
-                                <Link href={`/category_product?CategoryName=${itm?.category}`}>{itm?.category}</Link>
-                            </li>
-                        ))
-                    } */}
+                    {
+                        allCategoryData && allCategoryData.slice(0, 5).map((item, index) => {
+                            return (
+                                <Link href={`/category-product/${item?._id}`} key={index + "category"}>
+                                    <li className='p-2 rounded duration-200 hover:bg-[#80808024] text-[#000]' >
+                                        {item?.name}
+                                    </li>
+                                </Link>
+                            )
+                        })
+                    }
                 </ul>
             </div>
             <div className="md:mt-[0] mt-6">

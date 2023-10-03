@@ -9,48 +9,51 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { useContext, useState } from 'react';
 import RootLayout from '@/src/Layouts/RootLayout';
-import RecomendationProduct from '@/src/Components/Shop/RecomendationProduct/RecomendationProduct';
-import CopuonSlider from '@/src/Components/Shop/CopuonSlider/CopuonSlider';
 import { addToCartUrl } from '@/src/Utils/Urls/ProductUrl';
 import Swal from 'sweetalert2';
 import { AuthContext } from '@/src/Context/UserContext';
 import useProducts from '@/src/Hooks/useProducts';
+import CouponSlider from '@/src/Components/Shop/CopuonSlider/CopuonSlider';
+import RecomendationProduct from '@/src/Components/Shop/RecomendationProduct/RecomendationProduct';
 
 const ProductDetails = () => {
-  const { bookData } = useProducts();
+  const { productData } = useProducts();
   const { user } = useContext(AuthContext);
   const router = useRouter();
   const { id } = router.query;
-  const [showImg, setShowImg] = useState('https://firebasestorage.googleapis.com/v0/b/book-e-commerce-dfef2.appspot.com/o/images%2F1679235368340?alt=media&token=b5736d42-dcb3-4863-876f-1af70b31b53a')
+  const [showImg, setShowImg] = useState('')
 
 
-  let mainBookData;
+  let mainProductData;
 
-  const filterBookData = bookData?.filter((data) => {
-    return data._id === id;
+  const filterproductData = productData?.filter((data) => {
+    return data?._id === id;
   });
 
-  if (filterBookData && filterBookData.length > 0) {
-    mainBookData = filterBookData[0];
+  if (filterproductData && filterproductData.length > 0) {
+    mainProductData = filterproductData[0];
   } else {
     console.error(`No data found for ID: ${id}`);
   }
 
   const {
-    category,
     name,
+    images,
+    mainCategories,
+    categories,
+    brand,
     price,
-    discountPercentage,
-    description,
-    language,
-    level,
-    cover,
+    discount,
+    quantity,
+    type,
+    status,
+    size,
+    details,
     features,
-    author,
+    colors,
     coupon,
-    image,
     _id,
-  } = mainBookData || {};
+  } = mainProductData || {};
 
   // ====== Add to cart ======
 
@@ -61,7 +64,7 @@ const ProductDetails = () => {
       // User is not logged in, show an alert
       Swal.fire({
         icon: 'error',
-        title: 'Please log in to add the book to your cart',
+        title: 'Please log in to add the product to your cart',
         showConfirmButton: true,
       });
       return;
@@ -87,7 +90,7 @@ const ProductDetails = () => {
     if (data.success) {
       Swal.fire({
         icon: 'success',
-        title: 'Your book added to cart',
+        title: 'Your product added to cart',
         showConfirmButton: false,
         timer: 1500,
       })
@@ -96,7 +99,7 @@ const ProductDetails = () => {
   }
 
   const [appliedCoupon, setAppliedCoupon] = useState(null);
-  const [discountedPrice, setDiscountedPrice] = useState(mainBookData?.price || 0);
+  const [discountedPrice, setDiscountedPrice] = useState(mainProductData?.price || 0);
 
 
   const applyCoupon = (couponCode) => {
@@ -122,8 +125,8 @@ const ProductDetails = () => {
           <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
             <div className="">
               <div className="img-box shadow rounded bg-[#f1e8e8] p-2 flex justify-center">
-                {image && image.length > 0 ? (
-                  <Image src={image[0]} alt={name}
+                {images && images.length > 0 ? (
+                  <Image src={images[0]} alt={name}
                     width={300}
                     height={300}
                     className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
@@ -144,7 +147,7 @@ const ProductDetails = () => {
                   className="mySwiper"
                 >
                   {
-                    image && image?.map((img, index) => {
+                    images && images?.map((img, index) => {
                       return (
                         <SwiperSlide key={index} onClick={() => setShowImg(img)}>
                           <Image
@@ -173,18 +176,17 @@ const ProductDetails = () => {
               <h1 className="text-xl font-[500] md:w-[500px]">{name}</h1>
               <br />
               <div className='flex items-center gap-4'>
-                <h1 className="text-xl font-bold text-slate-900">
-                  {
-                    discountPercentage
-                      ? `₹ ${price - (price * discountPercentage) / 100}`
-                      : `₹ ${price}`
+                <h1 className="font-bold text-slate-900">
+                  {discount
+                    ? `₹ ${Math.floor(price - (price * discount) / 100)}`
+                    : `₹ ${Math.floor(price)}`
                   }
                 </h1>
                 <span className="text-sm text-slate-900 line-through mt-1">
-                  ₹ {price}
+                  ₹ {Math.floor(price)}
                 </span>
                 <span className='text-[#eec75b]'>
-                  {discountPercentage} % off
+                  {Math.floor(discount)} % off
                 </span>
               </div>
 
@@ -193,28 +195,28 @@ const ProductDetails = () => {
                 <button className='bg-[#1db7ff] text-white px-12 py-2 rounded'>Buy</button>
               </div>
               <p className="text-gray-400 text-sm my-4">
-                {description?.slice(0, 200)}...
+                {details?.slice(0, 200)}...
               </p>
               <hr />
               <div className='my-4'>
-                {
+                {/* {
                   coupon && coupon?.map((coupon, index) => {
                     return (
-                      <CopuonSlider
+                      <CouponSlider
                         key={index}
                         coupon={coupon}
-                        applyCoupon={applyCoupon} // Pass the applyCoupon function
-                        appliedCoupon={appliedCoupon} // Pass the appliedCoupon state
+                        applyCoupon={applyCoupon} 
+                        appliedCoupon={appliedCoupon} 
                       />
                     )
                   })
-                }
-                <CopuonSlider />
+                } */}
+                <CouponSlider />
               </div>
               <hr />
               <h4 className="text-lg mt-5 font-semibold capitalize">Product Description</h4>
               <p className="text-gray-700">
-                {description}
+                {details}
               </p>
               <p className='text-lg mt-5 font-semibold capitalize'>Features</p>
               <div className="flex items-center gap-3 mt-2 text-sm">
@@ -237,35 +239,41 @@ const ProductDetails = () => {
                         <tbody>
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Author :
+                              Brand :
                             </td>
                             <td className="whitespace-nowrap px-6 py-4">
-                              {author}
+                              {brand}
                             </td>
                           </tr>
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Language :
+                              Type :
                             </td>
                             <td className="whitespace-nowrap px-6 py-4">
-                              {language}
+                              {type}
                             </td>
                           </tr>
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Level :
+                              Status:
                             </td>
                             <td className="whitespace-nowrap px-6 py-4">
-                              {level}
+                              {status}
                             </td>
                           </tr>
 
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Cover :
+                              Size :
                             </td>
                             <td className="whitespace-nowrap px-6 py-4">
-                              {cover}
+                              {
+                                size && size?.map((size, index) => {
+                                  return (
+                                    <span key={index} className='mr-2'>{size}</span>
+                                  )
+                                })
+                              }
                             </td>
                           </tr>
 
@@ -274,7 +282,7 @@ const ProductDetails = () => {
                               Category :
                             </td>
                             <td className="whitespace-nowrap px-6 py-4">
-                              {category}
+                              {categories?.name}
                             </td>
                           </tr>
                         </tbody>
@@ -287,10 +295,10 @@ const ProductDetails = () => {
           </div>
         </div>
 
-
         <hr
           className='my-4 bg-[#000] '
         />
+
         <div>
           <RecomendationProduct />
         </div>

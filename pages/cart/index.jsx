@@ -39,29 +39,6 @@ const CartPage = () => {
         }
     };
 
-    const addToCart = async (book) => {
-        const res = await fetch(addToCartUrl(user?.email), {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                bookId: book._id,
-                quantity: 1, // You can start with a quantity of 1
-            }),
-        });
-        const data = await res.json();
-        console.log(data);
-        if (data?.success) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Item added to cart',
-                showConfirmButton: false,
-                timer: 1500,
-            });
-            // You may want to update the cartData here as well
-        }
-    };
 
     const updateCartItemQuantity = async (id, newQuantity) => {
         const res = await fetch(updateCartUrl(id), {
@@ -90,12 +67,12 @@ const CartPage = () => {
         }
     };
 
-    const calculateItemPrice = (bookPrice, itemQuantity) => {
-        return bookPrice * itemQuantity;
+    const calculateItemPrice = (productPrice, itemQuantity) => {
+        return productPrice * itemQuantity;
     };
 
     const totalPrice = cartData?.reduce((acc, curr) => {
-        return acc + calculateItemPrice(curr?.book?.price, curr?.quantity);
+        return acc + calculateItemPrice(curr?.product?.price, curr?.quantity);
     }, 0);
 
     const totalQuantity = cartData?.reduce((acc, curr) => {
@@ -115,8 +92,8 @@ const CartPage = () => {
                                     <ul className="-my-8 flex flex-col gap-4">
                                         {cartData &&
                                             cartData?.map((data) => {
-                                                const { book, _id, image, quantity } = data;
-                                                const itemPrice = book ? calculateItemPrice(book.price, quantity) : 0;
+                                                const { product, _id, images, quantity } = data;
+                                                const itemPrice = product ? calculateItemPrice(product.price, quantity) : 0;
 
 
                                                 return (
@@ -126,15 +103,15 @@ const CartPage = () => {
                                                                 width={100}
                                                                 height={100} // Add this line to specify the height
                                                                 className="h-24 w-24 max-w-full rounded-lg object-cover"
-                                                                src={book?.image[0]}
-                                                                alt={book?.name}
+                                                                src={product?.images[0]}
+                                                                alt={product?.name}
                                                             />
                                                         </div>
                                                         <div className="relative flex flex-1 flex-col justify-between">
                                                             <div className="sm:col-gap-5 sm:grid sm:grid-cols-2 flex flex-col">
                                                                 <div className="pr-8 sm:pr-5">
                                                                     <p className="text-base font-semibold text-gray-900">
-                                                                        {book?.name}
+                                                                        {product?.name}
                                                                     </p>
                                                                 </div>
 

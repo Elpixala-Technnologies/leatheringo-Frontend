@@ -1,12 +1,11 @@
 import Image from "next/image";
 import React, { useCallback, useRef } from "react";
-import bookImg from '@/public/banner 07.png';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TbArrowBigLeft, TbArrowBigRight } from "react-icons/tb";
 import Link from "next/link";
-import { NotFoundImage } from "@/src/Assets";
-import useBook from "@/src/Hooks/useProducts";
+import useProducts from "@/src/Hooks/useProducts";
+import { FaCartPlus } from "react-icons/fa";
 
 const RecomendationProduct = () => {
     const sliderRef = useRef(null);
@@ -20,7 +19,7 @@ const RecomendationProduct = () => {
         sliderRef.current.swiper.slideNext();
     }, []);
 
-    const { bookData } = useBook()
+    const { productData } = useProducts()
 
     return (
         <section className=" mx-2 relative h-full">
@@ -81,41 +80,52 @@ const RecomendationProduct = () => {
                     onSwiper={(swiper) => { }}
                 >
                     <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {bookData &&
-                            bookData.map((book) => {
+                        {productData &&
+                            productData?.map((product) => {
                                 return (
-                                    <SwiperSlide className="cursor-grab" key={book._id}>
-                                        <Link href={`/product/${book?._id}`}>
-                                            <div className="card w-full bg-white px-3 py-2 my-4 mx-2 shadow-lg hover rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                                                <div className="bg-[#e1e6e9]  ">
+                                    <SwiperSlide className="cursor-grab" key={product._id}>
+                                        <Link href={`/product/${product?._id}`}>
+                                            <div
+                                                className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
+                                            >
+                                                <div className="productImage p-2">
                                                     <Image
-                                                        src={book?.image[0] || NotFoundImage}
-                                                        width={300}
-                                                        height={400}
-                                                        alt={book?.name}
-                                                        className='md:h-[360px] h-[350px] rounded'
+                                                        src={product?.images[0]}
+                                                        width={280}
+                                                        height={280}
+                                                        className="w-full h-full"
+                                                        alt="Product Image"
                                                     />
                                                 </div>
-
-                                                <div className="pb-4 text-left">
-                                                    <h4 className='font-bold my-2'>
-                                                        {book.category}
-                                                    </h4>
-                                                    <h4 className="text-lg">{book?.name?.slice(0, 28) + ".."}</h4>
+                                                <hr className="w-full bg-slate-400" />
+                                                <div className="productInfo text-left mt-2 p-2">
+                                                    <h2 className="productName font-bold ">
+                                                        {product?.name}
+                                                    </h2>
                                                     <div className='flex items-center gap-4'>
-                                                        <h1 className="text-xl font-bold text-slate-900">
-                                                            {
-                                                                book?.discountPercentage
-                                                                    ? `₹ ${book?.price - (book?.price * book?.discountPercentage) / 100}`
-                                                                    : `₹ ${book?.price}`
+                                                        <h1 className="font-bold text-slate-900">
+                                                            {product?.discount
+                                                                ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
+                                                                : `₹ ${Math.floor(product?.price)}`
                                                             }
                                                         </h1>
                                                         <span className="text-sm text-slate-900 line-through mt-1">
-                                                            ₹ {book?.price}
+                                                            ₹ {Math.floor(product?.price)}
                                                         </span>
                                                         <span className='text-[#eec75b]'>
-                                                            {book?.discountPercentage} % off
+                                                            {Math.floor(product?.discount)} % off
                                                         </span>
+                                                    </div>
+                                                    <p className="productDescription py-3">
+                                                        {product?.details?.slice(0, 100)}
+                                                    </p>
+                                                    <div className="productAddToCart flex gap-5 items-center">
+                                                        <div>
+                                                            <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
+                                                                <FaCartPlus />
+                                                                Product Detail
+                                                            </Link>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

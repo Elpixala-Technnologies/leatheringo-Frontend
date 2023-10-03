@@ -19,9 +19,9 @@ const PopularCategoryUpdateModal = ({ isPopularCategoryModalOpen, setIsPopularCa
     };
     const {
         _id,
-        popularCategory,
-        popularCategoryImage,
-        popularCategoryDetail
+        categories,
+        detail,
+        image,
     } = selectedPopularCategory;
 
     const [loading, setLoading] = useState(false);
@@ -61,9 +61,9 @@ const PopularCategoryUpdateModal = ({ isPopularCategoryModalOpen, setIsPopularCa
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                popularCategory: data.popularCategory,
-                popularCategoryDetail: data.popularCategoryDetail,
-                popularCategoryImage: imgurl
+                categories: data.popularCategory,
+                detail:  data.popularCategoryDetail,
+                image: imgurl,
             }),
         });
         const dataRes = await res.json();
@@ -126,7 +126,7 @@ const PopularCategoryUpdateModal = ({ isPopularCategoryModalOpen, setIsPopularCa
                         <select
                             {...register("popularCategory")}
                             className='border-2 border-gray-300 rounded-md p-2'
-                            defaultValue={popularCategory}
+                            defaultValue={categories}
                         >
                             <option value="">Select Category</option>
                             {categoryData && categoryData.map((categoryResponse) => {
@@ -143,7 +143,7 @@ const PopularCategoryUpdateModal = ({ isPopularCategoryModalOpen, setIsPopularCa
                             <textarea id="txtid" name="txtname" rows="4" cols="50" maxlength="200"
                                 placeholder="Description"
                                 {...register("popularCategoryDetail")}
-                                defaultValue={popularCategoryDetail}
+                                defaultValue={detail}
                                 className="border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                             />
                         </div>

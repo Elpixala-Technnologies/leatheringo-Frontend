@@ -1,4 +1,4 @@
-import usePopularCategory from '@/src/Hooks/useCategory';
+import usePopularCategory from '@/src/Hooks/usePopularCategory';
 import PopularCategoryUpdateModal from '@/src/Shared/Modal/PopularCategoryUpdateModal/PopularCategoryUpdateModal';
 import { Button } from 'antd';
 import Link from 'next/link';
@@ -78,13 +78,13 @@ const ManagePopularCategory = () => {
                                                         </div>
                                                     </td>
                                                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                        {category?.image && <img src={category?.image} alt="category" className="w-20 h-20" />}
+                                                        {category?.popularCategoryImage && <img src={category?.popularCategoryImage} alt="category" className="w-20 h-20" />}
                                                     </td>
                                                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                        {category?.categories}
+                                                        {category?.popularCategory}
                                                     </td>
                                                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                        {category?.detail}
+                                                        {category?.popularCategoryDetail}
                                                     </td>
 
                                                     <td className="px-4 py-4 text-sm whitespace-nowrap">

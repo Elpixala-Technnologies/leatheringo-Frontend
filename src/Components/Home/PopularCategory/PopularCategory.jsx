@@ -13,6 +13,7 @@ import {
     Wallets,
     ChelseaBoots,
 } from "@/src/Assets";
+import usePopularCategory from "@/src/Hooks/useCategory";
 
 const cetegoryData = [
     {
@@ -63,6 +64,7 @@ const cetegoryData = [
 ];
 
 const PopualrCategory = () => {
+    const { popularCategoryData } = usePopularCategory()
     const [updateData, setUpdateData] = useState(12);
     const showCard = () => {
         if (updateData == 12) {
@@ -71,6 +73,11 @@ const PopualrCategory = () => {
             setUpdateData((p) => p - cetegoryData.length);
         }
     };
+
+
+
+    console.log(popularCategoryData, "categoryData")
+
 
     return (
         <section>
@@ -83,14 +90,19 @@ const PopualrCategory = () => {
                     </div>
                     <div className=" rounded-lg pb-[1px]">
                         <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5  md:pt-5 gap-5">
-                            {cetegoryData.slice(0, updateData).map((child) => {
+                            {popularCategoryData && popularCategoryData?.slice(0, updateData).map((child) => {
                                 const { id, categories, image } = child;
+                                const [categoryId, categoryName] = categories.split('-');
+
+                                console.log(categoryId,  "categoryName")
+
+
                                 return (
                                     <div
                                         className="color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500"
                                         key={id}
                                     >
-                                        <Link href={`/category/${categories}`}>
+                                        <Link href={`/category-product/${categoryId}`}>
                                             <Image
                                                 alt="image"
                                                 src={image}
@@ -100,7 +112,7 @@ const PopualrCategory = () => {
                                             />
 
                                             <div className="dark:text-black text-sm font-semibold tracking-wide cursor-pointer">
-                                                {categories}
+                                                {categoryName}
                                             </div>
                                         </Link>
                                     </div>

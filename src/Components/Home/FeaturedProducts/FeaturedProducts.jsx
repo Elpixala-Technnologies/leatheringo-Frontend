@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import { FaCartPlus, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import useProducts from '@/src/Hooks/useProducts';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const FeaturedProducts = () => {
     const { productData } = useProducts();
@@ -38,14 +41,21 @@ const FeaturedProducts = () => {
         }
     };
 
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Animation duration in milliseconds
+            once: true, // Only trigger the animation once
+        });
+    }, []);
+
 
     return (
-        <section>
+        <section  data-aos="fade-up">
             <div className='flex flex-col items-center justify-center mb-6 title'>
                 <h2 className=" text-[1rem] md:text-[1.8rem] text-center md:text-left  xxs:text-2xl  text-black font-bold">
                     Featured Products
                 </h2>
-                <p className='my-2 text-muted'>
+                <p className='my-2 text-muted text-center'>
                     Summer Collection New Modern Design
                 </p>
             </div>
@@ -54,6 +64,7 @@ const FeaturedProducts = () => {
                     return (
                         <div
                             key={index}
+                            data-aos="fade-up"
                             className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
                         >
                             <div className="p-2 productImage">

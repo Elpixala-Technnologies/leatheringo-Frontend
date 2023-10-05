@@ -61,10 +61,6 @@ const ProductPage = () => {
         });
     }, []);
 
-    console.log(productData);
-
-
-
     return (
         <RootLayout>
             <ProductSlider /> <br />
@@ -149,10 +145,10 @@ const ProductPage = () => {
                         </div> */}
                     </div>
 
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3" data-aos="fade-up">
                         {productsToDisplay && productsToDisplay.map((product) => {
                             return (
-                                <Link key={product?.id} href={`/product/${product?.id}`}>
+                                <Link key={product?.id} href={`/product/${product?.id}`} data-aos="fade-up">
                                     <div
                                         className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
                                     >

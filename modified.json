@@ -584,7 +584,7 @@
         "discount": 0,
         "quantity": 70,
         "type": "Formal",
-        "status": "Best Seller",
+        "status": "Featured",
         "size": [
             "32-34",
             "36-38",
@@ -617,7 +617,7 @@
         "discount": 0,
         "quantity": 60,
         "type": "Clutch",
-        "status": "Popular",
+        "status": "Featured",
         "size": [
             "One Size"
         ],

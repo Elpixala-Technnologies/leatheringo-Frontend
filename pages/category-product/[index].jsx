@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FaArrowLeft, FaArrowRight, FaCartPlus } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const category_product = () => {
     const { productData } = useProducts()
@@ -100,12 +102,20 @@ const category_product = () => {
         };
     }, []);
 
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Animation duration in milliseconds
+            easing: "ease-in-out", // Easing for the animation
+            once: true, // Only trigger the animation once
+        });
+    }, []);
+
 
 
 
     return (
         <RootLayout>
-            <div className="md:container">
+            <div className="md:container" data-aos="fade-up">
                 {/* <Image src={HomeSliderTwo} width={800} height={200} className='w-full md:h-[300px] object-cover' /> */}
                 <Image
                     src={isMobile ? MobileBannerOne : HomeSliderTwo}
@@ -121,6 +131,7 @@ const category_product = () => {
                         categoriesProductsToDisplay && categoriesProductsToDisplay?.map(product => (
                             <Link href={`/product/${product?._id}`}>
                                 <div
+                                    data-aos="fade-up"
                                     className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                     <div className="productImage p-2">
                                         <Image
@@ -168,7 +179,7 @@ const category_product = () => {
                     }
                 </div>
                 {/* ====== pagination categories */}
-                <div className={`items-center justify-center gap-4 mt-11 mb-16`}>
+                <div className={`items-center justify-center gap-4 mt-11 mb-16`} data-aos="fade-up" data-aos-delay="100">
                     <div className="flex items-center justify-center text-gray-400 ">
                         <button
                             title="Previous"
@@ -211,7 +222,10 @@ const category_product = () => {
                     {
                         productsToDisplay && productsToDisplay?.map(product => (
                             <Link href={`/product/${product?._id}`}
-                                key={product?._id}>
+                                key={product?._id}
+                                data-aos="fade-up"
+                                data-aos-delay="200"
+                            >
                                 <div
                                     className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                     <div className="productImage p-2">
@@ -262,7 +276,10 @@ const category_product = () => {
 
 
                 {/* Pagination */}
-                <div className={`items-center justify-center gap-4 mt-11 mb-16`}>
+                <div className={`items-center justify-center gap-4 mt-11 mb-16`}
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                >
                     <div className="flex items-center justify-center text-gray-400 ">
                         <button
                             title="Previous"

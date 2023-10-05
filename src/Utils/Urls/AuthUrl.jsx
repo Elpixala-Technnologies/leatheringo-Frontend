@@ -1,6 +1,6 @@
 import { basedUrl } from "../Network/Network";
 
-export const signupUrl =basedUrl + 'users/create-user'
+export const signupUrl =basedUrl + '/users/create-user'
 
-export const isAdminUrl = (email) => basedUrl + `users/admin/${email}`
+export const isAdminUrl = (email) => basedUrl + `/users/admin/${email}`
 

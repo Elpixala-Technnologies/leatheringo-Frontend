@@ -48,13 +48,13 @@ export const deleteSubCategoryUrl = (id) => basedUrl + `/products/delete-subcate
 
 // ===== Add to cart =======
 
-export const addToCartUrl = (id) => basedUrl + `cart/add-to-cart/${id}`
+export const addToCartUrl = (id) => basedUrl + `/cart/add-to-cart/${id}`
 
 
-export const getCartUrl = (email) => basedUrl + `cart/get-cart/${email}`
+export const getCartUrl = (email) => basedUrl + `/cart/get-cart/${email}`
 
 
-export const removeFromCartUrl = (id) => basedUrl + `cart/remove-from-cart/${id}`
+export const removeFromCartUrl = (id) => basedUrl + `/cart/remove-from-cart/${id}`
 
 
-export const updateCartUrl = (id) => basedUrl + `cart/update-cart/${id}`
+export const updateCartUrl = (id) => basedUrl + `/cart/update-cart/${id}`

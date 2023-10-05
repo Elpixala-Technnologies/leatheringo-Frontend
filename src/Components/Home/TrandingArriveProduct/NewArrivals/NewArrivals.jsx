@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import { FaCartPlus, FaEye, FaPhabricator } from "react-icons/fa";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { TbArrowBigLeft, TbArrowBigRight } from "react-icons/tb";
 import Link from "next/link";
 import useProducts from "@/src/Hooks/useProducts";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const NewArrivals = () => {
@@ -26,8 +28,16 @@ const NewArrivals = () => {
         sliderRef.current.swiper.slideNext();
     }, []);
 
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Animation duration in milliseconds
+            once: true, // Only trigger the animation once
+        });
+    }, []);
+
+
     return (
-        <section className="my-4 mx-2">
+        <section className="my-4 mx-2" >
             <div className="title my-6 flex justify-between items-center">
                 <h2 className="text-[1rem] md:text-[1.5rem] text-center md:text-left  text-black font-bold">
                     New Arrivals
@@ -88,7 +98,7 @@ const NewArrivals = () => {
                         {filterProductData &&
                             filterProductData.map((product) => {
                                 return (
-                                    <SwiperSlide className="cursor-grab" key={product?._id}>
+                                    <SwiperSlide className="cursor-grab" key={product?._id} >
                                         <div className="cardBody md:m-0  mx-auto  flex flex-col hover:border-red-500  color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                             <div className="productImage ">
                                                 <Image

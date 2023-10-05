@@ -60,7 +60,7 @@ const HomeInfoCard = () => {
   }, []);
 
   return (
-    <section>
+    <section data-aos="fade-up">
       <div className="container grid gap-4 md:grid-cols-3 sm:my-4">
         {homeInfo.map((info, index) => {
           return (

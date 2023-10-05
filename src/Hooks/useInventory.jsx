@@ -1,17 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
-import { deletePopularCategoryUrl, getPopularCategoryUrl } from "../Utils/Urls/CategoryUrl";
-import Swal from "sweetalert2";
+import React from 'react';
+import Swal from 'sweetalert2';
+import { deleteInventroyProductUrl, getInventroyProductUrl } from '../Utils/Urls/InventoryUrl';
 
-const usePopularCategory = () => {
+const useInventory = () => {
     const {
-        data: popularCategoryData,
-        isLoading: popularCategoryLoaded,
-        refetch: refetchPopularCategory,
+        data: invantoryProductData,
+        isLoading: invantoryProductLoaded,
+        refetch: refetchInvantoryProduct,
     } = useQuery({
-        queryKey: ["popularCategoryData"],
+        queryKey: ["invantoryProductData"],
         queryFn: async () => {
             try {
-                const res = await fetch(getPopularCategoryUrl);
+                const res = await fetch(getInventroyProductUrl);
                 if (!res.ok) {
                     throw new Error("Failed to fetch data");
                 }
@@ -24,7 +24,7 @@ const usePopularCategory = () => {
             }
         },
     });
-    const handelPopularCategoryDelete = async (id) => {
+    const handelInvantoryProductDelete = async (id) => {
         const confirmed = await Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -36,7 +36,7 @@ const usePopularCategory = () => {
         });
 
         if (confirmed.isConfirmed) {
-            const res = await fetch(deletePopularCategoryUrl(id), {
+            const res = await fetch(deleteInventroyProductUrl(id), {
                 method: "DELETE",
             });
             const data = await res.json();
@@ -74,18 +74,17 @@ const usePopularCategory = () => {
                     showConfirmButton: false,
                     timer: 3500,
                 });
-                refetchPopularCategory();
+                refetchInvantoryProduct();
             }
         }
     };
 
     return {
-        popularCategoryData,
-        popularCategoryLoaded,
-        refetchPopularCategory,
-        handelPopularCategoryDelete
-
-    };
+        invantoryProductData,
+        invantoryProductLoaded,
+        refetchInvantoryProduct,
+        handelInvantoryProductDelete
+    }
 };
 
-export default usePopularCategory;
+export default useInventory;

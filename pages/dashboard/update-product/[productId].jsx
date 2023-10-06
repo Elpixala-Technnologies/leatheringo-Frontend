@@ -5,126 +5,154 @@ import { Button, Select } from 'antd';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 const UpdatePorductPage = () => {
+    const upload_preset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
+    const cloud_name = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    const cloud_api = process.env.NEXT_PUBLIC_CLOUDINARY_API;
+    const cloud_folder = process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_FOLDER;
+
     const router = useRouter();
     const { productId } = router.query;
-    const [singelPorductData, setSingelPorductData] = useState({});
+    const [singleProductData, setSingleProductData] = useState({});
     const [couponSelected, setCouponSelected] = useState([]);
-    const { handleSubmit, register } = useForm();
-    const { allCategoryData, couponData, categoryData } = useProducts()
-    const [features, setFeatures] = useState([]);
+    const { handleSubmit, register, setValue, } = useForm();
+    const { allCategoryData, couponData, categoryData } = useProducts();
     const [loading, setLoading] = useState(false);
-    const [size, setSize] = useState([]);
-    const [color, setColor] = useState([]);
+    const [prevValues, setPrevValues] = useState({});
 
+
+
+
+    console.log(productId, "allCategoryData")
 
     useEffect(() => {
         if (productId) {
-            const getPorduct = async () => {
-                const reqPorduct = await fetch(getSingelProductUrl(productId));
-                const resPorduct = await reqPorduct.json();
-                setSingelPorductData(resPorduct?.data);
-                console.log(resPorduct);
-            }
-            getPorduct();
+            const getProduct = async () => {
+                try {
+                    const reqProduct = await fetch(getSingelProductUrl(productId));
+                    const resProduct = await reqProduct.json();
+                    console.log(resProduct, "resProduct");
+
+                    // Store the previous values when the product data is fetched
+                    setPrevValues(resProduct?.data || {});
+                    setSingleProductData(resProduct?.data || {});
+                } catch (error) {
+                    console.error('Error fetching product:', error);
+                }
+            };
+            getProduct();
         }
     }, [productId]);
+
+    const {
+        name,
+        mainCategories,
+        categories,
+        brand,
+        price,
+        discount,
+        type,
+        status,
+        details,
+        features,
+        colors,
+        coupon,
+    } = singleProductData;
+
+    useEffect(() => {
+        setValue("productName", name);
+        setValue("productCategories", categories);
+        setValue("mainCategories", mainCategories);
+        setValue("productBrand", brand);
+        setValue("productPrice", price);
+        setValue("productDiscount", discount);
+        setValue("productType", type);
+        setValue("productStatus", status);
+        setValue("productDetails", details);
+        setValue("productFeatures", features?.join(', '));
+        setValue("coupon", coupon);
+        setValue("productColors", colors);
+    }, [
+        name, categories, mainCategories, brand, price, discount, type, status, details, features, colors, coupon
+    ]);
+
+
+    // ===== color =====
+
+
+
+    // ===== color =====
 
     const couponOptions = couponData?.map((couponResponse) => {
         const { _id, coupon } = couponResponse;
         return {
             label: coupon,
             value: _id,
-        }
-    })
-    const handelCouponChange = (value) => {
+        };
+    });
+    const handleCouponChange = (value) => {
         setCouponSelected(value);
-    }
-
-    const couponDefaultValue = singelPorductData?.coupon?.map((couponResponse) => {
-        const { coupon } = couponResponse;
-        return coupon;
-    })
-
-    const upload_preset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
-    const cloud_name = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-    const cloud_api = process.env.NEXT_PUBLIC_CLOUDINARY_API;
-    const cloud_folder = process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_FOLDER;
-
-    const [imageFiles, setImageFiles] = useState([]);
-    const [uploadedImageUrls, setUploadedImageUrls] = useState([]);
-
-    const handleFileChange = (e) => {
-        const selectedFiles = Array.from(e.target.files);
-        const updatedFiles = selectedFiles.map((file) => {
-            const publicId = `${cloud_folder}/${file.name.replace(/\s+/g, '_')}`;
-            file.uploadPreset = publicId;
-            return file;
-        });
-        setImageFiles(updatedFiles);
     };
+
+    // ===== color =====
+
+
+    // ===== color =====
 
     const onSubmit = async (inputValue) => {
         try {
             setLoading(true);
-            const uploadedUrls = [];
-            for (const imageFile of imageFiles) {
-                const formData = new FormData();
-                formData.append('file', imageFile);
-                formData.append('upload_preset',
-                    `${cloud_folder}/Product/${imageFile?.name}`);
-                formData.append('upload_preset', upload_preset);
-                formData.append('cloud_name', cloud_name);
+            let featuresArray; // Declare it in a higher scope
 
-                const imgRes = await fetch(cloud_api, {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                if (!imgRes.ok) {
-                    const errorResponse = await imgRes.text();
-                    throw new Error(`Error uploading image: ${imgRes.status} - ${imgRes.statusText}\n${errorResponse}`);
-                }
-
-                const imgdata = await imgRes.json();
-                const imgurl = imgdata?.secure_url;
-                if (imgurl) {
-                    uploadedUrls.push(imgurl);
-                } else {
-                    throw new Error('Failed to retrieve the image URL from Cloudinary response.');
-                }
+            if (!inputValue.productName) {
+                inputValue.productName = prevValues.name;
             }
-            setUploadedImageUrls(uploadedUrls);
+            if (!inputValue.productCategories) {
+                inputValue.productCategories = prevValues.categories;
+            }
+            if (!inputValue.mainCategories) {
+                inputValue.mainCategories = prevValues.mainCategories;
+            }
 
-            const PorductUpdateData = {
-                name: inputValue.name,
-                categories: inputValue.categories,
+            // Split the features string into an array
+            if (typeof inputValue.productFeatures === 'string') {
+                featuresArray = inputValue.productFeatures.split(',');
+                // Use featuresArray as needed
+            } else {
+                featuresArray = inputValue.productFeatures;
+            }
+
+            const productUpdateData = {
+                name: inputValue.productName,
+                categories: inputValue.productCategories,
                 mainCategories: inputValue.mainCategories,
-                brand: inputValue.brand,
-                price: inputValue.price,
-                discount: inputValue.discount,
-                quantity: inputValue.quantity,
-                type: inputValue.type,
-                status: inputValue.status,
-                size: size,
-                details: inputValue.details,
-                features: features,
+                brand: inputValue.productBrand,
+                price: inputValue.productPrice,
+                discount: inputValue.productDiscount,
+                type: inputValue.productType,
+                status: inputValue.productStatus,
+                details: inputValue.productDetails,
+                features: featuresArray,
                 colors: color,
                 coupon: couponSelected,
-                images: uploadedUrls || singelPorductData?.image,
-            }
+            };
+
+            console.log('productUpdateData', productUpdateData);
 
             const res = await fetch(updateProductsUrl(productId), {
                 method: 'PATCH',
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(PorductUpdateData),
+                body: JSON.stringify(productUpdateData),
             });
+
             const dataRes = await res.json();
-            if (!res) {
+            console.log(dataRes, "dataRes");
+            if (!res.ok) {
                 Swal.fire({
                     position: "center",
                     timerProgressBar: true,
@@ -158,11 +186,9 @@ const UpdatePorductPage = () => {
                     showConfirmButton: false,
                     timer: 3500,
                 });
-                setLoading(false);
-
             }
         } catch (error) {
-            console.error('Error uploading images to Cloudinary:', error);
+            console.error('Error updating product:', error);
         } finally {
             setLoading(false);
         }
@@ -178,8 +204,7 @@ const UpdatePorductPage = () => {
                 </div>
                 <section className="my-4">
                     <div className="flex flex-col w-full gap-4 mx-auto add-Porduct-form">
-                        <form
-                            onSubmit={handleSubmit(onSubmit)}
+                        <div
                             className="add-Porduct-form w-full md:w-full mx-auto flex flex-col gap-4 "
                         >
                             <input
@@ -187,19 +212,19 @@ const UpdatePorductPage = () => {
                                 name="name"
                                 type="text"
                                 className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
-                                defaultValue={singelPorductData?.name}
-                                {...register("name")}
+                                defaultValue={name}
+                                {...register("productName")}
                             />
 
                             <select
                                 name="main-category"
                                 id="main-category"
                                 className="border-2 border-gray-300 rounded-md p-2"
-                                defaultValue={singelPorductData?.mainCategories}
+                                defaultValue={mainCategories}
                                 {...register("mainCategories")}
                             >
                                 <option value="main-category">
-                                    {singelPorductData?.mainCategories}
+                                    {mainCategories}
                                 </option>
                                 {categoryData && categoryData?.map((category) => (
                                     <option
@@ -216,11 +241,11 @@ const UpdatePorductPage = () => {
                                 name="category"
                                 id="category"
                                 className="border-2 border-gray-300 rounded-md p-2"
-                                defaultValue={singelPorductData?.categories}
-                                {...register("categories")}
+                                defaultValue={categories}
+                                {...register("productCategories")}
                             >
                                 <option value="category">
-                                    {singelPorductData?.categories}
+                                    {categories}
                                 </option>
                                 {allCategoryData && allCategoryData?.map((category) => (
                                     <option
@@ -236,31 +261,37 @@ const UpdatePorductPage = () => {
                             <input type="text"
                                 placeholder="Brand"
                                 className='border-2 border-gray-300 rounded-md p-2'
-                                defaultValue={singelPorductData?.brand}
-                                {...register("brand")}
+                                defaultValue={brand}
+                                {...register("productBrand")}
+                            />
+                            <input type="text"
+                                placeholder="Product Type"
+                                className='border-2 border-gray-300 rounded-md p-2'
+                                defaultValue={type}
+                                {...register("productType")}
                             />
 
                             <input type="number"
                                 placeholder="Price"
                                 className='border-2 border-gray-300 rounded-md p-2'
-                                defaultValue={singelPorductData?.price}
-                                {...register("price")}
+                                defaultValue={price}
+                                {...register("productPrice")}
                             />
 
                             <input type="number"
                                 placeholder="Discount Percentage"
                                 className='border-2 border-gray-300 rounded-md p-2'
-                                defaultValue={singelPorductData?.discount}
-                                {...register("discount")}
+                                defaultValue={discount}
+                                {...register("productDiscount")}
                             />
 
                             <select name="status" id="status"
                                 className='border-2 border-gray-300 rounded-md p-2'
-                                defaultValue={singelPorductData?.status}
-                                {...register("status")}
+                                defaultValue={status}
+                                {...register("productStatus")}
                             >
                                 <option value="status">
-                                    {singelPorductData?.status}
+                                    {status}
                                 </option>
                                 <option value="Tranding"
                                     className='border-2 border-gray-300 rounded-md p-4 my-2'
@@ -283,121 +314,210 @@ const UpdatePorductPage = () => {
                                     width: '100%',
                                 }}
                                 placeholder="Coupon"
-                                defaultValue={couponDefaultValue}
-                                onChange={handelCouponChange}
+                                defaultValue={coupon}
+                                onChange={handleCouponChange}
                                 options={couponOptions}
-                            />
-
-                            <input type="number"
-                                placeholder="Quantity"
-                                className='border-2 border-gray-300 rounded-md p-2'
-                                {...register("quantity")}
-                            />
-                            <input
-                                type="text"
-                                placeholder="Size"
-                                className='border-2 border-gray-300 rounded-md p-2'
-                                value={size}
-                                defaultValue={singelPorductData?.size}
-                                onChange={(e) => setSize(e.target.value)}
-                            />
-
-                            <input
-                                type="text"
-                                placeholder="Colors"
-                                className='border-2 border-gray-300 rounded-md p-2'
-                                value={color}
-                                defaultValue={singelPorductData?.colors}
-                                onChange={(e) => setColor(e.target.value)}
                             />
 
                             <textarea id="txtid" name="txtname" rows="4" cols="50" maxlength="200"
                                 placeholder="Description"
-                                defaultValue={singelPorductData?.details}
-                                {...register("details")}
+                                defaultValue={details}
+                                {...register("productDetails")}
                                 className="border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                             >
                             </textarea>
+
                             <textarea name="txtname" rows="4" cols="50" maxlength="200"
                                 placeholder="Features"
-                                defaultValue={singelPorductData?.features}
-                                onChange={
-                                    (e) => {
-                                        const featuresArray = e.target.value.split(',');
-                                        setFeatures(featuresArray);
+                                defaultValue={features}
+                                {...register("productFeatures", {
+                                    setValueAs: (value) => {
+                                        // Split the value into an array
+                                        const featuresArray = value.split(',');
+                                        // Set the value as the array
+                                        return featuresArray;
                                     }
-                                }
-                                className="border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
+                                })}
+                                className="border-[2px] border-[#090606] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                             >
                             </textarea>
-                            <div className="w-full h-full">
-                                <div className="rounded-lg shadow-xl bg-gray-50 p-4">
-                                    <label className="inline-block mb-2 text-gray-500">Upload Product Image</label>
-                                    <div className="flex items-center justify-center w-full">
-                                        <label className="flex flex-col w-full max-w-xs md:max-w-md h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
-                                            <div className="flex flex-col items-center justify-center pt-7">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth="2"
-                                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                                                    />
-                                                </svg>
-                                                <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                                                    Attach file{' '}
-                                                </p>
-                                            </div>
+
+                            {/* ========= color update ========= */}
+                            <div>
+                                {color && color?.map((item, colorIndex) => (
+                                    <div key={colorIndex} className="border-2 border-gray-300 rounded-md p-4 my-2">
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">Color: </span>
+                                            </label>
                                             <input
-                                                type="file"
-                                                className="px-4 pb-4"
-                                                name="images"
-                                                accept="image/*"
-                                                defaultValue={singelPorductData?.images}
-                                                multiple
-                                                onChange={handleFileChange}
+                                                type="text"
+                                                name="color"
+                                                value={item.color}
+                                                onChange={(event) => onChange(event, colorIndex)}
+                                                placeholder="Color"
+                                                className="border-2 border-gray-300 rounded-md p-2"
                                             />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="flex flex-wrap gap-4 my-4 justify-center items-center">
-                                        {singelPorductData && singelPorductData?.images?.map((uploadedImageUrl, index) => (
-                                            <div key={index} className="relative flex  flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
-                                                <a
-                                                    className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
-                                                    href="#"
-                                                >
-                                                    <img
-                                                        className=""
-                                                        src={uploadedImageUrl}
-                                                        alt="product image"
+                                        </div>
+
+                                        <div className="form-control flex gap-2 py-3 border rounded px-2 my-2">
+                                            <input
+                                                type="checkbox"
+                                                id={`isSizeApplicable-${colorIndex}`}
+                                                checked={item.isSizeApplicable}
+                                                onChange={(event) => isSizeApplicableChange(event, colorIndex)}
+                                                className="form-checkbox h-5 w-5 text-gray-600"
+                                            />
+                                            <label
+                                                className="inline-block text-gray-500"
+                                                htmlFor={`isSizeApplicable-${colorIndex}`}
+                                            >
+                                                Is Size Applicable
+                                            </label>
+                                        </div>
+
+                                        {item.isSizeApplicable ? (
+                                            <>
+                                                {item.sizes.map((size, sizeIndex) => (
+                                                    <div key={sizeIndex} className="flex gap-4 my-4">
+                                                        <div className="form-control flex gap-4">
+                                                            <input
+                                                                type="text"
+                                                                name="size"
+                                                                value={size.size}
+                                                                onChange={(event) => onChange(event, colorIndex, sizeIndex)}
+                                                                placeholder="Size"
+                                                                className="border-2 border-gray-300 rounded-md p-2"
+                                                            />
+                                                            <input
+                                                                type="number"
+                                                                name="quantity"
+                                                                value={size.quantity}
+                                                                onChange={(event) => onChange(event, colorIndex, sizeIndex)}
+                                                                placeholder="Quantity"
+                                                                className="border-2 border-gray-300 rounded-md p-2"
+                                                            />
+                                                        </div>
+                                                        <button
+                                                            className="common-btn"
+                                                            onClick={() => removeSize(colorIndex, sizeIndex)}
+                                                        >
+                                                            <FaTrashAlt />
+                                                        </button>
+                                                    </div>
+                                                ))}
+
+                                                <div className="my-4">
+                                                    <button className="common-btn" onClick={() => addSize(colorIndex)}>
+                                                        Add Size
+                                                    </button>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div className="form-control">
+                                                    <label className="label">
+                                                        <span className="label-text">Quantity: </span>
+                                                    </label>
+                                                    <input
+                                                        type="number"
+                                                        name="quantity"
+                                                        value={item.quantity}
+                                                        onChange={(event) => onChange(event, colorIndex)}
+                                                        placeholder="Quantity"
+                                                        className="border-2 border-gray-300 rounded-md p-2"
                                                     />
-                                                </a>
+                                                </div>
+                                            </>
+                                        )}
+
+                                        <div className="form-control my-4">
+                                            <div className="w-full h-full">
+                                                <div className="rounded-lg shadow-xl bg-gray-50 p-4">
+                                                    <label className="inline-block mb-2 text-gray-500">Upload Product Image</label>
+                                                    <div className="flex items-center justify-center w-full">
+                                                        <label className="flex flex-col w-full max-w-xs md:max-w-md h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
+                                                            <div className="flex flex-col items-center justify-center pt-7">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
+                                                                    fill="none"
+                                                                    viewBox="0 0 24 24"
+                                                                    stroke="currentColor"
+                                                                >
+                                                                    <path
+                                                                        strokeLinecap="round"
+                                                                        strokeLinejoin="round"
+                                                                        strokeWidth="2"
+                                                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                                                                    />
+                                                                </svg>
+                                                                <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                                                                    Attach file{' '}
+                                                                </p>
+                                                            </div>
+                                                            <input
+                                                                type="file"
+                                                                name={`images-${colorIndex}`}
+                                                                accept="image/*"
+                                                                multiple
+                                                                onChange={(event) => handleImageChange(event, colorIndex)}
+                                                                className="px-4 pb-4"
+                                                            />
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        ))}
+
+                                            {/* Show selected images */}
+                                            <div className="flex gap-4 my-4">
+                                                {item.images &&
+                                                    item.images?.map((image, index) => (
+                                                        <div key={index} className="w-1/2">
+                                                            <img src={image} alt="" className="w-full h-full object-cover" />
+                                                        </div>
+                                                    ))}
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            className="common-btn flex items-center justify-center"
+                                            onClick={() => removeColor(colorIndex)}
+                                        >
+                                            <FaTrashAlt className="text-2xl mr-2" />
+                                            Delete Color
+                                        </button>
+
+                                        {/* Add an "Update Color" button */}
+                                        <button
+                                            className="common-btn flex items-center justify-center"
+                                            onClick={() => updateColor(colorIndex)}
+                                        >
+                                            Update Color
+                                        </button>
                                     </div>
-                                </div>
+                                ))}
+                                <button className="btn btn-primary mx-4" onClick={addColor}>
+                                    Add Color
+                                </button>
                             </div>
 
-                            <Button type="default" htmlType="submit" style={{
-                                marginTop: '20px',
-                            }}>
+                            {/* ========= color update ========= */}
+
+                            <Button type="default"
+                                onClick={handleSubmit(onSubmit)}
+                                htmlType="submit" style={{
+                                    marginTop: '20px',
+                                }}>
                                 {
                                     loading ? 'Loading...' : 'Update Porduct'
                                 }
                             </Button>
-                        </form>
+                        </div>
                     </div>
                 </section>
             </section>
-        </DashboardLayout>
+        </DashboardLayout >
     );
 };
 

@@ -24,10 +24,6 @@ const UpdatePorductPage = () => {
     const [prevValues, setPrevValues] = useState({});
 
 
-
-
-    console.log(productId, "allCategoryData")
-
     useEffect(() => {
         if (productId) {
             const getProduct = async () => {
@@ -79,13 +75,6 @@ const UpdatePorductPage = () => {
         name, categories, mainCategories, brand, price, discount, type, status, details, features, colors, coupon
     ]);
 
-
-    // ===== color =====
-
-
-
-    // ===== color =====
-
     const couponOptions = couponData?.map((couponResponse) => {
         const { _id, coupon } = couponResponse;
         return {
@@ -99,14 +88,153 @@ const UpdatePorductPage = () => {
 
     // ===== color =====
 
+    const uploadImageToCloudinary = async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('public_id', `${cloud_folder}/Product/${file?.name}`);
+        formData.append('upload_preset', upload_preset);
+        formData.append('cloud_name', cloud_name);
+
+        try {
+            const response = await fetch(cloud_api, {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to upload image');
+            }
+
+            const imageData = await response.json();
+            const imageUrl = imageData.secure_url;
+            return imageUrl;
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            return null;
+        }
+    };
 
     // ===== color =====
+
+    // const onSubmit = async (inputValue) => {
+    //     try {
+    //         setLoading(true);
+    //         let featuresArray; // Declare it in a higher scope
+
+    //         if (!inputValue.productName) {
+    //             inputValue.productName = prevValues.name;
+    //         }
+    //         if (!inputValue.productCategories) {
+    //             inputValue.productCategories = prevValues.categories;
+    //         }
+    //         if (!inputValue.mainCategories) {
+    //             inputValue.mainCategories = prevValues.mainCategories;
+    //         }
+
+    //         // Split the features string into an array
+    //         if (typeof inputValue.productFeatures === 'string') {
+    //             featuresArray = inputValue.productFeatures.split(',');
+    //             // Use featuresArray as needed
+    //         } else {
+    //             featuresArray = inputValue.productFeatures;
+    //         }
+
+    //         const productUpdateData = {
+    //             name: inputValue.productName,
+    //             categories: inputValue.productCategories,
+    //             mainCategories: inputValue.mainCategories,
+    //             brand: inputValue.productBrand,
+    //             price: inputValue.productPrice,
+    //             discount: inputValue.productDiscount,
+    //             type: inputValue.productType,
+    //             status: inputValue.productStatus,
+    //             details: inputValue.productDetails,
+    //             features: featuresArray,
+    //             colors: inputValue.productColors.map((item) => {
+    //                 const { color, sizes, quantity, images } = item;
+    //                 return {
+    //                     color,
+    //                     isSizeApplicable: sizes?.length > 0,
+    //                     sizes: sizes?.map((sizeItem) => {
+    //                         const { size, quantity } = sizeItem;
+    //                         return {
+    //                             size,
+    //                             quantity,
+    //                         };
+    //                     }),
+    //                     quantity,
+    //                     images: images?.map((image) => {
+    //                         if (typeof image === 'string') {
+    //                             return image;
+    //                         } else {
+    //                             return uploadImageToCloudinary(image);
+    //                         }
+    //                     }),
+    //                 };
+    //             }),
+    //             coupon: couponSelected,
+    //         };
+
+    //         console.log('productUpdateData', productUpdateData);
+
+    //         const res = await fetch(updateProductsUrl(productId), {
+    //             method: 'PATCH',
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(productUpdateData),
+    //         });
+
+    //         const dataRes = await res.json();
+    //         console.log(dataRes, "dataRes");            
+    //         if (!res.ok) {
+    //             Swal.fire({
+    //                 position: "center",
+    //                 timerProgressBar: true,
+    //                 title: "Something went wrong!",
+    //                 iconColor: "#ED1C24",
+    //                 toast: true,
+    //                 icon: "error",
+    //                 showClass: {
+    //                     popup: "animate__animated animate__fadeInRight",
+    //                 },
+    //                 hideClass: {
+    //                     popup: "animate__animated animate__fadeOutRight",
+    //                 },
+    //                 showConfirmButton: false,
+    //                 timer: 3500,
+    //             });
+    //         } else {
+    //             Swal.fire({
+    //                 position: "center",
+    //                 timerProgressBar: true,
+    //                 title: "Successfully Updated",
+    //                 iconColor: "#ED1C24",
+    //                 toast: true,
+    //                 icon: "success",
+    //                 showClass: {
+    //                     popup: "animate__animated animate__fadeInRight",
+    //                 },
+    //                 hideClass: {
+    //                     popup: "animate__animated animate__fadeOutRight",
+    //                 },
+    //                 showConfirmButton: false,
+    //                 timer: 3500,
+    //             });
+    //         }
+    //     } catch (error) {
+    //         console.error('Error updating product:', error);
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
 
     const onSubmit = async (inputValue) => {
         try {
             setLoading(true);
-            let featuresArray; // Declare it in a higher scope
+            let featuresArray;
 
+            // Handle fallback for empty fields
             if (!inputValue.productName) {
                 inputValue.productName = prevValues.name;
             }
@@ -120,11 +248,11 @@ const UpdatePorductPage = () => {
             // Split the features string into an array
             if (typeof inputValue.productFeatures === 'string') {
                 featuresArray = inputValue.productFeatures.split(',');
-                // Use featuresArray as needed
             } else {
                 featuresArray = inputValue.productFeatures;
             }
 
+            // Construct product update data
             const productUpdateData = {
                 name: inputValue.productName,
                 categories: inputValue.productCategories,
@@ -136,23 +264,50 @@ const UpdatePorductPage = () => {
                 status: inputValue.productStatus,
                 details: inputValue.productDetails,
                 features: featuresArray,
-                colors: color,
+                colors: inputValue.productColors.map((item, colorIndex) => {
+                    const { color, sizes, quantity, images } = item;
+                    return {
+                        color,
+                        isSizeApplicable: sizes?.length > 0,
+                        sizes: sizes?.map((sizeItem) => {
+                            const { size, quantity } = sizeItem;
+                            return {
+                                size,
+                                quantity,
+                            };
+                        }),
+                        quantity,
+                        images: images?.length > 0
+                            ? images.map((image) => {
+                                if (typeof image === 'string') {
+                                    return image;
+                                } else {
+                                    return uploadImageToCloudinary(image);
+                                }
+                            })
+                            : singleProductData.colors[colorIndex]?.images || [],
+                    };
+                }),
                 coupon: couponSelected,
             };
 
+            // Log the update data
             console.log('productUpdateData', productUpdateData);
 
+            // Send a PATCH request to update the product
             const res = await fetch(updateProductsUrl(productId), {
                 method: 'PATCH',
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(productUpdateData),
             });
 
             const dataRes = await res.json();
             console.log(dataRes, "dataRes");
+
             if (!res.ok) {
+                // Handle error message
                 Swal.fire({
                     position: "center",
                     timerProgressBar: true,
@@ -170,6 +325,7 @@ const UpdatePorductPage = () => {
                     timer: 3500,
                 });
             } else {
+                // Handle success message
                 Swal.fire({
                     position: "center",
                     timerProgressBar: true,
@@ -344,164 +500,139 @@ const UpdatePorductPage = () => {
 
                             {/* ========= color update ========= */}
                             <div>
-                                {color && color?.map((item, colorIndex) => (
-                                    <div key={colorIndex} className="border-2 border-gray-300 rounded-md p-4 my-2">
-                                        <div className="form-control">
-                                            <label className="label">
-                                                <span className="label-text">Color: </span>
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="color"
-                                                value={item.color}
-                                                onChange={(event) => onChange(event, colorIndex)}
-                                                placeholder="Color"
-                                                className="border-2 border-gray-300 rounded-md p-2"
-                                            />
-                                        </div>
+                                {
+                                    colors && colors?.map((item, colorIndex) => {
+                                        const { isSizeApplicable, sizes, quantity, images, color } = item;
+                                        return (
+                                            <div key={colorIndex} className="border-2 border-gray-300 rounded-md p-4 my-2">
+                                                <div className="form-control">
+                                                    <label className="label">
+                                                        <span className="label-text">Color: </span>
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        name="color"
+                                                        defaultValue={color}
+                                                        {...register(`productColors.${colorIndex}.color`)}
+                                                        placeholder="Color"
+                                                        className="border-2 border-gray-300 rounded-md p-2"
+                                                    />
+                                                </div>
 
-                                        <div className="form-control flex gap-2 py-3 border rounded px-2 my-2">
-                                            <input
-                                                type="checkbox"
-                                                id={`isSizeApplicable-${colorIndex}`}
-                                                checked={item.isSizeApplicable}
-                                                onChange={(event) => isSizeApplicableChange(event, colorIndex)}
-                                                className="form-checkbox h-5 w-5 text-gray-600"
-                                            />
-                                            <label
-                                                className="inline-block text-gray-500"
-                                                htmlFor={`isSizeApplicable-${colorIndex}`}
-                                            >
-                                                Is Size Applicable
-                                            </label>
-                                        </div>
+                                                {
+                                                    isSizeApplicable ? sizes?.map((sizeItem, sizeIndex) => {
+                                                        const { size, quantity } = sizeItem;
+                                                        return (
+                                                            <div key={sizeIndex} className="flex justify-between items-center gap-4">
+                                                                <div className="form-control flex gap-4">
 
-                                        {item.isSizeApplicable ? (
-                                            <>
-                                                {item.sizes.map((size, sizeIndex) => (
-                                                    <div key={sizeIndex} className="flex gap-4 my-4">
-                                                        <div className="form-control flex gap-4">
-                                                            <input
-                                                                type="text"
-                                                                name="size"
-                                                                value={size.size}
-                                                                onChange={(event) => onChange(event, colorIndex, sizeIndex)}
-                                                                placeholder="Size"
-                                                                className="border-2 border-gray-300 rounded-md p-2"
-                                                            />
+                                                                    <div className='flex items-center gap-2'>
+                                                                        <label htmlFor="sizeof">
+                                                                            Size :
+                                                                        </label>
+                                                                        <input
+                                                                            type="text"
+                                                                            name="size"
+                                                                            defaultValue={size}
+                                                                            {...register(`productColors.${colorIndex}.sizes.${sizeIndex}.size`)}
+                                                                            placeholder="Size"
+                                                                            className="border-2 my-2 border-gray-300 rounded-md p-2"
+                                                                        />
+                                                                    </div>
+                                                                    <div className='flex items-center gap-2'>
+                                                                        <label htmlFor="quantity">
+                                                                            Quantity :
+                                                                        </label>
+
+                                                                        <input
+                                                                            type="number"
+                                                                            name="quantity"
+                                                                            defaultValue={quantity}
+                                                                            {...register(`productColors.${colorIndex}.sizes.${sizeIndex}.quantity`)}
+                                                                            placeholder="Quantity"
+                                                                            className="border-2 my-2 border-gray-300 rounded-md p-2"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    }) : (
+                                                        <div className="form-control">
+                                                            <label className="label">
+                                                                <span className="label-text">Quantity: </span>
+                                                            </label>
                                                             <input
                                                                 type="number"
                                                                 name="quantity"
-                                                                value={size.quantity}
-                                                                onChange={(event) => onChange(event, colorIndex, sizeIndex)}
+                                                                defaultValue={quantity}
+                                                                {...register(`productColors.${colorIndex}.quantity`)}
                                                                 placeholder="Quantity"
                                                                 className="border-2 border-gray-300 rounded-md p-2"
                                                             />
                                                         </div>
-                                                        <button
-                                                            className="common-btn"
-                                                            onClick={() => removeSize(colorIndex, sizeIndex)}
-                                                        >
-                                                            <FaTrashAlt />
-                                                        </button>
-                                                    </div>
-                                                ))}
+                                                    )
+                                                }
 
-                                                <div className="my-4">
-                                                    <button className="common-btn" onClick={() => addSize(colorIndex)}>
-                                                        Add Size
-                                                    </button>
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <div className="form-control">
-                                                    <label className="label">
-                                                        <span className="label-text">Quantity: </span>
-                                                    </label>
-                                                    <input
-                                                        type="number"
-                                                        name="quantity"
-                                                        value={item.quantity}
-                                                        onChange={(event) => onChange(event, colorIndex)}
-                                                        placeholder="Quantity"
-                                                        className="border-2 border-gray-300 rounded-md p-2"
-                                                    />
-                                                </div>
-                                            </>
-                                        )}
-
-                                        <div className="form-control my-4">
-                                            <div className="w-full h-full">
-                                                <div className="rounded-lg shadow-xl bg-gray-50 p-4">
-                                                    <label className="inline-block mb-2 text-gray-500">Upload Product Image</label>
-                                                    <div className="flex items-center justify-center w-full">
-                                                        <label className="flex flex-col w-full max-w-xs md:max-w-md h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
-                                                            <div className="flex flex-col items-center justify-center pt-7">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
-                                                                    fill="none"
-                                                                    viewBox="0 0 24 24"
-                                                                    stroke="currentColor"
-                                                                >
-                                                                    <path
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round"
-                                                                        strokeWidth="2"
-                                                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                                                {/* ==== Image ===== */}
+                                                <div className="form-control my-4">
+                                                    <div className="w-full h-full">
+                                                        <div className="rounded-lg shadow-xl bg-gray-50 p-4">
+                                                            <label className="inline-block mb-2 text-gray-500">Upload Product Image</label>
+                                                            <div className="flex items-center justify-center w-full">
+                                                                <label className="flex flex-col w-full max-w-xs md:max-w-md h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
+                                                                    <div className="flex flex-col items-center justify-center pt-7">
+                                                                        <svg
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
+                                                                            fill="none"
+                                                                            viewBox="0 0 24 24"
+                                                                            stroke="currentColor"
+                                                                        >
+                                                                            <path
+                                                                                strokeLinecap="round"
+                                                                                strokeLinejoin="round"
+                                                                                strokeWidth="2"
+                                                                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                                                                            />
+                                                                        </svg>
+                                                                        <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                                                                            Attach Product Image{' '}
+                                                                        </p>
+                                                                    </div>
+                                                                    <input
+                                                                        type="file"
+                                                                        accept="image/*"
+                                                                        name="image"
+                                                                        {...register(`productColors.${colorIndex}.images`)}
+                                                                        multiple
+                                                                        className="px-4 pb-4"
                                                                     />
-                                                                </svg>
-                                                                <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                                                                    Attach file{' '}
-                                                                </p>
+                                                                </label>
                                                             </div>
-                                                            <input
-                                                                type="file"
-                                                                name={`images-${colorIndex}`}
-                                                                accept="image/*"
-                                                                multiple
-                                                                onChange={(event) => handleImageChange(event, colorIndex)}
-                                                                className="px-4 pb-4"
-                                                            />
-                                                        </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        {/* ------ show seleted image------- */}
+
+                                                        <div className="flex gap-4 flex-wrap my-4">
+                                                            {images &&
+                                                                images?.map((image, index) => (
+                                                                    <div key={index} className="w-1/2">
+                                                                        <img src={image} alt="" className="w-40 h-40 object-cover " />
+                                                                    </div>
+                                                                ))}
+                                                        </div>
+
                                                     </div>
                                                 </div>
+                                                {/* ==== Image ===== */}
+
                                             </div>
-
-                                            {/* Show selected images */}
-                                            <div className="flex gap-4 my-4">
-                                                {item.images &&
-                                                    item.images?.map((image, index) => (
-                                                        <div key={index} className="w-1/2">
-                                                            <img src={image} alt="" className="w-full h-full object-cover" />
-                                                        </div>
-                                                    ))}
-                                            </div>
-                                        </div>
-
-                                        <button
-                                            className="common-btn flex items-center justify-center"
-                                            onClick={() => removeColor(colorIndex)}
-                                        >
-                                            <FaTrashAlt className="text-2xl mr-2" />
-                                            Delete Color
-                                        </button>
-
-                                        {/* Add an "Update Color" button */}
-                                        <button
-                                            className="common-btn flex items-center justify-center"
-                                            onClick={() => updateColor(colorIndex)}
-                                        >
-                                            Update Color
-                                        </button>
-                                    </div>
-                                ))}
-                                <button className="btn btn-primary mx-4" onClick={addColor}>
-                                    Add Color
-                                </button>
+                                        )
+                                    })
+                                }
                             </div>
-
                             {/* ========= color update ========= */}
 
                             <Button type="default"

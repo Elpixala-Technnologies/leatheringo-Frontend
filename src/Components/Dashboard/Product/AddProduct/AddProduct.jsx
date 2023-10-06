@@ -101,7 +101,7 @@ const AddProduct = () => {
 
       if (event.target.name === 'color') {
         updatedColors[colorIndex].color = event.target.value;
-      } else if (event.target.name === 'quantity') {
+      } else if (event.target.name === 'quantity1') {
         updatedColors[colorIndex].quantity = event.target.value;
       } else if (event.target.name === 'isSizeApplicable') {
         updatedColors[colorIndex].isSizeApplicable = event.target.checked;
@@ -436,7 +436,7 @@ const AddProduct = () => {
                         </label>
                         <input
                           type="text"
-                          name="quantity"
+                          name="quantity1"
                           value={item.quantity}
                           onChange={(event) => onChange(event, colorIndex)}
                           placeholder="Quantity"

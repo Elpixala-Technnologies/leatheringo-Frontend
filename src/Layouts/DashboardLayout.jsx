@@ -15,12 +15,15 @@ import {
   FaThLarge,
 } from "react-icons/fa";
 import { AiOutlineIdcard } from "react-icons/ai";
+import { useRouter } from "next/router";
 const { Header, Sider, Content } = Layout;
 
 const DashboardLayout = ({ children }) => {
   const { handleLogout } = useCommonApiData()
   const [collapsed, setCollapsed] = useState(false); // Start with the sidebar open on desktop devices
   const [sideNavVisible, setSideNavVisible] = useState(false);
+  const router = useRouter();
+
   const handleResize = () => {
     setCollapsed(window.innerWidth < 768);
     // Hide the sidebar on mobile devices by default
@@ -48,6 +51,8 @@ const DashboardLayout = ({ children }) => {
     setSideNavVisible(!sideNavVisible);
   };
 
+
+
   return (
     <Layout className="bg-transparent">
       <style>{`
@@ -72,29 +77,31 @@ const DashboardLayout = ({ children }) => {
           <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={["2"]}
+            selectedKeys={[router.pathname]}
+            defaultSelectedKeys={["1"]}
+
             className="text-white"
             style={{ height: "100%", width: "100%" }}
           >
-            <Menu.Item key="1" icon={<FaThLarge />}>
+            <Menu.Item key="/" icon={<FaThLarge />}>
               <Link href="/">Home</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<FaThLarge />}>
+            <Menu.Item key="/dashboard" icon={<FaThLarge />}>
               <Link href="/dashboard">Inventory</Link>
             </Menu.Item>
-            <Menu.Item key="3" icon={<FaCalendarAlt />}>
+            <Menu.Item key="/dashboard/product/add-product" icon={<FaCalendarAlt />}>
               <Link href="/dashboard/product/add-product">Product</Link>
             </Menu.Item>
-            <Menu.Item key="4" icon={<MdLocalOffer />}>
+            <Menu.Item key="/dashboard/category" icon={<MdLocalOffer />}>
               <Link href="/dashboard/category">All Category</Link>
             </Menu.Item>
-            <Menu.Item key="5" icon={<MdLocalOffer />}>
+            <Menu.Item key="/dashboard/popular-category/manage-popular-category" icon={<MdLocalOffer />}>
               <Link href="/dashboard/popular-category/manage-popular-category">Popular Category</Link>
             </Menu.Item>
-            <Menu.Item key="6" icon={<FaDiceD6 />}>
+            <Menu.Item key="/dashboard/copuon" icon={<FaDiceD6 />}>
               <Link href="/dashboard/copuon">Coupon</Link>
             </Menu.Item>
-            <Menu.Item key="7" icon={<AiOutlineIdcard />}>
+            <Menu.Item key="/dashboard/blog" icon={<AiOutlineIdcard />}>
               <Link href="/dashboard/blog">Blog</Link>
             </Menu.Item>
             <Menu.Item key="8" icon={<FaPowerOff />}>

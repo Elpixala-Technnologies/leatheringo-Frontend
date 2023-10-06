@@ -5,7 +5,6 @@ import { Button, Select } from 'antd';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 const UpdatePorductPage = () => {
@@ -18,8 +17,9 @@ const UpdatePorductPage = () => {
     const { productId } = router.query;
     const [singleProductData, setSingleProductData] = useState({});
     const [couponSelected, setCouponSelected] = useState([]);
-    const { handleSubmit, register, setValue, } = useForm();
-    const { allCategoryData, couponData, categoryData } = useProducts();
+    const { handleSubmit, register, setValue,
+        getValues, } = useForm();
+    const { allCategoryData, couponData, categoryData, refetchProducts } = useProducts();
     const [loading, setLoading] = useState(false);
     const [prevValues, setPrevValues] = useState({});
 
@@ -88,6 +88,7 @@ const UpdatePorductPage = () => {
 
     // ===== color =====
 
+
     const uploadImageToCloudinary = async (file) => {
         const formData = new FormData();
         formData.append('file', file);
@@ -114,120 +115,47 @@ const UpdatePorductPage = () => {
         }
     };
 
+    const handleImageUpload = async (event, colorIndex) => {
+        const files = event.target.files;
+
+        if (files && files.length > 0) {
+            try {
+                const uploadedImages = [];
+
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const imageUrl = await uploadImageToCloudinary(file);
+
+                    if (imageUrl) {
+                        uploadedImages.push(imageUrl);
+                    } else {
+                        console.error(`Failed to upload image ${file.name}`);
+                    }
+                }
+
+                if (uploadedImages.length > 0) {
+                    // Get the current form values
+                    const formValues = getValues();
+
+                    // Update the images for the specific color
+                    formValues.productColors[colorIndex].images = [
+                        ...formValues.productColors[colorIndex].images,
+                        ...uploadedImages,
+                    ];
+
+                    // Update the entire "productColors" field in the form
+                    setValue("productColors", formValues.productColors);
+                }
+            } catch (error) {
+                console.error('Error uploading images:', error);
+            }
+        }
+    };
+
+
     // ===== color =====
 
-    // const onSubmit = async (inputValue) => {
-    //     try {
-    //         setLoading(true);
-    //         let featuresArray; // Declare it in a higher scope
 
-    //         if (!inputValue.productName) {
-    //             inputValue.productName = prevValues.name;
-    //         }
-    //         if (!inputValue.productCategories) {
-    //             inputValue.productCategories = prevValues.categories;
-    //         }
-    //         if (!inputValue.mainCategories) {
-    //             inputValue.mainCategories = prevValues.mainCategories;
-    //         }
-
-    //         // Split the features string into an array
-    //         if (typeof inputValue.productFeatures === 'string') {
-    //             featuresArray = inputValue.productFeatures.split(',');
-    //             // Use featuresArray as needed
-    //         } else {
-    //             featuresArray = inputValue.productFeatures;
-    //         }
-
-    //         const productUpdateData = {
-    //             name: inputValue.productName,
-    //             categories: inputValue.productCategories,
-    //             mainCategories: inputValue.mainCategories,
-    //             brand: inputValue.productBrand,
-    //             price: inputValue.productPrice,
-    //             discount: inputValue.productDiscount,
-    //             type: inputValue.productType,
-    //             status: inputValue.productStatus,
-    //             details: inputValue.productDetails,
-    //             features: featuresArray,
-    //             colors: inputValue.productColors.map((item) => {
-    //                 const { color, sizes, quantity, images } = item;
-    //                 return {
-    //                     color,
-    //                     isSizeApplicable: sizes?.length > 0,
-    //                     sizes: sizes?.map((sizeItem) => {
-    //                         const { size, quantity } = sizeItem;
-    //                         return {
-    //                             size,
-    //                             quantity,
-    //                         };
-    //                     }),
-    //                     quantity,
-    //                     images: images?.map((image) => {
-    //                         if (typeof image === 'string') {
-    //                             return image;
-    //                         } else {
-    //                             return uploadImageToCloudinary(image);
-    //                         }
-    //                     }),
-    //                 };
-    //             }),
-    //             coupon: couponSelected,
-    //         };
-
-    //         console.log('productUpdateData', productUpdateData);
-
-    //         const res = await fetch(updateProductsUrl(productId), {
-    //             method: 'PATCH',
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(productUpdateData),
-    //         });
-
-    //         const dataRes = await res.json();
-    //         console.log(dataRes, "dataRes");            
-    //         if (!res.ok) {
-    //             Swal.fire({
-    //                 position: "center",
-    //                 timerProgressBar: true,
-    //                 title: "Something went wrong!",
-    //                 iconColor: "#ED1C24",
-    //                 toast: true,
-    //                 icon: "error",
-    //                 showClass: {
-    //                     popup: "animate__animated animate__fadeInRight",
-    //                 },
-    //                 hideClass: {
-    //                     popup: "animate__animated animate__fadeOutRight",
-    //                 },
-    //                 showConfirmButton: false,
-    //                 timer: 3500,
-    //             });
-    //         } else {
-    //             Swal.fire({
-    //                 position: "center",
-    //                 timerProgressBar: true,
-    //                 title: "Successfully Updated",
-    //                 iconColor: "#ED1C24",
-    //                 toast: true,
-    //                 icon: "success",
-    //                 showClass: {
-    //                     popup: "animate__animated animate__fadeInRight",
-    //                 },
-    //                 hideClass: {
-    //                     popup: "animate__animated animate__fadeOutRight",
-    //                 },
-    //                 showConfirmButton: false,
-    //                 timer: 3500,
-    //             });
-    //         }
-    //     } catch (error) {
-    //         console.error('Error updating product:', error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
 
     const onSubmit = async (inputValue) => {
         try {
@@ -342,6 +270,7 @@ const UpdatePorductPage = () => {
                     showConfirmButton: false,
                     timer: 3500,
                 });
+                refetchProducts();
             }
         } catch (error) {
             console.error('Error updating product:', error);
@@ -602,8 +531,10 @@ const UpdatePorductPage = () => {
                                                                     <input
                                                                         type="file"
                                                                         accept="image/*"
-                                                                        name="image"
-                                                                        {...register(`productColors.${colorIndex}.images`)}
+                                                                        onChange={(event) => handleImageUpload(event, colorIndex)}
+                                                                        name={
+                                                                            `productColors.${colorIndex}.images`
+                                                                        }
                                                                         multiple
                                                                         className="px-4 pb-4"
                                                                     />
@@ -618,7 +549,7 @@ const UpdatePorductPage = () => {
                                                         <div className="flex gap-4 flex-wrap my-4">
                                                             {images &&
                                                                 images?.map((image, index) => (
-                                                                    <div key={index} className="w-1/2">
+                                                                    <div key={index}>
                                                                         <img src={image} alt="" className="w-40 h-40 object-cover " />
                                                                     </div>
                                                                 ))}

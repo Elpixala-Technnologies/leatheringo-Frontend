@@ -11,6 +11,7 @@ import {
   HappySellIcon,
 } from "@/src/Assets";
 
+
 const homeInfo = [
   {
     id: 1,
@@ -61,28 +62,31 @@ const HomeInfoCard = () => {
 
   return (
     <section data-aos="fade-up">
-      <div className="container grid gap-4 md:grid-cols-3 sm:my-4">
+      <div className="grid gap-4 md:grid-cols-3 w-full my-6">
         {homeInfo.map((info, index) => {
           return (
             <div
-              className="cardBody mt-4 md:m-0 flex md:flex-row flex-col justify-center items-center gap-4 bg-white px-6 border py-20 hover:border-red-500 color-b rounded-md duration-300 transform shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500"
-              data-aos="fade-up" 
-              data-aos-duration="1000" 
+              className="cardBody mt-4 md:m-0 w-[100%] bg-white px-6 border py-20 hover:border-red-500 color-b rounded-md duration-300 transform shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500"
+              data-aos="fade-up"
+              data-aos-duration="1000"
               key={index}
             >
-              <div>
-                <Image
-                  src={info?.icon}
-                  width={100}
-                  height={100}
-                  className="object-cover w-20"
-                  alt="Red Rose Auto"
-                />
+              <div className="flex md:flex-row flex-col justify-center items-center gap-4">
+                <div>
+                  <Image
+                    src={info?.icon}
+                    width={100}
+                    height={100}
+                    className="object-cover w-20"
+                    alt="Red Rose Auto"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="font-bold text-[1.2rem]">{info.title}</h3>
+                  <p className="text-gray-500">{info.subtitle}</p>
+                </div>
               </div>
-              <div className="text-center">
-                <h3 className="font-bold text-[1.2rem]">{info.title}</h3>
-                <p className="text-gray-500">{info.subtitle}</p>
-              </div>
+
             </div>
           );
         })}

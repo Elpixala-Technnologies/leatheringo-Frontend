@@ -61,6 +61,8 @@ const ProductPage = () => {
         });
     }, []);
 
+    console.log(productsToDisplay, "productsToDisplay+");
+
     return (
         <RootLayout>
             <ProductSlider /> <br />

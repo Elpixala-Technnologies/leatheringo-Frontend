@@ -1,6 +1,6 @@
 import { AuthContext } from '@/src/Context/UserContext';
 import RootLayout from '@/src/Layouts/RootLayout';
-import { getCartUrl, removeFromCartUrl, updateCartUrl, addToCartUrl } from '@/src/Utils/Urls/ProductUrl'; 
+import { getCartUrl, removeFromCartUrl, updateCartUrl, addToCartUrl } from '@/src/Utils/Urls/ProductUrl';
 import Image from 'next/image';
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
@@ -92,7 +92,7 @@ const CartPage = () => {
                                     <ul className="-my-8 flex flex-col gap-4">
                                         {cartData &&
                                             cartData?.map((data) => {
-                                                const { product, _id, images, quantity } = data;
+                                                const { product, _id, quantity } = data;
                                                 const itemPrice = product ? calculateItemPrice(product.price, quantity) : 0;
 
 
@@ -103,7 +103,7 @@ const CartPage = () => {
                                                                 width={100}
                                                                 height={100} // Add this line to specify the height
                                                                 className="h-24 w-24 max-w-full rounded-lg object-cover"
-                                                                src={product?.images[0]}
+                                                                src={product?.colros[0]?.images[0]}
                                                                 alt={product?.name}
                                                             />
                                                         </div>

@@ -30,7 +30,10 @@
     "sass": "^1.68.0",
     "sharp": "^0.32.6",
     "sweetalert2": "^11.7.31",
-    "swiper": "^8.4.7"
+    "swiper": "^8.4.7",
+    "tailwind-elements": "^0.2.0",
+    "tw-elements": "^1.0.0",
+    "tw-elements-react": "^1.0.0-alpha1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",

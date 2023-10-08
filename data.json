@@ -7,7 +7,7 @@
         "price": 89.99,
         "discount": 10,
         "type": "Men's",
-        "status": "In Stock",
+        "status": "Featured",
         "details": "Premium leather dress shoes for formal occasions.",
         "features": [
             "Genuine leather",
@@ -74,7 +74,7 @@
         "price": 34.99,
         "discount": 0,
         "type": "Unisex",
-        "status": "In Stock",
+        "status": "Featured",
         "details": "Comfortable canvas sneakers for a casual look.",
         "features": [
             "Canvas upper",
@@ -138,7 +138,7 @@
         "price": 109.99,
         "discount": 10,
         "type": "Men's",
-        "status": "In Stock",
+        "status": "Featured",
         "details": "Stylish double monk strap shoes for a unique look.",
         "features": [
             "Genuine leather",
@@ -204,7 +204,7 @@
         "price": 119.99,
         "discount": 5,
         "type": "Men's",
-        "status": "In Stock",
+        "status": "Featured",
         "details": "Elegant whole cut leather shoes for a sophisticated look.",
         "features": [
             "Premium leather",
@@ -271,7 +271,7 @@
         "price": 99.99,
         "discount": 15,
         "type": "Men's",
-        "status": "In Stock",
+        "status": "Featured",
         "details": "Classic leather brogue shoes for a timeless look.",
         "features": [
             "Genuine leather",
@@ -337,7 +337,7 @@
         "price": 79.99,
         "discount": 10,
         "type": "Men's",
-        "status": "In Stock",
+        "status": "Featured",
         "details": "Stylish derby shoes for a contemporary look.",
         "features": [
             "Suede upper",
@@ -404,7 +404,7 @@
         "price": 129.99,
         "discount": 20,
         "type": "Unisex",
-        "status": "In Stock",
+        "status": "New Arrival",
         "details": "Fashionable Chelsea boots for a trendy look.",
         "features": [
             "Suede leather",
@@ -470,7 +470,7 @@
         "price": 79.99,
         "discount": 15,
         "type": "Unisex",
-        "status": "In Stock",
+        "status": "New Arrival",
         "details": "Spacious leather duffle bag for travel enthusiasts.",
         "features": [
             "Genuine leather",
@@ -510,7 +510,7 @@
         "price": 49.99,
         "discount": 5,
         "type": "Unisex",
-        "status": "In Stock",
+        "status": "New Arrival",
         "details": "Stylish and functional laptop backpack for professionals.",
         "features": [
             "Dedicated laptop compartment",
@@ -550,7 +550,7 @@
         "price": 59.99,
         "discount": 10,
         "type": "Women's",
-        "status": "In Stock",
+        "status": "New Arrival",
         "details": "Fashionable ladies tote bag for everyday use.",
         "features": [
             "Faux leather",
@@ -591,7 +591,7 @@
         "price": 39.99,
         "discount": 0,
         "type": "Unisex",
-        "status": "In Stock",
+        "status": "New Arrival",
         "details": "Compact leather sling bag for on-the-go style.",
         "features": [
             "Crossbody design",
@@ -629,7 +629,7 @@
         "price": 29.99,
         "discount": 0,
         "type": "Men's",
-        "status": "In Stock",
+        "status": "New Arrival",
         "details": "Classic leather belt for a polished look.",
         "features": [
             "Genuine leather",
@@ -693,7 +693,7 @@
         "price": 27.99,
         "discount": 0,
         "type": "Women's",
-        "status": "In Stock",
+        "status": "Tranding",
         "details": "Stylish leather belt for a fashionable look.",
         "features": [
             "Genuine leather",
@@ -757,7 +757,7 @@
         "price": 19.99,
         "discount": 0,
         "type": "Unisex",
-        "status": "In Stock",
+        "status": "Tranding",
         "details": "Slim and compact leather card holder for your essentials.",
         "features": [
             "Genuine leather",
@@ -795,7 +795,87 @@
         "price": 39.99,
         "discount": 5,
         "type": "Unisex",
-        "status": "In Stock",
+        "status": "Tranding",
+        "details": "Classic leather wallet with plenty of card slots and compartments.",
+        "features": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 30,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 25,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "CLASSIC5OFF"
+        ]
+    },
+    {
+        "name": "Leather Wallet",
+        "mainCategories": "Wallets",
+        "categories": "Wallets",
+        "brand": "ClassicWallets",
+        "price": 39.99,
+        "discount": 5,
+        "type": "Unisex",
+        "status": "Tranding",
+        "details": "Classic leather wallet with plenty of card slots and compartments.",
+        "features": [
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+            "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 30,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 25,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "CLASSIC5OFF"
+        ]
+    },
+    {
+        "name": "Leather Wallet",
+        "mainCategories": "Wallets",
+        "categories": "Wallets",
+        "brand": "ClassicWallets",
+        "price": 39.99,
+        "discount": 5,
+        "type": "Unisex",
+        "status": "Tranding",
         "details": "Classic leather wallet with plenty of card slots and compartments.",
         "features": [
             "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",

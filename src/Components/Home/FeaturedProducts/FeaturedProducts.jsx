@@ -1,4 +1,4 @@
-import { useState ,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { FaCartPlus, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -48,10 +48,12 @@ const FeaturedProducts = () => {
         });
     }, []);
 
+    console.log('filterProductData', productsToDisplay);
+
 
     return (
-        <section  data-aos="fade-up">
-            <div className='flex flex-col items-center justify-center mb-6 title'>
+        <section data-aos="fade-up">
+            <div className='flex flex-col items-center justify-center my-6 title'>
                 <h2 className=" text-[1rem] md:text-[1.8rem] text-center md:text-left  xxs:text-2xl  text-black font-bold">
                     Featured Products
                 </h2>
@@ -69,7 +71,8 @@ const FeaturedProducts = () => {
                         >
                             <div className="p-2 productImage">
                                 <Image
-                                    src={product?.images[0]}
+                                    key={index}
+                                    src={product?.colors[0]?.images[0]}
                                     width={280}
                                     height={280}
                                     className="w-full h-full"

@@ -98,17 +98,19 @@ const NewArrivals = () => {
                         {filterProductData &&
                             filterProductData.map((product) => {
                                 return (
-                                    <SwiperSlide className="cursor-grab" key={product?._id} >
+                                    <SwiperSlide className="cursor-grab" key={product?._id}
+                                        data-aos="fade-up"
+                                        data-aos-anchor-placement="center-bottom"
+                                        
+                                    >
                                         <div className="cardBody md:m-0  mx-auto  flex flex-col hover:border-red-500  color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                             <div className="productImage ">
-                                                {product && product.images && product.images.length > 0 && (
-                                                    <Image
-                                                        src={product.images[0]}
-                                                        width={300}
-                                                        height={300}
-                                                        className="w-full h-full"
-                                                    />
-                                                )}
+                                                <Image
+                                                    src={product?.colors[0]?.images[0]}
+                                                    width={300}
+                                                    height={300}
+                                                    className="w-full h-full"
+                                                />
                                             </div>
                                             <hr className="w-full bg-slate-400" />
 

@@ -135,7 +135,7 @@ const category_product = () => {
                                     className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                     <div className="productImage p-2">
                                         <Image
-                                            src={product?.images[0]}
+                                            src={product?.colors[0]?.images[0]}
                                             width={280}
                                             height={280}
                                             className="w-full h-full"
@@ -230,7 +230,7 @@ const category_product = () => {
                                     className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                     <div className="productImage p-2">
                                         <Image
-                                            src={product?.images[0]}
+                                            src={product?.colors[0]?.images[0]}
                                             width={280}
                                             height={280}
                                             className="w-full h-full"

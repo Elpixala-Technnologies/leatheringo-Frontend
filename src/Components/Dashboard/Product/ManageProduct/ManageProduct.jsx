@@ -12,7 +12,7 @@ const ManageProduct = () => {
                 {productData &&
                     productData.length &&
                     productData.map((porductData) => {
-                        const { _id, name, price, images, discount } = porductData;
+                        const { _id, name, price, colors ,discount } = porductData;
                         return (
                             <div className="relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
                                 key={_id}
@@ -21,31 +21,15 @@ const ManageProduct = () => {
                                     className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
                                     href="#"
                                 >
-                                    {/* <Image
-                                        className="w-full h-full object-cover object-center"
+            
+                                    <img
                                         width={300}
                                         height={300}
-                                        src={images[0] || "https://images.unsplash.com/photo-1622835047087-4b3b0f5b0b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ym9va3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"}
+                                        src={colors[0]?.images[0]}
+                                        className="w-full h-full object-cover object-center"
                                         alt="product image"
-                                    /> */}
+                                    />
 
-                                    {images && images.length > 0 ? (
-                                        <img
-                                            width={300}
-                                            height={300}
-                                            src={images[0]}
-                                            className="w-full h-full object-cover object-center"
-                                            alt="product image"
-                                        />
-                                    ) : (
-                                        <img
-                                            width={300}
-                                            height={300}
-                                            src="https://images.unsplash.com/photo-1622835047087-4b3b0f5b0b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ym9va3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
-                                            alt="product image"
-                                            className="w-full h-full object-cover object-center"
-                                        />
-                                    )}
                                     <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
                                         {discount}%
                                     </span>

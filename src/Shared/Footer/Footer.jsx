@@ -10,7 +10,7 @@ const Footer = () => {
     const { allCategoryData } = useProducts();
 
     return (
-        <div className='bg-[#F5F5F5] text-[#000] px-4 py-16 grid sm:grid-cols-1 grid-cols-2 md:grid-cols-5 gap-4'>
+        <div className='bg-[#000] text-[#fff] px-4 py-16 grid sm:grid-cols-1 grid-cols-2 md:grid-cols-5 gap-4'>
             <div className="">
                 <Link href="/">
                     <Image src={MainLogo}
@@ -52,14 +52,14 @@ const Footer = () => {
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>
-                    <li className='font-semibold text-lg text-[#000]'>
+                    <li className='font-semibold text-lg text-[#fff]'>
                         <Link href="">Categories</Link>
                     </li>
                     {
                         allCategoryData && allCategoryData.slice(0, 5).map((item, index) => {
                             return (
                                 <Link href={`/category-product/${item?._id}`} key={index + "category"}>
-                                    <li className='p-2 rounded duration-200 hover:bg-[#80808024] text-[#000]' >
+                                    <li className='p-2 rounded duration-200 hover:bg-[#80808024] text-[#fff]' >
                                         {item?.name}
                                     </li>
                                 </Link>
@@ -70,7 +70,7 @@ const Footer = () => {
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>
-                    <li className='font-semibold text-lg text-[#000]'>
+                    <li className='font-semibold text-lg text-[#fff]'>
                         <span>Contact Us</span>
                     </li>
                     <li className='mt-3 font-[300]'>
@@ -94,7 +94,7 @@ const Footer = () => {
 
             <div className="md:mt-[0] mt-6">
                 <ul>
-                    <li className='font-semibold text-lg text-[#000000]'>
+                    <li className='font-semibold text-lg text-[#ffff]'>
                         <Link href="">Follow Us</Link>
                     </li>
                     <li className='mt-3 font-[300]'>
@@ -117,13 +117,13 @@ const Footer = () => {
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>
-                    <li className='font-semibold text-lg text-[#000]'>
+                    <li className='font-semibold text-lg text-[#fff]'>
                         <Link href="">Join Us</Link>
                     </li> <br />
                     <li className='mt-3 font-[300]'>
-                        <h2 className='text-2lg font-[500] text-[#000]'>Subscribe to our newsletters</h2>
+                        <h2 className='text-2lg font-[500] text-[#fff]'>Subscribe to our newsletters</h2>
                         <form className='flex items-center border border-[#4c5a5f] bg-[#73c3f58b] overflow-hidden rounded-md mt-3 g'>
-                            <input type="text" className='w-full text-[#000] py-1 px-2 bg-[transparent]' placeholder='email...' /><button className='bg-[#088178] px-2 py-2'>Subscribe</button>
+                            <input type="text" className='w-full text-[#fff] py-1 px-2 bg-[transparent]' placeholder='email...' /><button className='bg-[#088178] px-2 py-2'>Subscribe</button>
                         </form>
                     </li>
                 </ul>

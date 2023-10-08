@@ -30,9 +30,12 @@ import Sneakers from "./category-icons/Sneakers.png";
 import Wallets from "./category-icons/Wallets.png";
 import ChelseaBoots from "./category-icons/ChelseaBoots.png";
 
-import AppIcon from "./pay/app.jpg"
-import PayIcon from "./pay/pay.png"
-import PlayStoreIcon from "./pay/play.jpg"
+import AppIcon from "./pay/app.jpg";
+import PayIcon from "./pay/pay.png";
+import PlayStoreIcon from "./pay/play.jpg";
+
+import BeltBannerOne from "./banner/belt-banner-01.jpg";
+import BeltBannerTwo from "./banner/belt-banner-02.jpg";
 
 
 export {
@@ -68,7 +71,10 @@ export {
 
     AppIcon,
     PayIcon,
-    PlayStoreIcon
+    PlayStoreIcon,
+
+    BeltBannerOne,
+    BeltBannerTwo
 
 }
 

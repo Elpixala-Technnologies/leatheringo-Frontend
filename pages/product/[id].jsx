@@ -21,8 +21,7 @@ const ProductDetails = () => {
   const { user } = useContext(AuthContext);
   const router = useRouter();
   const { id } = router.query;
-  const [showImg, setShowImg] = useState('')
-
+  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
 
   let mainProductData;
 
@@ -38,7 +37,6 @@ const ProductDetails = () => {
 
   const {
     name,
-    images,
     mainCategories,
     categories,
     brand,
@@ -54,6 +52,7 @@ const ProductDetails = () => {
     coupon,
     _id,
   } = mainProductData || {};
+  const [selectedColorImage, setSelectedColorImage] = useState(mainProductData?.colors[0]?.images[0] || null);
 
   // ====== Add to cart ======
 
@@ -116,8 +115,6 @@ const ProductDetails = () => {
     }
   };
 
-
-
   return (
     <RootLayout>
       <div className='pb-4 container h-full'>
@@ -125,14 +122,22 @@ const ProductDetails = () => {
           <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
             <div className="">
               <div className="img-box shadow rounded bg-[#f1e8e8] p-2 flex justify-center">
-                {images && images.length > 0 ? (
-                  <Image src={images[0]} alt={name}
+                {selectedColorImage ? (
+                  <Image
+                    src={selectedColorImage}
+                    alt={name}
                     width={300}
                     height={300}
                     className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
                   />
                 ) : (
-                  <p>No image available</p>
+                  <Image
+                    src={mainProductData?.colors[0]?.images[0]} // Set the default image URL here
+                    alt={name}
+                    width={300}
+                    height={300}
+                    className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                  />
                 )}
               </div>
               <br />
@@ -144,22 +149,36 @@ const ProductDetails = () => {
                     clickable: true,
                   }}
                   modules={[]}
-                  className="mySwiper"
+                  className='mySwiper'
                 >
-                  {
-                    images && images?.map((img, index) => {
+                  {colors &&
+                    colors?.map((color, index) => {
                       return (
-                        <SwiperSlide key={index} onClick={() => setShowImg(img)}>
-                          <Image
-                            src={img}
-                            alt={name}
-                            width={100}
-                            height={100}
-                            className='bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100' />
+                        <SwiperSlide
+                          key={index}
+                          onClick={() => {
+                            setSelectedColorImage(color.images[0]);
+                            setSelectedColorIndex(index);
+                          }}
+                        >
+                          <div
+                            className={`bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${selectedColorIndex === index ? 'bg-opacity-100' : 'bg-opacity-50'
+                              }`}
+                            style={{
+                              backgroundColor: color.color,
+                            }}
+                            title={color.color}
+                          >
+                            <Image
+                              src={color.images[0]}
+                              alt={color.color}
+                              width={100}
+                              height={100}
+                            />
+                          </div>
                         </SwiperSlide>
-                      )
-                    })
-                  }
+                      );
+                    })}
                 </Swiper>
               </div>
 
@@ -200,20 +219,46 @@ const ProductDetails = () => {
               <hr />
 
               <div className="mt-5">
-                <h4 className="text-lg font-semibold capitalize">Available Colors</h4>
-                <div className="flex items-center gap-2 my-4">
-                  {colors && colors?.map((color, index) => (
-                    <div
-                      key={index}
-                      className="w-8 h-8 rounded-full cursor-pointer"
-                      style={{
-                        backgroundColor: color,
-                      }}
-                      title={color}
-                    ></div>
-                  ))}
+                <h4 className='text-lg font-semibold capitalize'>
+                  Available Colors
+                </h4>
+                <div className='flex items-center gap-2 my-4'>
+                  {colors &&
+                    colors?.map((color, index) => {
+                      return (
+                        <div
+                          className='flex flex-col items-center gap-2'
+                        >
+                          <div
+                            key={index}
+                            className={`bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${selectedColorIndex === index ? 'bg-opacity-100' : 'bg-opacity-50'
+                              }`}
+                            style={{
+                              backgroundColor: color.color,
+                            }}
+                            title={color.color}
+                            onClick={() => {
+                              setSelectedColorImage(color.images[0]);
+                              setSelectedColorIndex(index);
+                            }}
+                          >
+                            <Image
+                              src={color.images[0]}
+                              alt={color.color}
+                              width={50}
+                              height={50}
+                              className='cursor-pointer rounded-full hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                            />
+                          </div>
+                          <p className='text-[0.9rem] text-center'>
+                            {color.color}
+                          </p>
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
+
               <hr />
               <div className='my-4'>
                 {/* {
@@ -281,13 +326,81 @@ const ProductDetails = () => {
 
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Size :
+                              Size & Quantity :
                             </td>
                             <td className="whitespace-nowrap px-6 py-4">
                               {
-                                size && size?.map((size, index) => {
+
+                                colors && colors?.map((color, index) => {
+
                                   return (
-                                    <span key={index} className='mr-2'>{size}</span>
+                                    <div key={index + `colroIdsx`} className='flex items-center gap-2'>
+                                      <h2 className='text-[0.9rem] text-center'>
+                                        {
+                                          color?.isSizeApplicable ? (
+                                            <div
+                                              className='flex items-center gap-2'
+                                            >
+                                              {
+                                                color?.sizes.map((size, index) => {
+                                                  return (
+                                                    <p key={index + `size`} className='text-[0.9rem] text-center'>
+                                                      {size?.size}  : [{size?.quantity}]
+                                                    </p>
+                                                  )
+                                                })
+                                              }
+                                            </div>
+                                          ) : (
+                                            <>
+                                              <p className='text-[0.9rem] text-center'>
+                                                Not applicable
+                                              </p>
+                                            </>
+                                          )
+                                        }
+                                      </h2>
+                                    </div>
+                                  )
+                                })
+                              }
+                            </td>
+                          </tr>
+                          <tr className="border-b dark:border-neutral-500">
+                            <td className="whitespace-nowrap px-6 py-4 font-medium">
+                              Total Color :
+                            </td>
+                            <td className="whitespace-nowrap px-6 py-4">
+                              {
+                                colors && colors?.map((color, index) => {
+                                  return (
+                                    <div key={index + `colroIdsx`} className='flex items-center gap-2'>
+                                      <p className='text-[0.9rem] text-center'>
+                                        {color.color} ,
+                                      </p>
+                                    </div>
+                                  )
+                                })
+                              }
+                            </td>
+                          </tr>
+                          <tr className="border-b dark:border-neutral-500">
+                            <td className="whitespace-nowrap px-6 py-4 font-medium">
+                              Total Quantity :
+                            </td>
+                            <td className="whitespace-nowrap px-6 py-4">
+                              {
+                                colors && colors?.map((color, index) => {
+                                  return (
+                                    <div key={index + `colroIdsx`} className='flex items-center gap-2'>
+                                      <p className='text-[0.9rem] text-center'>
+                                        {
+                                          color?.quantity === 0 ? "Out of stock" : color?.quantity > 0 && color?.quantity < 10 ? "Low stock" : color?.quantity > 10 ? "In stock" : color?.quantity === null ? "Not available" : color?.quantity === undefined ? "Not available" : color?.quantity === "" ? "Not available" : color?.quantity === " " ? "Not available" : color?.quant
+                                        } : {
+                                          color?.quantity
+                                        }  , [ {color?.color}]
+                                      </p>
+                                    </div>
                                   )
                                 })
                               }

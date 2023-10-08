@@ -1,44 +1,28 @@
 import RootLayout from '@/src/Layouts/RootLayout';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ProductSlider from '@/src/Components/Product/ProductSlider/ProductSlider';
 import useProducts from '@/src/Hooks/useProducts';
 import { FaArrowLeft, FaArrowRight, FaCartPlus } from 'react-icons/fa';
+import { BsFilter } from 'react-icons/bs';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const ProductPage = () => {
     const [show, setShow] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const { productData, categoryData } = useProducts();
-    const itemsPerPage = 9;
-    const [currentPage, setCurrentPage] = useState(1);
-    const [isCloups, setIsCloups] = useState(true);
-
-    const filteredproducts = selectedCategory
-        ? productData.filter((product) => product.category === selectedCategory)
-        : productData;
-
-    const clearFilter = () => {
-        setSelectedCategory(null);
-    };
-
-
-
-    // Pagination state
+    const { productData, allCategoryData } = useProducts();
+    const isCloups = allCategoryData?.length > 0;
+    const productsPerPage = 9;
     const [page, setPage] = useState(1);
-    const productsPerPage = 9; // Number of products per page
 
-    // Calculate total pages
-    const totalPages = Math.ceil(productData?.length / productsPerPage);
-
-    // Calculate the index range for the current page
-    const startIndex = (page - 1) * productsPerPage;
-    const endIndex = startIndex + productsPerPage;
-
-    // Filter products for the current page
-    const productsToDisplay = productData?.slice(startIndex, endIndex);
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    }, []);
 
     // Function to handle previous page
     const handlePrevPage = () => {
@@ -49,47 +33,69 @@ const ProductPage = () => {
 
     // Function to handle next page
     const handleNextPage = () => {
+        const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
         if (page < totalPages) {
             setPage(page + 1);
         }
     };
 
-    useEffect(() => {
-        AOS.init({
-            duration: 1000, // Animation duration in milliseconds
-            once: true, // Only trigger the animation once
-        });
-    }, []);
+    // Filter products by selected category
+    const filteredProducts = selectedCategory
+        ? productData.filter((product) => {
+            return (
+                product.mainCategories === selectedCategory || // Filter by mainCategories
+                product.categories === selectedCategory // Filter by categories
+            );
+        })
+        : productData;
 
-    console.log(productsToDisplay, "productsToDisplay+");
+    // Calculate total pages
+    const totalPages = filteredProducts
+        ? Math.ceil(filteredProducts.length / productsPerPage)
+        : 0; // Set totalPages to 0 if filteredProducts is undefined
+
+    // Calculate the index range for the current page
+    const startIndex = (page - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+
+    // Slice the products to display on the current page
+    const productsToDisplay = filteredProducts
+        ? filteredProducts.slice(startIndex, endIndex)
+        : [];
+    const clearFilter = () => {
+        setSelectedCategory(null);
+        setPage(1); // Reset page to 1 when clearing the filter
+    };
+
 
     return (
         <RootLayout>
             <ProductSlider /> <br />
             <div className="flex flex-col gap-2 md:flex-row md:container">
-                {/* <div className="md:block hidden p-3 bg-slate-200 rounded h-[75%]">
+                <div className="md:block hidden p-3  rounded ">
                     <div>
                         <h2 className="text-lg font-bold"
                         >Sort Out :</h2>
                         {
                             isCloups && <div className="flex flex-col gap-2">
-                                {categoryData && categoryData?.map((categoryresult) => (
+                                {allCategoryData && allCategoryData?.map((categoryresult) => (
                                     <div
                                         className="flex items-center mt-3 space-x-2 transition duration-500 ease-in-out transform cursor-pointer hover:animate-pulse hover:-translate-y-1 hover:scale-100"
                                         key={categoryresult?._id}
                                     >
                                         <input
                                             type="checkbox"
-                                            id={categoryresult?.category}
+                                            id={categoryresult?.name}
                                             className="w-5 h-5 text-blue-600 form-checkbox"
-                                            value={categoryresult?.category}
-                                            onChange={() => setSelectedCategory(categoryresult?.category)}
+                                            value={categoryresult?.name}
+                                            checked={selectedCategory === categoryresult?.name} // Add checked attribute
+                                            onChange={() => setSelectedCategory(categoryresult?.name)}
                                         />
                                         <label
-                                            htmlFor={categoryresult?.category}
+                                            htmlFor={categoryresult?.name}
                                             className="text-gray-700 cursor-pointer"
                                         >
-                                            {categoryresult?.category}
+                                            {categoryresult?.name}
                                         </label>
                                     </div>
                                 ))}
@@ -103,37 +109,38 @@ const ProductPage = () => {
                         </button>
 
                     </div>
-                </div> */}
+                </div>
 
                 <div className="col-span-4 p-4 bg-[#e8eaeb00]">
                     <div className="relative flex items-center justify-end w-full md:hidden">
-                        {/* <button
+                        <button
                             onClick={() => setShow(!show)}
                             className="bg-[#4c667200] p-1 rounded-sm flex items-center gap-2"
                         >
                             <h2 className="font-semibold text-md">Sort Out </h2>
                             <BsFilter className="text-3xl" />
-                        </button> */}
-                        {/* <div
+                        </button>
+                        <div
                             className={`${show ? 'block' : 'hidden'} bg-[#ffffff] w-[300px] p-3 border rounded shadow-xl absolute right-0 top-9 z-10`}
                         >
-                            {categoryData?.map((category) => (
+                            {allCategoryData && allCategoryData?.map((category) => (
                                 <div
                                     className="flex items-center mt-3 space-x-2"
                                     key={category?.id}
                                 >
                                     <input
                                         type="checkbox"
-                                        id={category?.category}
+                                        id={category?.name}
                                         className="w-5 h-5 text-blue-600 form-checkbox"
-                                        value={category?.category}
-                                        onChange={() => setSelectedCategory(category?.category)}
+                                        value={category?.name}
+                                        checked={selectedCategory === category?.name} // Add checked attribute
+                                        onChange={() => setSelectedCategory(category?.name)}
                                     />
                                     <label
-                                        htmlFor={category?.category}
+                                        htmlFor={category?.name}
                                         className="text-gray-700 cursor-pointer"
                                     >
-                                        {category?.category}
+                                        {category?.name}
                                     </label>
                                 </div>
                             ))}
@@ -144,7 +151,7 @@ const ProductPage = () => {
                                 Clear Filter
                             </button>
 
-                        </div> */}
+                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3" data-aos="fade-up">
@@ -156,7 +163,7 @@ const ProductPage = () => {
                                     >
                                         <div className="p-2 productImage">
                                             <Image
-                                                src={product?.images[0]}
+                                                src={product?.colors[0]?.images[0]}
                                                 width={280}
                                                 height={280}
                                                 className="w-full h-full"

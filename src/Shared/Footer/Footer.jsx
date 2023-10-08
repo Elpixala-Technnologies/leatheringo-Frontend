@@ -1,9 +1,9 @@
-import { Facebook, LinkedIn, WhatsApp } from '@material-ui/icons';
+import { Facebook, LinkedIn, WhatsApp, Instagram } from '@material-ui/icons';
 import Link from 'next/link';
 import React from 'react';
 import { FaDiscord } from 'react-icons/fa';
 import Image from 'next/image';
-import { MainLogo } from '@/src/Assets';
+import { AppIcon, MainLogo, PayIcon, PlayStoreIcon } from '@/src/Assets';
 import useProducts from '@/src/Hooks/useProducts';
 
 const Footer = () => {
@@ -20,8 +20,35 @@ const Footer = () => {
                 </Link>
 
                 <p className='my-4'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptas.
+                    {/* write about leatheringo      */}
+                    One Stop Platform for all Premium leather Products
                 </p>
+
+                <div className='flex flex-col gap-4'>
+
+                    <Link href={"/"}>
+                        <Image
+                            src={PlayStoreIcon}
+                            width={150}
+                            height={150}
+                        />
+                    </Link>
+                    <Link href={"/"}>
+                        <Image
+                            src={AppIcon}
+                            width={150}
+                            height={150}
+                        />
+                    </Link>
+                    <Link href={"/"}>
+                        <Image
+                            src={PayIcon}
+                            width={150}
+                            height={150}
+                            className='cursor-pointer  w-full h-full rounded object-cover'
+                        />
+                    </Link>
+                </div>
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>
@@ -49,17 +76,18 @@ const Footer = () => {
                     <li className='mt-3 font-[300]'>
                         <span className="font-[400]">Address</span>
                         <br />
-                        <small>Test</small>
+                        <small>C-185 Kedar nagar Shahganj near  Rajkamal school
+                            Agra, Uttar Pradesh-282010</small>
                     </li>
                     <li className='mt-6 font-[300]'>
                         <span className="font-[400] ">Office / Mobile</span>
                         <br />
-                        <small>15644454364</small>
+                        <small >9311667479</small>
                     </li>
                     <li className='mt-6 font-[300]'>
                         <span className="font-[400] ">Email</span>
                         <br />
-                        <small>test@gamil.com</small>
+                        <small>payments@leatheringo.com</small>
                     </li>
                 </ul>
             </div>
@@ -70,18 +98,13 @@ const Footer = () => {
                         <Link href="">Follow Us</Link>
                     </li>
                     <li className='mt-3 font-[300]'>
-                        <Link href="" className='flex items-center gap-2 '>
+                        <Link href="https://www.facebook.com/profile.php?id=61551923318076" className='flex items-center gap-2 '>
                             <Facebook className='text-2xl ' /> Facebook
                         </Link>
                     </li>
                     <li className='mt-6 font-[300]'>
-                        <Link href="" className='flex items-center gap-2 '>
-                            <LinkedIn className='text-2xl ' /> LinkedIn
-                        </Link>
-                    </li>
-                    <li className='mt-6 font-[300]'>
-                        <Link href="" className='flex items-center gap-2 '>
-                            <FaDiscord className='text-2xl ' /> Discord
+                        <Link href="https://instagram.com/leatheringo11?igshid=MzRlODBiNWFlZA==" className='flex items-center gap-2 '>
+                            <Instagram className='text-2xl ' /> Instagram
                         </Link>
                     </li>
                     <li className='mt-6 font-[300]'>

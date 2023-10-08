@@ -30,6 +30,10 @@ import Sneakers from "./category-icons/Sneakers.png";
 import Wallets from "./category-icons/Wallets.png";
 import ChelseaBoots from "./category-icons/ChelseaBoots.png";
 
+import AppIcon from "./pay/app.jpg"
+import PayIcon from "./pay/pay.png"
+import PlayStoreIcon from "./pay/play.jpg"
+
 
 export {
     PreLoaderIcon,
@@ -61,6 +65,10 @@ export {
     Sneakers,
     Wallets,
     ChelseaBoots,
+
+    AppIcon,
+    PayIcon,
+    PlayStoreIcon
 
 }
 

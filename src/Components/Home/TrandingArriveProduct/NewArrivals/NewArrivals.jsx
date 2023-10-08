@@ -101,12 +101,14 @@ const NewArrivals = () => {
                                     <SwiperSlide className="cursor-grab" key={product?._id} >
                                         <div className="cardBody md:m-0  mx-auto  flex flex-col hover:border-red-500  color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                             <div className="productImage ">
-                                                <Image
-                                                    src={product?.images[0]}
-                                                    width={300}
-                                                    height={300}
-                                                    className="w-full h-full"
-                                                    alt="Product Image" />
+                                                {product && product.images && product.images.length > 0 && (
+                                                    <Image
+                                                        src={product.images[0]}
+                                                        width={300}
+                                                        height={300}
+                                                        className="w-full h-full"
+                                                    />
+                                                )}
                                             </div>
                                             <hr className="w-full bg-slate-400" />
 

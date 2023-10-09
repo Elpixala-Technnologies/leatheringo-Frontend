@@ -1,10 +1,7 @@
 'use client'
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useContext, useState } from 'react';
@@ -37,12 +34,10 @@ const ProductDetails = () => {
 
   const {
     name,
-    mainCategories,
     categories,
     brand,
     price,
     discount,
-    quantity,
     type,
     status,
     size,
@@ -97,9 +92,9 @@ const ProductDetails = () => {
     }
   }
 
+
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [discountedPrice, setDiscountedPrice] = useState(mainProductData?.price || 0);
-
 
   const applyCoupon = (couponCode) => {
     // Find the coupon with the given code
@@ -182,13 +177,14 @@ const ProductDetails = () => {
                 </Swiper>
               </div>
 
-              <div className="flex mt-5 items-center space-x-4">
+              <div className="flex mt-5 md:flex-row flex-col items-center space-x-4">
                 <button
                   onClick={() => addToCart(_id)}
                   className="common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                 >
                   Add to Cart
                 </button>
+                <button className='common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Buy</button>
               </div>
             </div>
             <div className="md:col-span-2">
@@ -210,9 +206,6 @@ const ProductDetails = () => {
               </div>
 
 
-              <div className="flex  items-center gap-2 mt-2">
-                <button className='common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Buy</button>
-              </div>
               <p className="text-gray-400 text-sm my-4">
                 {details?.slice(0, 200)}...
               </p>
@@ -226,53 +219,35 @@ const ProductDetails = () => {
                   {colors &&
                     colors?.map((color, index) => {
                       return (
+
                         <div
-                          className='flex flex-col items-center gap-2'
+                          key={index}
+                          className={`bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${selectedColorIndex === index ? 'bg-opacity-100' : 'bg-opacity-50'
+                            }`}
+                          style={{
+                            backgroundColor: color.color,
+                          }}
+                          title={color.color}
+                          onClick={() => {
+                            setSelectedColorImage(color.images[0]);
+                            setSelectedColorIndex(index);
+                          }}
                         >
-                          <div
-                            key={index}
-                            className={`bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${selectedColorIndex === index ? 'bg-opacity-100' : 'bg-opacity-50'
-                              }`}
-                            style={{
-                              backgroundColor: color.color,
-                            }}
-                            title={color.color}
-                            onClick={() => {
-                              setSelectedColorImage(color.images[0]);
-                              setSelectedColorIndex(index);
-                            }}
-                          >
-                            <Image
-                              src={color.images[0]}
-                              alt={color.color}
-                              width={50}
-                              height={50}
-                              className='cursor-pointer rounded-full hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
-                            />
-                          </div>
-                          <p className='text-[0.9rem] text-center'>
-                            {color.color}
-                          </p>
+                          <Image
+                            src={color.images[0]}
+                            alt={color.color}
+                            width={50}
+                            height={50}
+                            className='cursor-pointer rounded-full hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                          />
                         </div>
+
                       );
                     })}
                 </div>
               </div>
-
               <hr />
               <div className='my-4'>
-                {/* {
-                  coupon && coupon?.map((coupon, index) => {
-                    return (
-                      <CouponSlider
-                        key={index}
-                        coupon={coupon}
-                        applyCoupon={applyCoupon} 
-                        appliedCoupon={appliedCoupon} 
-                      />
-                    )
-                  })
-                } */}
                 <CouponSlider />
               </div>
               <hr />
@@ -330,9 +305,7 @@ const ProductDetails = () => {
                             </td>
                             <td className="whitespace-nowrap px-6 py-4">
                               {
-
                                 colors && colors?.map((color, index) => {
-
                                   return (
                                     <div key={index + `colroIdsx`} className='flex items-center gap-2'>
                                       <h2 className='text-[0.9rem] text-center'>
@@ -395,10 +368,8 @@ const ProductDetails = () => {
                                     <div key={index + `colroIdsx`} className='flex items-center gap-2'>
                                       <p className='text-[0.9rem] text-center'>
                                         {
-                                          color?.quantity === 0 ? "Out of stock" : color?.quantity > 0 && color?.quantity < 10 ? "Low stock" : color?.quantity > 10 ? "In stock" : color?.quantity === null ? "Not available" : color?.quantity === undefined ? "Not available" : color?.quantity === "" ? "Not available" : color?.quantity === " " ? "Not available" : color?.quant
-                                        } : {
-                                          color?.quantity
-                                        }  , [ {color?.color}]
+                                          color?.quantity === 0 ? "Out of stock" : color?.quantity > 0 && color?.quantity < 10 ? "Low stock" : color?.quantity > 10 ? "In stock" : color?.quantity === null ? "Not available" : color?.quantity === undefined ? "Not available" : color?.quantity === "" ? "Not available" : color?.quantity === " " ? "Not available" : color?.quantity
+                                        } , [{color?.color}]
                                       </p>
                                     </div>
                                   )

@@ -37,6 +37,11 @@ import PlayStoreIcon from "./pay/play.jpg";
 import BeltBannerOne from "./banner/belt-banner-01.jpg";
 import BeltBannerTwo from "./banner/belt-banner-02.jpg";
 
+import ShoseBannerOne from "./ShoseBanner/shose-banner-01.png";
+import ShoseBannerTwo from "./ShoseBanner/shose-slider-02.png";
+import ShoseBannerThree from "./ShoseBanner/shose-slider-03.png";
+import ShoseBannerFour from "./ShoseBanner/shose-slider-04.png";
+
 
 export {
     PreLoaderIcon,
@@ -74,7 +79,13 @@ export {
     PlayStoreIcon,
 
     BeltBannerOne,
-    BeltBannerTwo
+    BeltBannerTwo,
+
+    ShoseBannerOne,
+    ShoseBannerTwo,
+    ShoseBannerThree,
+    ShoseBannerFour,
+        
 
 }
 

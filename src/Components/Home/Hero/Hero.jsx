@@ -1,88 +1,356 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useRef } from "react";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
+// import { gsap } from "gsap";
+// import Image from "next/image";
+// import { ShoseBannerOne } from "@/src/Assets";
+// import Link from "next/link";
+
+// const Hero = () => {
+//   useEffect(() => {
+//     AOS.init({
+//       duration: 1000,
+//       easing: "ease-in-out",
+//       once: true, // Change to false to repeat animations
+//     });
+
+//     // GSAP animation for the image
+//     gsap.fromTo(
+//       ".hero-image",
+//       { opacity: 0, y: 20 },
+//       { opacity: 1, y: 0, duration: 1 },
+//       {
+//         scrollTrigger: {
+//           trigger: ".hero-image",
+//           start: "top center",
+//           end: "bottom 80%",
+//           scrub: true,
+//         },
+//       },
+//       //  === Text Animation ===
+//       gsap.fromTo(
+//         ".hero-text",
+//         { opacity: 0, y: 20 },
+//         { opacity: 1, y: 0, duration: 1 },
+//         {
+//           scrollTrigger: {
+//             trigger: ".hero-text",
+//             start: "top center",
+//             end: "bottom 80%",
+//             scrub: true,
+//           },
+//         }
+//       )
+
+
+//     );
+//   }, []);
+
+//   return (
+//     <div
+//       className="hero-slider-container py-10"
+//     >
+//       <div className="flex justify-center md:flex-row flex-col items-center gap-6">
+//         <div
+//           className="flex justify-center items-center gap-2 flex-col 
+//           animate-pulse transition duration-700 ease-in-out "
+//         >
+//           <Image
+//             src={ShoseBannerOne}
+//             alt="Banner Image"
+//             className="w-[450px] h-full hero-image"
+//             width={350}
+//             height={350}
+//           />
+//         </div>
+//         <div className="flex justify-center items-center gap-2 flex-col hero-text"
+
+//         >
+//           <h1 className="text-2xl font-bold text-left">Shoe Banner Text</h1>
+//           <p className="text-sm text-gray-900 text-left first-letter: animate-pulse transition duration-600 ease-in-out">
+//             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+//             voluptatum.
+//           </p>
+//           <Link
+//             href="/products"
+//             className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-left capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+//           >
+//             Shop Now
+//           </Link>
+//         </div>
+//       </div>
+//     </div >
+//   );
+// };
+
+// export default Hero;
+
+
+// import React, { useEffect } from "react";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
+// import { gsap } from "gsap";
+// import Image from "next/image";
+// import {
+//   ShoseBannerOne,
+//   ShoseBannerTwo,
+//   ShoseBannerThree,
+//   ShoseBannerFour,
+// } from "@/src/Assets";
+// import Link from "next/link";
+// import { Carousel } from 'react-responsive-carousel';
+// import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+// const Hero = () => {
+//   useEffect(() => {
+//     AOS.init({
+//       duration: 1000,
+//       easing: "ease-in-out",
+//       once: true, // Change to false to repeat animations
+//     });
+
+//     // GSAP animation for the image
+//     gsap.fromTo(
+//       ".hero-image",
+//       { opacity: 0, y: 20 },
+//       { opacity: 1, y: 0, duration: 1 }
+//     );
+
+//     // GSAP animation for the text
+//     gsap.fromTo(
+//       ".hero-text",
+//       { opacity: 0, y: 20 },
+//       { opacity: 1, y: 0, duration: 1 }
+
+//     );
+//   }, []);
+
+//   return (
+//     <div className="hero-slider-container py-10">
+//       <Carousel showThumbs={false} infiniteLoop autoPlay>
+//         {/* Add multiple slides here */}
+//         <div>
+//           <div className="flex justify-center md:flex-row flex-col items-center gap-6">
+//             <div
+//               className="flex justify-center items-center gap-2 flex-col animate-pulse transition duration-700 ease-in-out"
+//             >
+//               <Image
+//                 src={ShoseBannerOne}
+//                 alt="Banner Image"
+//                 className="w-[200px] h-full hero-image"
+//                 width={350}
+//                 height={350}
+//               />
+//             </div>
+//             <div className="flex justify-center items-center gap-2 flex-col hero-text">
+//               <h1 className="text-2xl font-bold text-left">Shoe Banner Text</h1>
+//               <p className="text-sm text-gray-900 text-left first-letter: animate-pulse transition duration-600 ease-in-out">
+//                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+//                 voluptatum.
+//               </p>
+//               <Link
+//                 href="/products"
+//                 className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-left capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+//               >
+//                 Shop Now
+//               </Link>
+//             </div>
+//           </div>
+//         </div>
+//         {/* Add more slides as needed */}
+//       </Carousel>
+//     </div>
+//   );
+// };
+
+// export default Hero;
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { gsap } from "gsap";
 import Image from "next/image";
-
-// Import your image assets here
 import {
-  HomeSliderOne,
-  HomeSliderTwo,
-  MobileBannerOne,
-  MobileBannerTwo,
+  ShoseBannerOne,
+  ShoseBannerTwo,
+  ShoseBannerThree,
+  ShoseBannerFour,
 } from "@/src/Assets";
+import Link from "next/link";
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const Hero = () => {
-  const sliderData = [
-    {
-      id: 1,
-      brandSliderImage: HomeSliderOne,
-      mobileSliderImage: MobileBannerOne,
-      details:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-    },
-    {
-      id: 2,
-      brandSliderImage: HomeSliderTwo,
-      mobileSliderImage: MobileBannerTwo,
-      details:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-    },
-  ];
-
-  const [isMobile, setIsMobile] = useState(false);
-
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration in milliseconds
-      easing: "ease-in-out", // Easing for the animation
-      once: true, // Only animate elements once
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true, // Change to false to repeat animations
     });
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Define your mobile breakpoint
-    };
+    // GSAP animation for the image
+    gsap.fromTo(
+      ".hero-image",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1 }
+    );
 
-    handleResize(); // Check the initial screen width
-    window.addEventListener("resize", handleResize); // Listen for window resize events
-
-    return () => {
-      window.removeEventListener("resize", handleResize); // Remove the event listener when the component unmounts
-    };
+    // GSAP animation for the text
+    gsap.fromTo(
+      ".hero-text",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1 }
+    );
   }, []);
 
   return (
-    <div className="hero-slider-container">
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper heroSlider"
+    <div className="hero-slider-container py-10">
+      <Carousel showThumbs={false} infiniteLoop autoPlay
+        animation="fade"
+        showStatus={false}
+        showIndicators={true}
+        showArrows={false}
+        stopOnHover={true}
+        interval={3000}
+        transitionTime={1000}
+        // use here for animation effect image and text are full animation
+        emulateTouch={true}
+        swipeable={true}
+        swipeScrollTolerance={100}
       >
-        {sliderData &&
-          sliderData.map((slide) => (
-            <SwiperSlide key={slide.id}>
+        {/* Slide 1 */}
+        <div data-aos="fade-up">
+          <div className="flex justify-center md:flex-row flex-col items-center gap-6">
+            <div
+              className="flex justify-center items-center gap-2 flex-col animate-pulse transition duration-700 ease-in-out"
+              data-aos="fade-up"
+            >
               <Image
-                src={isMobile ? slide.mobileSliderImage : slide.brandSliderImage}
+                src={ShoseBannerOne}
                 alt="Banner Image"
-                className="w-full h-full"
-                width={isMobile ? 768 : 1920}
-                height={isMobile ? 768 : 500}
-                data-aos="fade-up" // Add AOS animation attribute
-                data-aos-duration="1000" // Set animation duration in milliseconds
+                className="w-[200px] h-full hero-image"
+                width={350}
+                height={350}
+                data-aos="fade-down"
               />
-            </SwiperSlide>
-          ))}
-      </Swiper>
+            </div>
+            <div className="flex justify-center items-center gap-2 flex-col hero-text">
+              <h1 className="text-2xl font-bold text-left" data-aos="fade-up">Shoe Banner Text 1</h1>
+              <p className="text-sm text-gray-900 text-left first-letter: animate-pulse transition duration-600 ease-in-out" data-aos="fade-up">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+                voluptatum.
+              </p>
+              <Link
+                href="/product"
+                className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-left capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+                data-aos="fade-up"
+              >
+                Shop Now
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 2 */}
+        <div data-aos="fade-up">
+          <div className="flex justify-center md:flex-row flex-col items-center gap-6">
+            <div
+              className="flex justify-center items-center gap-2 flex-col animate-pulse transition duration-700 ease-in-out"
+              data-aos="fade-up"
+            >
+              <Image
+                src={ShoseBannerTwo}
+                alt="Banner Image"
+                className="w-[200px] h-full hero-image"
+                width={350}
+                height={350}
+                data-aos="fade-down"
+              />
+            </div>
+            <div className="flex justify-center items-center gap-2 flex-col hero-text">
+              <h1 className="text-2xl font-bold text-left" data-aos="fade-up">Shoe Banner Text 2</h1>
+              <p className="text-sm text-gray-900 text-left first-letter: animate-pulse transition duration-600 ease-in-out" data-aos="fade-up">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+                voluptatum.
+              </p>
+              <Link
+                href="/product"
+                className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-left capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+                data-aos="fade-up"
+              >
+                Shop Now
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 3 */}
+        <div data-aos="fade-up">
+          <div className="flex justify-center md:flex-row flex-col items-center gap-6">
+            <div
+              className="flex justify-center items-center gap-2 flex-col animate-pulse transition duration-700 ease-in-out"
+              data-aos="fade-up"
+            >
+              <Image
+                src={ShoseBannerThree}
+                alt="Banner Image"
+                className="w-[200px] h-full hero-image"
+                width={350}
+                height={350}
+                data-aos="fade-down"
+              />
+            </div>
+            <div className="flex justify-center items-center gap-2 flex-col hero-text">
+              <h1 className="text-2xl font-bold text-left" data-aos="fade-up">Shoe Banner Text 3</h1>
+              <p className="text-sm text-gray-900 text-left first-letter: animate-pulse transition duration-600 ease-in-out" data-aos="fade-up">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+                voluptatum.
+              </p>
+              <Link
+                href="/product"
+                className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-left capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+                data-aos="fade-up"
+              >
+                Shop Now
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 4 */}
+        <div data-aos="fade-up">
+          <div className="flex justify-center md:flex-row flex-col items-center gap-6">
+            <div
+              className="flex justify-center items-center gap-2 flex-col animate-pulse transition duration-700 ease-in-out"
+              data-aos="fade-up"
+            >
+              <Image
+                src={ShoseBannerFour}
+                alt="Banner Image"
+                className="w-[200px] h-full hero-image"
+                width={350}
+                height={350}
+                data-aos="fade-down"
+              />
+            </div>
+            <div className="flex justify-center items-center gap-2 flex-col hero-text">
+              <h1 className="text-2xl font-bold text-left" data-aos="fade-up">Shoe Banner Text 4</h1>
+              <p className="text-sm text-gray-900 text-left first-letter: animate-pulse transition duration-600 ease-in-out" data-aos="fade-up">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+                voluptatum.
+              </p>
+              <Link
+                href="/product"
+                className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-left capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+                data-aos="fade-up"
+              >
+                Shop Now
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Add more slides as needed */}
+      </Carousel>
     </div>
   );
 };

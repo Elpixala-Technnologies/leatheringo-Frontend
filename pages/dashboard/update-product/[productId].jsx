@@ -56,6 +56,8 @@ const UpdatePorductPage = () => {
         features,
         colors,
         coupon,
+        minimumQuantity,
+        extraDiscount,
     } = singleProductData;
 
     useEffect(() => {
@@ -71,6 +73,8 @@ const UpdatePorductPage = () => {
         setValue("productFeatures", features?.join(', '));
         setValue("coupon", coupon);
         setValue("productColors", colors);
+        setValue("minimumQuantity", minimumQuantity);
+        setValue("extraDiscount", extraDiscount);
     }, [
         name, categories, mainCategories, brand, price, discount, type, status, details, features, colors, coupon
     ]);
@@ -191,6 +195,8 @@ const UpdatePorductPage = () => {
                 type: inputValue.productType,
                 status: inputValue.productStatus,
                 details: inputValue.productDetails,
+                extraDiscount: inputValue.extraDiscount,
+                minimumQuantity: inputValue.minimumQuantity,
                 features: featuresArray,
                 colors: inputValue.productColors.map((item, colorIndex) => {
                     const { color, sizes, quantity, images } = item;
@@ -299,6 +305,22 @@ const UpdatePorductPage = () => {
                                 className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
                                 defaultValue={name}
                                 {...register("productName")}
+                            />
+                            <input
+                                placeholder="Minimum Quantity"
+                                name="minimumQuantity"
+                                type="text"
+                                className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
+                                defaultValue={minimumQuantity}
+                                {...register("minimumQuantity")}
+                            />
+                            <input
+                                placeholder="Extra Discount"
+                                name="extraDiscount"
+                                type="text"
+                                className=" border-[2px] border-[#000] text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md pl-10 pr-2.5 py-3"
+                                defaultValue={extraDiscount}
+                                {...register("extraDiscount")}
                             />
 
                             <select

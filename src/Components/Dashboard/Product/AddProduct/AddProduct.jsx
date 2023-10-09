@@ -173,6 +173,8 @@ const AddProduct = () => {
         features: features,
         colors: color,
         coupon: coupon,
+        extraDiscount: inputValue.extraDiscount,
+        minimumQuantity: inputValue.minimumQuantity,
       }
 
       console.log(productData);
@@ -310,6 +312,17 @@ const AddProduct = () => {
             placeholder="Discount Percentage"
             className='border-2 border-gray-300 rounded-md p-2'
             {...register("discountPercentage")}
+          />
+
+          <input type="number"
+            placeholder="Minimum Quantity"
+            className='border-2 border-gray-300 rounded-md p-2'
+            {...register("minimumQuantity")}
+          />
+          <input type="number"
+            placeholder="Extra Discount"
+            className='border-2 border-gray-300 rounded-md p-2'
+            {...register("extraDiscount")}
           />
 
           <select name="status" id="status"

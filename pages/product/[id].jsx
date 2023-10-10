@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import RootLayout from '@/src/Layouts/RootLayout';
 import { addToCartUrl } from '@/src/Utils/Urls/ProductUrl';
 import Swal from 'sweetalert2';
@@ -18,8 +18,6 @@ const ProductDetails = () => {
   const { user } = useContext(AuthContext);
   const router = useRouter();
   const { id } = router.query;
-  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
-
   let mainProductData;
 
   const filterproductData = productData?.filter((data) => {
@@ -40,14 +38,37 @@ const ProductDetails = () => {
     discount,
     type,
     status,
-    size,
     details,
     features,
     colors,
     coupon,
     _id,
   } = mainProductData || {};
-  const [selectedColorImage, setSelectedColorImage] = useState(mainProductData?.colors[0]?.images[0] || null);
+
+  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+
+  const [selectedColorImages, setSelectedColorImages] = useState([]);
+
+  const [selectedImage, setSelectedImage] = useState(null); // State variable to store the selected image URL
+
+  const handleColorClick = (index) => {
+    const clickedColor = colors[index];
+    setSelectedColorIndex(clickedColor);
+
+    if (clickedColor?.images) {
+      setSelectedColorImages(clickedColor.images);
+    }
+  };
+
+
+  useEffect(() => {
+    if (colors && colors?.length > 0) {
+      setSelectedColorIndex(colors[0]);
+      setSelectedColorImages(colors[0]?.images);
+    }
+  }, [colors]);
+
+
 
   // ====== Add to cart ======
 
@@ -93,6 +114,7 @@ const ProductDetails = () => {
   }
 
 
+
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [discountedPrice, setDiscountedPrice] = useState(mainProductData?.price || 0);
 
@@ -116,10 +138,10 @@ const ProductDetails = () => {
         <div className="md:container mx-auto mt-3 flex justify-between items-center">
           <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
             <div className="">
-              <div className="img-box shadow rounded bg-[#f1e8e8] p-2 flex justify-center">
-                {selectedColorImage ? (
+              <div className="img-box shadow w-full items-center rounded bg-[#f1e8e8] p-2 flex justify-center">
+                {selectedImage ? (
                   <Image
-                    src={selectedColorImage}
+                    src={selectedImage}
                     alt={name}
                     width={300}
                     height={300}
@@ -127,16 +149,17 @@ const ProductDetails = () => {
                   />
                 ) : (
                   <Image
-                    src={mainProductData?.colors[0]?.images[0]} // Set the default image URL here
-                    alt={name}
+                    src={mainProductData?.colors[0]?.images[0]}
+                    alt={mainProductData?.colors[0]?.color}
                     width={300}
                     height={300}
                     className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
                   />
                 )}
               </div>
+
               <br />
-              <div className='h-[10%]'>
+              <div className="md:h-[8%] h-[15%]">
                 <Swiper
                   slidesPerView={4}
                   spaceBetween={10}
@@ -144,38 +167,28 @@ const ProductDetails = () => {
                     clickable: true,
                   }}
                   modules={[]}
-                  className='mySwiper'
+                  className="mySwiper"
                 >
-                  {colors &&
-                    colors?.map((color, index) => {
+                  {
+                    selectedColorImages && selectedColorImages?.map((image, index) => {
                       return (
-                        <SwiperSlide
-                          key={index}
-                          onClick={() => {
-                            setSelectedColorImage(color.images[0]);
-                            setSelectedColorIndex(index);
-                          }}
+                        <SwiperSlide key={index}
+                          onClick={() => setSelectedImage(image)}
                         >
-                          <div
-                            className={`bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${selectedColorIndex === index ? 'bg-opacity-100' : 'bg-opacity-50'
-                              }`}
-                            style={{
-                              backgroundColor: color.color,
-                            }}
-                            title={color.color}
-                          >
-                            <Image
-                              src={color.images[0]}
-                              alt={color.color}
-                              width={100}
-                              height={100}
-                            />
-                          </div>
+                          <Image
+                            src={image}
+                            alt={colors[selectedColorIndex]?.color}
+                            width={100}
+                            height={100}
+                            className='cursor-pointer rounded hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                          />
                         </SwiperSlide>
-                      );
-                    })}
+                      )
+                    })
+                  }
                 </Swiper>
               </div>
+
 
               <div className="flex mt-5 md:flex-row  gap-2 items-center space-x-4">
                 <button
@@ -210,42 +223,38 @@ const ProductDetails = () => {
                 {details?.slice(0, 200)}...
               </p>
               <hr />
-
               <div className="mt-5">
-                <h4 className='text-lg font-semibold capitalize'>
-                  Available Colors
-                </h4>
-                <div className='flex items-center gap-2 my-4'>
+                <h4 className="text-lg font-semibold capitalize">Available Colors</h4>
+                <div className="flex items-center gap-2 my-4">
                   {colors &&
-                    colors?.map((color, index) => {
-                      return (
-
+                    colors?.map((color, index) => (
+                      <div key={index} className='flex flex-col justify-center  gap-2'>
                         <div
-                          key={index}
                           className={`bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${selectedColorIndex === index ? 'bg-opacity-100' : 'bg-opacity-50'
                             }`}
                           style={{
                             backgroundColor: color.color,
                           }}
                           title={color.color}
-                          onClick={() => {
-                            setSelectedColorImage(color.images[0]);
-                            setSelectedColorIndex(index);
-                          }}
+                          onClick={() => handleColorClick(index)}
                         >
                           <Image
                             src={color.images[0]}
                             alt={color.color}
                             width={50}
                             height={50}
-                            className='cursor-pointer rounded-full hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                            className="cursor-pointer rounded-full hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130"
                           />
                         </div>
-
-                      );
-                    })}
+                        <p>
+                          {color.color}
+                        </p>
+                      </div>
+                    ))}
                 </div>
               </div>
+
+
               <hr />
               <div className='my-4'>
                 <CouponSlider />
@@ -301,7 +310,7 @@ const ProductDetails = () => {
 
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Size & Quantity :
+                              Size:
                             </td>
                             <td className="whitespace-nowrap px-6 py-4">
                               {
@@ -318,7 +327,7 @@ const ProductDetails = () => {
                                                 color?.sizes.map((size, index) => {
                                                   return (
                                                     <p key={index + `size`} className='text-[0.9rem] text-center'>
-                                                      {size?.size}  : [{size?.quantity}]
+                                                      {size?.size} ,
                                                     </p>
                                                   )
                                                 })
@@ -350,26 +359,6 @@ const ProductDetails = () => {
                                     <div key={index + `colroIdsx`} className='flex items-center gap-2'>
                                       <p className='text-[0.9rem] text-center'>
                                         {color.color} ,
-                                      </p>
-                                    </div>
-                                  )
-                                })
-                              }
-                            </td>
-                          </tr>
-                          <tr className="border-b dark:border-neutral-500">
-                            <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Total Quantity :
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-4">
-                              {
-                                colors && colors?.map((color, index) => {
-                                  return (
-                                    <div key={index + `colroIdsx`} className='flex items-center gap-2'>
-                                      <p className='text-[0.9rem] text-center'>
-                                        {
-                                          color?.quantity === 0 ? "Out of stock" : color?.quantity > 0 && color?.quantity < 10 ? "Low stock" : color?.quantity > 10 ? "In stock" : color?.quantity === null ? "Not available" : color?.quantity === undefined ? "Not available" : color?.quantity === "" ? "Not available" : color?.quantity === " " ? "Not available" : color?.quantity
-                                        } , [{color?.color}]
                                       </p>
                                     </div>
                                   )

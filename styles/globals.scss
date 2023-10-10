@@ -166,6 +166,11 @@ img {
 }
 
 
+.control-dots {
+  display: none;
+}
+
+
 ///////      End of Common Css Style  ////////
 
 
@@ -212,5 +217,20 @@ img {
   background-size: cover;
   background-position: center;
   padding: 100px 0;
+
+}
+
+// ///////       Belt Banner section     ////////
+
+.belt-banner-section {
+  background-image: url("../src/Assets/banner/belt-banner-02.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  background-blend-mode: color;
+  background-color: #000000a6;
+
+
 
 }

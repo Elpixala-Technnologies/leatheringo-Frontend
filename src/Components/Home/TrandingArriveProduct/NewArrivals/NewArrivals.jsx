@@ -133,7 +133,7 @@ const NewArrivals = () => {
                                                     </span>
                                                 </div>
                                                 <p className="productDescription py-3 text-left">
-                                                    {product?.details?.slice(0, 60)}
+                                                    {product?.details?.slice(0, 46)+"..."}
                                                 </p>
                                                 <div className="productAddToCart flex gap-5 items-center">
                                                     <div>

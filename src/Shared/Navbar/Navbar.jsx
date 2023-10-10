@@ -18,9 +18,10 @@ const Navbar = () => {
   const [isAdmin] = useAdmin();
 
   return (
-    <nav className="bg-[#FAFAFA] md:px-4 border-b py-2 flex items-center text-black md:container">
-      <div className="container flex items-center  justify-between md:mx-auto">
-        <div className="flex items-center gap-4">
+    <nav className="bg-[#FAFAFA] md:px-4 border-b py-2 flex items-center text-black md:container ">
+      <div className="md:container flex items-center mx-2 justify-between w-full md:mx-auto">
+        
+        <div className="md:flex md:items-center gap-4">
           <Link className='text-2xl font-bold text-black' href="/">
             <Image src={MainLogo} alt="logo" width={130} height={80}
               className='cursor-pointer hover:scale-105 duration-300 transform'
@@ -72,21 +73,21 @@ const Navbar = () => {
         </ul>
 
         {/* shop and menu button group for small device */}
-        <div className="flex justify-between gap-4 md:hidden">
+        <div className="flex  gap-4 md:hidden">
           <Link href="/cart">
             <div className='bg-[#9cb3dd43] w-[40px] rounded-full flex items-center justify-center h-[40px]'>
               <MdOutlineShoppingBag className='text-2xl text-[#335187]' />
             </div>
           </Link>
-
-
           <button className='block md:hidden' onClick={() => setOpen(!open)}>
             <AiOutlineMenu className='text-3xl' />
           </button>
         </div>
 
         {/* side bar for small device */}
-        <div className={`${open ? 'left-0 ' : 'left-[-250%]'} duration-300 w-full overflow-hidden fixed bg-[#172733] h-screen top-0 p-4 text-white z-10`}>
+        <div className={`${open ? 'left-0 ' : 'left-[-250%]'} duration-300 w-full overflow-hidden fixed bg-[#172733] h-screen top-0 p-4 text-white `}
+          style={{ zIndex: 1000 }}
+        >
           <button className='float-right' onClick={() => setOpen(!open)}>
             <Close className='text-5xl' />
           </button><br />

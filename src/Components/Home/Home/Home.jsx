@@ -10,7 +10,7 @@ import BeltBanner from '../BeltBanner/BeltBanner';
 const HomeComponent = () => {
     return (
         <section>
-            <div className="container">
+            <div className="md:container">
                 <Hero />
                 {/* ====== HomeInfoCard ====== */}
                 <HomeInfoCard />
@@ -23,8 +23,6 @@ const HomeComponent = () => {
                 <OfferBanner />
                 {/* ====== TrandingArriveProduct ====== */}
                 <NewArrivals />
-
-
             </div>
         </section>
     );

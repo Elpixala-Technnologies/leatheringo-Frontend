@@ -404,7 +404,7 @@ const BottomNav = () => {
                     </ul>
                 </div>
 
-                <div className="md:hidden block">
+                <div className="md:hidden block z-50">
                     <div
                         onClick={handleMobileMenuToggle}
                         className='flex px-4 items-center gap-2 bg-white p-2 rounded-md shadow-md cursor-pointer w-[100vw]'
@@ -415,7 +415,7 @@ const BottomNav = () => {
                     </div>
                     {
                         mobileMenuVisible && (
-                            <ul className='flex gap-4 flex-col bg-white my-2 w-[100vw] p-4'
+                            <ul className='flex gap-4 flex-col bg-white my-2 w-[100vw] p-4 z-50'
                                 data-aos="fade-up"
                             >
                                 <li>
@@ -423,7 +423,8 @@ const BottomNav = () => {
                                         onMouseEnter={() => handleMouseEnter('shoes')}
                                         onMouseLeave={() => handleMouseLeave('shoes')}
                                     >
-                                        <span className="text relative cursor-pointer">Shoes</span>
+                                        <span className="text relative cursor-pointer"
+                                        >Shoes</span>
                                         {megaMenuVisible.shoes && (
                                             <div
                                                 className={`mega-menu border z-50 bg-white  absolute w-[100%]  left-0 right-0 rounded p-4 transition-opacity opacity-100`}
@@ -437,7 +438,7 @@ const BottomNav = () => {
                                                         </Link>
                                                     </li>
                                                     <hr className="border border-gray-300 my-2" />
-                                                    <div className='flex gap-6 md:flex-row flex-col'>
+                                                    <div className='flex gap-6 md:flex-row flex-col  z-50'>
                                                         <div className='md:border-r-2 md:p-4'>
                                                             <li>
                                                                 <Link href={`/category-product/Formal`}>
@@ -510,7 +511,7 @@ const BottomNav = () => {
                                                                             return (
                                                                                 <Link key={product?.id} href={`/product/${product?.id}`} data-aos="fade-up">
                                                                                     <div
-                                                                                        className="cardBody md:m-0  mx-auto w-[200px]  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
+                                                                                        className="cardBody md:m-0  mx-auto   flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
                                                                                     >
                                                                                         <div className="p-2 productImage">
                                                                                             <Image
@@ -562,7 +563,8 @@ const BottomNav = () => {
                                         onMouseLeave={() => handleMouseLeave('bags')}
                                         className='cursor-pointer'
                                     >
-                                        <span className="text relative cursor-pointer">Bags</span>
+                                        <span className="text relative cursor-pointer"
+                                        >Bags</span>
                                         {megaMenuVisible.bags && (
                                             <div
                                                 className={`mega-menu border bg-white z-50 absolute w-[100%] left-0 right-0 rounded p-4 transition-opacity opacity-100`}
@@ -576,7 +578,7 @@ const BottomNav = () => {
                                                         </Link>
                                                     </li>
                                                     <hr className="border border-gray-300 my-2" />
-                                                    <div className='flex gap-6 md:flex-row flex-col'>
+                                                    <div className='flex gap-6 md:flex-row flex-col  z-50'>
                                                         <div className='border-r-2 p-4'>
                                                             <li>
                                                                 <Link href={`/category-product/Duffle Bags`}>
@@ -609,7 +611,7 @@ const BottomNav = () => {
                                                                             return (
                                                                                 <Link key={product?.id} href={`/product/${product?._id}`} data-aos="fade-up">
                                                                                     <div
-                                                                                        className="cardBody md:m-0  mx-auto w-[200px]  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
+                                                                                        className="cardBody md:m-0  mx-auto   flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
                                                                                     >
                                                                                         <div className="p-2 productImage">
                                                                                             <Image
@@ -661,7 +663,8 @@ const BottomNav = () => {
                                         onMouseLeave={() => handleMouseLeave('belts')}
                                         className='cursor-pointer'
                                     >
-                                        <span className="text relative cursor-pointer">Belts</span>
+                                        <span className="text relative cursor-pointer"
+                                        >Belts</span>
                                         {megaMenuVisible.belts && (
                                             <div
                                                 className={`mega-menu border bg-white z-50 absolute w-[100%] left-0 right-0 rounded p-4 transition-opacity opacity-100`}
@@ -675,7 +678,7 @@ const BottomNav = () => {
                                                         </Link>
                                                     </li>
                                                     <hr className="border border-gray-300 my-2" />
-                                                    <div className='flex gap-6'>
+                                                    <div className='flex gap-6 flex-col  z-50'>
                                                         <div className='md:p-4 border-r-2'>
                                                             <li>
                                                                 <Link href={`/category-product/Mens`}>
@@ -697,7 +700,7 @@ const BottomNav = () => {
                                                                             return (
                                                                                 <Link key={product?.id} href={`/product/${product?._id}`} data-aos="fade-up">
                                                                                     <div
-                                                                                        className="cardBody md:m-0  mx-auto w-[200px]  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
+                                                                                        className="cardBody md:m-0  mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 "
                                                                                     >
                                                                                         <div className="p-2 productImage">
                                                                                             <Image

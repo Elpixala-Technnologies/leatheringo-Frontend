@@ -99,7 +99,7 @@ const FeaturedProducts = () => {
                                     </span>
                                 </div>
                                 <p className="py-3 productDescription">
-                                    {product?.details?.slice(0, 100)}
+                                    {product?.details?.slice(0, 46) + "..."}
                                 </p>
                                 <div className="flex items-center gap-5 productAddToCart">
                                     <div>

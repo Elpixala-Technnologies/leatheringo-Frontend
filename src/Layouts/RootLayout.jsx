@@ -8,7 +8,7 @@ const RootLayout = ({ children }) => {
         <main>
             <Navbar />
             <BottomNav />
-            <section className="my-4 container">
+            <section className="my-4 mx-2 md:container">
                 {children}
             </section>
             <div>

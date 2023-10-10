@@ -112,8 +112,8 @@ const ProductDetails = () => {
 
   return (
     <RootLayout>
-      <div className='pb-4 container h-full'>
-        <div className="container mx-auto mt-3 flex justify-between items-center">
+      <div className='pb-4 md:container h-full'>
+        <div className="md:container mx-auto mt-3 flex justify-between items-center">
           <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
             <div className="">
               <div className="img-box shadow rounded bg-[#f1e8e8] p-2 flex justify-center">
@@ -177,7 +177,7 @@ const ProductDetails = () => {
                 </Swiper>
               </div>
 
-              <div className="flex mt-5 md:flex-row flex-col items-center space-x-4">
+              <div className="flex mt-5 md:flex-row  gap-2 items-center space-x-4">
                 <button
                   onClick={() => addToCart(_id)}
                   className="common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"

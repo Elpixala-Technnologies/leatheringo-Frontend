@@ -19,7 +19,7 @@ const OfferBanner = () => {
                     <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div className="flex flex-col items-center justify-center gap-4 offer-banner-content">
                             <h2 className='text-[#ffff] text-[1rem]'>Explore Our Offer</h2>
-                            <p className='text-[#ffff] font-bold md:text-[2rem]'>Up to <span className='text-[#f0ab4bf2]'>70% Off </span>  – All Shoes and Footwear</p>
+                            <p className='text-[#ffff] text-center font-bold md:text-[2rem]'>Up to <span className='text-[#f0ab4bf2]'>70% Off </span>  – All Shoes and Footwear</p>
 
                             <Link href="/product" className='common-btn'>Shop Now</Link>
                         </div>

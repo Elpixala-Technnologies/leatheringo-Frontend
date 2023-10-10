@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import Image from "next/image";
 import { BeltBannerOne, BeltBannerTwo } from "@/src/Assets";
+import Link from "next/link";
 
 const BeltBanner = () => {
     useEffect(() => {
@@ -62,34 +63,19 @@ const BeltBanner = () => {
         <section
             data-aos="fade-up"
             data-aos-duration="1000"
+            className="belt-banner-section"
         >
-            <div className="hero-slider-container h-[70vh]">
-                <Swiper
-                    spaceBetween={30}
-                    centeredSlides={true}
-                    autoplay={{
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    }}
-                    loop={true}
-                    modules={[Autoplay, Pagination, Navigation]}
-                    className="mySwiper heroSlider"
-                >
-                    {beltBannerData &&
-                        beltBannerData.map((slide) => (
-                            <SwiperSlide key={slide.id}>
-                                <Image
-                                    src={isMobile ? slide?.mobileBannerImage : slide?.desktopBanner}
-                                    alt="Banner Image"
-                                    className="w-full h-full"
-                                    width={isMobile ? 768 : 1920}
-                                    height={isMobile ? 768 : 500}
-                                    data-aos="fade-up" // Add AOS animation attribute
-                                    data-aos-duration="1000" // Set animation duration in milliseconds
-                                />
-                            </SwiperSlide>
-                        ))}
-                </Swiper>
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div className="flex flex-col items-center justify-center gap-4 offer-banner-content">
+                            <h2 className='text-[#ffff] text-[1rem]'>Explore Our Offer</h2>
+                            <p className='text-[#ffff] text-center font-bold md:text-[2rem]'>Up to <span className='text-[#f0ab4bf2]'>40% Off </span>  – All Belts</p>
+
+                            <Link href="/product" className='common-btn'>Shop Now</Link>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </section>

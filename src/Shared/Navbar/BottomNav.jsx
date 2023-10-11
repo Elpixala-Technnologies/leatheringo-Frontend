@@ -70,15 +70,15 @@ const BottomNav = () => {
 
     return (
         <section className='relative'>
-            <div className="bottom-navs  w-[100%] h-[100%] flex justify-center items-center my-2">
-                <div className="hidden md:block">
+            <div className="bottom-navs container md:bg-[#010101e1]  p-4 w-[100%] h-[100%] flex justify-center items-center my-2">
+                <div className="hidden md:block ">
                     <ul className='flex gap-4 '>
                         <li>
                             <div
                                 onMouseEnter={() => handleMouseEnter('shoes')}
                                 onMouseLeave={() => handleMouseLeave('shoes')}
                             >
-                                <span className="text relative cursor-pointer">Shoes</span>
+                                <span className="text relative cursor-pointer text-white">Shoes</span>
                                 {megaMenuVisible.shoes && (
                                     <div
                                         className={`mega-menu border z-50 bg-white  absolute w-[100%]  left-0 right-0 rounded p-4 transition-opacity opacity-100`}
@@ -217,7 +217,7 @@ const BottomNav = () => {
                                 onMouseLeave={() => handleMouseLeave('bags')}
                                 className='cursor-pointer'
                             >
-                                <span className="text relative cursor-pointer">Bags</span>
+                                <span className="text relative cursor-pointer text-white">Bags</span>
                                 {megaMenuVisible.bags && (
                                     <div
                                         className={`mega-menu border bg-white z-50 absolute w-[100%] left-0 right-0 rounded p-4 transition-opacity opacity-100`}
@@ -316,7 +316,7 @@ const BottomNav = () => {
                                 onMouseLeave={() => handleMouseLeave('belts')}
                                 className='cursor-pointer'
                             >
-                                <span className="text relative cursor-pointer">Belts</span>
+                                <span className="text relative cursor-pointer text-white">Belts</span>
                                 {megaMenuVisible.belts && (
                                     <div
                                         className={`mega-menu border bg-white z-50 absolute w-[100%] left-0 right-0 rounded p-4 transition-opacity opacity-100`}
@@ -400,12 +400,12 @@ const BottomNav = () => {
                         </li>
                         <li>
                             <Link href={`/category-product/Card Holders`}>
-                                <span className="text">Card Holders</span>
+                                <span className="text text-white">Card Holders</span>
                             </Link>
                         </li>
                         <li>
                             <Link href={`/category-product/Wallets`}>
-                                <span className="text">Wallets</span>
+                                <span className="text text-white">Wallets</span>
                             </Link>
                         </li>
                     </ul>

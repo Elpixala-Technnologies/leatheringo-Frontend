@@ -189,16 +189,6 @@ const ProductDetails = () => {
                 </Swiper>
               </div>
 
-
-              <div className="flex mt-5 md:flex-row  gap-2 items-center space-x-4">
-                <button
-                  onClick={() => addToCart(_id)}
-                  className="common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
-                >
-                  Add to Cart
-                </button>
-                <button className='common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Buy</button>
-              </div>
             </div>
             <div className="md:col-span-2">
               <h1 className="text-xl font-[500] md:w-[500px]">{name}</h1>
@@ -225,37 +215,77 @@ const ProductDetails = () => {
               <hr />
               <div className="mt-5">
                 <h4 className="text-lg font-semibold capitalize">Available Colors</h4>
+                <p className='my-2'>
+                  {selectedColorIndex?.color}
+                </p>
                 <div className="flex items-center gap-2 my-4">
-                  {colors &&
-                    colors?.map((color, index) => (
-                      <div key={index} className='flex flex-col justify-center  gap-2'>
+
+                  {colors && colors?.map((color, index) => {
+                    const availableColor = color.color.toLowerCase();
+                    const isSelected = selectedColorIndex === index;
+
+                    return (
+                      <div key={index} className="flex flex-col justify-center gap-2">
                         <div
-                          className={`bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${selectedColorIndex === index ? 'bg-opacity-100' : 'bg-opacity-50'
+                          className={`bg-[#f1e8e8] p-1 rounded-full w-[2rem] h-[2rem] cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${isSelected ? 'bg-opacity-100 ' : 'bg-opacity-50'
                             }`}
                           style={{
-                            backgroundColor: color.color,
+                            backgroundColor: availableColor,
+                            border: isSelected ? '4px solid #ff5733' : '2px solid #3aa1b8',
                           }}
                           title={color.color}
                           onClick={() => handleColorClick(index)}
-                        >
-                          <Image
-                            src={color.images[0]}
-                            alt={color.color}
-                            width={50}
-                            height={50}
-                            className="cursor-pointer rounded-full hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130"
-                          />
-                        </div>
-                        <p>
-                          {color.color}
-                        </p>
+                        ></div>
                       </div>
-                    ))}
+                    );
+                  })}
+
                 </div>
               </div>
 
+              <div>
+                <h4 className="text-lg font-semibold capitalize">Available Sizes</h4>
+                <div className="flex items-center gap-2 my-4">
+                  {
+                    selectedColorIndex?.isSizeApplicable ? (
+                      <div className='flex flex-wrap gap-4'>
+                        {
+                          selectedColorIndex?.sizes.map((size, index) => {
+                            return (
+                              <div
+                                key={index + `size`}
+                              >
+                                <p className='text-[0.9rem] text-center border-2 px-3 py-1 rounded'>
+                                  {size?.size} 
+                                </p>
+                              </div>
+                            )
+                          })
+                        }
+                      </div>
+                    ) : (
+                      <>
+                        <p className='text-[0.9rem] text-center'>
+                          Not applicable
+                        </p>
+                      </>
+                    )
+                  }
+                </div>
+              </div>
 
               <hr />
+
+              <div className="flex mt-5 md:flex-row  gap-2 items-center space-x-4">
+                <button
+                  onClick={() => addToCart(_id)}
+                  className="common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                >
+                  Add to Cart
+                </button>
+                <button className='common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Buy Now</button>
+              </div>
+
               <div className='my-4'>
                 <CouponSlider />
               </div>
@@ -308,46 +338,7 @@ const ProductDetails = () => {
                             </td>
                           </tr>
 
-                          <tr className="border-b dark:border-neutral-500">
-                            <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Size:
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-4">
-                              {
-                                colors && colors?.map((color, index) => {
-                                  return (
-                                    <div key={index + `colroIdsx`} className='flex items-center gap-2'>
-                                      <h2 className='text-[0.9rem] text-center'>
-                                        {
-                                          color?.isSizeApplicable ? (
-                                            <div
-                                              className='flex items-center gap-2'
-                                            >
-                                              {
-                                                color?.sizes.map((size, index) => {
-                                                  return (
-                                                    <p key={index + `size`} className='text-[0.9rem] text-center'>
-                                                      {size?.size} ,
-                                                    </p>
-                                                  )
-                                                })
-                                              }
-                                            </div>
-                                          ) : (
-                                            <>
-                                              <p className='text-[0.9rem] text-center'>
-                                                Not applicable
-                                              </p>
-                                            </>
-                                          )
-                                        }
-                                      </h2>
-                                    </div>
-                                  )
-                                })
-                              }
-                            </td>
-                          </tr>
+                   
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
                               Total Color :

@@ -1,7 +1,7 @@
 import useProducts from '@/src/Hooks/useProducts';
 import DashboardLayout from '@/src/Layouts/DashboardLayout';
 import { getSingelProductUrl, updateProductsUrl } from '@/src/Utils/Urls/ProductUrl';
-import { Button, Select } from 'antd';
+import { Button, Cascader, Select } from 'antd';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -19,7 +19,7 @@ const UpdatePorductPage = () => {
     const [couponSelected, setCouponSelected] = useState([]);
     const { handleSubmit, register, setValue,
         getValues, } = useForm();
-    const { allCategoryData, couponData, categoryData, refetchProducts } = useProducts();
+    const { couponData, categoryData, refetchProducts } = useProducts();
     const [loading, setLoading] = useState(false);
     const [prevValues, setPrevValues] = useState({});
 
@@ -160,6 +160,82 @@ const UpdatePorductPage = () => {
     // ===== color =====
 
 
+    // ========== category========
+
+    const [selectedMainCategory, setSelectedMainCategory] = useState('');
+    const [selectedSubcategory, setSelectedSubcategory] = useState('');
+    const [selectedProductCategories, setSelectedProductCategories] = useState([]);
+
+    const handleMainCategoryChange = (value) => {
+        setSelectedMainCategory(value);
+        setSelectedSubcategory('');
+    };
+
+    const handleSubCategoryChange = (value) => {
+        setSelectedSubcategory(value);
+    };
+
+
+    useEffect(() => {
+        if (selectedMainCategory) {
+            setSelectedSubcategory('');
+            setSelectedProductCategories([]);
+        }
+    }, [selectedMainCategory]);
+
+    const mainCategoryData = categoryData?.find((category) => category.name === selectedMainCategory);
+    const subcategories = mainCategoryData ? mainCategoryData.children : [];
+
+    const createIndentedSubcategoryOptions = (subcategories, parentIndent = '') => {
+        return subcategories?.flatMap((subcategory) => {
+            const subcategoryWithIndentation = {
+                value: subcategory.name,
+                label: parentIndent + subcategory.name,
+            };
+
+            if (subcategory.children && subcategory.children.length > 0) {
+                return [
+                    subcategoryWithIndentation,
+                    ...createIndentedSubcategoryOptions(subcategory.children, parentIndent + '  '),
+                ];
+            }
+
+            return subcategoryWithIndentation;
+        });
+    };
+
+    const indentedSubcategoryOptions = createIndentedSubcategoryOptions(subcategories);
+
+    const createCascaderOptions = (categories) => {
+        return categories?.map((category) => {
+            const children = category.children && category.children.length > 0
+                ? createCascaderOptions(category.children)
+                : null;
+
+            return {
+                label: category.name,
+                value: category.name,
+                children,
+            };
+        });
+    };
+
+    const cascaderOptions = createCascaderOptions(categoryData);
+
+    const handleProductCategoriesChange = (value, selectedOptions) => {
+        if (value && value.length === 2) {
+            setSelectedMainCategory(value[0]);
+            setSelectedSubcategory(value[1]);
+        } else {
+            setSelectedMainCategory('');
+            setSelectedSubcategory('');
+        }
+    };
+
+
+    // ========== category========
+
+
 
     const onSubmit = async (inputValue) => {
         try {
@@ -187,8 +263,8 @@ const UpdatePorductPage = () => {
             // Construct product update data
             const productUpdateData = {
                 name: inputValue.productName,
-                categories: inputValue.productCategories,
-                mainCategories: inputValue.mainCategories,
+                categories: selectedProductCategories,
+                mainCategories: selectedMainCategory,
                 brand: inputValue.productBrand,
                 price: inputValue.productPrice,
                 discount: inputValue.productDiscount,
@@ -323,7 +399,7 @@ const UpdatePorductPage = () => {
                                 {...register("extraDiscount")}
                             />
 
-                            <select
+                            {/* <select
                                 name="main-category"
                                 id="main-category"
                                 className="border-2 border-gray-300 rounded-md p-2"
@@ -363,7 +439,51 @@ const UpdatePorductPage = () => {
                                         {category?.name}
                                     </option>
                                 ))}
+                            </select> */}
+
+                            <select
+                                name="main-category"
+                                id="main-category"
+                                className="border-2 border-gray-300 rounded-md p-2"
+                                value={selectedMainCategory}
+                                onChange={(e) => handleMainCategoryChange(e.target.value)}
+                            >
+                                <option value="">
+                                    {
+                                        mainCategories
+                                    }
+                                </option>
+                                {categoryData?.map((category) => (
+                                    <option key={category._id} value={category.name}>
+                                        {category.name}
+                                    </option>
+                                ))}
                             </select>
+
+                            <div className="category-select">
+                                <Select
+                                    mode="multiple"
+                                    size="large"
+                                    placeholder="Select SubCategory"
+                                    value={selectedSubcategory}
+                                    defaultValue={categories}
+                                    onChange={handleSubCategoryChange}
+                                    style={{
+                                        width: '100%',
+                                    }}
+                                    options={indentedSubcategoryOptions}
+                                />
+                            </div>
+
+                            <div className="category-select">
+                                <Cascader
+                                    options={cascaderOptions}
+                                    value={[selectedMainCategory, selectedSubcategory]}
+                                    onChange={(value, selectedOptions) => handleProductCategoriesChange(value, selectedOptions)}
+                                    placeholder="Select Categories"
+                                />
+
+                            </div>
 
                             <input type="text"
                                 placeholder="Brand"
@@ -456,7 +576,7 @@ const UpdatePorductPage = () => {
                                         const { isSizeApplicable, sizes, quantity, images, color } = item;
                                         return (
                                             <div key={colorIndex} className="border-2 border-gray-300 rounded-md p-4 my-2">
-                                                <div className="form-control">
+                                                <div className="form-control my-2">
                                                     <label className="label">
                                                         <span className="label-text">Color: </span>
                                                     </label>

@@ -170,6 +170,18 @@ img {
   display: none;
 }
 
+.category-level-0 {
+  padding-left: 10px;
+}
+
+.category-level-1 {
+  padding-left: 30px;
+}
+
+.category-level-2 {
+  padding-left: 50px;
+}
+
 
 ///////      End of Common Css Style  ////////
 
@@ -230,7 +242,4 @@ img {
   padding: 100px 0;
   background-blend-mode: color;
   background-color: #000000a6;
-
-
-
 }

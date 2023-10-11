@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Input } from 'antd';
+import { Cascader, Input } from 'antd';
 const { TextArea } = Input;
 import { Select } from 'antd';
 import Swal from "sweetalert2";
 import { createProductUrl } from '@/src/Utils/Urls/ProductUrl';
 import useProducts from '@/src/Hooks/useProducts';
 import { FaTrashAlt } from 'react-icons/fa';
+const { Option } = Select;
+
+
+
 
 
 const AddProduct = () => {
@@ -17,12 +21,83 @@ const AddProduct = () => {
   const cloud_folder = process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_FOLDER;
 
   const { handleSubmit, register } = useForm();
-  const { allCategoryData, couponData, categoryData } = useProducts()
+  const { couponData, categoryData } = useProducts()
   const [coupon, setCoupon] = useState("");
   const [features, setFeatures] = useState([]);
   const [loading, setLoading] = useState(false);
   const [description, setDescription] = useState(null);
   const [isSizeApplicable, setIsSizeApplicable] = useState(false);
+
+  // ===== category +++++
+  const [selectedMainCategory, setSelectedMainCategory] = useState('');
+  const [selectedSubcategory, setSelectedSubcategory] = useState('');
+
+  const handleMainCategoryChange = (value) => {
+    setSelectedMainCategory(value);
+    setSelectedSubcategory('');
+  };
+
+  const handleSubCategoryChange = (value) => {
+    setSelectedSubcategory(value);
+  };
+
+  const mainCategoryData = categoryData?.find((category) => category.name === selectedMainCategory);
+  const subcategories = mainCategoryData ? mainCategoryData.children : [];
+
+  useEffect(() => {
+    if (subcategories.length > 0) {
+      setSelectedSubcategory(subcategories[0].name);
+    }
+  }, [subcategories, selectedMainCategory]);
+
+  const createIndentedSubcategoryOptions = (subcategories, parentIndent = '') => {
+    return subcategories.flatMap((subcategory) => {
+      const subcategoryWithIndentation = {
+        value: subcategory.name,
+        label: parentIndent + subcategory.name,
+      };
+
+      if (subcategory?.children && subcategory.children.length > 0) {
+        return [
+          subcategoryWithIndentation,
+          ...createIndentedSubcategoryOptions(subcategory.children, parentIndent + '  '),
+        ];
+      }
+
+      return subcategoryWithIndentation;
+    });
+  };
+
+  const indentedSubcategoryOptions = createIndentedSubcategoryOptions(subcategories);
+
+  const createCascaderOptions = (categories) => {
+    return categories?.map((category) => {
+      const children = category?.children && category.children.length > 0
+        ? createCascaderOptions(category.children)
+        : null;
+
+      return {
+        label: category.name,
+        value: category.name,
+        children,
+      };
+    });
+  };
+
+  const cascaderOptions = createCascaderOptions(categoryData);
+
+  const handleCascaderChange = (value) => {
+    if (Array.isArray(value) && value.length === 2) {
+      setSelectedMainCategory(value[0]);
+      setSelectedSubcategory(value[1]);
+    } else {
+      setSelectedMainCategory('');
+      setSelectedSubcategory('');
+    };
+  };
+
+  // ===== category +++++
+
 
   const [color, setColor] = useState([
     {
@@ -155,6 +230,9 @@ const AddProduct = () => {
     setCoupon(value);
   };
 
+
+  // ===== category +++++
+
   const onSubmit = async (inputValue) => {
     console.log(inputValue);
     console.log('hello how are you')
@@ -162,8 +240,8 @@ const AddProduct = () => {
       setLoading(true);
       const productData = {
         name: inputValue.name,
-        categories: inputValue.category,
-        mainCategories: inputValue.mainCategories,
+        categories: selectedSubcategory,
+        mainCategories: selectedMainCategory,
         brand: inputValue.brand,
         price: inputValue.price,
         discount: inputValue.discountPercentage,
@@ -264,37 +342,37 @@ const AddProduct = () => {
             name="main-category"
             id="main-category"
             className="border-2 border-gray-300 rounded-md p-2"
-            {...register("mainCategories")}
+            value={selectedMainCategory}
+            onChange={(e) => handleMainCategoryChange(e.target.value)}
           >
-            <option value="main-category">Main Category</option>
-            {categoryData && categoryData?.map((category) => (
-              <option
-                key={category._id}
-                value={category?.name}
-                className="border-2 border-gray-300 rounded-md p-4 my-2"
-              >
+            <option value="">Main Category</option>
+            {categoryData?.map((category) => (
+              <option key={category._id} value={category.name}>
                 {category.name}
               </option>
             ))}
           </select>
+          <Select
+            mode="multiple"
+            size="large"
+            placeholder="Select SubCategory"
+            value={selectedSubcategory}
+            onChange={handleSubCategoryChange}
+            style={{
+              width: '100%',
+            }}
+            dropdownStyle={{ marginLeft: '2rem' }} // Adjust the margin as needed
+            options={indentedSubcategoryOptions}
+          />
 
-          <select
-            name="category"
-            id="category"
-            className="border-2 border-gray-300 rounded-md p-2"
-            {...register("category")}
-          >
-            <option value="category">Category</option>
-            {allCategoryData && allCategoryData?.map((category) => (
-              <option
-                key={category._id}
-                value={category?.name}
-                className="border-2 border-gray-300 rounded-md p-4 my-2"
-              >
-                {category?.name}
-              </option>
-            ))}
-          </select>
+
+          <Cascader
+            options={cascaderOptions}
+            value={[selectedMainCategory, selectedSubcategory]}
+            onChange={handleCascaderChange}
+            placeholder="Select Categories"
+          />
+
 
           <input type="text"
             placeholder="Brand"

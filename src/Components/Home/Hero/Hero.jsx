@@ -81,7 +81,7 @@ const Hero = () => {
   ]
 
   return (
-    <div className="hero-slider-container py-10">
+    <div className="hero-slider-container md:h-[100vh] py-10">
       <Carousel
         {...settings}
         className="hero-slider"
@@ -95,7 +95,7 @@ const Hero = () => {
               <div key={item.id} data-aos="fade-up">
                 <div className="flex justify-center md:flex-row flex-col items-center gap-6">
                   <div
-                    className="flex justify-center items-center gap-2 flex-col animate-spin transition duration-700 ease-in-out"
+                    className="flex justify-center items-center gap-2 flex-col  transition duration-700 ease-in-out"
                     data-aos="fade-up"
                   >
                     <Image

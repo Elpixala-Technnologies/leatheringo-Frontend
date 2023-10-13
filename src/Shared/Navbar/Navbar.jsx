@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <nav className="bg-[#FAFAFA] md:px-4 border-b py-2 flex items-center text-black md:container ">
       <div className="md:container flex items-center mx-2 justify-between w-full md:mx-auto">
-        
+
         <div className="md:flex md:items-center gap-4">
           <Link className='text-2xl font-bold text-black' href="/">
             <Image src={MainLogo} alt="logo" width={130} height={80}
@@ -56,6 +56,11 @@ const Navbar = () => {
                   {
                     isAdmin && <Link href="/dashboard" className="flex items-center justify-center gap-2 border-common-btn common-hover">
                       <FaMicrosoft /> Dashboard
+                    </Link>
+                  }
+                  {
+                    userEmail && !isAdmin && < Link href="/userdashboard" className="flex items-center justify-center gap-2 border-common-btn common-hover">
+                      <FaUserAlt /> Profile
                     </Link>
                   }
                   <button className="flex items-center justify-center gap-2 my-2 border-common-btn common-hover"
@@ -116,6 +121,12 @@ const Navbar = () => {
                         <FaMicrosoft /> Dashboard
                       </Link>
                     }
+
+                    {
+                    userEmail && !isAdmin && < Link href="/userdashboard" className="flex items-center justify-center gap-2 border-common-btn common-hover">
+                      <FaUserAlt /> Profile
+                    </Link>
+                  }
                     <button className="flex items-center justify-center w-full gap-2 my-2 border-common-btn"
                       onClick={() => handleLogout()}
                     >
@@ -133,7 +144,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 };
 

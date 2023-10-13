@@ -14,6 +14,7 @@ import CouponSlider from '@/src/Components/Shop/CopuonSlider/CopuonSlider';
 import RecomendationProduct from '@/src/Components/Shop/RecomendationProduct/RecomendationProduct';
 
 const ProductDetails = () => {
+  const [selectedSize, setSelectedSize] = useState(null);
   const { productData } = useProducts();
   const { user } = useContext(AuthContext);
   const router = useRouter();
@@ -46,27 +47,39 @@ const ProductDetails = () => {
   } = mainProductData || {};
 
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+  const [selectedColorData, setSelectedColorData] = useState(null);
+
 
   const [selectedColorImages, setSelectedColorImages] = useState([]);
 
   const [selectedImage, setSelectedImage] = useState(null); // State variable to store the selected image URL
 
+
   const handleColorClick = (index) => {
     const clickedColor = colors[index];
-    setSelectedColorIndex(clickedColor);
+    setSelectedColorIndex(index);
+    setSelectedColorData(clickedColor);
 
     if (clickedColor?.images) {
       setSelectedColorImages(clickedColor.images);
     }
   };
 
+  console.log(selectedColorIndex);
+
 
   useEffect(() => {
     if (colors && colors?.length > 0) {
-      setSelectedColorIndex(colors[0]);
-      setSelectedColorImages(colors[0]?.images);
+      setSelectedColorIndex(colors[0] || 0);
+      setSelectedColorData(colors[0] || {});
+      setSelectedColorImages(colors[0]?.images || []);
     }
   }, [colors]);
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
+
 
 
 
@@ -95,7 +108,9 @@ const ProductDetails = () => {
         quantity: 1,
         totalPrice: convertPrice,
         email: user?.email,
-        status: "unpaid"
+        status: "unpaid",
+        size: selectedSize,
+        color: selectedColorData?.color,
       }),
     });
 
@@ -112,6 +127,62 @@ const ProductDetails = () => {
       router.push('/cart');
     }
   }
+
+  const handelBuyNow = async (id) => {
+    const convertPrice = parseInt(price);
+    // Check if the user is logged in
+    if (!user) {
+      // User is not logged in, show an alert
+      Swal.fire({
+        icon: 'error',
+        title: 'Please log in to add the product to your cart',
+        showConfirmButton: true,
+      });
+      return;
+    }
+
+    const res = await fetch(addToCartUrl(id), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        product: _id,
+        quantity: 1,
+        totalPrice: convertPrice,
+        email: user?.email,
+        status: "unpaid",
+        size: selectedSize,
+        color: selectedColorData?.color,
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (data.success) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Your product added to cart',
+        showConfirmButton: false,
+        timer: 1500,
+      })
+      router.push('/checkout');
+    }
+
+
+
+  }
+  const [copiedCoupon, setCopiedCoupon] = useState(null);
+
+  const handleCopyCoupon = (couponCode) => {
+    navigator.clipboard.writeText(couponCode)
+      .then(() => {
+        setCopiedCoupon(couponCode);
+        setTimeout(() => setCopiedCoupon(null), 2000);
+      })
+      .catch((err) => console.error('Failed to copy:', err));
+  };
 
 
 
@@ -131,6 +202,8 @@ const ProductDetails = () => {
       setDiscountedPrice(newPrice);
     }
   };
+
+  console.log(coupon, "coupon");
 
   return (
     <RootLayout>
@@ -177,7 +250,7 @@ const ProductDetails = () => {
                         >
                           <Image
                             src={image}
-                            alt={colors[selectedColorIndex]?.color}
+                            alt={colors[selectedColorData]?.color}
                             width={100}
                             height={100}
                             className='cursor-pointer rounded hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
@@ -216,7 +289,7 @@ const ProductDetails = () => {
               <div className="mt-5">
                 <h4 className="text-lg font-semibold capitalize">Available Colors</h4>
                 <p className='my-2'>
-                  {selectedColorIndex?.color}
+                  {selectedColorData?.color}
                 </p>
                 <div className="flex items-center gap-2 my-4">
 
@@ -247,16 +320,18 @@ const ProductDetails = () => {
                 <h4 className="text-lg font-semibold capitalize">Available Sizes</h4>
                 <div className="flex items-center gap-2 my-4">
                   {
-                    selectedColorIndex?.isSizeApplicable ? (
+                    selectedColorData?.isSizeApplicable ? (
                       <div className='flex flex-wrap gap-4'>
                         {
-                          selectedColorIndex?.sizes.map((size, index) => {
+                          selectedColorData?.sizes.map((size, index) => {
                             return (
                               <div
                                 key={index + `size`}
+                                onClick={() => handleSizeClick(size.size)}
+                                className={`cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 ${selectedSize === size.size ? 'bg-[#ff5733] text-white' : 'bg-[#f1e8e8] text-black'} `}
                               >
                                 <p className='text-[0.9rem] text-center border-2 px-3 py-1 rounded'>
-                                  {size?.size} 
+                                  {size?.size}
                                 </p>
                               </div>
                             )
@@ -283,12 +358,50 @@ const ProductDetails = () => {
                 >
                   Add to Cart
                 </button>
-                <button className='common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Buy Now</button>
+                <button
+                  onClick={() => handelBuyNow(_id)}
+                  className='common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Buy Now</button>
               </div>
 
+
               <div className='my-4'>
-                <CouponSlider />
+                <Swiper
+                  className="couponSwiper"
+                  spaceBetween={30}
+                  slidesPerView={1}
+                  loop={true}
+                >
+                  {coupon && coupon?.map((coupon, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="bg-gradient-to-br from-purple-600 to-indigo-600 text-white text-center py-6 px-6 rounded-lg shadow-md relative">
+                        <h3 className="text-2xl font-semibold mb-4">
+                          {coupon.couponText}
+                        </h3>
+                        <div className="flex items-center justify-center md:flex-row gap-4 flex-col space-x-2 mb-6">
+                          <span
+                            id="cpnCode"
+                            className="border-dashed border text-white px-4 py-2 rounded-l"
+                          >
+                            {coupon.coupon}
+                          </span>
+                          <span
+                            id="cpnBtn"
+                            className="border border-white bg-white text-purple-600 px-4 py-2 rounded-r cursor-pointer"
+                            onClick={() => handleCopyCoupon(coupon?.coupon)}
+                          >
+                            {copiedCoupon === coupon.coupon ? 'Copied!' : 'Copy Code'}
+                          </span>
+                        </div>
+                        <div className="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 left-0 -ml-6" />
+                        <div className="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 right-0 -mr-6" />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
+              {/* <CouponSlider /> */}
+
+
               <hr />
               <h4 className="text-lg mt-5 font-semibold capitalize">Product Description</h4>
               <p className="text-gray-700">
@@ -338,7 +451,7 @@ const ProductDetails = () => {
                             </td>
                           </tr>
 
-                   
+
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
                               Total Color :

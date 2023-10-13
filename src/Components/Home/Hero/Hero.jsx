@@ -12,8 +12,11 @@ import {
 import Link from "next/link";
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import ProductSlide from "./ProductSlide";
 
 const Hero = () => {
+
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -81,52 +84,58 @@ const Hero = () => {
   ]
 
   return (
-    <div className="hero-slider-container md:h-[100vh] py-10">
-      <Carousel
-        {...settings}
-        className="hero-slider"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-      >
+    <div className="hero-slider-container py-10">
+      <div className="hero-slider-container md:h-[100vh] py-10">
+        <Carousel
+          {...settings}
+          className="hero-slider"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
 
-        {
-          bannarData.map((item) => {
-            return (
-              <div key={item.id} data-aos="fade-up">
-                <div className="flex justify-center md:flex-row flex-col items-center gap-6">
-                  <div
-                    className="flex justify-center items-center gap-2 flex-col  transition duration-700 ease-in-out"
-                    data-aos="fade-up"
-                  >
-                    <Image
-                      src={item.image}
-                      alt="Banner Image"
-                      className="w-[200px] h-full hero-image"
-                      width={350}
-                      height={350}
-                      data-aos="fade-down"
-                    />
-                  </div>
-                  <div className="flex justify-center items-center gap-2 flex-col hero-text">
-                    <h1 className="text-2xl font-bold text-center" data-aos="fade-up">{item.title}</h1>
-                    <p className="text-sm px-4  text-gray-900 text-center first-letter: animate-pulse transition duration-600 ease-in-out" data-aos="fade-up">
-                      {item.description}
-                    </p>
-                    <Link
-                      href="/product"
-                      className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-center capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+          {
+            bannarData.map((item) => {
+              return (
+                <div key={item.id} data-aos="fade-up">
+                  <div className="flex justify-center md:flex-row flex-col items-center gap-6">
+                    <div
+                      className="flex justify-center items-center gap-2 flex-col  transition duration-700 ease-in-out"
                       data-aos="fade-up"
                     >
-                      Shop Now
-                    </Link>
+                      <Image
+                        src={item.image}
+                        alt="Banner Image"
+                        className=" h-full hero-image"
+                        width={550}
+                        height={550}
+                        data-aos="fade-down"
+                      />
+                    </div>
+                    <div className="flex justify-center items-center gap-2 flex-col hero-text">
+                      <h1 className="text-2xl font-bold text-center" data-aos="fade-up">{item.title}</h1>
+                      <p className="text-sm px-4  text-gray-900 text-center first-letter: animate-pulse transition duration-600 ease-in-out" data-aos="fade-up">
+                        {item.description}
+                      </p>
+                      <Link
+                        href="/product"
+                        className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-center capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+                        data-aos="fade-up"
+                      >
+                        Shop Now
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })
-        }
+              )
+            })
+          }
 
-      </Carousel>
+        </Carousel>
+      </div>
+
+      <div>
+        <ProductSlide />
+      </div>
     </div>
   );
 };

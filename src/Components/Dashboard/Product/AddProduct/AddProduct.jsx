@@ -255,7 +255,6 @@ const AddProduct = () => {
         minimumQuantity: inputValue.minimumQuantity,
       }
 
-      console.log(productData);
 
       const res = await fetch(createProductUrl, {
         method: 'POST',

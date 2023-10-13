@@ -38,10 +38,14 @@ import BeltBannerOne from "./banner/belt-banner-01.jpg";
 import BeltBannerTwo from "./banner/belt-banner-02.jpg";
 
 import ShoseBannerOne from "./ShoseBanner/shose-banner-01.png";
-import ShoseBannerTwo from "./ShoseBanner/shose-slider-02.png";
-import ShoseBannerThree from "./ShoseBanner/shose-slider-03.png";
-import ShoseBannerFour from "./ShoseBanner/shose-slider-04.png";
+import ShoseBannerTwo from "./ShoseBanner/shose-banner-02.png";
+import ShoseBannerThree from "./ShoseBanner/shose-banner-03.png";
+import ShoseBannerFour from "./ShoseBanner/shose-banner-04.png";
 
+import ShoseOne from "./ShoseBanner/shoe1.png"
+import ShoseTow from "./ShoseBanner/shoe2.png"
+import ShoseTheree from "./ShoseBanner/shoe3.png"
+import ShoseFour from "./ShoseBanner/shoe4.png"
 
 export {
     PreLoaderIcon,
@@ -85,7 +89,12 @@ export {
     ShoseBannerTwo,
     ShoseBannerThree,
     ShoseBannerFour,
-        
+
+    ShoseOne,
+    ShoseTow,
+    ShoseTheree,
+    ShoseFour
+
 
 }
 

@@ -9,10 +9,21 @@ const ManageProduct = () => {
     return (
         <section>
             <div className="grid md:grid-cols-3 gap-4 justify-center items-center">
+
+                <div>
+                    {
+                        productData && productData?.length === 0 && <div className="flex justify-center items-center">
+                            <h2>
+                                No Product Found !
+                            </h2>
+                        </div>
+                    }
+                </div>
+
                 {productData &&
-                    productData.length &&
-                    productData.map((porductData) => {
-                        const { _id, name, price, colors ,discount } = porductData;
+                    productData?.length &&
+                    productData?.map((porductData) => {
+                        const { _id, name, price, colors, discount } = porductData;
                         return (
                             <div className="relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
                                 key={_id}
@@ -21,7 +32,7 @@ const ManageProduct = () => {
                                     className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
                                     href="#"
                                 >
-            
+
                                     <img
                                         width={300}
                                         height={300}

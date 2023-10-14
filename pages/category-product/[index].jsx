@@ -18,9 +18,17 @@ const category_product = () => {
         window.scrollTo(0, 0);
     }, [categoryName]);
 
+    // const filterProductData = productData?.filter((data) => {
+    //     return data?.categories === categoryName || data?.mainCategories === categoryName;
+    // });
+
     const filterProductData = productData?.filter((data) => {
-        return data?.categories === categoryName || data?.mainCategories === categoryName;
-    });
+        // Check if either 'mainCategories' or 'categories' includes the 'categoryName'
+        return (
+            data.mainCategories === categoryName ||
+            (data.categories && data.categories.includes(categoryName))
+        );
+    })
 
     const filterTrandingProductData = productData?.filter((data) => {
         return data?.status === "Tranding";

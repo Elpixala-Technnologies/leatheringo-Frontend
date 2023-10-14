@@ -101,6 +101,9 @@ const DashboardLayout = ({ children }) => {
             <Menu.Item key="/dashboard/copuon" icon={<FaDiceD6 />}>
               <Link href="/dashboard/copuon">Coupon</Link>
             </Menu.Item>
+            <Menu.Item key="/dashboard/address" icon={<AiOutlineIdcard />}>
+              <Link href="/dashboard/address">Address</Link>
+            </Menu.Item>
             <Menu.Item key="/dashboard/blog" icon={<AiOutlineIdcard />}>
               <Link href="/dashboard/blog">Blog</Link>
             </Menu.Item>

@@ -364,7 +364,7 @@ const ProductDetails = () => {
               </div>
 
 
-              <div className='my-4'>
+              <div className='my-4 '>
                 <Swiper
                   className="couponSwiper"
                   spaceBetween={30}
@@ -372,8 +372,10 @@ const ProductDetails = () => {
                   loop={true}
                 >
                   {coupon && coupon?.map((coupon, index) => (
-                    <SwiperSlide key={index}>
-                      <div className="bg-gradient-to-br from-purple-600 to-indigo-600 text-white text-center py-6 px-6 rounded-lg shadow-md relative">
+                    <SwiperSlide key={index}
+                     
+                    >
+                      <div className="bg-gradient-to-br w-full from-purple-600 to-indigo-600 text-white text-center py-6 px-6 rounded-lg shadow-md relative">
                         <h3 className="text-2xl font-semibold mb-4">
                           {coupon.couponText}
                         </h3>
@@ -399,9 +401,6 @@ const ProductDetails = () => {
                   ))}
                 </Swiper>
               </div>
-              {/* <CouponSlider /> */}
-
-
               <hr />
               <h4 className="text-lg mt-5 font-semibold capitalize">Product Description</h4>
               <p className="text-gray-700">
@@ -456,8 +455,8 @@ const ProductDetails = () => {
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
                               Total Color :
                             </td>
-                            <td className="whitespace-nowrap px-6 py-4">
-                              {
+                            <td className="whitespace-nowrap flex  px-6 py-4">
+                              {/* {
                                 colors && colors?.map((color, index) => {
                                   return (
                                     <div key={index + `colroIdsx`} className='flex items-center gap-2'>
@@ -467,6 +466,17 @@ const ProductDetails = () => {
                                     </div>
                                   )
                                 })
+                              } */}
+                              {
+                                colors && colors?.map((color, index) => {
+                                  return (
+                                    <div key={index + `colorIdx`} className='flex items-center gap-2'>
+                                      <p className='text-[0.9rem] text-center'>
+                                        {color.color}{index !== colors.length - 1 ? ',' : ''}
+                                      </p>
+                                    </div>
+                                  );
+                                })
                               }
                             </td>
                           </tr>
@@ -475,8 +485,18 @@ const ProductDetails = () => {
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
                               Category :
                             </td>
-                            <td className="whitespace-nowrap px-6 py-4">
-                              {categories}
+                            <td className="whitespace-nowrap flex gap-4 px-6 py-4">
+                              {
+                                categories && categories?.map((category, index) => {
+                                  return (
+                                    <div key={index + `categoryIdx`} className='flex items-center gap-2'>
+                                      <p className='text-[0.9rem] text-center'>
+                                        {category.name}{index !== categories.length - 1 ? ',' : ''}
+                                      </p>
+                                    </div>
+                                  );
+                                })
+                              }
                             </td>
                           </tr>
                         </tbody>

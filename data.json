@@ -2,7 +2,9 @@
     {
         "name": "Classic Leather Dress Shoes",
         "mainCategories": "Shoes",
-        "categories": "Formal",
+        "categories": [
+            "Formal"
+        ],
         "brand": "Elegance Footwear",
         "price": 89.99,
         "discount": 10,
@@ -71,7 +73,9 @@
     {
         "name": "Casual Canvas Sneakers",
         "mainCategories": "Shoes",
-        "categories": "Casual",
+        "categories": [
+            "Casual"
+        ],
         "brand": "UrbanTrend",
         "price": 34.99,
         "discount": 0,
@@ -132,12 +136,18 @@
                 ]
             }
         ],
-        "coupon": []
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
     },
     {
         "name": "Double Monk Strap Shoes",
         "mainCategories": "Shoes",
-        "categories": "Monks",
+        "categories": [
+            "Formal"
+        ],
         "brand": "ElegantStyle",
         "price": 109.99,
         "discount": 10,
@@ -199,13 +209,17 @@
             }
         ],
         "coupon": [
-            "STYLE10OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Whole Cut Leather Shoes",
         "mainCategories": "Shoes",
-        "categories": "Whole Cut Shoes",
+        "categories": [
+            "Whole Cut Shoes"
+        ],
         "brand": "ClassyFeet",
         "price": 119.99,
         "discount": 5,
@@ -268,13 +282,17 @@
             }
         ],
         "coupon": [
-            "ELEGANT5OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Leather Brogue Shoes",
         "mainCategories": "Shoes",
-        "categories": "Brogues",
+        "categories": [
+            "Brogues"
+        ],
         "brand": "HeritageStyle",
         "price": 99.99,
         "discount": 15,
@@ -336,13 +354,17 @@
             }
         ],
         "coupon": [
-            "HERITAGE15OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Derby Shoes",
         "mainCategories": "Shoes",
-        "categories": "Derbies",
+        "categories": [
+            "Derbies"
+        ],
         "brand": "ModernStyle",
         "price": 79.99,
         "discount": 10,
@@ -405,13 +427,17 @@
             }
         ],
         "coupon": [
-            "MODERN10OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Chelsea Boots",
         "mainCategories": "Shoes",
-        "categories": "Chelsea Boots",
+        "categories": [
+            "Chelsea Boots"
+        ],
         "brand": "TrendyFootwear",
         "price": 129.99,
         "discount": 20,
@@ -473,13 +499,17 @@
             }
         ],
         "coupon": [
-            "TRENDY20OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Leather Duffle Bag",
         "mainCategories": "Bags",
-        "categories": "Duffle Bags",
+        "categories": [
+            "Duffle Bags"
+        ],
         "brand": "Traveler's Choice",
         "price": 79.99,
         "discount": 15,
@@ -515,13 +545,17 @@
             }
         ],
         "coupon": [
-            "TRAVEL15OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Laptop Backpack",
         "mainCategories": "Bags",
-        "categories": "Laptop Bags",
+        "categories": [
+            "Laptop Bags"
+        ],
         "brand": "TechPro",
         "price": 49.99,
         "discount": 5,
@@ -557,13 +591,17 @@
             }
         ],
         "coupon": [
-            "TECH5OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Ladies Tote Bag",
         "mainCategories": "Bags",
-        "categories": "Ladies Bags",
+        "categories": [
+            "Ladies Bags"
+        ],
         "brand": "ChicStyle",
         "price": 59.99,
         "discount": 10,
@@ -600,13 +638,17 @@
             }
         ],
         "coupon": [
-            "CHIC10OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Leather Sling Bag",
         "mainCategories": "Bags",
-        "categories": "Slings",
+        "categories": [
+            "Slings"
+        ],
         "brand": "UrbanChic",
         "price": 39.99,
         "discount": 0,
@@ -641,12 +683,18 @@
                 ]
             }
         ],
-        "coupon": []
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
     },
     {
         "name": "Men's Leather Belt",
         "mainCategories": "Belts",
-        "categories": "Mens",
+        "categories": [
+            "Mens"
+        ],
         "brand": "ClassicBelt",
         "price": 29.99,
         "discount": 0,
@@ -707,12 +755,18 @@
                 ]
             }
         ],
-        "coupon": []
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
     },
     {
         "name": "Women's Leather Belt",
         "mainCategories": "Belts",
-        "categories": "Womens",
+        "categories": [
+            "Womens"
+        ],
         "brand": "ElegantBelt",
         "price": 27.99,
         "discount": 0,
@@ -773,12 +827,18 @@
                 ]
             }
         ],
-        "coupon": []
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
     },
     {
         "name": "Leather Card Holder",
         "mainCategories": "Card Holders",
-        "categories": "Card Holders",
+        "categories": [
+            "Card Holders"
+        ],
         "brand": "SlimStyle",
         "price": 19.99,
         "discount": 0,
@@ -813,54 +873,18 @@
                 ]
             }
         ],
-        "coupon": []
-    },
-    {
-        "name": "Leather Wallet",
-        "mainCategories": "Wallets",
-        "categories": "Wallets",
-        "brand": "ClassicWallets",
-        "price": 39.99,
-        "discount": 5,
-        "minimumQuantity": 20,
-        "extraDiscount": 25,
-        "type": "Unisex",
-        "status": "Tranding",
-        "details": "Classic leather wallet with plenty of card slots and compartments.",
-        "features": [
-            "Genuine leather",
-            "Multiple card slots"
-        ],
-        "colors": [
-            {
-                "color": "Black",
-                "isSizeApplicable": false,
-                "sizes": [],
-                "quantity": 30,
-                "images": [
-                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
-                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
-                ]
-            },
-            {
-                "color": "Brown",
-                "isSizeApplicable": false,
-                "sizes": [],
-                "quantity": 25,
-                "images": [
-                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
-                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
-                ]
-            }
-        ],
         "coupon": [
-            "CLASSIC5OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Leather Wallet",
         "mainCategories": "Wallets",
-        "categories": "Wallets",
+        "categories": [
+            "Wallets"
+        ],
         "brand": "ClassicWallets",
         "price": 39.99,
         "discount": 5,
@@ -896,13 +920,17 @@
             }
         ],
         "coupon": [
-            "CLASSIC5OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     },
     {
         "name": "Leather Wallet",
         "mainCategories": "Wallets",
-        "categories": "Wallets",
+        "categories": [
+            "Wallets"
+        ],
         "brand": "ClassicWallets",
         "price": 39.99,
         "discount": 5,
@@ -938,7 +966,55 @@
             }
         ],
         "coupon": [
-            "CLASSIC5OFF"
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Leather Wallet",
+        "mainCategories": "Wallets",
+        "categories": [
+            "Wallets"
+        ],
+        "brand": "ClassicWallets",
+        "price": 39.99,
+        "discount": 5,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "Tranding",
+        "details": "Classic leather wallet with plenty of card slots and compartments.",
+        "features": [
+            "Genuine leather",
+            "Multiple card slots"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 30,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 25,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
         ]
     }
 ]

@@ -14,6 +14,8 @@ import {
     FaThLarge,
 } from "react-icons/fa";
 import { useRouter } from "next/router";
+import Navbar from "../Shared/Navbar/Navbar";
+import BottomNav from "../Shared/Navbar/BottomNav";
 const { Header, Sider, Content } = Layout;
 
 const UserdashboardLayout = ({ children }) => {
@@ -60,6 +62,7 @@ const UserdashboardLayout = ({ children }) => {
       `}</style>
 
             {/* Add a condition to render Sider based on sideNavVisible */}
+
             {sideNavVisible && (
                 <Sider
                     trigger={null}
@@ -103,6 +106,9 @@ const UserdashboardLayout = ({ children }) => {
             )}
 
             <Layout className="bg-transparent">
+                <div>
+                    <Navbar />
+                </div>
                 <Header
                     style={{
                         padding: 0,

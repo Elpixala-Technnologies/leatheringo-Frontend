@@ -70,8 +70,12 @@ const ProductSlide = () => {
 
 
     return (
-        <div className='flex justify-center md:flex-row flex-col items-center gap-4'>
-            <div className='flex flex-col justify-center gap-4 md:w-[20%]'>
+        <div className='flex justify-center md:flex-row flex-col items-center gap-4 m-4 md:m-0'>
+
+            <div className='md:flex flex-col justify-center gap-4 md:w-[20%] hidden'
+                data-aos="fade-up"
+                data-aos-duration="1000"
+            >
                 <div className='md:text-left text-center'>
                     <h1 className='text-1xl font-bold '>
                         Our Recent Products
@@ -129,6 +133,8 @@ const ProductSlide = () => {
                 slidesPerView={3}
                 onSlideChange={() => { }}
                 onSwiper={(swiper) => { }}
+                data-aos="fade-up"
+                data-aos-duration="1000"
             >
                 <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {sliderData &&

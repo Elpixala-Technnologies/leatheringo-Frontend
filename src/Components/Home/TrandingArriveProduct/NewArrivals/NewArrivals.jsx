@@ -93,15 +93,14 @@ const NewArrivals = () => {
                     slidesPerView={3}
                     onSlideChange={() => { }}
                     onSwiper={(swiper) => { }}
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
                 >
                     <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {filterProductData &&
                             filterProductData.map((product) => {
                                 return (
-                                    <SwiperSlide className="cursor-grab" key={product?._id}
-                                        data-aos="fade-up"
-                                        data-aos-anchor-placement="center-bottom"
-                                        
+                                    <SwiperSlide className="cursor-grab" key={product?._id} 
                                     >
                                         <div className="cardBody md:m-0  mx-auto  flex flex-col hover:border-red-500  color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                             <div className="productImage ">

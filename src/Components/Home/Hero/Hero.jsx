@@ -84,15 +84,14 @@ const Hero = () => {
   ]
 
   return (
-    <div className="hero-slider-container py-10">
-      <div className="hero-slider-container md:h-[100vh] py-10">
+    <div className="hero-slider-container py-4">
+      <div className="hero-slider-container py-4">
         <Carousel
           {...settings}
           className="hero-slider"
           data-aos="fade-up"
           data-aos-duration="1000"
         >
-
           {
             bannarData.map((item) => {
               return (
@@ -129,7 +128,6 @@ const Hero = () => {
               )
             })
           }
-
         </Carousel>
       </div>
 

@@ -40,9 +40,6 @@ const Navbar = () => {
           <li className='border-r px-2 h-full border-[gray] '>
             <Link href="/product">Shop</Link>
           </li>
-          {/* <li className='border-r px-2 h-full border-[gray]'>
-            <Link href="/blog">Blog</Link>
-          </li> */}
           <li className='border-r px-2 h-full border-[gray]'>
             {
               !userEmail ? (

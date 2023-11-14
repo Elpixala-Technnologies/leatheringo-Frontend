@@ -133,55 +133,38 @@ const category_product = () => {
                     height={isMobile ? 768 : 500}
                 />
                 <br />
-                <h3 className='font-semibold md:text-3xl text-lg'>Category</h3>
-                <div className="grid md:grid-cols-3  gap-4  mt-4">
+                <h3 className='font-semibold md:text-3xl text-lg my-12'>Category</h3>
+                <div  class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-14 gap-x-14 ">
                     {
+                       
                         categoriesProductsToDisplay && categoriesProductsToDisplay?.map(product => (
-                            <Link href={`/product/${product?._id}`}>
-                                <div
-                                    data-aos="fade-up"
-                                    className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
-                                    <div className="productImage p-2">
-                                        <Image
-                                            src={product?.colors[0]?.images[0]}
-                                            width={280}
-                                            height={280}
-                                            className="w-full h-full"
-                                            alt="Product Image"
-                                        />
-                                    </div>
-                                    <hr className="w-full bg-slate-400" />
-                                    <div className="productInfo mt-2 p-2">
-                                        <h2 className="productName font-bold ">
-                                            {product?.name}
-                                        </h2>
-                                        <div className='flex items-center gap-4'>
-                                            <h1 className="font-bold text-slate-900">
-                                                {product?.discount
-                                                    ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
-                                                    : `₹ ${Math.floor(product?.price)}`
-                                                }
-                                            </h1>
-                                            <span className="text-sm text-slate-900 line-through mt-1">
-                                                ₹ {Math.floor(product?.price)}
-                                            </span>
-                                            <span className='text-[#eec75b]'>
-                                                {Math.floor(product?.discount)} % off
-                                            </span>
-                                        </div>
-                                        <p className="productDescription py-3">
-                                            {product?.details?.slice(0, 100)}
-                                        </p>
-                                        <div className="productAddToCart flex gap-5 items-center">
-                                            <div>
-                                                <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
-                                                    <FaCartPlus />
-                                                    Product Detail
-                                                </Link>
+                            <Link href={`/product/${product?._id}`}  data-aos="fade-up" key={product?._id}>
+                                <div class="md:w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                                        <div>
+                                            <img src={product?.colors[0]?.images[0]} alt="Product" class="h-80 w-72 object-cover rounded-t-xl p-2" />
+                                            <div class="px-4 py-3 w-80">
+                                                <p class="text-lg font-bold text-black truncate block capitalize"> {product?.name}</p>
+                                                <div class="flex items-center">
+                                                    <p class="text-lg font-semibold text-black cursor-auto my-3">
+                                                        {product?.discount
+                                                            ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
+                                                            : `₹ ${Math.floor(product?.price)}`
+                                                        }
+                                                    </p>
+                                                    <del>
+                                                        <p class="text-sm text-gray-600 cursor-auto ml-2">₹ {Math.floor(product?.price)}</p>
+                                                    </del>
+                                                    <span className='text-[#eec75b] mx-2'>
+                                                        {Math.floor(product?.discount)} % off
+                                                    </span>
+                                                    <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                                                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                                    </svg></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </Link>
                         ))
                     }
@@ -225,8 +208,8 @@ const category_product = () => {
                     </div>
                 </div>
 
-                <h3 className='font-semibold md:text-3xl text-lg mt-12'>Tranding Products</h3>
-                <div className="grid md:grid-cols-3  md:gap-4 gap-2 mt-8">
+                <h3 className='font-semibold md:text-3xl text-lg my-12'>Tranding Products</h3>
+                <div className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-14 gap-x-14 ">
                     {
                         productsToDisplay && productsToDisplay?.map(product => (
                             <Link href={`/product/${product?._id}`}
@@ -234,49 +217,32 @@ const category_product = () => {
                                 data-aos="fade-up"
                                 data-aos-delay="200"
                             >
-                                <div
-                                    className="cardBody md:m-0 w-full mx-auto  flex flex-col hover:border-red-500 color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
-                                    <div className="productImage p-2">
-                                        <Image
-                                            src={product?.colors[0]?.images[0]}
-                                            width={280}
-                                            height={280}
-                                            className="w-full h-full"
-                                            alt="Product Image"
-                                        />
-                                    </div>
-                                    <hr className="w-full bg-slate-400" />
-                                    <div className="productInfo mt-2 p-2">
-                                        <h2 className="productName font-bold ">
-                                            {product?.name}
-                                        </h2>
-                                        <div className='flex items-center gap-4'>
-                                            <h1 className="font-bold text-slate-900">
-                                                {product?.discount
-                                                    ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
-                                                    : `₹ ${Math.floor(product?.price)}`
-                                                }
-                                            </h1>
-                                            <span className="text-sm text-slate-900 line-through mt-1">
-                                                ₹ {Math.floor(product?.price)}
-                                            </span>
-                                            <span className='text-[#eec75b]'>
-                                                {Math.floor(product?.discount)} % off
-                                            </span>
-                                        </div>
-                                        <p className="productDescription py-3">
-                                            {product?.details?.slice(0, 100)}
-                                        </p>
-                                        <div className="productAddToCart flex gap-5 items-center">
-                                            <div>
-                                                <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
-                                                    <FaCartPlus />
-                                                    Product Detail
-                                                </Link>
+                               <div className="md:w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                                        <div>
+                                            <img src={product?.colors[0]?.images[0]} alt="Product" class="h-80 w-72 object-cover rounded-t-xl p-2" />
+                                            <div class="px-4 py-3 w-80">
+                                                <p class="text-lg font-bold text-black truncate block capitalize"> {product?.name}</p>
+                                                <div class="flex items-center">
+                                                    <p class="text-lg font-semibold text-black cursor-auto my-3">
+                                                        {product?.discount
+                                                            ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
+                                                            : `₹ ${Math.floor(product?.price)}`
+                                                        }
+                                                    </p>
+                                                    <del>
+                                                        <p class="text-sm text-gray-600 cursor-auto ml-2">₹ {Math.floor(product?.price)}</p>
+                                                    </del>
+                                                    <span className='text-[#eec75b] mx-2'>
+                                                        {Math.floor(product?.discount)} % off
+                                                    </span>
+                                                    <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                                                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                                    </svg></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </Link>
                         ))
                     }

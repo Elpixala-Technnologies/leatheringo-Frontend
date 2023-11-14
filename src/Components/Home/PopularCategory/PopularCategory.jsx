@@ -17,57 +17,11 @@ import usePopularCategory from "@/src/Hooks/useCategory";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 
-const cetegoryData = [
-  {
-    id: 1,
-    categories: "Shoes",
-    image: Shoes,
-  },
-  {
-    id: 2,
-    categories: "Bags",
-    image: BagsIcons,
-  },
-  {
-    id: 3,
-    categories: "Belts",
-    image: Belts,
-  },
-  {
-    id: 4,
-    categories: "Card Holders",
-    image: CardHolders,
-  },
-  {
-    id: 5,
-    categories: "Wallets",
-    image: Wallets,
-  },
-  {
-    id: 6,
-    categories: "Duffle Bags",
-    image: DuffleBags,
-  },
-  {
-    id: 7,
-    categories: "Sneakers",
-    image: Sneakers,
-  },
-  {
-    id: 8,
-    categories: "Ladies Bags",
-    image: LadiesBags,
-  },
-  {
-    id: 9,
-    categories: "Chelsea Boots",
-    image: ChelseaBoots,
-  },
-];
+
 
 const PopualrCategory = () => {
   const { popularCategoryData } = usePopularCategory();
-  const [updateData, setUpdateData] = React.useState(12);
+  const [updateData, setUpdateData] = React.useState(8);
 
   const showCard = () => {
     if (updateData === 12) {

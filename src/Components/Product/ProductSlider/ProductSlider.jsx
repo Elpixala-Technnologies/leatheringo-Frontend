@@ -8,7 +8,6 @@ import Image from 'next/image';
 import {
     HomeSliderOne,
     HomeSliderTwo,
-
     MobileBannerOne,
     MobileBannerTwo,
 } from '@/src/Assets';

@@ -69,11 +69,13 @@ const BottomNav = () => {
 
 
     return (
+
+        <>
         <section
-            className='sticky top-0 z-50 mx-auto  md:px-4 px-2'
+            className='sticky top-0 z-50 mx-auto h-full md:px-4 px-2'
         >
             <section className='relative'>
-                <div className="bottom-navs container  md:bg-[#010101e1]  p-4 w-[100%] h-[100%] flex justify-center items-center my-2">
+                <div className="bottom-navs container  md:bg-[#010101e1]  p-4 w-[100%] h-[100%] flex justify-center items-center md:my-2">
                     <div className="hidden md:block ">
                         <ul className='flex gap-4 '>
                             <li>
@@ -411,12 +413,16 @@ const BottomNav = () => {
                                 </Link>
                             </li>
                         </ul>
-                    </div>
+                    </div> 
+                </div>
+            </section>
 
-                    <div className="md:hidden block z-50">
+        </section>
+            <section className='sticky top-0 left-0  z-50 mx-auto w-[100%]  px-2'>
+            <div className="md:hidden block relative">
                         <div
                             onClick={handleMobileMenuToggle}
-                            className='flex px-4 items-center gap-2 bg-white p-2 rounded-md shadow-md cursor-pointer w-[100vw]'
+                            className='flex px-4 items-center gap-2 bg-white p-2 rounded-md shadow-md cursor-pointer'
                         >
                             <FaAlignLeft
                                 className='text-[1.5rem]'
@@ -780,9 +786,8 @@ const BottomNav = () => {
                             )
                         }
                     </div>
-                </div>
             </section>
-        </section>
+            </>
     );
 };
 

@@ -433,24 +433,7 @@ const ProductDetails = () => {
                               {brand}
                             </td>
                           </tr>
-                          <tr className="border-b dark:border-neutral-500">
-                            <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Type :
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-4">
-                              {type}
-                            </td>
-                          </tr>
-                          <tr className="border-b dark:border-neutral-500">
-                            <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Status:
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-4">
-                              {status}
-                            </td>
-                          </tr>
-
-
+                        
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
                               Total Color :
@@ -473,25 +456,6 @@ const ProductDetails = () => {
                                     <div key={index + `colorIdx`} className='flex items-center gap-2'>
                                       <p className='text-[0.9rem] text-center'>
                                         {color.color}{index !== colors.length - 1 ? ',' : ''}
-                                      </p>
-                                    </div>
-                                  );
-                                })
-                              }
-                            </td>
-                          </tr>
-
-                          <tr className="border-b dark:border-neutral-500">
-                            <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Category :
-                            </td>
-                            <td className="whitespace-nowrap flex gap-4 px-6 py-4">
-                              {
-                                categories && categories?.map((category, index) => {
-                                  return (
-                                    <div key={index + `categoryIdx`} className='flex items-center gap-2'>
-                                      <p className='text-[0.9rem] text-center'>
-                                        {category.name}{index !== categories.length - 1 ? ',' : ''}
                                       </p>
                                     </div>
                                   );

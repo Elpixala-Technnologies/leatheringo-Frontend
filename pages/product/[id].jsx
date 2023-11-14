@@ -1,17 +1,17 @@
-'use client'
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { useContext, useEffect, useState } from 'react';
-import RootLayout from '@/src/Layouts/RootLayout';
-import { addToCartUrl } from '@/src/Utils/Urls/ProductUrl';
-import Swal from 'sweetalert2';
-import { AuthContext } from '@/src/Context/UserContext';
-import useProducts from '@/src/Hooks/useProducts';
-import CouponSlider from '@/src/Components/Shop/CopuonSlider/CopuonSlider';
-import RecomendationProduct from '@/src/Components/Shop/RecomendationProduct/RecomendationProduct';
+"use client";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { useContext, useEffect, useState } from "react";
+import RootLayout from "@/src/Layouts/RootLayout";
+import { addToCartUrl } from "@/src/Utils/Urls/ProductUrl";
+import Swal from "sweetalert2";
+import { AuthContext } from "@/src/Context/UserContext";
+import useProducts from "@/src/Hooks/useProducts";
+import CouponSlider from "@/src/Components/Shop/CopuonSlider/CopuonSlider";
+import RecomendationProduct from "@/src/Components/Shop/RecomendationProduct/RecomendationProduct";
 
 const ProductDetails = () => {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -28,7 +28,6 @@ const ProductDetails = () => {
   if (filterproductData && filterproductData.length > 0) {
     mainProductData = filterproductData[0];
   } else {
-    console.error(`No data found for ID: ${id}`);
   }
 
   const {
@@ -49,11 +48,9 @@ const ProductDetails = () => {
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [selectedColorData, setSelectedColorData] = useState(null);
 
-
   const [selectedColorImages, setSelectedColorImages] = useState([]);
 
   const [selectedImage, setSelectedImage] = useState(null); // State variable to store the selected image URL
-
 
   const handleColorClick = (index) => {
     const clickedColor = colors[index];
@@ -64,9 +61,6 @@ const ProductDetails = () => {
       setSelectedColorImages(clickedColor.images);
     }
   };
-
-  console.log(selectedColorIndex);
-
 
   useEffect(() => {
     if (colors && colors?.length > 0) {
@@ -80,9 +74,6 @@ const ProductDetails = () => {
     setSelectedSize(size);
   };
 
-
-
-
   // ====== Add to cart ======
 
   const addToCart = async (id) => {
@@ -91,17 +82,17 @@ const ProductDetails = () => {
     if (!user) {
       // User is not logged in, show an alert
       Swal.fire({
-        icon: 'error',
-        title: 'Please log in to add the product to your cart',
+        icon: "error",
+        title: "Please log in to add the product to your cart",
         showConfirmButton: true,
       });
       return;
     }
 
     const res = await fetch(addToCartUrl(id), {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         product: _id,
@@ -115,18 +106,17 @@ const ProductDetails = () => {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (data.success) {
       Swal.fire({
-        icon: 'success',
-        title: 'Your product added to cart',
+        icon: "success",
+        title: "Your product added to cart",
         showConfirmButton: false,
         timer: 1500,
-      })
-      router.push('/cart');
+      });
+      router.push("/cart");
     }
-  }
+  };
 
   const handelBuyNow = async (id) => {
     const convertPrice = parseInt(price);
@@ -134,17 +124,17 @@ const ProductDetails = () => {
     if (!user) {
       // User is not logged in, show an alert
       Swal.fire({
-        icon: 'error',
-        title: 'Please log in to add the product to your cart',
+        icon: "error",
+        title: "Please log in to add the product to your cart",
         showConfirmButton: true,
       });
       return;
     }
 
     const res = await fetch(addToCartUrl(id), {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         product: _id,
@@ -158,36 +148,33 @@ const ProductDetails = () => {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (data.success) {
       Swal.fire({
-        icon: 'success',
-        title: 'Your product added to cart',
+        icon: "success",
+        title: "Your product added to cart",
         showConfirmButton: false,
         timer: 1500,
-      })
-      router.push('/checkout');
+      });
+      router.push("/checkout");
     }
-
-
-
-  }
+  };
   const [copiedCoupon, setCopiedCoupon] = useState(null);
 
   const handleCopyCoupon = (couponCode) => {
-    navigator.clipboard.writeText(couponCode)
+    navigator.clipboard
+      .writeText(couponCode)
       .then(() => {
         setCopiedCoupon(couponCode);
         setTimeout(() => setCopiedCoupon(null), 2000);
       })
-      .catch((err) => console.error('Failed to copy:', err));
+      .catch((err) => console.error("Failed to copy:", err));
   };
 
-
-
   const [appliedCoupon, setAppliedCoupon] = useState(null);
-  const [discountedPrice, setDiscountedPrice] = useState(mainProductData?.price || 0);
+  const [discountedPrice, setDiscountedPrice] = useState(
+    mainProductData?.price || 0
+  );
 
   const applyCoupon = (couponCode) => {
     // Find the coupon with the given code
@@ -195,7 +182,8 @@ const ProductDetails = () => {
 
     if (appliedCoupon) {
       // Calculate the discounted price
-      const discountAmount = (parseInt(price) * appliedCoupon.discountPercentage) / 100;
+      const discountAmount =
+        (parseInt(price) * appliedCoupon.discountPercentage) / 100;
       const newPrice = parseInt(price) - discountAmount;
 
       setAppliedCoupon(couponCode);
@@ -203,13 +191,11 @@ const ProductDetails = () => {
     }
   };
 
-  console.log(coupon, "coupon");
-
   return (
     <RootLayout>
-      <div className='pb-4 md:container h-full'>
+      <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="md:container mx-auto mt-3 flex justify-between items-center">
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
             <div className="">
               <div className="img-box shadow w-full items-center rounded bg-[#f1e8e8] p-2 flex justify-center">
                 {selectedImage ? (
@@ -218,7 +204,7 @@ const ProductDetails = () => {
                     alt={name}
                     width={300}
                     height={300}
-                    className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                    className="cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130"
                   />
                 ) : (
                   <Image
@@ -226,7 +212,7 @@ const ProductDetails = () => {
                     alt={mainProductData?.colors[0]?.color}
                     width={300}
                     height={300}
-                    className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                    className="cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130"
                   />
                 )}
               </div>
@@ -242,10 +228,11 @@ const ProductDetails = () => {
                   modules={[]}
                   className="mySwiper"
                 >
-                  {
-                    selectedColorImages && selectedColorImages?.map((image, index) => {
+                  {selectedColorImages &&
+                    selectedColorImages?.map((image, index) => {
                       return (
-                        <SwiperSlide key={index}
+                        <SwiperSlide
+                          key={index}
                           onClick={() => setSelectedImage(image)}
                         >
                           <Image
@@ -253,99 +240,102 @@ const ProductDetails = () => {
                             alt={colors[selectedColorData]?.color}
                             width={100}
                             height={100}
-                            className='cursor-pointer rounded hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                            className="cursor-pointer rounded hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130"
                           />
                         </SwiperSlide>
-                      )
-                    })
-                  }
+                      );
+                    })}
                 </Swiper>
               </div>
-
             </div>
-            <div className="md:col-span-2">
+            <div className="">
               <h1 className="text-xl font-[500] md:w-[500px]">{name}</h1>
               <br />
-              <div className='flex items-center gap-4'>
+              <div className="flex items-center gap-4">
                 <h1 className="font-bold text-slate-900">
                   {discount
                     ? `₹ ${Math.floor(price - (price * discount) / 100)}`
-                    : `₹ ${Math.floor(price)}`
-                  }
+                    : `₹ ${Math.floor(price)}`}
                 </h1>
                 <span className="text-sm text-slate-900 line-through mt-1">
                   ₹ {Math.floor(price)}
                 </span>
-                <span className='text-[#eec75b]'>
+                <span className="text-[#eec75b]">
                   {Math.floor(discount)} % off
                 </span>
               </div>
-
 
               <p className="text-gray-400 text-sm my-4">
                 {details?.slice(0, 200)}...
               </p>
               <hr />
               <div className="mt-5">
-                <h4 className="text-lg font-semibold capitalize">Available Colors</h4>
-                <p className='my-2'>
-                  {selectedColorData?.color}
-                </p>
+                <h4 className="text-lg font-semibold capitalize">
+                  Available Colors
+                </h4>
+                <p className="my-2">{selectedColorData?.color}</p>
                 <div className="flex items-center gap-2 my-4">
+                  {colors &&
+                    colors?.map((color, index) => {
+                      const availableColor = color.color.toLowerCase();
+                      const isSelected = selectedColorIndex === index;
 
-                  {colors && colors?.map((color, index) => {
-                    const availableColor = color.color.toLowerCase();
-                    const isSelected = selectedColorIndex === index;
-
-                    return (
-                      <div key={index} className="flex flex-col justify-center gap-2">
+                      return (
                         <div
-                          className={`bg-[#f1e8e8] p-1 rounded-full w-[2rem] h-[2rem] cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${isSelected ? 'bg-opacity-100 ' : 'bg-opacity-50'
+                          key={index}
+                          className="flex flex-col justify-center gap-2"
+                        >
+                          <div
+                            className={`bg-[#f1e8e8] p-1 rounded-full w-[2rem] h-[2rem] cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${
+                              isSelected ? "bg-opacity-100 " : "bg-opacity-50"
                             }`}
-                          style={{
-                            backgroundColor: availableColor,
-                            border: isSelected ? '4px solid #ff5733' : '2px solid #3aa1b8',
-                          }}
-                          title={color.color}
-                          onClick={() => handleColorClick(index)}
-                        ></div>
-                      </div>
-                    );
-                  })}
-
+                            style={{
+                              backgroundColor: availableColor,
+                              border: isSelected
+                                ? "4px solid #ff5733"
+                                : "2px solid #3aa1b8",
+                            }}
+                            title={color.color}
+                            onClick={() => handleColorClick(index)}
+                          ></div>
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold capitalize">Available Sizes</h4>
+                <h4 className="text-lg font-semibold capitalize">
+                  Available Sizes
+                </h4>
                 <div className="flex items-center gap-2 my-4">
-                  {
-                    selectedColorData?.isSizeApplicable ? (
-                      <div className='flex flex-wrap gap-4'>
-                        {
-                          selectedColorData?.sizes.map((size, index) => {
-                            return (
-                              <div
-                                key={index + `size`}
-                                onClick={() => handleSizeClick(size.size)}
-                                className={`cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 ${selectedSize === size.size ? 'bg-[#ff5733] text-white' : 'bg-[#f1e8e8] text-black'} `}
-                              >
-                                <p className='text-[0.9rem] text-center border-2 px-3 py-1 rounded'>
-                                  {size?.size}
-                                </p>
-                              </div>
-                            )
-                          })
-                        }
-                      </div>
-                    ) : (
-                      <>
-                        <p className='text-[0.9rem] text-center'>
-                          Not applicable
-                        </p>
-                      </>
-                    )
-                  }
+                  {selectedColorData?.isSizeApplicable ? (
+                    <div className="flex flex-wrap gap-4">
+                      {selectedColorData?.sizes.map((size, index) => {
+                        return (
+                          <div
+                            key={index + `size`}
+                            onClick={() => handleSizeClick(size.size)}
+                            className={`cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 ${
+                              selectedSize === size.size
+                                ? "bg-[#ff5733] text-white"
+                                : "bg-[#f1e8e8] text-black"
+                            } `}
+                          >
+                            <p className="text-[0.9rem] text-center border-2 px-3 py-1 rounded">
+                              {size?.size}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <>
+                      <p className="text-[0.9rem] text-center">
+                        Not applicable
+                      </p>
+                    </>
+                  )}
                 </div>
               </div>
 
@@ -360,62 +350,69 @@ const ProductDetails = () => {
                 </button>
                 <button
                   onClick={() => handelBuyNow(_id)}
-                  className='common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Buy Now</button>
+                  className="common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                >
+                  Buy Now
+                </button>
               </div>
 
-
-              <div className='my-4 '>
+              <div className="my-4 ">
                 <Swiper
                   className="couponSwiper"
                   spaceBetween={30}
                   slidesPerView={1}
                   loop={true}
                 >
-                  {coupon && coupon?.map((coupon, index) => (
-                    <SwiperSlide key={index}
-                     
-                    >
-                      <div className="bg-gradient-to-br w-full from-purple-600 to-indigo-600 text-white text-center py-6 px-6 rounded-lg shadow-md relative">
-                        <h3 className="text-2xl font-semibold mb-4">
-                          {coupon.couponText}
-                        </h3>
-                        <div className="flex items-center justify-center md:flex-row gap-4 flex-col space-x-2 mb-6">
-                          <span
-                            id="cpnCode"
-                            className="border-dashed border text-white px-4 py-2 rounded-l"
-                          >
-                            {coupon.coupon}
-                          </span>
-                          <span
-                            id="cpnBtn"
-                            className="border border-white bg-white text-purple-600 px-4 py-2 rounded-r cursor-pointer"
-                            onClick={() => handleCopyCoupon(coupon?.coupon)}
-                          >
-                            {copiedCoupon === coupon.coupon ? 'Copied!' : 'Copy Code'}
-                          </span>
+                  {coupon &&
+                    coupon?.map((coupon, index) => (
+                      <SwiperSlide key={index}>
+                        <div className="bg-gradient-to-br w-full from-purple-600 to-indigo-600 text-white text-center py-6 px-6 rounded-lg shadow-md relative">
+                          <h3 className="text-2xl font-semibold mb-4">
+                            {coupon.couponText}
+                          </h3>
+                          <div className="flex items-center justify-center md:flex-row gap-4 flex-col space-x-2 mb-6">
+                            <span
+                              id="cpnCode"
+                              className="border-dashed border text-white px-4 py-2 rounded-l"
+                            >
+                              {coupon.coupon}
+                            </span>
+                            <span
+                              id="cpnBtn"
+                              className="border border-white bg-white text-purple-600 px-4 py-2 rounded-r cursor-pointer"
+                              onClick={() => handleCopyCoupon(coupon?.coupon)}
+                            >
+                              {copiedCoupon === coupon.coupon
+                                ? "Copied!"
+                                : "Copy Code"}
+                            </span>
+                          </div>
+                          <div className="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 left-0 -ml-6" />
+                          <div className="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 right-0 -mr-6" />
                         </div>
-                        <div className="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 left-0 -ml-6" />
-                        <div className="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 right-0 -mr-6" />
-                      </div>
-                    </SwiperSlide>
-                  ))}
+                      </SwiperSlide>
+                    ))}
                 </Swiper>
               </div>
               <hr />
-              <h4 className="text-lg mt-5 font-semibold capitalize">Product Description</h4>
-              <p className="text-gray-700">
-                {details}
-              </p>
-              <p className='text-lg mt-5 font-semibold capitalize'>Features</p>
+              <h4 className="text-lg mt-5 font-semibold capitalize">
+                Product Description
+              </h4>
+              <p className="text-gray-700">{details}</p>
+              <p className="text-lg mt-5 font-semibold capitalize">Features</p>
               <div className="flex items-center gap-3 mt-2 text-sm">
                 <ul className="">
-                  {
-                    features && features?.map((feature, index) => {
+                  {features &&
+                    features?.map((feature, index) => {
                       return (
-                        <li key={index} className='relative after:w-[10px] mt-2 after:rounded-full after:top-0 after:bottom-0 after:my-auto after:h-[10px] after:bg-[#3d3c3c] after:absolute after:left-0 pl-4'>{feature}</li>
-                      )
-                    })
-                  }
+                        <li
+                          key={index}
+                          className="relative after:w-[10px] mt-2 after:rounded-full after:top-0 after:bottom-0 after:my-auto after:h-[10px] after:bg-[#3d3c3c] after:absolute after:left-0 pl-4"
+                        >
+                          {feature}
+                        </li>
+                      );
+                    })}
                 </ul>
               </div>
               <div className="flex flex-col">
@@ -433,7 +430,7 @@ const ProductDetails = () => {
                               {brand}
                             </td>
                           </tr>
-                        
+
                           <tr className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
                               Total Color :
@@ -450,17 +447,20 @@ const ProductDetails = () => {
                                   )
                                 })
                               } */}
-                              {
-                                colors && colors?.map((color, index) => {
+                              {colors &&
+                                colors?.map((color, index) => {
                                   return (
-                                    <div key={index + `colorIdx`} className='flex items-center gap-2'>
-                                      <p className='text-[0.9rem] text-center'>
-                                        {color.color}{index !== colors.length - 1 ? ',' : ''}
+                                    <div
+                                      key={index + `colorIdx`}
+                                      className="flex items-center gap-2"
+                                    >
+                                      <p className="text-[0.9rem] text-center">
+                                        {color.color}
+                                        {index !== colors.length - 1 ? "," : ""}
                                       </p>
                                     </div>
                                   );
-                                })
-                              }
+                                })}
                             </td>
                           </tr>
                         </tbody>
@@ -473,9 +473,7 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        <hr
-          className='my-4 bg-[#000] '
-        />
+        <hr className="my-4 bg-[#000] " />
 
         <div>
           <RecomendationProduct />

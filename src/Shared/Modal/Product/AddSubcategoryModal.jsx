@@ -1,17 +1,20 @@
-import useProducts from '@/src/Hooks/useProducts';
-import { createSubCategoryUrl } from '@/src/Utils/Urls/ProductUrl';
-import { Modal } from 'antd';
-import { useForm } from 'react-hook-form';
+import useProducts from "@/src/Hooks/useProducts";
+import { createSubCategoryUrl } from "@/src/Utils/Urls/ProductUrl";
+import { Modal } from "antd";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-const AddSubcategoryModal = ({ isSubCategoryModalOpen, setIsSubCategoryModalOpen }) => {
+const AddSubcategoryModal = ({
+  isSubCategoryModalOpen,
+  setIsSubCategoryModalOpen,
+}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { refetchAllCategory, allCategoryData } = useProducts()
+  const { refetchAllCategory, allCategoryData } = useProducts();
 
   const handleCancel = () => {
     setIsSubCategoryModalOpen(false);
@@ -19,20 +22,17 @@ const AddSubcategoryModal = ({ isSubCategoryModalOpen, setIsSubCategoryModalOpen
 
   const onSubmit = async (data) => {
     const res = await fetch(createSubCategoryUrl, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: data.name,
-        parentId : data.parentCategory
+        parentId: data.parentCategory,
       }),
     });
 
-    console.log(res);
-
     const dataRes = await res.json();
-    console.log(dataRes);
 
     if (!dataRes) {
       Swal.fire({
@@ -70,16 +70,18 @@ const AddSubcategoryModal = ({ isSubCategoryModalOpen, setIsSubCategoryModalOpen
       });
       refetchAllCategory();
     }
-
-  }
-
+  };
 
   return (
     <div>
-      <Modal title="Add Level" open={isSubCategoryModalOpen} okButtonProps={{ style: { display: 'none' } }} onCancel={handleCancel}>
+      <Modal
+        title="Add Level"
+        open={isSubCategoryModalOpen}
+        okButtonProps={{ style: { display: "none" } }}
+        onCancel={handleCancel}
+      >
         <div className="shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6">
           <form onSubmit={handleSubmit(onSubmit)}>
-
             <select
               name="category"
               id="category"
@@ -87,15 +89,16 @@ const AddSubcategoryModal = ({ isSubCategoryModalOpen, setIsSubCategoryModalOpen
               {...register("parentCategory")}
             >
               <option value="category">Parent Category</option>
-              {allCategoryData && allCategoryData?.map((category) => (
-                <option
-                  key={category?._id}
-                  value={category?._id}
-                  className="border-2 border-gray-300 rounded-md p-4 my-2"
-                >
-                  {category?.name}
-                </option>
-              ))}
+              {allCategoryData &&
+                allCategoryData?.map((category) => (
+                  <option
+                    key={category?._id}
+                    value={category?._id}
+                    className="border-2 border-gray-300 rounded-md p-4 my-2"
+                  >
+                    {category?.name}
+                  </option>
+                ))}
             </select>
 
             <div className="my-6">

@@ -1,10 +1,6 @@
-///////////////////////////////////////////////
-//                Common Css Style           //
-/////////////////////////////////////////////*/
 /**
  * All Import 
  */
-//font**
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,900;1,6..12,1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 /**
   * Tailwind CSS
@@ -12,11 +8,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /**
  * Custom Css (Common Css Style)
  */
-
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +23,7 @@ html {
 
 body {
   font-family: "Nunito Sans", sans-serif;
-  background-color: #f9f9f9dc;
+  background-color: rgba(249, 249, 249, 0.862745098);
 }
 
 a {
@@ -56,16 +50,14 @@ textarea {
   border: none;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 img {
   max-width: 100%;
-  // height: auto;
-  // object-fit: cover
 }
 
 @layer base {
@@ -74,36 +66,33 @@ img {
     max-width: 1080px;
     padding-right: 1rem;
     padding-left: 1rem;
-
-    @screen sm {
+  }
+  @screen sm {
+    .container {
       max-width: 720px;
     }
   }
 }
-
 @layer components {
   .btn {
     @apply px-4 py-2 rounded-md text-white;
     background-color: #000;
     @apply transition-all duration-300;
-
-    &:hover {
-      background-color: #fff;
-      color: #000;
-    }
+  }
+  .btn:hover {
+    background-color: #fff;
+    color: #000;
   }
 }
-
 .common-btn {
   @apply px-4 py-2 rounded-md text-white;
   background-color: #088178;
   @apply transition-all duration-300;
-
-  &:hover {
-    background-color: #fff;
-    color: #000;
-    border: 2px solid #088178;
-  }
+}
+.common-btn:hover {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #088178;
 }
 
 .border-common-btn {
@@ -111,41 +100,36 @@ img {
   border: 2px solid #000;
   color: inherit;
   @apply transition-all duration-300;
-
-  &:hover {
-    background-color: #fff;
-    color: #000;
-    border: 2px solid rgba(0, 0, 0, 0.5);
-  }
+}
+.border-common-btn:hover {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid rgba(0, 0, 0, 0.5);
 }
 
 .hover {
   @apply transition-all duration-300;
-
-  &:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
+}
+.hover:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .text-hover {
   @apply transition-all duration-300;
-
-  &:hover {
-    color: inherit;
-    box-shadow: 0 0 10px rgba(227, 224, 224, 0.51);
-  }
+}
+.text-hover:hover {
+  color: inherit;
+  box-shadow: 0 0 10px rgba(227, 224, 224, 0.51);
 }
 
 .common-hover {
   @apply transition-all duration-300;
-
-  &:hover {
-    color: inherit;
-    box-shadow: 0 0 10px rgba(221, 218, 218, 0.51);
-  }
+}
+.common-hover:hover {
+  color: inherit;
+  box-shadow: 0 0 10px rgba(221, 218, 218, 0.51);
 }
 
-// dropdown
 .dropdown:hover .dropdown-menu {
   display: block;
   z-index: 99999;
@@ -178,16 +162,11 @@ img {
   padding-left: 50px;
 }
 
-///////      End of Common Css Style  ////////
-
-///////////////////////////////////////////////
-//                 Slider Section           //
-/////////////////////////////////////////////*/
-
 .swiper {
   width: 100%;
   height: 100%;
 }
+
 .swiper {
   margin-left: auto;
   margin-right: auto;
@@ -197,11 +176,11 @@ img {
   padding: 0;
   z-index: 0 !important;
 }
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: transparent !important;
-
   /* Center slide text vertically */
   display: flex;
   justify-content: center;
@@ -212,15 +191,14 @@ img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
-
-///////       End of Slider Section     ////////
 
 .offer-banner-section {
   background-image: url("../src/Assets/banner/offer-banner.jpg");
@@ -230,8 +208,6 @@ img {
   padding: 100px 0;
 }
 
-// ///////       Belt Banner section     ////////
-
 .belt-banner-section {
   background-image: url("../src/Assets/banner/belt-banner-02.jpg");
   background-repeat: no-repeat;
@@ -239,7 +215,5 @@ img {
   background-position: center;
   padding: 100px 0;
   background-blend-mode: color;
-  background-color: #000000a6;
-}
-
-// .....
+  background-color: rgba(0, 0, 0, 0.6509803922);
+}/*# sourceMappingURL=globals.css.map */

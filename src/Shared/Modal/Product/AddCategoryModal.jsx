@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
-import { useForm } from 'react-hook-form';
+import React, { useState } from "react";
+import { Button, Modal } from "antd";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { createCategoryUrl } from '@/src/Utils/Urls/ProductUrl';
-import useProducts from '@/src/Hooks/useProducts';
+import { createCategoryUrl } from "@/src/Utils/Urls/ProductUrl";
+import useProducts from "@/src/Hooks/useProducts";
 
 const AddCategoryModal = ({ isCategoryModalOpen, setIsCategoryModalOpen }) => {
   const {
@@ -12,28 +12,24 @@ const AddCategoryModal = ({ isCategoryModalOpen, setIsCategoryModalOpen }) => {
     formState: { errors },
   } = useForm();
 
-  const {refetchAllCategory} = useProducts()
+  const { refetchAllCategory } = useProducts();
 
   const handleCancel = () => {
     setIsCategoryModalOpen(false);
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
     const res = await fetch(createCategoryUrl, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: data.category,
       }),
     });
 
-    console.log(res);
-
     const dataRes = await res.json();
-    console.log(dataRes);
 
     if (!dataRes) {
       Swal.fire({
@@ -71,15 +67,14 @@ const AddCategoryModal = ({ isCategoryModalOpen, setIsCategoryModalOpen }) => {
       });
       refetchAllCategory();
     }
-
-  }
-
+  };
 
   return (
-    <Modal title="Add Category" 
-    open={isCategoryModalOpen} 
-    onCancel={handleCancel}
-    okButtonProps={{ style: { display: 'none' } }} 
+    <Modal
+      title="Add Category"
+      open={isCategoryModalOpen}
+      onCancel={handleCancel}
+      okButtonProps={{ style: { display: "none" } }}
     >
       <div className="shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6">
         <form onSubmit={handleSubmit(onSubmit)}>

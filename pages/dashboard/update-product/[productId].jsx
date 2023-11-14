@@ -30,7 +30,6 @@ const UpdatePorductPage = () => {
                 try {
                     const reqProduct = await fetch(getSingelProductUrl(productId));
                     const resProduct = await reqProduct.json();
-                    console.log(resProduct, "resProduct");
 
                     // Store the previous values when the product data is fetched
                     setPrevValues(resProduct?.data || {});
@@ -133,7 +132,6 @@ const UpdatePorductPage = () => {
                     if (imageUrl) {
                         uploadedImages.push(imageUrl);
                     } else {
-                        console.error(`Failed to upload image ${file.name}`);
                     }
                 }
 
@@ -302,7 +300,6 @@ const UpdatePorductPage = () => {
             };
 
             // Log the update data
-            console.log('productUpdateData', productUpdateData);
 
             // Send a PATCH request to update the product
             const res = await fetch(updateProductsUrl(productId), {
@@ -314,7 +311,6 @@ const UpdatePorductPage = () => {
             });
 
             const dataRes = await res.json();
-            console.log(dataRes, "dataRes");
 
             if (!res.ok) {
                 // Handle error message

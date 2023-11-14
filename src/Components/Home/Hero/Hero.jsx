@@ -17,7 +17,7 @@ import ProductSlide from "./ProductSlide";
 const Hero = () => {
   useEffect(() => {
     AOS.init({
-      // duration: 1000,
+      duration: 1000,
       easing: "ease-in-out",
       once: true, // Change to false to repeat animations
     });
@@ -39,7 +39,7 @@ const Hero = () => {
 
   const settings = {
     showThumbs: false,
-    // autoPlay: true,
+    autoPlay: true,
     // infiniteLoop: true,
     animation: "fade",
     showStatus: false,
@@ -50,7 +50,7 @@ const Hero = () => {
     // transitionTime: 2000,
     emulateTouch: true,
     swipeable: true,
-    // swipeScrollTolerance: 100,
+    swipeScrollTolerance: 100,
   };
 
   const bannarData = [
@@ -91,7 +91,7 @@ const Hero = () => {
           {...settings}
           className="hero-slider"
           data-aos="fade-up"
-          // data-aos-duration="1000"
+          data-aos-duration="1000"
         >
           {bannarData.map((item) => {
             return (

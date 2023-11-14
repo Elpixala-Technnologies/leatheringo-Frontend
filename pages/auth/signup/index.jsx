@@ -31,7 +31,6 @@ const Index = () => {
   const saveUserDataToDatabase = async (userData) => {
     try {
       const response = await axios.post(signupUrl, userData);
-      console.log(response.data);
     } catch (error) {
       console.error("Error saving user data:", error);
       throw error;
@@ -93,7 +92,6 @@ const Index = () => {
                   role: role,
                 })
                 .then((response) => {
-                  console.log(response);
                   Swal.fire({
                     position: "top-end",
                     timerProgressBar: true,
@@ -111,7 +109,6 @@ const Index = () => {
                     timer: 3500,
                   });
                   router.push("/auth/login");
-
                 })
                 .catch((error) => {
                   console.log("error", error);
@@ -245,9 +242,7 @@ const Index = () => {
                       </p>
                     </div>
                     <div className="flex sm:col-span-6 xxs:col-span-12  xxs:justify-center">
-                      <button className="uppercase common-btn ">
-                        Sign up
-                      </button>
+                      <button className="uppercase common-btn ">Sign up</button>
                     </div>
                   </div>
                 </form>
@@ -281,7 +276,6 @@ const Index = () => {
                       Sign in with Google
                     </span>
                   </div>
-
                 </div>
               </div>
             </div>

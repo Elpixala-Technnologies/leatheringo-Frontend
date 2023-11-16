@@ -12,7 +12,6 @@ const ManageInventoryPage = () => {
 
     const onSubmit = async (data) => {
         const { productId, quantity } = data;
-        console.log(data);
 
         try {
             setIsLoading(true);

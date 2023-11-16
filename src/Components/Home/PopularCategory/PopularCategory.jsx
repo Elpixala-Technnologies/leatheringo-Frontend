@@ -21,15 +21,7 @@ import "aos/dist/aos.css"; // Import AOS styles
 
 const PopualrCategory = () => {
   const { popularCategoryData } = usePopularCategory();
-  const [updateData, setUpdateData] = React.useState(8);
-
-  const showCard = () => {
-    if (updateData === 12) {
-      setUpdateData(cetegoryData.length);
-    } else {
-      setUpdateData(12);
-    }
-  };
+ 
 
   useEffect(() => {
     AOS.init({
@@ -41,7 +33,7 @@ const PopualrCategory = () => {
 
   return (
     <section>
-      <div className="">
+      <div className=" mb-10">
         <div className="md:w-[100%] mx-auto mt-7 md:mt-10  md:block ">
           <div className="mb-5 leading-10 text-center md:mb-8">
             <h1 className="font-bold text-black lg:text-3xl xxs:text-2xl">
@@ -51,7 +43,7 @@ const PopualrCategory = () => {
           <div className="rounded-lg pb-[1px]">
             <div className="grid grid-cols-2 gap-5 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 md:pt-5">
               {popularCategoryData &&
-                popularCategoryData.slice(0, updateData).map((child) => {
+                popularCategoryData.map((child) => {
                   const { _id, categories, image } = child;
                   const [categoryId, categoryName] = categories.split('-');
 
@@ -79,17 +71,7 @@ const PopualrCategory = () => {
                   );
                 })}
             </div>
-            <p
-              className="flex justify-end items-center text-black hover:text-red-500 text-[12px] my-2 px-1 pr-4 tracking-wide  hover:text-red-10 cursor-pointer"
-              onClick={() => showCard()}
-            >
-              {`Read ${updateData === 12 ? "Less" : "More"}`}{" "}
-              {updateData === 12 ? (
-                <AiFillCaretUp className="mt-1 text-[15px]" />
-              ) : (
-                <AiFillCaretDown className="mt-1 text-[15px]" />
-              )}
-            </p>
+          
           </div>
         </div>
       </div>

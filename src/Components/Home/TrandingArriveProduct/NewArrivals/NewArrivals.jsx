@@ -38,12 +38,12 @@ const NewArrivals = () => {
 
     return (
         <section className="my-4 mx-2" >
-            <div className="title my-6 flex justify-between items-center">
+            <div className="title my-6 flex justify-center items-center">
                 <h2 className="text-[1rem] md:text-[1.5rem] text-center md:text-left  text-black font-bold">
                     New Arrivals
                 </h2>
-
-                <div className="flex  items-center gap-10 top-0">
+            </div>
+                <div className="flex flex-end items-center gap-10  ">
                     <button
                         className="prev-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
                         onClick={handlePrev}
@@ -57,9 +57,8 @@ const NewArrivals = () => {
                         <TbArrowBigRight className="h-6 w-6 text-white" />
                     </button>
                 </div>
-            </div>
 
-            <div>
+            <div className='mt-6'>
                 <Swiper
                     ref={sliderRef}
                     modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}

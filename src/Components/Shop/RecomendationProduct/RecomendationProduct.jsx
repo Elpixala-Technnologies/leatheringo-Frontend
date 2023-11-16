@@ -116,9 +116,7 @@ const RecomendationProduct = () => {
                                                             {Math.floor(product?.discount)} % off
                                                         </span>
                                                     </div>
-                                                    <p className="productDescription py-3">
-                                                        {product?.details?.slice(0, 100)}
-                                                    </p>
+                                                   
                                                     <div className="productAddToCart flex gap-5 items-center">
                                                         <div>
                                                             <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>

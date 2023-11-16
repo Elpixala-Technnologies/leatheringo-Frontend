@@ -1,0 +1,107 @@
+[
+	{
+		"name": "Shoes",
+		"parent": null,
+		"details": null
+	},
+	{
+		"name": "Formal",
+		"parent": "Shoes",
+		"details": null
+	},
+	{
+		"name": "Sneakers",
+		"parent": "Shoes",
+		"details": null
+	},
+	{
+		"name": "Monks",
+		"parent": "Shoes",
+		"details": null
+	},
+	{
+		"name": "Single Monk",
+		"parent": "Monks",
+		"details": null
+	},
+	{
+		"name": "Double Monk",
+		"parent": "Monks",
+		"details": null
+	},
+	{
+		"name": "Casual",
+		"parent": "Shoes",
+		"details": null
+	},
+	{
+		"name": "Whole Cut Shoes",
+		"parent": "Shoes",
+		"details": null
+	},
+	{
+		"name": "Brogues",
+		"parent": "Shoes",
+		"details": null
+	},
+	{
+		"name": "Derbies",
+        "parent": "Shoes",
+		"details": null
+	},
+	{
+		"name": "Chelsea Coots",
+		"parent": "Shoes",
+		"details": null
+	},
+	{
+		"name": "Bags",
+		"parent": null,
+		"details": null
+	},
+	{
+		"name": "Duffle Bags",
+		"parent": "Bags",
+		"details": null
+	},
+	{
+		"name": "Laptop Bags",
+		"parent": "Bags",
+		"details": null
+	},
+	{
+		"name": "Ladies Bags",
+        "parent": "Bags",
+		"details": null
+	},
+	{
+		"name": "Slings",
+        "parent": "Bags",
+		"details": null
+	},
+	{
+		"name": "Belts",
+		"parent": null,
+		"details": null
+	},
+	{
+		"name": "Mens",
+		"parent": "Belts",
+		"details": null
+	},
+	{
+		"name": "Womens",
+		"parent": "Belts",
+		"details": null
+	},
+	{
+		"name": "Card Holders",
+		"parent": null,
+		"details": null
+	},
+	{
+		"name": "Wallets",
+		"parent": null,
+		"details": null
+	}
+]

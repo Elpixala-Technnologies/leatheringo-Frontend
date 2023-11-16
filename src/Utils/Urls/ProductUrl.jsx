@@ -34,7 +34,9 @@ export const createSubCategoryUrl = basedUrl + `/products/create-subcategories`
 
 export const getAllCategoryUrl = basedUrl + '/products/get-all-categories'
 
-export const getAllCategorySubCategoryUrl = basedUrl + '/products/get-all-categories-with-subcategories'
+export const getMainCategoryUrl = basedUrl + '/products/get-main-categoriess'
+
+export const getAllCategorySubCategoryUrl = basedUrl + '/products/get-all-categories'
 
 export const getSingelCategoryUrl = (id) => basedUrl + `/products/get-singel-categories/${id}`
 
@@ -45,16 +47,13 @@ export const deleteCategoryUrl = (id) => basedUrl + `/products/delete-categories
 export const deleteSubCategoryUrl = (id) => basedUrl + `/products/delete-subcategories/${id}`
 
 
-
 // ===== Add to cart =======
 
 export const addToCartUrl = (id) => basedUrl + `/cart/add-to-cart/${id}`
 
-
 export const getCartUrl = (email) => basedUrl + `/cart/get-cart/${email}`
-
 
 export const removeFromCartUrl = (id) => basedUrl + `/cart/remove-from-cart/${id}`
 
-
 export const updateCartUrl = (id) => basedUrl + `/cart/update-cart/${id}`
+

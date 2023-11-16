@@ -41,6 +41,7 @@ const ProductDetails = () => {
     status,
     details,
     features,
+    additionalInfo,
     colors,
     coupon,
     _id,
@@ -203,20 +204,25 @@ const ProductDetails = () => {
     }
   };
 
-  console.log(coupon, "coupon");
+  const [value, setValue] = useState([20, 37]);
 
+  const handleRangeChange = () => {
+    setValue(newValue === null ? [0, 37] : newValue);
+  };
+
+ 
   return (
     <RootLayout>
       <div className='pb-4 md:container h-full'>
         <div className="md:container mx-auto mt-3 flex justify-between items-center">
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
             <div className="">
               <div className="img-box shadow w-full items-center rounded bg-[#f1e8e8] p-2 flex justify-center">
                 {selectedImage ? (
                   <Image
                     src={selectedImage}
                     alt={name}
-                    width={300}
+                    width={500}
                     height={300}
                     className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
                   />
@@ -224,7 +230,7 @@ const ProductDetails = () => {
                   <Image
                     src={mainProductData?.colors[0]?.images[0]}
                     alt={mainProductData?.colors[0]?.color}
-                    width={300}
+                    width={500}
                     height={300}
                     className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
                   />
@@ -262,8 +268,32 @@ const ProductDetails = () => {
                 </Swiper>
               </div>
 
+              <br/>
+
+              
+
+                                    <h1 className="mt-8 text-3xl font-bold">
+                                        Additional Infomation
+                                    </h1>
+                                    <div className='flex flex-col my-2  gap-4'>
+
+                                        {
+                                            additionalInfo && additionalInfo?.map((adt) => {
+                                                return (
+                                                    <div className='flex flex-col gap-2'>
+                                                        <h1 className='font-bold'> ✅ {adt?.heading} :</h1>
+                                                        <hr/>
+                                                        <h2>{adt?.description}</h2>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+
+                                    </div>
+
+
             </div>
-            <div className="md:col-span-2">
+            <div className="md:col-span-1">
               <h1 className="text-xl font-[500] md:w-[500px]">{name}</h1>
               <br />
               <div className='flex items-center gap-4'>
@@ -280,11 +310,7 @@ const ProductDetails = () => {
                   {Math.floor(discount)} % off
                 </span>
               </div>
-
-
-              <p className="text-gray-400 text-sm my-4">
-                {details?.slice(0, 200)}...
-              </p>
+ 
               <hr />
               <div className="mt-5">
                 <h4 className="text-lg font-semibold capitalize">Available Colors</h4>
@@ -402,21 +428,46 @@ const ProductDetails = () => {
                 </Swiper>
               </div>
               <hr />
-              <h4 className="text-lg mt-5 font-semibold capitalize">Product Description</h4>
-              <p className="text-gray-700">
-                {details}
-              </p>
-              <p className='text-lg mt-5 font-semibold capitalize'>Features</p>
+               
               <div className="flex items-center gap-3 mt-2 text-sm">
-                <ul className="">
-                  {
-                    features && features?.map((feature, index) => {
-                      return (
-                        <li key={index} className='relative after:w-[10px] mt-2 after:rounded-full after:top-0 after:bottom-0 after:my-auto after:h-[10px] after:bg-[#3d3c3c] after:absolute after:left-0 pl-4'>{feature}</li>
-                      )
-                    })
-                  }
-                </ul>
+              <div className="mt-8 flow-root sm:mt-12">
+              <h1 className="text-3xl font-bold  ">Details</h1>
+                                    <div className='flex flex-col my-2  gap-4'>
+
+                                        {
+                                            details && details?.map((dt) => {
+                                                return (
+                                                  <div className='gap-2 flex-col flex'>
+                                                  <h1 className='font-bold'> ✅ {dt?.heading} :</h1>
+                                                  <hr />
+                                                  <h2>{dt?.description}</h2>
+                                              </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+
+
+                                    <h1 className="text-3xl font-bold">Features</h1>
+                                    <div className='flex flex-col my-2  gap-4'>
+
+                                        {
+                                            features && features?.map((dt) => {
+                                                return (
+                                                    <div className='flex flex-col gap-2'>
+                                                        <h1 className='font-bold'> ✅ {dt?.heading} :</h1>
+                                                        <hr/>
+                                                        <h2>{dt?.description}</h2>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+
+
+
+                                   
+                                </div>
               </div>
               <div className="flex flex-col">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 my-4">
@@ -439,17 +490,7 @@ const ProductDetails = () => {
                               Total Color :
                             </td>
                             <td className="whitespace-nowrap flex  px-6 py-4">
-                              {/* {
-                                colors && colors?.map((color, index) => {
-                                  return (
-                                    <div key={index + `colroIdsx`} className='flex items-center gap-2'>
-                                      <p className='text-[0.9rem] text-center'>
-                                        {color.color} ,
-                                      </p>
-                                    </div>
-                                  )
-                                })
-                              } */}
+                       
                               {
                                 colors && colors?.map((color, index) => {
                                   return (

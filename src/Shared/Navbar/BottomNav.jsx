@@ -83,7 +83,9 @@ const BottomNav = () => {
                                     onMouseEnter={() => handleMouseEnter('shoes')}
                                     onMouseLeave={() => handleMouseLeave('shoes')}
                                 >
+                                    <Link href="/category-product/Shoes">
                                     <span className="text relative cursor-pointer text-white">Shoes</span>
+                                    </Link>
                                     {megaMenuVisible.shoes && (
                                         <div
                                             className={`mega-menu border z-50 bg-white  absolute w-[100%]  left-0 right-0 rounded p-4 transition-opacity opacity-100`}
@@ -187,18 +189,11 @@ const BottomNav = () => {
                                                                                             {product?.name}
                                                                                         </h2>
                                                                                         <div className='flex items-center gap-4 text-[0.8rem]'>
-                                                                                            <h1 className="font-bold text-slate-900">
-                                                                                                {product?.discount
-                                                                                                    ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
-                                                                                                    : `₹ ${Math.floor(product?.price)}`
-                                                                                                }
-                                                                                            </h1>
+                                                                                         
                                                                                             <span className="mt-1 text-sm line-through text-slate-900">
                                                                                                 ₹ {Math.floor(product?.price)}
                                                                                             </span>
-                                                                                            <span className='text-[#eec75b]'>
-                                                                                                {Math.floor(product?.discount)} % off
-                                                                                            </span>
+                                                                                            
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -222,7 +217,9 @@ const BottomNav = () => {
                                     onMouseLeave={() => handleMouseLeave('bags')}
                                     className='cursor-pointer'
                                 >
+                                    <Link href="/category-product/Bags">
                                     <span className="text relative cursor-pointer text-white">Bags</span>
+                                    </Link>
                                     {megaMenuVisible.bags && (
                                         <div
                                             className={`mega-menu border bg-white z-50 absolute w-[100%] left-0 right-0 rounded p-4 transition-opacity opacity-100`}
@@ -295,9 +292,7 @@ const BottomNav = () => {
                                                                                             <span className="mt-1 text-sm line-through text-slate-900">
                                                                                                 ₹ {Math.floor(product?.price)}
                                                                                             </span>
-                                                                                            <span className='text-[#eec75b]'>
-                                                                                                {Math.floor(product?.discount)} % off
-                                                                                            </span>
+                                                                                             
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -320,7 +315,9 @@ const BottomNav = () => {
                                     onMouseEnter={() => handleMouseEnter('belts')}
                                     onMouseLeave={() => handleMouseLeave('belts')}
                                     className='cursor-pointer'>
+                                    <Link href='/category-product/Belts'>    
                                     <span className="text relative cursor-pointer text-white">Belts</span>
+                                    </Link>
                                     {megaMenuVisible.belts && (
                                         <div
                                             className={`mega-menu border bg-white z-50 absolute w-[100%] left-0 right-0 rounded p-4 transition-opacity opacity-100`}

@@ -55,8 +55,6 @@ const UpdateAddressModal = ({
             });
             const data = await response.json();
 
-            console.log(data);
-
             if (!data) {
                 Swal.fire({
                     position: "center",

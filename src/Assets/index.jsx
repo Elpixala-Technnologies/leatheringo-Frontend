@@ -47,12 +47,14 @@ import ShoseTow from "./ShoseBanner/shoe2.png"
 import ShoseTheree from "./ShoseBanner/shoe3.png"
 import ShoseFour from "./ShoseBanner/shoe4.png"
 
+import BlackLogo from "./Logo/black-bg.png"
+
 export {
     PreLoaderIcon,
     MainLogo,
     NotFoundIcon,
     AuthIcons,
-
+    BlackLogo,
     HomeSliderOne,
     HomeSliderTwo,
 

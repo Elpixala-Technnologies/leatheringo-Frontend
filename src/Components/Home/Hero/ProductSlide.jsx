@@ -14,9 +14,12 @@ import {
     ShoseTheree,
     ShoseFour
 } from '@/src/Assets';
+import useHomeSlider from '@/src/Hooks/useHomeSlider';
 
 const ProductSlide = () => {
     const { productData } = useProducts()
+    const {homeSliderProductData} = useHomeSlider()
+
 
     const sliderRef = useRef(null);
     const handlePrev = useCallback(() => {
@@ -38,35 +41,35 @@ const ProductSlide = () => {
 
     const sliderData = [
         {
-            image: ShoseOne,
-            name: "Nike pegasus 37",
-            collection: "Running collections",
-            star: "3",
-            price: "150",
+          image: ShoseOne,
+          name: "Adidas Ultraboost 21",
+          collection: "Running collections",
+          star: "4.5",
+          price: "180",
         },
         {
-            image: ShoseTow,
-            name: "Nike pegasus 37",
-            collection: "Running collections",
-            star: "3",
-            price: "150",
+          image: ShoseTow,
+          name: "Puma Future Rider",
+          collection: "Casual collections",
+          star: "4.2",
+          price: "120",
         },
         {
-            image: ShoseTheree,
-            name: "Nike pegasus 37",
-            collection: "Running collections",
-            star: "3",
-            price: "150",
+          image: ShoseTheree,
+          name: "Nike Air Max 270",
+          collection: "Athletic collections",
+          star: "4.7",
+          price: "160",
         },
         {
-            image: ShoseFour,
-            name: "Nike pegasus 37",
-            collection: "Running collections",
-            star: "3",
-            price: "150",
-
+          image: ShoseFour,
+          name: "New Balance Fresh Foam X",
+          collection: "Running collections",
+          star: "4.3",
+          price: "130",
         }
-    ]
+      ];
+      
 
 
     return (
@@ -137,10 +140,10 @@ const ProductSlide = () => {
                 data-aos-duration="1000"
             >
                 <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {sliderData &&
-                        sliderData?.map((product) => {
+                    {homeSliderProductData &&
+                        homeSliderProductData?.map((product) => {
                             return (
-                                <SwiperSlide className="cursor-grab" key={product?.name + 'produc'}>
+                                <SwiperSlide className="cursor-grab" key={product?.title + 'produc'}>
                                     <div className='flex gap-4 justify-center items-center p-6'>
                                         <div className='md:w-[7rem]'>
                                             <Image
@@ -152,10 +155,10 @@ const ProductSlide = () => {
                                         </div>
                                         <div className='text-left'>
                                             <h1 className='font-bold'>
-                                                {product?.name}
+                                                {product?.title}
                                             </h1>
                                             <h1>
-                                                {product?.collection}
+                                                {product?.description}
                                             </h1>
                                             <h1 className='font-bold'>
                                                 ₹ {product?.price}

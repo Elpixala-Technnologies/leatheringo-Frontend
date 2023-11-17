@@ -1,16 +1,16 @@
 'use client'
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useCallback } from 'react';
 import RootLayout from '@/src/Layouts/RootLayout';
 import { addToCartUrl } from '@/src/Utils/Urls/ProductUrl';
 import Swal from 'sweetalert2';
 import { AuthContext } from '@/src/Context/UserContext';
 import useProducts from '@/src/Hooks/useProducts';
-import CouponSlider from '@/src/Components/Shop/CopuonSlider/CopuonSlider';
 import RecomendationProduct from '@/src/Components/Shop/RecomendationProduct/RecomendationProduct';
 
 const ProductDetails = () => {
@@ -170,9 +170,6 @@ const ProductDetails = () => {
       })
       router.push('/checkout');
     }
-
-
-
   }
   const [copiedCoupon, setCopiedCoupon] = useState(null);
 
@@ -210,13 +207,13 @@ const ProductDetails = () => {
     setValue(newValue === null ? [0, 37] : newValue);
   };
 
- 
+
   return (
     <RootLayout>
-      <div className='pb-4 md:container h-full'>
+      <div className='pb-4 container h-full'>
         <div className="md:container mx-auto mt-3 flex justify-between items-center">
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
-            <div className="">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-8  ">
+            <div className="detailImageContent">
               <div className="img-box shadow w-full items-center rounded bg-[#f1e8e8] p-2 flex justify-center">
                 {selectedImage ? (
                   <Image
@@ -224,7 +221,7 @@ const ProductDetails = () => {
                     alt={name}
                     width={500}
                     height={300}
-                    className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                    className='w-full h-full cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
                   />
                 ) : (
                   <Image
@@ -232,20 +229,27 @@ const ProductDetails = () => {
                     alt={mainProductData?.colors[0]?.color}
                     width={500}
                     height={300}
-                    className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                    className='w-full h-full cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
                   />
                 )}
               </div>
 
               <br />
-              <div className="md:h-[8%] h-[15%]">
+              <div className="md:h-[12%] h-[15%]">
                 <Swiper
                   slidesPerView={4}
                   spaceBetween={10}
                   pagination={{
                     clickable: true,
                   }}
-                  modules={[]}
+                  navigation={true}
+                  modules={[
+                    'Navigation',
+                    'Pagination',
+                    'Scrollbar',
+                    'A11y',
+                    'Autoplay',
+                  ]}
                   className="mySwiper"
                 >
                   {
@@ -257,9 +261,9 @@ const ProductDetails = () => {
                           <Image
                             src={image}
                             alt={colors[selectedColorData]?.color}
-                            width={100}
-                            height={100}
-                            className='cursor-pointer rounded hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                            width={150}
+                            height={150}
+                            className='cursor-pointer w-full h-full rounded hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130 m-2'
                           />
                         </SwiperSlide>
                       )
@@ -268,29 +272,7 @@ const ProductDetails = () => {
                 </Swiper>
               </div>
 
-              <br/>
-
-              
-
-                                    <h1 className="mt-8 text-3xl font-bold">
-                                        Additional Infomation
-                                    </h1>
-                                    <div className='flex flex-col my-2  gap-4'>
-
-                                        {
-                                            additionalInfo && additionalInfo?.map((adt) => {
-                                                return (
-                                                    <div className='flex flex-col gap-2'>
-                                                        <h1 className='font-bold'> ✅ {adt?.heading} :</h1>
-                                                        <hr/>
-                                                        <h2>{adt?.description}</h2>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-
-                                    </div>
-
+              <br />
 
             </div>
             <div className="md:col-span-1">
@@ -310,7 +292,7 @@ const ProductDetails = () => {
                   {Math.floor(discount)} % off
                 </span>
               </div>
- 
+
               <hr />
               <div className="mt-5">
                 <h4 className="text-lg font-semibold capitalize">Available Colors</h4>
@@ -389,7 +371,6 @@ const ProductDetails = () => {
                   className='common-btn flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white bg-[#1db7ff] hover:bg-[#0095da] transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Buy Now</button>
               </div>
 
-
               <div className='my-4 '>
                 <Swiper
                   className="couponSwiper"
@@ -399,7 +380,6 @@ const ProductDetails = () => {
                 >
                   {coupon && coupon?.map((coupon, index) => (
                     <SwiperSlide key={index}
-                     
                     >
                       <div className="bg-gradient-to-br w-full from-purple-600 to-indigo-600 text-white text-center py-6 px-6 rounded-lg shadow-md relative">
                         <h3 className="text-2xl font-semibold mb-4">
@@ -428,95 +408,159 @@ const ProductDetails = () => {
                 </Swiper>
               </div>
               <hr />
-               
+
               <div className="flex items-center gap-3 mt-2 text-sm">
-              <div className="mt-8 flow-root sm:mt-12">
-              <h1 className="text-3xl font-bold  ">Details</h1>
-                                    <div className='flex flex-col my-2  gap-4'>
+                <div className="mt-8 ">
+                  <h1 className="text-3xl font-bold">Features</h1>
+                  <div className='flex flex-col my-2  gap-4'>
 
-                                        {
-                                            details && details?.map((dt) => {
-                                                return (
-                                                  <div className='gap-2 flex-col flex'>
-                                                  <h1 className='font-bold'> ✅ {dt?.heading} :</h1>
-                                                  <hr />
-                                                  <h2>{dt?.description}</h2>
-                                              </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-
-
-                                    <h1 className="text-3xl font-bold">Features</h1>
-                                    <div className='flex flex-col my-2  gap-4'>
-
-                                        {
-                                            features && features?.map((dt) => {
-                                                return (
-                                                    <div className='flex flex-col gap-2'>
-                                                        <h1 className='font-bold'> ✅ {dt?.heading} :</h1>
-                                                        <hr/>
-                                                        <h2>{dt?.description}</h2>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-
-
-
-                                   
-                                </div>
-              </div>
-              <div className="flex flex-col">
-                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 my-4">
-                  <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                    <div className="overflow-hidden">
-                      <hr />
-                      <table className="min-w-full text-left text-sm font-light">
-                        <tbody>
-                          <tr className="border-b dark:border-neutral-500">
-                            <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Brand :
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-4">
-                              {brand}
-                            </td>
-                          </tr>
-                        
-                          <tr className="border-b dark:border-neutral-500">
-                            <td className="whitespace-nowrap px-6 py-4 font-medium">
-                              Total Color :
-                            </td>
-                            <td className="whitespace-nowrap flex  px-6 py-4">
-                       
-                              {
-                                colors && colors?.map((color, index) => {
-                                  return (
-                                    <div key={index + `colorIdx`} className='flex items-center gap-2'>
-                                      <p className='text-[0.9rem] text-center'>
-                                        {color.color}{index !== colors.length - 1 ? ',' : ''}
-                                      </p>
-                                    </div>
-                                  );
-                                })
-                              }
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                    {
+                      features && features?.map((dt) => {
+                        return (
+                          <div className='flex flex-col gap-2'>
+                            <h1 className='font-bold'>  {dt?.heading} :</h1>
+                            <hr />
+                            <h2>{dt?.description}</h2>
+                          </div>
+                        )
+                      })
+                    }
                   </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div className='grid md:grid-cols-2 gap-6 mt-2'>
+          <div className='flex flex-col gap-4'>
+            <h1 className="  text-3xl font-bold">
+              Additional Infomation
+            </h1>
+
+            {
+              additionalInfo && additionalInfo?.map((adt) => {
+                return (
+                  <div className='flex gap-2 border p-2 bg-slate-200 rounded'>
+                    <h1 className='font-bold'>  {adt?.heading} :</h1>
+                    <h2>{adt?.description}</h2>
+                  </div>
+                )
+              })
+            }
+
+          </div>
+
+          <div className='flex flex-col   gap-4'>
+            <h1 className="text-3xl font-bold  ">Details</h1>
+            {
+              details && details?.map((dt) => {
+                return (
+                  <div className='flex gap-2 border p-2 bg-slate-200 rounded'>
+                    <h1 className='font-bold'>   {dt?.heading} :</h1>
+                    <h2>{dt?.description}</h2>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+        <hr
+          className='my-4 bg-[#000] '
+        />
+        <div className="flex flex-col">
+          <h1 className="mt-6  text-3xl font-bold">
+            Product Description
+          </h1>
+
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 my-4 w-full">
+              <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div className="overflow-hidden">
+                  <hr />
+                  <table className="min-w-full text-left text-sm font-light">
+                    <tbody className='flex flex-col gap-2'>
+                      <tr className="bg-slate-200 rounded">
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          Brand :
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          {brand}
+                        </td>
+                      </tr>
+                      <tr className=" bg-slate-200 rounded flex items-center">
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          Total Color :
+                        </td>
+                        <td className="whitespace-nowrap flex  px-6 py-4">
+
+                          {
+                            colors && colors?.map((color, index) => {
+                              return (
+                                <div key={index + `colorIdx`} className='flex items-center gap-2'>
+                                  <p className='text-[0.9rem] text-center'>
+                                    {color.color}{index !== colors.length - 1 ? ',' : ''}
+                                  </p>
+                                </div>
+                              );
+                            })
+                          }
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 my-4 w-full">
+              <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div className="overflow-hidden">
+                  <hr />
+                  <table className="min-w-full text-left text-sm font-light">
+                    <tbody className='flex flex-col gap-2'>
+                      <tr className=" bg-slate-200 rounded">
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          Sizes :
+                        </td>
+                        <td className="whitespace-nowrap px-6  py-4 ">
+                          <div className='flex gap-2 '>
+                            {
+                              colors && colors?.map((color, index) => {
+                                return (
+                                  <div key={index + `colorIdx`} className='flex items-center gap-2'>
+                                    <div className='text-[0.9rem] text-center flex gap-2 items-center border px-2'>
+                                      {color.sizes.map((size) => {
+                                        return (
+                                          <p className='text-[0.9rem] text-center  '>
+                                            {size.size}{index !== color.sizes?.length - 1 ? ',' : ''}
+                                          </p>
+                                        )
+                                      })}
+                                    </div>
+                                  </div>
+                                );
+                              })
+                            }
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="bg-slate-200 rounded flex">
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          Type :
+                        </td>
+                        <td className="whitespace-nowrap flex  px-6 py-4">
+                          {type}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
 
-        <hr
-          className='my-4 bg-[#000] '
-        />
 
         <div>
           <RecomendationProduct />

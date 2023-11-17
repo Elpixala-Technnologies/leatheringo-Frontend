@@ -43,20 +43,20 @@ const NewArrivals = () => {
                     New Arrivals
                 </h2>
             </div>
-                <div className="flex flex-end items-center gap-10  ">
-                    <button
-                        className="prev-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
-                        onClick={handlePrev}
-                    >
-                        <TbArrowBigLeft className="h-6 w-6 text-white" />
-                    </button>
-                    <button
-                        className="next-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
-                        onClick={handleNext}
-                    >
-                        <TbArrowBigRight className="h-6 w-6 text-white" />
-                    </button>
-                </div>
+            <div className="flex flex-end items-center gap-10  ">
+                <button
+                    className="prev-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
+                    onClick={handlePrev}
+                >
+                    <TbArrowBigLeft className="h-6 w-6 text-white" />
+                </button>
+                <button
+                    className="next-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
+                    onClick={handleNext}
+                >
+                    <TbArrowBigRight className="h-6 w-6 text-white" />
+                </button>
+            </div>
 
             <div className='mt-6'>
                 <Swiper
@@ -99,7 +99,7 @@ const NewArrivals = () => {
                         {filterProductData &&
                             filterProductData.map((product) => {
                                 return (
-                                    <SwiperSlide className="cursor-grab" key={product?._id} 
+                                    <SwiperSlide className="cursor-grab" key={product?._id}
                                     >
                                         <div className="cardBody md:m-0  mx-auto  flex flex-col hover:border-red-500  color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                             <div className="productImage ">
@@ -131,7 +131,7 @@ const NewArrivals = () => {
                                                     </span>
                                                 </div>
                                                 <p className="productDescription py-3 text-left">
-                                                    {product?.details?.slice(0, 46)+"..."}
+                                                    {product?.details[0]?.description?.slice(0, 30) + "..."}
                                                 </p>
                                                 <div className="productAddToCart flex gap-5 items-center">
                                                     <div>

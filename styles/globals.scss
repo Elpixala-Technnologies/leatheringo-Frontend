@@ -71,7 +71,7 @@ img {
 @layer base {
   .container {
     @apply mx-auto;
-    max-width: 1440px;
+    max-width: 1640px;
     padding-right: 1rem;
     padding-left: 1rem;
 
@@ -243,3 +243,42 @@ img {
 }
 
 // .....
+
+// .swiper-button-prev{
+//   color: #000 !important;
+//   width: 1rem !important;
+//   height: 1rem !important;
+//   position: absolute !important;
+//   left: -4% !important;
+//   z-index: 9999 !important;
+ 
+// }
+
+.swiper-button-next:after, .swiper-button-prev:after{
+  color: #000 !important;
+ font-size: 1.5rem !important;
+  position: absolute !important;
+  // left: -84% !important;
+//  right: -90% !important;
+  background: #ffffff79 !important;
+  padding: 1rem !important;
+  z-index: 9999rem;
+}
+
+.detailImageContent{
+  position: sticky !important;
+  top: 10% !important;
+}
+ 
+
+.one:hover span:last-child {
+  width: 100%;
+}
+
+.two:hover span {
+  width: 50%;
+}
+
+.three:hover span {
+  height: 100%;
+}

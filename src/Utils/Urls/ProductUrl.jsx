@@ -30,7 +30,7 @@ export const deleteCouponUrl = (id) => basedUrl + `/products/delete-coupon/${id}
 
 export const createCategoryUrl = basedUrl + '/products/create-categories'
 
-export const createSubCategoryUrl = basedUrl + `/products/create-subcategories`
+export const createSubCategoryUrl = basedUrl + `/products/create-sub-categories`
 
 export const getAllCategoryUrl = basedUrl + '/products/get-all-categories'
 

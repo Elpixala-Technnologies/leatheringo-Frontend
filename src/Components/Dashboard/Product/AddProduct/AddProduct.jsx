@@ -278,7 +278,7 @@ const handleCategoryChange = (event) => {
   setSelectedCategories(event.target.value);
 };
 
-const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [];;
+const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [];
  
   const onSubmit = async (inputValue) => {
     try {

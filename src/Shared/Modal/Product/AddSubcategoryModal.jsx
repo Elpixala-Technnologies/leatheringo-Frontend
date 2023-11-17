@@ -21,6 +21,7 @@ const AddSubcategoryModal = ({
   };
 
   const onSubmit = async (data) => {
+    console.log(data)
     const res = await fetch(createSubCategoryUrl, {
       method: "POST",
       headers: {
@@ -28,7 +29,7 @@ const AddSubcategoryModal = ({
       },
       body: JSON.stringify({
         name: data.name,
-        parentId: data.parentCategory,
+        parent: data.parentCategory,
       }),
     });
 
@@ -93,7 +94,7 @@ const AddSubcategoryModal = ({
                 allCategoryData?.map((category) => (
                   <option
                     key={category?._id}
-                    value={category?._id}
+                    value={category?.name}
                     className="border-2 border-gray-300 rounded-md p-4 my-2"
                   >
                     {category?.name}

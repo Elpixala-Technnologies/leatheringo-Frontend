@@ -34,104 +34,34 @@ const getPaddingStyle = (level) => {
 
 
 const ProductPage = () => {
-  // const { productData, categoryData, productLoaded } = useProducts();
-  // const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  // const [selectedCategories, setSelectedCategories] = useState(['All']);
-  // const itemsPerPage = 9;
-  // const [page, setPage] = useState(1);
-
-  // const start = (page - 1) * itemsPerPage;
-  // const end = page * itemsPerPage;
-  // const currentPageData = productData?.slice(start, end);
-
-  // const totalPages = Math.ceil((productData?.length || 0) / itemsPerPage);
-
-  // useEffect(() => {
-  //   if (page > totalPages) {
-  //     setPage(1);
-  //   }
-  // }, [page, totalPages]);
-
-  // const handleNextPage = () => {
-  //   if (page < totalPages) {
-  //     setPage(page + 1);
-  //   }
-  // };
-
-  // const handlePrevPage = () => {
-  //   if (page > 1) {
-  //     setPage(page - 1);
-  //   }
-  // };
-
-  // const toggleCategory = (category) => {
-  //   if (selectedCategories?.includes(category)) {
-  //     setSelectedCategories(selectedCategories?.filter((c) => c !== category));
-  //   } else {
-  //     setSelectedCategories([...selectedCategories, category]);
-  //   }
-  // };
-
-  // const filters = {
-  //   category: false,
-  //   size: false,
-  //   color: false,
-  //   price: false,
-  // };
-
-
-  // const [activeFilter, setActiveFilter] = useState(null);
-
-  // const handleToggleFilter = (filter) => {
-  //   if (activeFilter === filter) {
-  //     setActiveFilter(null); // Close the currently active filter
-  //   } else {
-  //     setActiveFilter(filter); // Open the selected filter and close any previously active filter
-  //   }
-  // };
-
-  // function valuetext(value) {
-  //   return `${value} Rs.`;
-  // }
-
-  // const [value, setValue] = React.useState([20, 37]);
-
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
-
-  // const prepareCategoryOptions = (categories, parentName = null, level = 0) => {
-  //   return categories.filter(category => category.parent === parentName)
-  //     .flatMap(category => ([
-  //       { value: category.name, label: category.name, level },
-  //       ...prepareCategoryOptions(categories, category.name, level + 1)
-  //     ]));
-  // };
-
-
-  // const categoryOptions = categoryData ? prepareCategoryOptions(categoryData) : [];
-
-
-  // if (productLoaded) {
-  //   return (
-  //     <div className="flex items-center justify-center text-black">
-  //       <h1>Loading ...</h1>
-  //     </div>
-  //   )
-  // }
   const { productData, productLoaded, categoryData } = useProducts();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState(['All']);
   const [selectedSizes, setSelectedSizes] = useState(new Set());
-  const [selectedPriceRange, setSelectedPriceRange] = useState([0, 3000]);
+  const [selectedPriceRange, setSelectedPriceRange] = useState([0, 10000]);
   const [selectedSortOption, setSelectedSortOption] = useState('Price: Low to High');
   const [searchInput, setSearchInput] = useState('');
   const [page, setPage] = useState(1);
   const itemsPerPage = 9;
 
+
+  function valuetext(value) {
+    return `${value} Rs.`;
+  }
+  // Logic to prepare nested category options
+  const prepareCategoryOptions = (categories, parentName = null, level = 0) => {
+    return categories.filter(category => category.parent === parentName)
+      .flatMap(category => ([
+        { value: category.name, label: category.name, level },
+        ...prepareCategoryOptions(categories, category.name, level + 1)
+      ]));
+  };
+
+  const categoryOptions = categoryData ? prepareCategoryOptions(categoryData) : [];
+
+  const totalPages = Math.ceil(productData?.length / itemsPerPage);
   useEffect(() => {
-    const totalPages = Math.ceil(productData?.length / itemsPerPage);
     if (page > totalPages) {
       setPage(1);
     }
@@ -141,9 +71,6 @@ const ProductPage = () => {
     setActiveFilter(activeFilter === filter ? null : filter);
   };
 
-  const handleChange = (event, newValue) => {
-    setSelectedPriceRange(newValue);
-  };
 
   const handleCategoryChange = (category) => {
     setSelectedCategories((prevSelected) => {
@@ -166,6 +93,10 @@ const ProductPage = () => {
     });
   };
 
+  const handlePriceChange = (event, newValue) => {
+    setSelectedPriceRange(newValue);
+  };
+
   const handleSortChange = (option) => {
     setSelectedSortOption(option);
   };
@@ -185,18 +116,14 @@ const ProductPage = () => {
   const resetFilters = () => {
     setSelectedCategories(['All']);
     setSelectedSizes(new Set());
-    setSelectedPriceRange([0, 3000]);
+    setSelectedPriceRange([0, 10000]);
     setSearchInput('');
     setPage(1);
     setActiveFilter(null);
   };
 
   const filteredAndSortedProducts = useMemo(() => {
-    if (!productData || !Array.isArray(productData)) {
-      return [];
-    }
-
-    let result = [...productData];
+    let result = productData || [];
 
     // Apply search filter
     if (searchInput) {
@@ -237,6 +164,7 @@ const ProductPage = () => {
     return result;
   }, [productData, searchInput, selectedCategories, selectedSizes, selectedPriceRange, selectedSortOption]);
 
+
   const currentPageData = useMemo(() => {
     const start = (page - 1) * itemsPerPage;
     const end = page * itemsPerPage;
@@ -246,6 +174,7 @@ const ProductPage = () => {
   if (productLoaded) {
     return <div>Loading...</div>;
   }
+
 
   return (
     <RootLayout>
@@ -298,51 +227,109 @@ const ProductPage = () => {
                   </div>
 
                   {/* Filters */}
-                  <form className="mt-4 border-t border-gray-200">
+                  <div className="mt-4 border-t border-gray-200">
                     <Disclosure as="div" className="border-b border-gray-200 py-6">
                       {({ open }) => (
                         <>
-                          <h3 className="-my-3 flow-root">
-                            <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                              <span className="font-medium text-gray-900">Category</span>
-                              <span className="ml-6 flex items-center">
-                                {open ? (
-                                  <MinusIcon className="h-5 w-5" aria-hidden="true" />
-                                ) : (
-                                  <PlusIcon className="h-5 w-5" aria-hidden="true" />
-                                )}
-                              </span>
-                            </Disclosure.Button>
-                          </h3>
-                          <Disclosure.Panel className="pt-6">
-                            <div className="space-y-4">
-                              {categoryData && categoryData.length > 0 ? (
-                                categoryData.map((category) => {
-                                  return (
+                          <div className="border-b border-gray-200 py-6">
+                            <button onClick={() => handleToggleFilter('category')} className="font-semibold w-full flex gap-4 justify-between items-center">
+                              Category
+                              {activeFilter === 'category' ? <MdExpandLess className='text-2xl' /> : <MdExpandMore className='text-2xl' />}
+                            </button>
+
+                            {activeFilter === 'category' && (
+                              <div className="space-y-4">
+                                {categoryData && categoryData.length > 0 ? (
+                                  categoryData.map((category) => (
                                     <li
-                                      key={category._id} // or key={category.slug} depending on your unique identifier
-                                      className={`cursor-pointer ${selectedCategories.includes(category.name) ? 'text-[#18568C]' : ''}`}
-                                      onClick={() => toggleCategory(category.name)}
+                                      key={category._id}
+                                      className={`cursor-pointer mt-2`}
+                                      onClick={() => handleCategoryChange(category.name)}
                                     >
                                       <input
                                         type="checkbox"
                                         checked={selectedCategories.includes(category.name)}
-                                        readOnly
+                                        onChange={() => handleCategoryChange(category.name)}
                                         className="mr-2"
                                       />
                                       {category.name}
                                     </li>
-                                  )
-                                })
-                              ) : (
-                                <div>Loading categories...</div>
-                              )}
-                            </div>
-                          </Disclosure.Panel>
+                                  ))
+                                ) : (
+                                  <div>Loading categories...</div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="border-b border-gray-200 py-6">
+                            <button onClick={() => handleToggleFilter('size')} className="font-semibold w-full flex gap-4 justify-between items-center">
+                              Size
+                              {activeFilter === 'size' ? <MdExpandLess className='text-2xl' /> : <MdExpandMore className='text-2xl' />}
+                            </button>
+                            {activeFilter === 'size' && (
+                              <div className="space-y-4">
+                                {sizeData && sizeData.length > 0 ? (
+                                  sizeData.map((size) => (
+                                    <li
+                                      key={size.id}
+                                      className="cursor-pointer mt-2"
+                                      onClick={() => handleSizeChange(size.size)}
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        onChange={() => handleSizeChange(size.size)}
+                                        className="mr-2"
+                                      />
+                                      {size.size}
+                                    </li>
+                                  ))
+                                ) : (
+                                  <div>Loading Size...</div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+
+
+                          <div className="border-b border-gray-200 py-6">
+                            <button onClick={() => handleToggleFilter('price')} className=" font-semibold w-full flex gap-4 justify-between items-center">Price
+                              {activeFilter === 'price' ? <MdExpandLess className='text-2xl' /> : <MdExpandMore className='text-2xl' />}
+                            </button>
+                            {activeFilter === 'price' && (
+                              <div className="space-y-4">
+                                <Box sx={{ width: 250 }}>
+                                  <Slider
+                                    getAriaLabel={() => 'Price'}
+                                    value={selectedPriceRange}
+                                    onChange={handlePriceChange}
+                                    valueLabelDisplay="auto"
+                                    getAriaValueText={valuetext}
+                                    min={0}
+                                    max={3000}
+                                  />
+                                </Box>
+                                <div className='flex justify-between items-center gap-2'>
+                                  <div className='border p-2'>{`Rs. ${selectedPriceRange[0]}`}</div>
+                                  <div className='border p-2'>{`Rs. ${selectedPriceRange[1]}`}</div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="border-b border-gray-200 py-6">
+                            <button
+                              className=" font-semibold w-full flex gap-4 border p-2 rounded justify-between items-center"
+                              onClick={() => resetFilters()}
+                            >
+                              Reset Filters
+                            </button>
+                          </div>
+
                         </>
                       )}
                     </Disclosure>
-                  </form>
+                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -357,7 +344,9 @@ const ProductPage = () => {
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                    Sort
+                    Sort {
+                      selectedSortOption === 'Price: Low to High' ? 'Low to High' : 'High to Low'
+                    }
                     <ChevronDownIcon
                       className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
@@ -379,16 +368,17 @@ const ProductPage = () => {
                       {sortOptions.map((option) => (
                         <Menu.Item key={option.name}>
                           {({ active }) => (
-                            <a
+                            <Link
                               href={option.href}
                               className={classNames(
                                 option.current ? 'font-medium text-gray-900' : 'text-gray-500',
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm'
                               )}
+                              onClick={() => setSelectedSortOption(option.name)}
                             >
                               {option.name}
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                       ))}
@@ -423,25 +413,24 @@ const ProductPage = () => {
                   </button>
                   {activeFilter === 'category' && <>
                     <div className="space-y-4">
-                      {categoryOptions.map((categoryOption) => (
+                      {categoryOptions?.map((option) => (
                         <li
-                          key={categoryOption.value}
-                          className={`cursor-pointer mt-2 ${selectedCategories.includes(categoryOption.value) ? 'text-[#18568C]' : ''}`}
-                          onClick={() => toggleCategory(categoryOption.value)}
-                          style={getPaddingStyle(categoryOption.level)}
+                          key={option.value}
+                          className={`cursor-pointer mt-2 ${selectedCategories.includes(option.value) ? 'text-[#18568C]' : ''}`}
+                          onClick={() => handleCategoryChange(option.value)}
+                          style={{ paddingLeft: `${option.level * 20}px` }}
                         >
                           <input
                             type="checkbox"
-                            checked={selectedCategories.includes(categoryOption.value)}
+                            checked={selectedCategories.includes(option.value)}
                             readOnly
                             className="mr-2"
                           />
-                          {categoryOption.label}
+                          {option.label}
                         </li>
                       ))}
                     </div>
                   </>}
-
                 </div>
 
                 <div className="border-b border-gray-200 py-6">
@@ -456,11 +445,11 @@ const ProductPage = () => {
                             <li
                               key={size.id}
                               className={`cursor-pointer mt-2 ${selectedCategories.includes(size.size) ? 'text-[#18568C]' : ''}`}
-                              onClick={() => toggleCategory(size.size)}
+                              onClick={() => handleSizeChange(size.size)}
                             >
                               <input
                                 type="checkbox"
-                                checked={selectedCategories.includes(size.size)}
+                                onChange={() => handleSizeChange(size.size)}
                                 readOnly
                                 className="mr-2"
                               />
@@ -475,24 +464,26 @@ const ProductPage = () => {
                   </>}
                 </div>
 
-                <div className="border-b border-gray-200 py-6">
+                {/* <div className="border-b border-gray-200 py-6">
                   <button onClick={() => handleToggleFilter('color')} className=" font-semibold w-full flex gap-4 justify-between items-center">Color
                     {activeFilter === 'color' ? <MdExpandLess className='text-2xl' /> : <MdExpandMore className='text-2xl' />}
                   </button>
                   {activeFilter === 'color' && <>
                     <div className="space-y-4">
                       {colorData && colorData.length > 0 ? (
-                        colorData.map((color) => {
+                        colorData?.map((color) => {
                           return (
                             <li
                               key={color.id}
                               className={`cursor-pointer mt-2 ${selectedCategories.includes(color.name) ? 'text-[#18568C]' : ''}`}
-                              onClick={() => toggleCategory(color.name)}
+                              onClick={
+                                () => handleColorChange(color.name)
+                              }
                             >
                               <input
                                 type="checkbox"
+                                // checked={selectedCategories.includes(color.name)}
                                 checked={selectedCategories.includes(color.name)}
-                                readOnly
                                 className="mr-2 checkbox-container"
                               />
                               {color.name}
@@ -506,7 +497,7 @@ const ProductPage = () => {
 
                   </>}
 
-                </div>
+                </div> */}
 
                 <div className="border-b border-gray-200 py-6">
                   <button onClick={() => handleToggleFilter('price')} className=" font-semibold w-full flex gap-4 justify-between items-center">Price
@@ -518,19 +509,29 @@ const ProductPage = () => {
                       <Box sx={{ width: 200 }}>
                         <Slider
                           getAriaLabel={() => 'Price'}
-                          value={value}
-                          onChange={handleChange}
+                          value={selectedPriceRange}
+                          onChange={handlePriceChange}
                           valueLabelDisplay="auto"
                           getAriaValueText={valuetext}
                           min={0}
                           max={10000}
                         />
                       </Box>
-                      <div>
-                        {`${value[0]}-${value[1]} Rs.`}
+                      <div className='flex justify-between items-center gap-2'>
+                        <div className='border p-2'>{`Rs. ${selectedPriceRange[0]}`}</div>
+                        <div className='border p-2'>{`Rs. ${selectedPriceRange[1]}`}</div>
                       </div>
                     </div>
                   </>}
+                </div>
+
+                <div className="border-b border-gray-200 py-6">
+                  <button
+                    className=" font-semibold w-full flex gap-4 border p-2 rounded justify-between items-center"
+                    onClick={() => resetFilters()}
+                  >
+                    Reset Filters
+                  </button>
                 </div>
               </div>
 
@@ -630,8 +631,8 @@ const ProductPage = () => {
                         <button
                           key={i}
                           onClick={() => setPage(i + 1)}
-                          className={`inline-flex items-center px-4 py-2 text-sm font-semibold border dark:bg-violet-400 dark:text-gray-900 dark:border-gray-700 ${i + 1 === page ? 'dark:bg-violet-400 dark:text-gray-900' : ''
-                            }`}
+                          className={`inline-flex items-center px-4 py-2 text-sm font-semibold border ${i + 1 === page ? 'bg-indigo-600 text-white' : 'dark:bg-violet-400 dark:text-gray-900 dark:border-gray-700'}`}
+
                         >
                           {i + 1}
                         </button>

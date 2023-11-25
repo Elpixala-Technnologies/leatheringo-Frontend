@@ -3,12 +3,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { gsap } from "gsap";
 import Image from "next/image";
-import {
-  ShoseBannerOne,
-  ShoseBannerTwo,
-  ShoseBannerThree,
-  ShoseBannerFour,
-} from "@/src/Assets";
 import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -55,39 +49,6 @@ const Hero = () => {
   };
  
   const {homeSliderData} = useHomeSlider()
-
-
-  // const bannarData = [
-  //   {
-  //     id: 1,
-  //     image: ShoseBannerOne,
-  //     title: "Elevate Your Style with Our Latest Shoe Collection",
-  //     description:
-  //       "Discover the perfect blend of comfort and fashion. Our new shoe collection is designed to complement your unique style and keep you on-trend.",
-  //   },
-  //   {
-  //     id: 2,
-  //     image: ShoseBannerTwo,
-  //     title: "Step Out in Confidence with Our Stylish Shoes",
-  //     description:
-  //       "Walk with confidence in our high-quality and stylish shoes. Unleash your personality with footwear that speaks volumes about your taste and individuality.",
-  //   },
-  //   {
-  //     id: 3,
-  //     image: ShoseBannerThree,
-  //     title: "Find Your Perfect Fit: Comfortable and Fashionable Shoes",
-  //     description:
-  //       "Experience unmatched comfort without compromising on style. Our shoes are crafted to provide the perfect fit, ensuring you look and feel great wherever you go.",
-  //   },
-  //   {
-  //     id: 4,
-  //     image: ShoseBannerFour,
-  //     title: "Upgrade Your Wardrobe with Our Trendsetting Shoes",
-  //     description:
-  //       "Stay ahead in the fashion game with our trendsetting shoe collection. Elevate your wardrobe and make a statement with every step you take.",
-  //   },
-  // ];
-  
 
   return (
     <div className="hero-slider-container py-4">

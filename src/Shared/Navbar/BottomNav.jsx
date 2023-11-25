@@ -17,24 +17,24 @@ const navigation = {
             featured: [
                 {
                     name: 'Formal wholecut Shoes',
-                    href: '/product',
+                    href: '/product/655660fa699dfa36877d6c37',
                     imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700116313/cvywhqscos2srl54sxpy.jpg',
                     imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-                    price: "3500 Rs."
+                    price: 2609,
+                },
+                {
+                    name: 'Olive swede chelsea Shoes',
+                    href: '/product/655660fa699dfa36877d6c3a',
+                    imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700119214/gyioogroac77mpw1weam.jpg',
+                    imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
+                    price: 3537,
                 },
                 {
                     name: 'Aldo Chealsea boot Shoes',
-                    href: '/product',
+                    href: '/product/655660fa699dfa36877d6c39',
                     imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700117947/c74feggbi0tphlsdpopt.jpg',
                     imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-                    price: "1500 Rs."
-                },
-                {
-                    name: 'Aldo Chealsea boot Shoes',
-                    href: '/product',
-                    imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700117947/c74feggbi0tphlsdpopt.jpg',
-                    imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-                    price: "2500 Rs."
+                    price: 4714
                 },
             ],
             sections: [
@@ -61,7 +61,7 @@ const navigation = {
                 },
                 {
                     id: 'Popular Products',
-                    name: 'Popular Categories',
+                    name: 'Popular',
                     items: [
 
                         { name: 'Single Monk', href: '/category-product/Single Monk' },
@@ -165,16 +165,20 @@ const Navbar = () => {
                                                 <div className="grid grid-cols-3 gap-x-4"
                                                 >
                                                     {category.featured.map((item) => (
-                                                        <div key={item.name} className="group relative text-sm">
-                                                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                                                <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
+                                                        <Link
+                                                            href={item?.href}
+                                                            className='cursor-pointer'
+                                                        >
+                                                            <div key={item.name} className="group relative text-sm">
+                                                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                                                    <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
+                                                                </div>
+                                                                <Link href={item.href} className="block font-medium text-gray-900">
+                                                                    <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                                                    {item.name}
+                                                                </Link>
                                                             </div>
-                                                            <Link href={item.href} className="block font-medium text-gray-900">
-                                                                <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                                {item.name}
-                                                            </Link>
-
-                                                        </div>
+                                                        </Link>
                                                     ))}
                                                 </div>
                                                 {category.sections.map((section) => (
@@ -268,7 +272,7 @@ const Navbar = () => {
                                                                     : 'border-transparent text-gray-700 hover:text-gray-800',
                                                                 'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out font-bold text-[1rem]'
                                                             )}
-                                                            
+
                                                         >
 
                                                             <p class="font-bold relative w-max one">
@@ -297,24 +301,29 @@ const Navbar = () => {
                                                                     <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
                                                                         <div className="col-start-2 grid grid-cols-3 gap-x-8">
                                                                             {category.featured.map((item) => (
-                                                                                <div key={item.name} className="group relative text-base border rounded p-4">
-                                                                                    <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                                                                        <img
-                                                                                            src={item.imageSrc}
-                                                                                            alt={item.imageAlt}
-                                                                                            className="object-cover object-center w-full"
-                                                                                        />
-                                                                                    </div>
-                                                                                    <Link href={item.href} className="my-2 block font-medium text-gray-900">
-                                                                                        <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                                                        {item.name}
-                                                                                    </Link>
-                                                                                    <p className=" block font-medium text-gray-900">
-                                                                                        <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                                                        {item.price}
-                                                                                    </p>
+                                                                                <Link
+                                                                                    href={item?.href}
+                                                                                    className='cursor-pointer'
+                                                                                >
+                                                                                    <div key={item.name} className="group relative text-base border rounded p-4">
+                                                                                        <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                                                                            <img
+                                                                                                src={item.imageSrc}
+                                                                                                alt={item.imageAlt}
+                                                                                                className="object-cover object-center w-full"
+                                                                                            />
+                                                                                        </div>
+                                                                                        <Link href={item.href} className="my-2 block font-semibold text-gray-900">
+                                                                                            <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                                                                            {item.name}
+                                                                                        </Link>
+                                                                                        <p className=" block font-medium text-gray-900">
+                                                                                            <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                                                                            Rs.  {item.price}
+                                                                                        </p>
 
-                                                                                </div>
+                                                                                    </div>
+                                                                                </Link>
                                                                             ))}
                                                                         </div>
                                                                         <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">

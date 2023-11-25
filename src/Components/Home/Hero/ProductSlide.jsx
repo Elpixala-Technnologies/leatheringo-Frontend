@@ -18,7 +18,7 @@ import useHomeSlider from '@/src/Hooks/useHomeSlider';
 
 const ProductSlide = () => {
     const { productData } = useProducts()
-    const {homeSliderProductData} = useHomeSlider()
+    const { homeSliderProductData } = useHomeSlider()
 
 
     const sliderRef = useRef(null);
@@ -41,35 +41,35 @@ const ProductSlide = () => {
 
     const sliderData = [
         {
-          image: ShoseOne,
-          name: "Adidas Ultraboost 21",
-          collection: "Running collections",
-          star: "4.5",
-          price: "180",
+            image: ShoseOne,
+            name: "Adidas Ultraboost 21",
+            collection: "Running collections",
+            star: "4.5",
+            price: "180",
         },
         {
-          image: ShoseTow,
-          name: "Puma Future Rider",
-          collection: "Casual collections",
-          star: "4.2",
-          price: "120",
+            image: ShoseTow,
+            name: "Puma Future Rider",
+            collection: "Casual collections",
+            star: "4.2",
+            price: "120",
         },
         {
-          image: ShoseTheree,
-          name: "Nike Air Max 270",
-          collection: "Athletic collections",
-          star: "4.7",
-          price: "160",
+            image: ShoseTheree,
+            name: "Nike Air Max 270",
+            collection: "Athletic collections",
+            star: "4.7",
+            price: "160",
         },
         {
-          image: ShoseFour,
-          name: "New Balance Fresh Foam X",
-          collection: "Running collections",
-          star: "4.3",
-          price: "130",
+            image: ShoseFour,
+            name: "New Balance Fresh Foam X",
+            collection: "Running collections",
+            star: "4.3",
+            price: "130",
         }
-      ];
-      
+    ];
+
 
 
     return (
@@ -84,7 +84,7 @@ const ProductSlide = () => {
                         Our Recent Products
                     </h1>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.
+                        Explore Our Latest Innovations and Elevate Your Lifestyle with Our Cutting-Edge Products!
                     </p>
                 </div>
                 <div className="flex items-center gap-10 top-0">

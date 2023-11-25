@@ -1,8 +1,7 @@
 'use client'
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useContext, useEffect, useState, useCallback } from 'react';
@@ -11,6 +10,7 @@ import { addToCartUrl } from '@/src/Utils/Urls/ProductUrl';
 import Swal from 'sweetalert2';
 import { AuthContext } from '@/src/Context/UserContext';
 import useProducts from '@/src/Hooks/useProducts';
+import CouponSlider from '@/src/Components/Shop/CopuonSlider/CopuonSlider';
 import RecomendationProduct from '@/src/Components/Shop/RecomendationProduct/RecomendationProduct';
 
 const ProductDetails = () => {
@@ -239,17 +239,11 @@ const ProductDetails = () => {
                 <Swiper
                   slidesPerView={4}
                   spaceBetween={10}
-                  pagination={{
-                    clickable: true,
-                  }}
+                  // pagination={{
+                  //   clickable: true,
+                  // }}
                   navigation={true}
-                  modules={[
-                    'Navigation',
-                    'Pagination',
-                    'Scrollbar',
-                    'A11y',
-                    'Autoplay',
-                  ]}
+                  modules={[]}
                   className="mySwiper"
                 >
                   {

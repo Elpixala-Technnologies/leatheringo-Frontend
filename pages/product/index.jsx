@@ -1,5 +1,5 @@
 
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, useMemo } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
@@ -34,90 +34,217 @@ const getPaddingStyle = (level) => {
 
 
 const ProductPage = () => {
-  const { productData, categoryData, productLoaded } = useProducts();
+  // const { productData, categoryData, productLoaded } = useProducts();
+  // const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  // const [selectedCategories, setSelectedCategories] = useState(['All']);
+  // const itemsPerPage = 9;
+  // const [page, setPage] = useState(1);
+
+  // const start = (page - 1) * itemsPerPage;
+  // const end = page * itemsPerPage;
+  // const currentPageData = productData?.slice(start, end);
+
+  // const totalPages = Math.ceil((productData?.length || 0) / itemsPerPage);
+
+  // useEffect(() => {
+  //   if (page > totalPages) {
+  //     setPage(1);
+  //   }
+  // }, [page, totalPages]);
+
+  // const handleNextPage = () => {
+  //   if (page < totalPages) {
+  //     setPage(page + 1);
+  //   }
+  // };
+
+  // const handlePrevPage = () => {
+  //   if (page > 1) {
+  //     setPage(page - 1);
+  //   }
+  // };
+
+  // const toggleCategory = (category) => {
+  //   if (selectedCategories?.includes(category)) {
+  //     setSelectedCategories(selectedCategories?.filter((c) => c !== category));
+  //   } else {
+  //     setSelectedCategories([...selectedCategories, category]);
+  //   }
+  // };
+
+  // const filters = {
+  //   category: false,
+  //   size: false,
+  //   color: false,
+  //   price: false,
+  // };
+
+
+  // const [activeFilter, setActiveFilter] = useState(null);
+
+  // const handleToggleFilter = (filter) => {
+  //   if (activeFilter === filter) {
+  //     setActiveFilter(null); // Close the currently active filter
+  //   } else {
+  //     setActiveFilter(filter); // Open the selected filter and close any previously active filter
+  //   }
+  // };
+
+  // function valuetext(value) {
+  //   return `${value} Rs.`;
+  // }
+
+  // const [value, setValue] = React.useState([20, 37]);
+
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
+
+  // const prepareCategoryOptions = (categories, parentName = null, level = 0) => {
+  //   return categories.filter(category => category.parent === parentName)
+  //     .flatMap(category => ([
+  //       { value: category.name, label: category.name, level },
+  //       ...prepareCategoryOptions(categories, category.name, level + 1)
+  //     ]));
+  // };
+
+
+  // const categoryOptions = categoryData ? prepareCategoryOptions(categoryData) : [];
+
+
+  // if (productLoaded) {
+  //   return (
+  //     <div className="flex items-center justify-center text-black">
+  //       <h1>Loading ...</h1>
+  //     </div>
+  //   )
+  // }
+  const { productData, productLoaded, categoryData } = useProducts();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState(['All']);
-  const itemsPerPage = 9;
+  const [selectedSizes, setSelectedSizes] = useState(new Set());
+  const [selectedPriceRange, setSelectedPriceRange] = useState([0, 3000]);
+  const [selectedSortOption, setSelectedSortOption] = useState('Price: Low to High');
+  const [searchInput, setSearchInput] = useState('');
   const [page, setPage] = useState(1);
-
-  const start = (page - 1) * itemsPerPage;
-  const end = page * itemsPerPage;
-  const currentPageData = productData?.slice(start, end);
-
-  const totalPages = Math.ceil((productData?.length || 0) / itemsPerPage);
+  const itemsPerPage = 9;
 
   useEffect(() => {
+    const totalPages = Math.ceil(productData?.length / itemsPerPage);
     if (page > totalPages) {
       setPage(1);
     }
-  }, [page, totalPages]);
+  }, [page, productData]);
+
+  const handleToggleFilter = (filter) => {
+    setActiveFilter(activeFilter === filter ? null : filter);
+  };
+
+  const handleChange = (event, newValue) => {
+    setSelectedPriceRange(newValue);
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategories((prevSelected) => {
+      if (prevSelected.includes(category)) {
+        return prevSelected.filter((c) => c !== category);
+      }
+      return [...prevSelected, category];
+    });
+  };
+
+  const handleSizeChange = (size) => {
+    setSelectedSizes((prevSizes) => {
+      const newSizes = new Set(prevSizes);
+      if (newSizes.has(size)) {
+        newSizes.delete(size);
+      } else {
+        newSizes.add(size);
+      }
+      return newSizes;
+    });
+  };
+
+  const handleSortChange = (option) => {
+    setSelectedSortOption(option);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchInput(event.target.value);
+  };
 
   const handleNextPage = () => {
-    if (page < totalPages) {
-      setPage(page + 1);
-    }
+    setPage((prevPage) => prevPage + 1);
   };
 
   const handlePrevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
+    setPage((prevPage) => prevPage - 1);
+  };
+
+  const resetFilters = () => {
+    setSelectedCategories(['All']);
+    setSelectedSizes(new Set());
+    setSelectedPriceRange([0, 3000]);
+    setSearchInput('');
+    setPage(1);
+    setActiveFilter(null);
+  };
+
+  const filteredAndSortedProducts = useMemo(() => {
+    if (!productData || !Array.isArray(productData)) {
+      return [];
     }
-  };
 
-  const toggleCategory = (category) => {
-    if (selectedCategories?.includes(category)) {
-      setSelectedCategories(selectedCategories?.filter((c) => c !== category));
-    } else {
-      setSelectedCategories([...selectedCategories, category]);
+    let result = [...productData];
+
+    // Apply search filter
+    if (searchInput) {
+      result = result.filter(product =>
+        product.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+        product.brand.toLowerCase().includes(searchInput.toLowerCase())
+      );
     }
-  };
 
-  const filters = {
-    category: false,
-    size: false,
-    color: false,
-    price: false,
-  };
-
-
-  const [activeFilter, setActiveFilter] = useState(null);
-
-  const handleToggleFilter = (filter) => {
-    if (activeFilter === filter) {
-      setActiveFilter(null); // Close the currently active filter
-    } else {
-      setActiveFilter(filter); // Open the selected filter and close any previously active filter
+    // Apply category filter
+    if (!selectedCategories.includes('All')) {
+      result = result.filter(product =>
+        selectedCategories.some(category => product.categories.includes(category))
+      );
     }
-  };
 
-  function valuetext(value) {
-    return `${value} Rs.`;
-  }
+    // Apply size filter
+    if (selectedSizes.size > 0) {
+      result = result.filter(product =>
+        product.colors.some(color =>
+          color.sizes.some(sizeObj => selectedSizes.has(sizeObj.size))
+        )
+      );
+    }
 
-  const [value, setValue] = React.useState([20, 37]);
+    // Apply price range filter
+    result = result.filter(product =>
+      product.price >= selectedPriceRange[0] && product.price <= selectedPriceRange[1]
+    );
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    // Apply sorting
+    if (selectedSortOption === 'Price: Low to High') {
+      result.sort((a, b) => a.price - b.price);
+    } else if (selectedSortOption === 'Price: High to Low') {
+      result.sort((a, b) => b.price - a.price);
+    }
 
-  const prepareCategoryOptions = (categories, parentName = null, level = 0) => {
-    return categories.filter(category => category.parent === parentName)
-      .flatMap(category => ([
-        { value: category.name, label: category.name, level },
-        ...prepareCategoryOptions(categories, category.name, level + 1)
-      ]));
-  };
+    return result;
+  }, [productData, searchInput, selectedCategories, selectedSizes, selectedPriceRange, selectedSortOption]);
 
-
-  const categoryOptions = categoryData ? prepareCategoryOptions(categoryData) : [];
-
+  const currentPageData = useMemo(() => {
+    const start = (page - 1) * itemsPerPage;
+    const end = page * itemsPerPage;
+    return filteredAndSortedProducts.slice(start, end);
+  }, [filteredAndSortedProducts, page]);
 
   if (productLoaded) {
-    return (
-      <div className="flex items-center justify-center text-black">
-        <h1>Loading ...</h1>
-      </div>
-    )
+    return <div>Loading...</div>;
   }
 
   return (
@@ -409,6 +536,16 @@ const ProductPage = () => {
 
               {/* Product grid */}
               <div className="lg:col-span-3">
+                <li className="flex items-center my-4 rounded-xl border border-[#999] relative  gap-2 w-full">
+                  <input
+                    type="text"
+                    value={searchInput}
+                    onChange={handleSearchChange}
+                    className="w-full px-6 p-2 no-outline focus:outline-none rounded-xl text-black border border-[#999]"
+                    placeholder='Search ...'
+                  />
+                  <AiOutlineSearch className='text-black text-[1.5rem] mx-6' />
+                </li>
 
                 <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                   <div className="lg:col-span-4">

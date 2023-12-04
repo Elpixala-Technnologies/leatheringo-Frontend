@@ -19,7 +19,8 @@ const Navbar = () => {
   const [isAdmin] = useAdmin();
 
   return (
-    <nav className="bg-[#FAFAFA] md:px-4 border-b md:py-3 py-2 flex items-center text-black md:container ">
+    <section className='bg-[#E3E6F3]'>
+    <nav className=" md:px-4 border-b md:py-3 py-2 flex items-center text-black md:container ">
       <div className="md:container flex items-center mx-2 justify-between w-full md:mx-auto">
         <div className="md:flex md:items-center gap-4">
           <Link className="text-2xl font-bold text-black" href="/">
@@ -243,6 +244,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    </section>
   );
 };
 

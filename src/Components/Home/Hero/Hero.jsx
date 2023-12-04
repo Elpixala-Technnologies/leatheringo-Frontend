@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { gsap } from "gsap";
@@ -8,6 +7,13 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ProductSlide from "./ProductSlide";
 import useHomeSlider from "@/src/Hooks/useHomeSlider";
+
+import React, { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper";
 
 const Hero = () => {
   useEffect(() => {
@@ -35,78 +41,138 @@ const Hero = () => {
   const settings = {
     showThumbs: false,
     autoPlay: true,
-    // infiniteLoop: true,
     animation: "fade",
     showStatus: false,
-    showIndicators: true,
+
     showArrows: false,
     stopOnHover: true,
-    // interval: 3000,
-    // transitionTime: 2000,
+    interval: 3000,
+    transitionTime: 2000,
     emulateTouch: true,
     swipeable: true,
     swipeScrollTolerance: 100,
+    paginationPosition: "bottom",
+    showIndicators: true,
   };
- 
-  const {homeSliderData} = useHomeSlider()
+
+  const { homeSliderData } = useHomeSlider()
 
   return (
-    <div className="hero-slider-container py-4">
-      <div className="hero-slider-container py-4">
-        <Carousel
-          {...settings}
-          className="hero-slider"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
-          {homeSliderData && homeSliderData?.map((item) => {
-            return (
-              <div key={item.id} data-aos="fade-up">
-                <div className="flex justify-center md:flex-row flex-col items-center gap-6">
-                  <div
-                    className="flex justify-center items-center gap-2 flex-col  transition duration-700 ease-in-out"
-                    data-aos="fade-up"
-                  >
-                    <Image
-                      src={item.image}
-                      alt="Banner Image"
-                      className=" h-full hero-image"
-                      width={550}
-                      height={550}
-                      data-aos="fade-down"
-                    />
+    <div className="hero-slider-container ">
+      <div className="hero-slider-container py-4 bg-[#E3E6F3] h-full">
+        <div className='md:container'>
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            pagination={true}
+            className="mySwiper heroSlider"
+          >
+            {homeSliderData && homeSliderData?.map((item) => {
+              return (
+                <SwiperSlide key={item.id} >
+                  <div className="flex justify-center md:flex-row flex-col items-center gap-6 mb-[4rem] md:mb-0">
+                    <div
+                      className="flex justify-center items-center gap-2 flex-col  transition duration-700 ease-in-out"
+                      data-aos="fade-up"
+                    >
+                      <Image
+                        src={item.image}
+                        alt="Banner Image"
+                        className=" h-full hero-image"
+                        width={550}
+                        height={550}
+                        data-aos="fade-down"
+                      />
+                    </div>
+                    <div className="flex justify-center items-center gap-2 flex-col hero-text">
+                      <h1
+                        className="text-2xl font-bold text-center"
+                        data-aos="fade-up"
+                      >
+                        {item.title}
+                      </h1>
+                      <p
+                        className="text-sm px-4  text-gray-900 text-center first-letter: animate-pulse transition duration-600 ease-in-out"
+                        data-aos="fade-up"
+                      >
+                        {item.description}
+                      </p>
+                      <Link
+                        href="/product"
+                        className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-center capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+                        data-aos="fade-up"
+                      >
+                        Shop Now
+                      </Link>
+                    </div>
                   </div>
-                  <div className="flex justify-center items-center gap-2 flex-col hero-text">
-                    <h1
-                      className="text-2xl font-bold text-center"
+                </SwiperSlide>
+              );
+            })}
+
+          </Swiper>
+
+          {/* <Carousel
+            {...settings}
+            className="hero-slider"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            {homeSliderData && homeSliderData?.map((item) => {
+              return (
+                <div key={item.id} data-aos="fade-up">
+                  <div className="flex justify-center md:flex-row flex-col items-center gap-6">
+                    <div
+                      className="flex justify-center items-center gap-2 flex-col  transition duration-700 ease-in-out"
                       data-aos="fade-up"
                     >
-                      {item.title}
-                    </h1>
-                    <p
-                      className="text-sm px-4  text-gray-900 text-center first-letter: animate-pulse transition duration-600 ease-in-out"
-                      data-aos="fade-up"
-                    >
-                      {item.description}
-                    </p>
-                    <Link
-                      href="/product"
-                      className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-center capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
-                      data-aos="fade-up"
-                    >
-                      Shop Now
-                    </Link>
+                      <Image
+                        src={item.image}
+                        alt="Banner Image"
+                        className=" h-full hero-image"
+                        width={550}
+                        height={550}
+                        data-aos="fade-down"
+                      />
+                    </div>
+                    <div className="flex justify-center items-center gap-2 flex-col hero-text">
+                      <h1
+                        className="text-2xl font-bold text-center"
+                        data-aos="fade-up"
+                      >
+                        {item.title}
+                      </h1>
+                      <p
+                        className="text-sm px-4  text-gray-900 text-center first-letter: animate-pulse transition duration-600 ease-in-out"
+                        data-aos="fade-up"
+                      >
+                        {item.description}
+                      </p>
+                      <Link
+                        href="/product"
+                        className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-center capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
+                        data-aos="fade-up"
+                      >
+                        Shop Now
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </Carousel>
+              );
+            })}
+          </Carousel> */}
+        </div>
+        <div className="my-4">
+          <ProductSlide />
+        </div>
       </div>
 
-      <div>
-        <ProductSlide />
-      </div>
     </div>
   );
 };

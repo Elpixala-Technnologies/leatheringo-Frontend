@@ -5,12 +5,14 @@ import SendIcon from '@mui/icons-material/Send';
 import { Button } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 import { addHomeSliderProductUrl } from '@/src/Utils/Urls/HomeSliderUrl';
+import useProducts from '@/src/Hooks/useProducts';
 
 const HomeSliderProduct = () => {
 	const { handleSubmit, register } = useForm();
-	const [ imageFile, setImageFile ] = useState(null);
-	const [ imagePreview, setImagePreview ] = useState(null);
-	const [ uploadProgress, setUploadProgress ] = useState(0);
+	const { productData } = useProducts()
+	const [imageFile, setImageFile] = useState(null);
+	const [imagePreview, setImagePreview] = useState(null);
+	const [uploadProgress, setUploadProgress] = useState(0);
 
 	const upload_preset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 	const cloud_name = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
@@ -71,7 +73,8 @@ const HomeSliderProduct = () => {
 					title: dataValue.title,
 					description: dataValue.description,
 					price: dataValue.price,
-					image: imageUrl
+					image: imageUrl,
+					product: dataValue.product
 				})
 			});
 			const dataRes = await res.json();
@@ -197,6 +200,33 @@ const HomeSliderProduct = () => {
 					{...register('description')}
 					className="border-2 border-gray-300 rounded-md p-2 w-full"
 				/>
+			</div>
+
+			<div>
+				<select
+					className='border-2 border-gray-300 rounded-md p-2 w-full'
+					{
+					...register('product')
+					}
+				>
+					<option>
+						Select Product
+					</option>
+					<hr
+						className='my-4'
+					/>
+					{
+						productData && productData?.map((product) => {
+							return (
+								<option key={product?._id} value={product?._id}
+									className='my-4'
+								>
+									{product?.name}
+								</option>
+							)
+						})
+					}
+				</select>
 			</div>
 
 			<div className="py-6">

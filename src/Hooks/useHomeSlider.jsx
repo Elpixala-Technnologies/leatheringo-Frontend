@@ -9,7 +9,7 @@ import {
 
 const useHomeSlider = () => {
 	const { data: homeSliderData, isLoading: homeSlierLoaded, refetch: refetchHomeSlider } = useQuery({
-		queryKey: [ 'homeSliderData' ],
+		queryKey: ['homeSliderData'],
 		queryFn: async () => {
 			try {
 				const res = await fetch(getHomeSliderUrl);
@@ -85,7 +85,7 @@ const useHomeSlider = () => {
 		isLoading: homeSlierProductLoaded,
 		refetch: refetchHomeSliderProduct
 	} = useQuery({
-		queryKey: [ 'homeSliderProductData' ],
+		queryKey: ['homeSliderProductData'],
 		queryFn: async () => {
 			try {
 				const res = await fetch(getHomeSliderProductUrl);

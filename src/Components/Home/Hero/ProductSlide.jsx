@@ -5,6 +5,7 @@ import { FaCartPlus, FaEye, FaPhabricator } from "react-icons/fa";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TbArrowBigLeft, TbArrowBigRight } from "react-icons/tb";
+import { BsCartCheck } from "react-icons/bs";
 import Link from "next/link";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -19,8 +20,6 @@ import useHomeSlider from '@/src/Hooks/useHomeSlider';
 const ProductSlide = () => {
     const { productData } = useProducts()
     const { homeSliderProductData } = useHomeSlider()
-
-
     const sliderRef = useRef(null);
     const handlePrev = useCallback(() => {
         if (!sliderRef.current) return;
@@ -70,150 +69,138 @@ const ProductSlide = () => {
         }
     ];
 
+    console.log(homeSliderProductData, "homeSliderProductData")
+
 
 
     return (
-        <div className='flex justify-center md:flex-row flex-col items-center gap-4 m-4 md:m-0'>
-
-            <div className='md:flex flex-col justify-center gap-4 md:w-[20%] hidden'
-                data-aos="fade-up"
-                data-aos-duration="1000"
-            >
-                <div className='md:text-left text-center'>
-                    <h1 className='text-1xl font-bold '>
-                        Our Recent Products
-                    </h1>
-                    <p>
-                        Explore Our Latest Innovations and Elevate Your Lifestyle with Our Cutting-Edge Products!
-                    </p>
+        <div className='md:container'>
+            <div className='flex justify-center md:flex-row flex-col items-center gap-4 m-4 md:m-0'>
+                <div className='md:flex flex-col justify-center gap-4 md:w-[20%] hidden'
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                >
+                    <div className='md:text-left text-center'>
+                        <h1 className='text-1xl font-bold '>
+                            Our Recent Products
+                        </h1>
+                        <p>
+                            Explore Our Latest Innovations and Elevate Your Lifestyle with Our Cutting-Edge Products!
+                        </p>
+                    </div>
+                    <div className="flex items-center gap-10 top-0">
+                        <button
+                            className="prev-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
+                            onClick={handlePrev}
+                        >
+                            <TbArrowBigLeft className="h-6 w-6 text-white" />
+                        </button>
+                        <button
+                            className="next-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
+                            onClick={handleNext}
+                        >
+                            <TbArrowBigRight className="h-6 w-6 text-white" />
+                        </button>
+                    </div>
                 </div>
-                <div className="flex items-center gap-10 top-0">
-                    <button
-                        className="prev-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
-                        onClick={handlePrev}
-                    >
-                        <TbArrowBigLeft className="h-6 w-6 text-white" />
-                    </button>
-                    <button
-                        className="next-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
-                        onClick={handleNext}
-                    >
-                        <TbArrowBigRight className="h-6 w-6 text-white" />
-                    </button>
-                </div>
-            </div>
-
-            <Swiper
-                ref={sliderRef}
-                modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-                breakpoints={{
-                    320: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    360: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    480: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    640: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 30,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                    },
-                }}
-                spaceBetween={20}
-                slidesPerView={3}
-                onSlideChange={() => { }}
-                onSwiper={(swiper) => { }}
-                data-aos="fade-up"
-                data-aos-duration="1000"
-            >
-                <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {homeSliderProductData &&
-                        homeSliderProductData?.map((product) => {
-                            return (
-                                <SwiperSlide className="cursor-grab" key={product?.title + 'produc'}>
-                                    <div className='flex gap-4 justify-center items-center p-6'>
-                                        <div className='md:w-[7rem]'>
-                                            <Image
-                                                src={product?.image}
-                                                width={80}
-                                                height={80}
-                                                className="w-full h-full"
-                                            />
-                                        </div>
-                                        <div className='text-left'>
-                                            <h1 className='font-bold'>
-                                                {product?.title}
-                                            </h1>
-                                            <h1>
-                                                {product?.description}
-                                            </h1>
-                                            <h1 className='font-bold'>
-                                                ₹ {product?.price}
-                                            </h1>
-                                        </div>
-                                    </div>
 
 
-                                    {/* <div className="cardBody md:m-0  mx-auto  flex flex-col hover:border-red-500  color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
-                                        <div className="productImage ">
-                                            <Image
-                                                src={product?.colors[0]?.images[0]}
-                                                width={300}
-                                                height={300}
-                                                className="w-full h-full"
-                                            />
-                                        </div>
-                                        <hr className="w-full bg-slate-400" />
+                <Swiper
+                    ref={sliderRef}
+                    modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                    breakpoints={{
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                        },
+                        360: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                        },
+                        480: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                        },
+                        640: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 1,
+                            spaceBetween: 30,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        },
+                    }}
+                    spaceBetween={20}
+                    slidesPerView={3}
+                    onSlideChange={() => { }}
+                    onSwiper={(swiper) => { }}
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                >
+                    <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+                        {homeSliderProductData &&
+                            homeSliderProductData?.map((product) => {
+                                return (
+                                    <SwiperSlide className="cursor-grab" key={product?.title + 'produc'}>
+                                        <Link
+                                            href={`/product/${product?.product?._id}`}
+                                        >
+                                            <div className='flex gap-4  justify-center md:items-center p-6 border rounded-lg bg-[#fefefe] md:w-full'>
+                                                <div className='md:w-[7rem]'>
+                                                    <div className='md:absolute  top-4 left-0 right-0 bottom-0 z-50'>
+                                                        <Image
+                                                            src={product?.image}
+                                                            width={80}
+                                                            height={80}
+                                                            className="w-full h-full product-slider-img z-[9999]"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className=' md:text-left'>
+                                                    <h1 className='font-bold'>
+                                                        {product?.product.name.slice(0, 15, "..")}
+                                                    </h1>
+                                                    <h1>
+                                                        {product?.description}
+                                                    </h1>
+                                                  
+                                                    <div className='flex gap-4'>
+                                                        <h1 className="font-bold text-slate-900">
+                                                            {product.product?.discount
+                                                                ? `₹ ${Math.floor(product.product?.price - (product?.product?.price * product?.product?.discount) / 100)}`
+                                                                : `₹ ${Math.floor(product?.product?.price)}`
+                                                            }
+                                                        </h1>
+                                                        <span className="   text-slate-900 line-through">
+                                                            ₹ {Math.floor(product?.product?.price)}
+                                                        </span>
+                                                    </div>
 
-                                        <div className="productInfo mt-2 p-2">
-                                            <h2 className="productName font-bold text-left ">
-                                                {product?.name}
-                                            </h2>
-                                            <div className='flex gap-4'>
-                                                <h1 className="font-bold text-slate-900">
-                                                    {product?.discount
-                                                        ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
-                                                        : `₹ ${Math.floor(product?.price)}`
-                                                    }
-                                                </h1>
-                                                <span className="text-sm text-slate-900 line-through mt-1">
-                                                    ₹ {Math.floor(product?.price)}
-                                                </span>
-                                                <span className='text-[#eec75b]'>
-                                                    {Math.floor(product?.discount)} % off
-                                                </span>
-                                            </div>
-                                            <p className="productDescription py-3 text-left">
-                                                {product?.details?.slice(0, 46) + "..."}
-                                            </p>
-                                            <div className="productAddToCart flex gap-5 items-center">
-                                                <div>
-                                                    <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
-                                                        <FaCartPlus />
-                                                        Product Detail
-                                                    </Link>
+                                                    <div className='flex items-center gap-6'>
+                                                        <div>
+                                                            <span className='text-[#eec75b]'>
+                                                                {Math.floor(product?.product?.discount)} % off
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <FaCartPlus className='text-[1.2rem]' />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div> */}
-                                </SwiperSlide>
-                            );
-                        })}
-                </div>
-            </Swiper>
+                                        </Link>
+                                    </SwiperSlide>
+                                );
+                            })}
+                    </div>
+                </Swiper>
+
+
+            </div>
         </div>
     );
 };

@@ -14,7 +14,7 @@ const Footer = () => {
 
   return (
     <footer className="p-6 bg-[#000] py-12 text-[#fff]">
-      <div className="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-5">
+      <div className="md:container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-5">
         <div className="flex flex-col space-y-4">
           <div className="">
             <Link href="/">
@@ -47,7 +47,7 @@ const Footer = () => {
           <h2 className="font-medium">Categories</h2>
           <div className="flex flex-col space-y-2 text-sm dark:text-gray-400">
             {mainCategory &&
-             mainCategory.slice(0, 5).map((item, index) => {
+              mainCategory.slice(0, 5).map((item, index) => {
                 return (
                   <Link
                     href={`/category-product/${item?._id}`}
@@ -112,11 +112,36 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col space-y-4">
+        <div className="hidden md:flex flex-col space-y-4 w-full">
           <h2 className="font-medium">Join Us</h2>
           <div className="flex flex-col space-y-2 text-sm dark:text-gray-400">
             <ul>
               <li className="mt-3 font-[300]">
+                <h2 className="text-2lg font-[500] text-[#fff]">
+                  Subscribe to our newsletters
+                </h2>
+                <form className="flex items-center border border-[#4c5a5f] bg-[#fff] overflow-hidden rounded-md mt-3 w-full">
+                  <input
+                    type="text"
+                    className="w-full text-[#000] py-1 px-2 bg-[transparent]"
+                    placeholder="email..."
+                  />
+                  <button className="bg-[#424c62] px-2 py-2">Subscribe</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div className="md:hidden flex flex-col  w-full">
+          <div className="flex flex-col text-sm dark:text-gray-400">
+            <ul>
+              <li className="mt-3 font-[300]">
+
+                <h2 className="font-medium">Join Us</h2>
+
                 <h2 className="text-2lg font-[500] text-[#fff]">
                   Subscribe to our newsletters
                 </h2>

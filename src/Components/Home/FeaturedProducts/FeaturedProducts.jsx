@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useRef, useState, } from "react";
 import Image from "next/image";
 import { FaCartPlus, FaEye, FaPhabricator } from "react-icons/fa";
+import { BsCartCheck } from "react-icons/bs";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TbArrowBigLeft, TbArrowBigRight } from "react-icons/tb";
@@ -39,11 +40,11 @@ const FeaturedProducts = () => {
 
     return (
         <section className="my-4 mx-2" >
-            <div className="title my-6 flex flex-col justify-center items-center">
-                <h2 className=" text-[1rem] md:text-[1.8rem] text-center md:text-left  xxs:text-2xl  text-black font-bold">
-                    Featured Products
+            <div className="my-6 flex flex-col justify-center items-center">
+                <h2 className="title">
+                    Featured <span>Products</span>
                 </h2>
-                <p className="my-2 text-muted text-center">
+                <p className="my-2 text-[1.2rem] text-muted text-center">
                     Summer Collection New Modern Design
                 </p>
             </div>
@@ -107,16 +108,28 @@ const FeaturedProducts = () => {
                                     >
                                         <div className="cardBody md:m-0  mx-auto  flex flex-col hover:border-red-500  color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
                                             <div className="productImage">
-                                                <Image
+                                                {/* <Image
                                                     src={product?.colors[0]?.images[0]}
                                                     width={300}
                                                     height={300}
                                                     className="w-[300px] h-[300px] object-cover"
-                                                />
+                                                /> */}
+                                                <div className="h-menu border rounded-[1rem] overflow-hidden relative">
+                                                    <img
+                                                        src={product?.colors[0]?.images[0]}
+                                                        alt="First Image"
+                                                        className="h-full w-full object-cover duration-200"
+                                                    />
+                                                    <img
+                                                        src={product?.colors[0]?.images[1]}
+                                                        alt="Second Image"
+                                                        className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
+                                                    />
+                                                </div>
                                             </div>
-                                            <hr className="w-full bg-slate-400" />
-
+                                  
                                             <div className="productInfo mt-2 p-2">
+                                                <p className="text-left text-gray-600">{product?.brand}</p>
                                                 <h2 className="productName font-bold text-left ">
                                                     {product?.name}
                                                 </h2>
@@ -134,15 +147,20 @@ const FeaturedProducts = () => {
                                                         {Math.floor(product?.discount)} % off
                                                     </span>
                                                 </div>
-                                                <p className="productDescription py-3 text-left">
-                                                    {product?.details[0]?.description?.slice(0, 30) + "..."}
-                                                </p>
-                                                <div className="productAddToCart flex gap-5 items-center">
+
+                                                <div className="productAddToCart flex gap-10 items-center my-4  ">
                                                     <div>
                                                         <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
                                                             <FaCartPlus />
-                                                            Product Detail
+                                                            Product Details
                                                         </Link>
+                                                    </div>
+                                                    <div
+                                                        className='border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500 cursor-pointer'
+                                                    >
+                                                        <BsCartCheck
+                                                            className='text-[2rem] '
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>

@@ -10,10 +10,12 @@ import BeltBanner from '../BeltBanner/BeltBanner';
 const HomeComponent = () => {
     return (
         <section>
+            <Hero />
             <div className="md:container">
-                <Hero />
                 {/* ====== HomeInfoCard ====== */}
-                <HomeInfoCard />
+                <div className='my-[3rem]'>
+                    <HomeInfoCard />
+                </div>
                 {/* ====== PopualrCategory ====== */}
                 <PopualrCategory />
                 {/* ======FeaturedProducts ====== */}

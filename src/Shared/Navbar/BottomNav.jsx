@@ -3,9 +3,7 @@ import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
-
-
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import useProducts from '@/src/Hooks/useProducts';
 
@@ -19,6 +17,7 @@ const navigation = {
                     name: 'Formal wholecut Shoes',
                     href: '/product/655660fa699dfa36877d6c37',
                     imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700116313/cvywhqscos2srl54sxpy.jpg',
+                    imageSrcHover: "https://res.cloudinary.com/elpixala/image/upload/v1700116313/n1fftpexkqdduledm4aw.jpg",
                     imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
                     price: 2609,
                 },
@@ -26,6 +25,7 @@ const navigation = {
                     name: 'Olive swede chelsea Shoes',
                     href: '/product/655660fa699dfa36877d6c3a',
                     imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700119214/gyioogroac77mpw1weam.jpg',
+                    imageSrcHover: "https://res.cloudinary.com/elpixala/image/upload/v1700119214/gyioogroac77mpw1weam.jpg",
                     imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
                     price: 3537,
                 },
@@ -33,6 +33,7 @@ const navigation = {
                     name: 'Aldo Chealsea boot Shoes',
                     href: '/product/655660fa699dfa36877d6c39',
                     imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700117947/c74feggbi0tphlsdpopt.jpg',
+                    imageSrcHover: "https://res.cloudinary.com/elpixala/image/upload/v1700117947/c74feggbi0tphlsdpopt.jpg",
                     imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
                     price: 4714
                 },
@@ -98,9 +99,52 @@ const Navbar = () => {
     };
 
     const [open, setOpen] = useState(false)
+    // const [fix,setFix] = useState(false)
+
+    // const setFixedPosition = ()=>{
+    //     if(window.scrollY >=392){
+    //         setFix(true)
+    //     } else {
+    //         setFix(false)
+    //     }
+    // }
+
+    // window.addEventListener('scroll', setFixedPosition)
+
+    const [fix, setFix] = useState(false);
+
+    const setFixedPosition = () => {
+        if (typeof window !== 'undefined') {
+            if (window.scrollY >= 100) {
+                setFix(true);
+            } else {
+                setFix(false);
+            }
+        }
+    };
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', setFixedPosition);
+
+            // Cleanup the event listener on component unmount
+            return () => {
+                window.removeEventListener('scroll', setFixedPosition);
+            };
+        }
+    }, []); // empty dependency array ensures the effect runs only once on mount
+
+
     return (
 
-        <div className='bg-white sticky top-0 z-50 mx-auto h-full'
+        <div
+            // className='bg-white sticky top-0 z-50 mx-auto h-full'
+            className={
+                classNames(
+                    'bg-[#E3E6F3] sticky top-0 z-50 mx-auto h-full',
+                    fix && 'bg-white sticky'
+                )
+            }
         >
             {/* Mobile menu */}
             <Transition.Root show={open} as={Fragment}>
@@ -169,14 +213,28 @@ const Navbar = () => {
                                                             href={item?.href}
                                                             className='cursor-pointer'
                                                         >
-                                                            <div key={item.name} className="group relative text-sm">
-                                                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                                                    <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
+
+                                                            <div className="group relative text-base border rounded p-4">
+                                                                <div className="h-menu border rounded-[1rem] overflow-hidden relative">
+                                                                    <img
+                                                                        src={item.imageSrc}
+                                                                        alt={item.imageAlt}
+                                                                        className="h-full w-full object-cover duration-200"
+                                                                    />
+                                                                    <img
+                                                                        src={item.imageSrcHover}
+                                                                        alt={item.imageAlt}
+                                                                        className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
+                                                                    />
                                                                 </div>
-                                                                <Link href={item.href} className="block font-medium text-gray-900">
+                                                                <Link href={item.href} className="my-2 block font-semibold text-gray-900">
                                                                     <span className="absolute inset-0 z-10" aria-hidden="true" />
                                                                     {item.name}
                                                                 </Link>
+                                                                <p className="block font-medium text-gray-900">
+                                                                    <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                                                    Rs. {item.price}
+                                                                </p>
                                                             </div>
                                                         </Link>
                                                     ))}
@@ -231,13 +289,13 @@ const Navbar = () => {
                 </Dialog>
             </Transition.Root>
 
-            <header className="relative bg-white"
+            <header className="relative "
                 style={{
                     zIndex: "9999999"
                 }}
             >
                 <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="border-b border-gray-200">
+                    <div className="border-b">
                         <div className="flex h-16 items-center justify-between mainNav">
                             <button
                                 type="button"
@@ -305,23 +363,27 @@ const Navbar = () => {
                                                                                     href={item?.href}
                                                                                     className='cursor-pointer'
                                                                                 >
-                                                                                    <div key={item.name} className="group relative text-base border rounded p-4">
-                                                                                        <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                                                                    <div className="group relative text-base border rounded p-4">
+                                                                                        <div className="h-menu border rounded-[1rem] overflow-hidden relative">
                                                                                             <img
                                                                                                 src={item.imageSrc}
                                                                                                 alt={item.imageAlt}
-                                                                                                className="object-cover object-center w-full"
+                                                                                                className="h-full w-full object-cover duration-200"
+                                                                                            />
+                                                                                            <img
+                                                                                                src={item.imageSrcHover}
+                                                                                                alt={item.imageAlt}
+                                                                                                className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
                                                                                             />
                                                                                         </div>
                                                                                         <Link href={item.href} className="my-2 block font-semibold text-gray-900">
                                                                                             <span className="absolute inset-0 z-10" aria-hidden="true" />
                                                                                             {item.name}
                                                                                         </Link>
-                                                                                        <p className=" block font-medium text-gray-900">
+                                                                                        <p className="block font-medium text-gray-900">
                                                                                             <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                                                            Rs.  {item.price}
+                                                                                            Rs. {item.price}
                                                                                         </p>
-
                                                                                     </div>
                                                                                 </Link>
                                                                             ))}

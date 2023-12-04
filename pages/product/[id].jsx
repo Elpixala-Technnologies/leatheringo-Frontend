@@ -239,9 +239,6 @@ const ProductDetails = () => {
                 <Swiper
                   slidesPerView={4}
                   spaceBetween={10}
-                  // pagination={{
-                  //   clickable: true,
-                  // }}
                   navigation={true}
                   modules={[]}
                   className="mySwiper"
@@ -293,16 +290,14 @@ const ProductDetails = () => {
                 <p className='my-2'>
                   {selectedColorData?.color}
                 </p>
-                <div className="flex items-center gap-2 my-4">
-
+                <div className="flex items-center flex-wrap gap-2 my-4">
                   {colors && colors?.map((color, index) => {
                     const availableColor = color.color.toLowerCase();
                     const isSelected = selectedColorIndex === index;
-
                     return (
                       <div key={index} className="flex flex-col justify-center gap-2">
                         <div
-                          className={`bg-[#f1e8e8] p-1 rounded-full w-[2rem] h-[2rem] cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${isSelected ? 'bg-opacity-100 ' : 'bg-opacity-50'
+                          className={`bg-[#f1e8e8] p-1 rounded-full w-[4rem] h-[4rem] cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${isSelected ? 'bg-opacity-100 ' : 'bg-opacity-50'
                             }`}
                           style={{
                             backgroundColor: availableColor,
@@ -310,7 +305,13 @@ const ProductDetails = () => {
                           }}
                           title={color.color}
                           onClick={() => handleColorClick(index)}
-                        ></div>
+                        >
+                          <img
+                            src={color?.images[0]}
+                            alt={color.color}
+                            className='rounded-full'
+                          />
+                        </div>
                       </div>
                     );
                   })}
@@ -462,7 +463,7 @@ const ProductDetails = () => {
         <hr
           className='my-4 bg-[#000] '
         />
-        <div className="flex flex-col">
+        <div className="flex mx-4 flex-col">
           <h1 className="mt-6  text-3xl font-bold">
             Product Description
           </h1>
@@ -472,7 +473,7 @@ const ProductDetails = () => {
               <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div className="overflow-hidden">
                   <hr />
-                  <table className="min-w-full text-left text-sm font-light">
+                  <table className="  text-left text-sm font-light">
                     <tbody className='flex flex-col gap-2'>
                       <tr className="bg-slate-200 rounded">
                         <td className="whitespace-nowrap px-6 py-4 font-medium">
@@ -486,7 +487,7 @@ const ProductDetails = () => {
                         <td className="whitespace-nowrap px-6 py-4 font-medium">
                           Total Color :
                         </td>
-                        <td className="whitespace-nowrap flex  px-6 py-4">
+                        <td className="whitespace-wrap flex  px-6 py-4">
 
                           {
                             colors && colors?.map((color, index) => {
@@ -510,7 +511,7 @@ const ProductDetails = () => {
               <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div className="overflow-hidden">
                   <hr />
-                  <table className="min-w-full text-left text-sm font-light">
+                  <table className="  text-left text-sm font-light">
                     <tbody className='flex flex-col gap-2'>
                       <tr className=" bg-slate-200 rounded">
                         <td className="whitespace-nowrap px-6 py-4 font-medium">

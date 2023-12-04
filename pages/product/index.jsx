@@ -208,7 +208,7 @@ const ProductPage = () => {
           className='w-full h-full object-container  '
         />
       </div>
-      <div className="container bg-[#fff]">
+      <div className="md:container bg-[#fff]">
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
           <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
@@ -357,7 +357,7 @@ const ProductPage = () => {
           </Dialog>
         </Transition.Root>
 
-        <main className="mx-auto  px-4 sm:px-6 lg:px-8">
+        <main className="mx-auto  px-4  lg:px-8">
           <div className="flex items-baseline justify-between  border-gray-200 pb-6 pt-10">
             <h1 className="md:text-4xl font-bold tracking-tight text-gray-900">All Products</h1>
 

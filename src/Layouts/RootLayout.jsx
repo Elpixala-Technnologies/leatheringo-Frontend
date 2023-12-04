@@ -7,6 +7,9 @@ const RootLayout = ({ children }) => {
     return (
         <main>
             <Navbar />
+           <div
+            className="border-b border-[#000]"
+           ></div>
             <BottomNav />
             <section className="mb-4">
                 {children}

@@ -45,7 +45,7 @@ const Navbar = () => {
             <div className=" md:flex hidden border border-[#c4c4c4] items-center bg-[#281a1a00] p-1 rounded-md gap-2 common-hover">
               <input
                 type="text"
-                className="w-[220px] pl-2 py-1 text-black"
+                className="w-[220px] pl-2 py-1 text-black rounded"
                 placeholder="Search"
               />
               <Search className="text-[#595959]" />
@@ -244,6 +244,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    
     </section>
   );
 };

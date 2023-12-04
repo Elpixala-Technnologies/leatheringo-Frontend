@@ -167,7 +167,7 @@ const ProductSlide = () => {
                                                     <h1>
                                                         {product?.description}
                                                     </h1>
-                                                  
+
                                                     <div className='flex gap-4'>
                                                         <h1 className="font-bold text-slate-900">
                                                             {product.product?.discount
@@ -198,8 +198,6 @@ const ProductSlide = () => {
                             })}
                     </div>
                 </Swiper>
-
-
             </div>
         </div>
     );

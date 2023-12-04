@@ -70,9 +70,7 @@ const HomeSliderProduct = () => {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					title: dataValue.title,
 					description: dataValue.description,
-					price: dataValue.price,
 					image: imageUrl,
 					product: dataValue.product
 				})
@@ -174,25 +172,8 @@ const HomeSliderProduct = () => {
 					</div>
 				)}
 			</div>
-
-			<div>
-				<label htmlFor="title">Title</label>
-				<input
-					type="text"
-					name="title"
-					{...register('title')}
-					className="border-2 border-gray-300 rounded-md p-2 w-full"
-				/>
-			</div>
-			<div>
-				<label htmlFor="title">Price</label>
-				<input
-					type="text"
-					name="price"
-					{...register('price')}
-					className="border-2 border-gray-300 rounded-md p-2 w-full"
-				/>
-			</div>
+ 
+			 
 			<div>
 				<label htmlFor="description">Description</label>
 				<textarea

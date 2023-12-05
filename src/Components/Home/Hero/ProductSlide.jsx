@@ -75,8 +75,8 @@ const ProductSlide = () => {
 
     return (
         <div className='md:container'>
-            <div className='flex justify-center md:flex-row flex-col items-center gap-4 m-4 md:m-0'>
-                <div className='md:flex flex-col justify-center gap-4 md:w-[20%] hidden'
+            <div className='flex justify-around md:flex-row flex-col items-center gap-4 md:m-0'>
+                <div className='md:flex flex-col justify-center gap-4 md:w-[20%]   hidden'
                     data-aos="fade-up"
                     data-aos-duration="1000"
                 >
@@ -106,6 +106,10 @@ const ProductSlide = () => {
 
 
                 <Swiper
+                     autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                      }}
                     ref={sliderRef}
                     modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                     breakpoints={{
@@ -141,51 +145,55 @@ const ProductSlide = () => {
                     data-aos="fade-up"
                     data-aos-duration="1000"
                 >
-                    <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+                    <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 ">
                         {homeSliderProductData &&
                             homeSliderProductData?.map((product) => {
                                 return (
-                                    <SwiperSlide className="cursor-grab" key={product?.title + 'produc'}>
+                                    <SwiperSlide className="cursor-grab w-full " key={product?.title + 'produc'}>
                                         <Link
                                             href={`/product/${product?.product?._id}`}
                                         >
-                                            <div className='flex gap-4  justify-center md:items-center p-6 border rounded-lg bg-[#fefefe] md:w-full'>
-                                                <div className='md:w-[7rem]'>
-                                                    <div className='md:absolute  top-0 left-0 right-0 bottom-0 z-50'>
+                                            <div className='flex justify-around md:items-center p-6 border rounded-[20px] bg-[#fefefe] md:w-full'>
+                                                <div className='md:w-[4rem]  relative'>
+                                                    <div className='md:absolute  top-[-45px] left-[-60px]  '>
                                                         <Image
                                                             src={product?.image}
                                                             width={60}
-                                                            height={60}
+                                                            height={200}
+                                                            id='shoes'
                                                             className="w-full h-full product-slider-img z-[9999]"
                                                         />
                                                     </div>
                                                 </div>
-                                                <div className=' md:text-left'>
-                                                    <h1 className='font-bold'>
-                                                        {product?.product.name.slice(0, 15, "..")}
+                                                <div className=' md:text-left ml-2'>
+                                                    <h1 className='font-extrabold text-sm'>
+                                                        {product?.product.name.toUpperCase().slice(0, 15, "..")}
                                                     </h1>
                                                     <h1>
                                                         {product?.description}
                                                     </h1>
 
                                                     <div className='flex gap-4'>
-                                                        <h1 className="font-bold text-slate-900">
-                                                            {product.product?.discount
-                                                                ? `₹ ${Math.floor(product.product?.price - (product?.product?.price * product?.product?.discount) / 100)}`
-                                                                : `₹ ${Math.floor(product?.product?.price)}`
-                                                            }
+                                                        <h1 className="text-sm text-slate-400">
+                                                          Running Collection
                                                         </h1>
-                                                        <span className="   text-slate-900 line-through">
+                                                        {/* <span className="   text-slate-900 line-through">
                                                             ₹ {Math.floor(product?.product?.price)}
-                                                        </span>
+                                                        </span> */}
                                                     </div>
 
-                                                    <div className='flex items-center gap-6'>
-                                                        <div>
+                                                    <div className='flex items-center  gap-6'>
+                                                        {/* <div>
                                                             <span className='text-[#eec75b]'>
                                                                 {Math.floor(product?.product?.discount)} % off
                                                             </span>
-                                                        </div>
+                                                        </div> */}
+                                                        <h1 className="font-bold text-2xl text-slate-900">
+                                                            {
+                                                                `$ ${Math.floor(product.product?.price - (product?.product?.price * product?.product?.discount) / 100)}`
+                                                                
+                                                            }
+                                                        </h1>
                                                         <div>
                                                             <FaCartPlus className='text-[1.2rem]' />
                                                         </div>

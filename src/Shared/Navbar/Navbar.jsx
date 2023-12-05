@@ -42,13 +42,13 @@ const Navbar = () => {
             <Link href="/product">Shop</Link>
           </li>
           <li className=" px-2 h-full ">
-            <div className=" md:flex hidden border border-[#c4c4c4] items-center bg-[#281a1a00] p-1 rounded-md gap-2 common-hover">
+            <div className="relative md:flex hidden items-center bg-[#281a1a00] p-1 rounded-md gap-2 common-hover">
               <input
                 type="text"
-                className="w-[220px] pl-2 py-1 text-black rounded"
+                className="w-[220px] px-4 py-1 text-black rounded-full"
                 placeholder="Search"
               />
-              <Search className="text-[#595959]" />
+              <Search className="text-[#595959] absolute right-2" />
             </div>
           </li>
         </ul>

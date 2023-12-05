@@ -140,7 +140,7 @@ const NewArrivals = () => {
                                                         {Math.floor(product?.discount)} % off
                                                     </span>
                                                 </div>
-                                                <div className="productAddToCart flex gap-10 items-center my-4  ">
+                                                <div className="productAddToCart flex gap-10 items-center my-4  justify-between">
                                                     <div>
                                                         <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
                                                             <FaCartPlus />
@@ -148,7 +148,7 @@ const NewArrivals = () => {
                                                         </Link>
                                                     </div>
                                                     <div
-                                                        className='border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500 cursor-pointer'
+                                                        className='border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-full duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500 cursor-pointer'
                                                     >
                                                         <BsCartCheck
                                                             className='text-[2rem] '

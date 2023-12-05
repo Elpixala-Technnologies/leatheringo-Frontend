@@ -70,7 +70,6 @@ const HomeSliderProduct = () => {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					description: dataValue.description,
 					image: imageUrl,
 					product: dataValue.product
 				})
@@ -171,16 +170,6 @@ const HomeSliderProduct = () => {
 						<LinearProgress variant="determinate" value={uploadProgress} />
 					</div>
 				)}
-			</div>
- 
-			 
-			<div>
-				<label htmlFor="description">Description</label>
-				<textarea
-					name="description"
-					{...register('description')}
-					className="border-2 border-gray-300 rounded-md p-2 w-full"
-				/>
 			</div>
 
 			<div>

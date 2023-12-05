@@ -15,7 +15,7 @@ const navigation = {
             featured: [
                 {
                     name: 'Formal wholecut Shoes',
-                    href: '/product/655660fa699dfa36877d6c37',
+                    href: '/product/65646fd534dcce431476edc9',
                     imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700116313/cvywhqscos2srl54sxpy.jpg',
                     imageSrcHover: "https://res.cloudinary.com/elpixala/image/upload/v1700116313/n1fftpexkqdduledm4aw.jpg",
                     imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
@@ -87,7 +87,7 @@ function classNames(...classes) {
 
 
 const Navbar = () => {
-    const { categoryData } = useProducts()
+    const { productData } = useProducts()
     const [hoveredCategory, setHoveredCategory] = useState(null);
 
     const handleCategoryMouseEnter = (categoryName) => {
@@ -208,33 +208,44 @@ const Navbar = () => {
                                             <Tab.Panel key={category.name} className="space-y-10 px-4 pb-8 ">
                                                 <div className="grid grid-cols-3 gap-x-4"
                                                 >
-                                                    {category.featured.map((item) => (
+                                                    {productData & productData?.slice(0, 3)?.map((item) => (
                                                         <Link
-                                                            href={item?.href}
+                                                            href={`/product/${item?._id}`}
                                                             className='cursor-pointer'
                                                         >
-
                                                             <div className="group relative text-base border rounded p-4">
                                                                 <div className="h-menu border rounded-[1rem] overflow-hidden relative">
                                                                     <img
-                                                                        src={item.imageSrc}
-                                                                        alt={item.imageAlt}
+                                                                        src={item?.colors[0]?.images[1]}
+                                                                        alt={item.name}
                                                                         className="h-full w-full object-cover duration-200"
                                                                     />
                                                                     <img
-                                                                        src={item.imageSrcHover}
-                                                                        alt={item.imageAlt}
+                                                                        src={item?.colors[0]?.images[1]}
+                                                                        alt={item.name}
                                                                         className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
                                                                     />
                                                                 </div>
-                                                                <Link href={item.href} className="my-2 block font-semibold text-gray-900">
+                                                                <Link href={`/product/${item?._id}`} className="my-2 block font-semibold text-gray-900">
                                                                     <span className="absolute inset-0 z-10" aria-hidden="true" />
                                                                     {item.name}
                                                                 </Link>
-                                                                <p className="block font-medium text-gray-900">
-                                                                    <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                                    Rs. {item.price}
-                                                                </p>
+                                                                {/* <p className="block font-medium text-gray-900">
+                                                                                            <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                                                                            Rs. {item.price}
+                                                                                        </p> */}
+                                                                <div className='flex gap-4'>
+                                                                    <h1 className="font-bold text-slate-900">
+                                                                        {item?.discount
+                                                                            ? `₹ ${Math.floor(item?.price - (item?.price * item?.discount) / 100)}`
+                                                                            : `₹ ${Math.floor(item?.price)}`
+                                                                        }
+                                                                    </h1>
+                                                                    <span className="text-sm text-slate-900 line-through mt-1">
+                                                                        ₹ {Math.floor(item?.price)}
+                                                                    </span>
+
+                                                                </div>
                                                             </div>
                                                         </Link>
                                                     ))}
@@ -358,32 +369,44 @@ const Navbar = () => {
                                                                 <div className="mx-auto max-w-7xl px-8">
                                                                     <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
                                                                         <div className="col-start-2 grid grid-cols-3 gap-x-8">
-                                                                            {category.featured.map((item) => (
+                                                                            {productData & productData?.slice(0, 3)?.map((item) => (
                                                                                 <Link
-                                                                                    href={item?.href}
+                                                                                    href={`/product/${item?._id}`}
                                                                                     className='cursor-pointer'
                                                                                 >
                                                                                     <div className="group relative text-base border rounded p-4">
                                                                                         <div className="h-menu border rounded-[1rem] overflow-hidden relative">
                                                                                             <img
-                                                                                                src={item.imageSrc}
-                                                                                                alt={item.imageAlt}
+                                                                                                src={item?.colors[0]?.images[1]}
+                                                                                                alt={item.name}
                                                                                                 className="h-full w-full object-cover duration-200"
                                                                                             />
                                                                                             <img
-                                                                                                src={item.imageSrcHover}
-                                                                                                alt={item.imageAlt}
+                                                                                                src={item?.colors[0]?.images[1]}
+                                                                                                alt={item.name}
                                                                                                 className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
                                                                                             />
                                                                                         </div>
-                                                                                        <Link href={item.href} className="my-2 block font-semibold text-gray-900">
+                                                                                        <Link href={`/product/${item?._id}`} className="my-2 block font-semibold text-gray-900">
                                                                                             <span className="absolute inset-0 z-10" aria-hidden="true" />
                                                                                             {item.name}
                                                                                         </Link>
-                                                                                        <p className="block font-medium text-gray-900">
+                                                                                        {/* <p className="block font-medium text-gray-900">
                                                                                             <span className="absolute inset-0 z-10" aria-hidden="true" />
                                                                                             Rs. {item.price}
-                                                                                        </p>
+                                                                                        </p> */}
+                                                                                        <div className='flex gap-4'>
+                                                                                            <h1 className="font-bold text-slate-900">
+                                                                                                {item?.discount
+                                                                                                    ? `₹ ${Math.floor(item?.price - (item?.price * item?.discount) / 100)}`
+                                                                                                    : `₹ ${Math.floor(item?.price)}`
+                                                                                                }
+                                                                                            </h1>
+                                                                                            <span className="text-sm text-slate-900 line-through mt-1">
+                                                                                                ₹ {Math.floor(item?.price)}
+                                                                                            </span>
+
+                                                                                        </div>
                                                                                     </div>
                                                                                 </Link>
                                                                             ))}

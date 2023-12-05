@@ -297,11 +297,11 @@ const ProductDetails = () => {
                     return (
                       <div key={index} className="flex flex-col justify-center gap-2">
                         <div
-                          className={`bg-[#f1e8e8] p-1 rounded-full w-[4rem] h-[4rem] cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${isSelected ? 'bg-opacity-100 ' : 'bg-opacity-50'
+                          className={`bg-[#f1e8e8]  rounded-full w-[4rem] h-[4rem] cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 ${isSelected ? 'bg-opacity-100 ' : 'bg-opacity-50'
                             }`}
                           style={{
                             backgroundColor: availableColor,
-                            border: isSelected ? '4px solid #ff5733' : '2px solid #3aa1b8',
+                            border: isSelected ? '2px solid #ff5733' : '2px solid #3aa1b8',
                           }}
                           title={color.color}
                           onClick={() => handleColorClick(index)}
@@ -473,22 +473,21 @@ const ProductDetails = () => {
               <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div className="overflow-hidden">
                   <hr />
-                  <table className="  text-left text-sm font-light">
+                  <table className="text-left text-sm font-light">
                     <tbody className='flex flex-col gap-2'>
-                      <tr className="bg-slate-200 rounded">
-                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                      <tr className="bg-slate-200 rounded w-full">
+                        <td className=" px-2 py-4 font-bold">
                           Brand :
                         </td>
-                        <td className="whitespace-nowrap px-6 py-4">
+                        <td className="  pr-2 py-4">
                           {brand}
                         </td>
                       </tr>
-                      <tr className=" bg-slate-200 rounded flex items-center">
-                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                      <tr className="w-full bg-slate-200 rounded flex items-center">
+                        <td className="px-2 py-4 font-bold">
                           Total Color :
                         </td>
-                        <td className="whitespace-wrap flex  px-6 py-4">
-
+                        <td className="flex  pr-2 py-4">
                           {
                             colors && colors?.map((color, index) => {
                               return (
@@ -513,11 +512,11 @@ const ProductDetails = () => {
                   <hr />
                   <table className="  text-left text-sm font-light">
                     <tbody className='flex flex-col gap-2'>
-                      <tr className=" bg-slate-200 rounded">
-                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                      <tr className="w-full bg-slate-200 rounded">
+                        <td className="whitespace-nowrap px-2 py-4 font-bold">
                           Sizes :
                         </td>
-                        <td className="whitespace-nowrap px-6  py-4 ">
+                        <td className="whitespace-nowrap pr-2  py-4 ">
                           <div className='flex gap-2 '>
                             {
                               colors && colors?.map((color, index) => {
@@ -539,11 +538,11 @@ const ProductDetails = () => {
                           </div>
                         </td>
                       </tr>
-                      <tr className="bg-slate-200 rounded flex">
-                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                      <tr className="w-full bg-slate-200 rounded flex">
+                        <td className="px-2 py-4 font-bold">
                           Type :
                         </td>
-                        <td className="whitespace-nowrap flex  px-6 py-4">
+                        <td className="flex  pr-2 py-4">
                           {type}
                         </td>
                       </tr>

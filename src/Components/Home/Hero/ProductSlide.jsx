@@ -151,11 +151,11 @@ const ProductSlide = () => {
                                         >
                                             <div className='flex gap-4  justify-center md:items-center p-6 border rounded-lg bg-[#fefefe] md:w-full'>
                                                 <div className='md:w-[7rem]'>
-                                                    <div className='md:absolute  top-4 left-0 right-0 bottom-0 z-50'>
+                                                    <div className='md:absolute  top-0 left-0 right-0 bottom-0 z-50'>
                                                         <Image
                                                             src={product?.image}
-                                                            width={80}
-                                                            height={80}
+                                                            width={60}
+                                                            height={60}
                                                             className="w-full h-full product-slider-img z-[9999]"
                                                         />
                                                     </div>

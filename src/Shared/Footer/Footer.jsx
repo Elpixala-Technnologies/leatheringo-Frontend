@@ -50,7 +50,7 @@ const Footer = () => {
               mainCategory.slice(0, 5).map((item, index) => {
                 return (
                   <Link
-                    href={`/category-product/${item?._id}`}
+                    href={`/product?categoryName=${encodeURIComponent(item?.name)}`}
                     key={index + "category"}
                   >
                     <li className=" rounded duration-200 hover:bg-[#80808024] text-[#fff]">

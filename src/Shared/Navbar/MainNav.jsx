@@ -17,6 +17,7 @@ import {
 import { CiUser } from "react-icons/ci";
 import { BsCartPlus } from "react-icons/bs";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import useProducts from "@/src/Hooks/useProducts";
 
 
 
@@ -26,10 +27,9 @@ const MainNav = () => {
   const { handleLogout } = useCommonApiData();
   const userEmail = user?.email;
   const [isAdmin] = useAdmin();
-  //   const { categoryMainData} = useProducts();
+  const { productData } = useProducts();
   const [profileToggle, setProfileToggle] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState("");
-  const [searchPlaceholderText, setSearchPlaceholderText] = useState('Search');
   const [placeholderText, setPlaceholderText] = useState("");
 
   const [searchBarToggle, setSearchBarToggle] = useState(false);
@@ -41,10 +41,10 @@ const MainNav = () => {
       const offset = window.scrollY;
       if (offset > 100) {
         setSticky(true);
-        setShowLogo(false); // Hide logo when scrolled beyond 100px
+        setShowLogo(false);
       } else {
         setSticky(false);
-        setShowLogo(true); // Show logo when scrolled back to top
+        setShowLogo(true);
       }
     };
 
@@ -95,7 +95,7 @@ const MainNav = () => {
 
   const [megaMenuVisible, setMegaMenuVisible] = useState({
     categorys: false,
-    carsmanu: false
+    shose: false
   });
 
 
@@ -125,7 +125,7 @@ const MainNav = () => {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      if (offset > 100) { // Adjust the offset value according to when you want the navbar to become sticky
+      if (offset > 100) {
         setSticky(true);
       } else {
         setSticky(false);
@@ -133,8 +133,6 @@ const MainNav = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -145,11 +143,17 @@ const MainNav = () => {
   const [aOn, setAON] = useState(false);
   const [aOn2, setAON2] = useState(false);
 
+
+  // =============
+
+
+
   return (
     <div>
 
       <header
-        className={`${isSticky ? ' bg-[white] fixed top-0 duration-200' : 'md:bg-[white] bg-[transparent] duration-200 relative'} duration-200 w-full shadow z-50 mx-auto`}
+        // className={`${isSticky ? 'bg-white shadow' : 'bg-transparent'} fixed top-0 w-full z-50 transition duration-200`}
+        className={`${isSticky ? ' bg-[white] fixed top-0 duration-200' : 'md:bg-[white] bg-transparent duration-200 relative'} duration-200 w-full shadow z-50 mx-auto`}
         style={{
           zIndex: "9999",
         }}
@@ -173,7 +177,6 @@ const MainNav = () => {
 
             <div className="flex items-center flex-col justify-center">
               <div>
-
                 <div className="md:hidden block">
                   <Link className="text-xl font-bold text-black" href="/">
                     <Image
@@ -203,12 +206,11 @@ const MainNav = () => {
                     )
                   }
                 </div>
-
               </div>
               <div className="manu-items md:flex  gap-4 justify-center items-center hidden ">
                 <ul className={`${isSticky ? 'bg-white text-black' : 'bg-transparent text-black'} flex gap-8 justify-center items-center  px-8 py-2 rounded-full`}>
                   <li>
-                    <div onMouseEnter={() => toggleMegaMenu("carsmanu")}>
+                    <div onMouseEnter={() => toggleMegaMenu("shose")}>
                       <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
                         <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
                           Shoes{" "}
@@ -216,29 +218,170 @@ const MainNav = () => {
                         </button>
                         <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
                       </div>
-                      {megaMenuVisible?.carsmanu && (
+                      {megaMenuVisible?.shose && (
                         <div
-                          className={`${isSticky ? 'text-black bg-[white]' : 'text-black bg-[white]'} container mx-auto mega-menu border z-50 absolute top-[100%]  left-[0%] rounded py-2 px-2  opacity-100`}
-                          onMouseLeave={() => toggleMegaMenu("carsmanu")}
-                          onMouseEnter={() => toggleMegaMenu("carsmanu")}
+                          className={`${isSticky ? 'text-black bg-[white]' : 'text-black bg-[white]'} container mx-auto mega-menu border z-50 absolute top-[100%]  left-[0%] rounded py-2 px-2  opacity-100  h-[70vh]`}
+                          onMouseLeave={() => toggleMegaMenu("shose")}
+                          onMouseEnter={() => toggleMegaMenu("shose")}
                         >
-                          <ul>
-                            <div className="grid grid-cols-6 text-left mx-20  py-4 px-4 justify-center items-center gap-7">
-                              {/* {carsInfo?.map((itm) => (
-                            <Link href={`/category/3`}>
-                              {" "}
-                              <div className="flex hover:opacity-[.67] relative items-center justify-center gap-2 flex-row">
-                                <Image
-                                  src={itm?.image}
-                                  alt="logo"
-                                  width={50}
-                                  height={40}
-                                  className="cursor-pointer relative z-[1] hover:drop-shadow-2xl text-gray-800"
-                                />
-                                <h1 >{itm?.name}</h1>
+                          <ul className="border-t relative">
+                            <div className="flex items-center gap-4">
+                              <div>
+                                <div className="flex gap-2 ">
+                                  <div className="h-full  px-2 ">
+                                    <h1 className="text-[1.3rem] font-bold px-4 mt-2">Trending</h1>
+                                    <div className="flex flex-col px-4">
+                                      <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
+                                        <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
+                                          <Link
+                                            href={`/product?categoryName=${encodeURIComponent("Formal")}`}
+                                            className="text-[1.2rem] my-2"
+                                          >
+                                            Formal
+                                          </Link>
+                                        </button>
+                                        <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
+                                      </div>
+                                      <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
+                                        <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
+                                          <Link
+                                            href={`/product?categoryName=${encodeURIComponent("Sneakers")}`}
+                                            className="text-[1.2rem] my-1"
+                                          >
+                                            Sneakers
+                                          </Link>
+                                        </button>
+                                        <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
+                                      </div>
+                                      <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
+                                        <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
+                                          <Link
+                                            href={`/product?categoryName=${encodeURIComponent("Casual")}`}
+                                            className="text-[1.2rem] my-1"
+                                          >
+                                            Casual
+                                          </Link>
+                                        </button>
+                                        <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
+                                      </div>
+                                      <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
+                                        <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
+                                          <Link
+                                            href={`/product?categoryName=${encodeURIComponent("Brogues")}`}
+                                            className="text-[1.2rem] my-1"
+                                          >
+                                            Brogues
+                                          </Link>
+                                        </button>
+                                        <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div className="h-full  px-2">
+                                    <h1 className="text-[1.4rem] font-bold px-4 mt-2">New Arrival</h1>
+                                    <div className="flex flex-col px-4">
+                                      <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
+                                        <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
+                                          <Link
+                                            href={`/product?categoryName=${encodeURIComponent("Chelsea Boots")}`}
+                                            className="text-[1.2rem] my-2"
+                                          >
+                                            Chelsea Boots
+                                          </Link>
+                                        </button>
+                                        <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
+                                      </div>
+
+                                      <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
+                                        <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
+                                          <Link
+                                            href={`/product?categoryName=${encodeURIComponent("Derbies")}`}
+                                            className="text-[1.2rem] my-2"
+                                          >
+                                            Derbies
+                                          </Link>
+                                        </button>
+                                        <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
+                                      </div>
+
+                                      <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
+                                        <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
+                                          <Link
+                                            href={`/product?categoryName=${encodeURIComponent("Whole Cut Shoes")}`}
+                                            className="text-[1.2rem] my-2"
+                                          >
+                                            Whole Cut Shoes
+                                          </Link>
+                                        </button>
+                                        <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div className="h-full px-2">
+                                    <h1 className="text-[1.4rem] font-bold px-4 mt-2">Popular</h1>
+                                    <div className="flex flex-col px-4">
+                                      <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
+                                        <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
+                                          <Link
+                                            href={`/product?categoryName=${encodeURIComponent("Single Monk")}`}
+                                            className="text-[1.2rem] my-2"
+                                          >
+                                            Single Monk
+                                          </Link>
+                                        </button>
+                                        <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
+                                      </div>
+                                      <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
+                                        <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
+                                          <Link
+                                            href={`/product?categoryName=${encodeURIComponent("Double Monk")}`}
+                                            className="text-[1.2rem] my-2"
+                                          >
+                                            Double Monk
+                                          </Link>
+                                        </button>
+                                        <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
-                            </Link>
-                          ))} */}
+
+                              <div>
+                                <div className="flex items-center gap-5 absolute top-0">
+                                  {
+                                    productData && productData.slice(0, 2).map((product) => {
+                                      return (
+                                        <div className="w-[18rem] mt-2">
+                                          <div>
+                                            <Link href={`/product/${product?._id}`}>
+                                              <div className="productImage">
+                                                <div className="h-menu border rounded-t-[0.6rem] overflow-hidden relative">
+                                                  <img
+                                                    src={product?.colors[0]?.images[0]}
+                                                    alt="First Image"
+                                                    className="h-[80%] w-[80%] object-cover duration-200"
+                                                  />
+                                                  <img
+                                                    src={product?.colors[0]?.images[1]}
+                                                    alt="Second Image"
+                                                    className="hover-img absolute top-0 left-0 w-[80%] h-[80%] object-cover duration-300"
+                                                  />
+                                                </div>
+                                              </div>
+                                            </Link>
+                                          </div>
+                                          <Link href={`/product?id=${product.id}`} className="text-[1.2rem] my-4">
+                                            {product.name}
+                                          </Link>
+                                        </div>
+                                      )
+                                    })
+                                  }
+                                </div>
+                              </div>
                             </div>
                           </ul>
                         </div>
@@ -250,7 +393,7 @@ const MainNav = () => {
 
                   <li className="hover:font-semibold hover:underline">
                     <Link
-                      href="/products"
+                      href={`/product?categoryName=${encodeURIComponent("Bags")}`}
                       className={`common-hover ${selectedMenu === "Products" ? "selected-manu" : ""
                         }`}
                       onClick={() => setSelectedMenu("Products")}
@@ -261,7 +404,7 @@ const MainNav = () => {
 
                   <li className="hover:font-semibold hover:underline">
                     <Link
-                      href="/products"
+                      href={`/product?categoryName=${encodeURIComponent("Belts")}`}
                       className={`common-hover ${selectedMenu === "Hot Deals" ? "selected-manu" : ""
                         }`}
                       onClick={() => setSelectedMenu("Hot Deals")}
@@ -271,7 +414,7 @@ const MainNav = () => {
                   </li>
                   <li className="hover:font-semibold hover:underline">
                     <Link
-                      href="/blogs"
+                      href={`/product?categoryName=${encodeURIComponent("Card Holders")}`}
                       className={`common-hover ${selectedMenu === "Blogs" ? "selected-manu" : ""
                         }`}
                       onClick={() => setSelectedMenu("Blogs")}
@@ -281,12 +424,22 @@ const MainNav = () => {
                   </li>
                   <li className="hover:font-semibold hover:underline">
                     <Link
-                      href="/blogs"
+                      href={`/product?categoryName=${encodeURIComponent("Wallets")}`}
                       className={`common-hover ${selectedMenu === "Blogs" ? "selected-manu" : ""
                         }`}
                       onClick={() => setSelectedMenu("Blogs")}
                     >
                       Wallets
+                    </Link>
+                  </li>
+                  <li className="hover:font-semibold hover:underline">
+                    <Link
+                      href="/product"
+                      className={`common-hover ${selectedMenu === "Blogs" ? "selected-manu" : ""
+                        }`}
+                      onClick={() => setSelectedMenu("Blogs")}
+                    >
+                      Product
                     </Link>
                   </li>
                 </ul>
@@ -384,63 +537,179 @@ const MainNav = () => {
                   setAON2(false)
 
                 }} className="common-hover">
-                  <div className="w-full flex justify-between items-center"><Link href="/">Category</Link> <span className="text-xl">{aOn ? <>-</> : <>+</>}</span> </div>
-                  <div className={`${aOn ? 'h-[300px] p-4 overflow-y-scroll mt-3' : 'h-[0px] '} rounded-lg bg-[#243c72]  duration-300 overflow-hidden`}>
-                    {/* {
-                          categoryMainData && categoryMainData?.map((item, index) => {
-                            return (
-                              <div onClick={() => setOpen(!open)} key={index} >
-                                <Link href={`/category/${item?.name}`}
-                                  className='cursor-pointer hover:scale-105  duration-300 transform'
+                  <div className="w-full flex justify-between items-center"><Link href="/">Shose</Link> <span className="text-xl">{aOn ? <>-</> : <>+</>}</span> </div>
+                  <div className={`${aOn ? 'h-[70vh] p-4 overflow-y-scroll mt-3' : 'h-[0px] '} rounded-lg bg-[#243c72]  duration-300 overflow-hidden`}>
+                    <ul className="border-t">
+                      <div className="flex flex-col  gap-4">
+                        <div>
+                          <div className="flex gap-2 flex-col">
+                            <div className="h-full  px-2 ">
+                              <h1 className="text-[1.3rem] font-bold px-4 mt-2">Trending</h1>
+                              <div className="flex flex-col px-4">
+                                <Link
+                                  href={`/product?categoryName=${encodeURIComponent("Formal")}`}
+                                  className="text-[1.2rem] my-2"
                                 >
-                                  <h1 className="font-normal pb-4 text-white">
-                                    {item?.name}
-                                  </h1>
+                                  Formal
+                                </Link>
+                                <Link
+                                  href={`/product?categoryName=${encodeURIComponent("Sneakers")}`}
+                                  className="text-[1.2rem] my-1"
+                                >
+                                  Sneakers
+                                </Link>
+                                <Link
+                                  href={`/product?categoryName=${encodeURIComponent("Casual")}`}
+                                  className="text-[1.2rem] my-1"
+                                >
+                                  Casual
+                                </Link>
+                                <Link
+                                  href={`/product?categoryName=${encodeURIComponent("Brogues")}`}
+                                  className="text-[1.2rem] my-1"
+                                >
+                                  Brogues
                                 </Link>
                               </div>
-                            )
-                          })
-                        } */}
+                            </div>
+
+                            <div className="h-full  px-2">
+                              <h1 className="text-[1.4rem] font-bold px-4 mt-2">New Arrival</h1>
+                              <div className="flex flex-col px-4">
+                                <Link
+                                  href={`/product?categoryName=${encodeURIComponent("Chelsea Boots")}`}
+                                  className="text-[1.2rem] my-2"
+                                >
+                                  Chelsea Boots
+                                </Link>
+                                <Link
+                                  href={`/product?categoryName=${encodeURIComponent("Derbies")}`}
+                                  className="text-[1.2rem] my-2"
+                                >
+                                  Derbies
+                                </Link>
+                                <Link
+                                  href={`/product?categoryName=${encodeURIComponent("Whole Cut Shoes")}`}
+                                  className="text-[1.2rem] my-2"
+                                >
+                                  Whole Cut Shoes
+                                </Link>
+                              </div>
+                            </div>
+
+                            <div className="h-full px-2">
+                              <h1 className="text-[1.4rem] font-bold px-4 mt-2">Popular</h1>
+                              <div className="flex flex-col px-4">
+                                <Link
+                                  href={`/product?categoryName=${encodeURIComponent("Single Monk")}`}
+                                  className="text-[1.2rem] my-2"
+                                >
+                                  Single Monk
+                                </Link>
+                                <Link
+                                  href={`/product?categoryName=${encodeURIComponent("Double Monk")}`}
+                                  className="text-[1.2rem] my-2"
+                                >
+                                  Double Monk
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <div className="flex flex-col items-center gap-5 ">
+                            {
+                              productData && productData.slice(0, 2).map((product) => {
+                                return (
+                                  <div className="w-full mt-2">
+                                    <div>
+                                      <Link href={`/product/${product?._id}`}>
+                                        <div className="productImage">
+                                          <div className="h-menu border rounded-t-[0.6rem] overflow-hidden relative">
+                                            <img
+                                              src={product?.colors[0]?.images[0]}
+                                              alt="First Image"
+                                              className="h-full w-full object-cover duration-200"
+                                            />
+                                            <img
+                                              src={product?.colors[0]?.images[1]}
+                                              alt="Second Image"
+                                              className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
+                                            />
+                                          </div>
+                                        </div>
+                                      </Link>
+                                    </div>
+                                    <Link href={`/product?id=${product.id}`} className="text-[1.2rem] my-4">
+                                      {product.name}
+                                    </Link>
+                                  </div>
+                                )
+                              })
+                            }
+                          </div>
+                        </div>
+                      </div>
+                    </ul>
                   </div>
                 </li>
 
-                <li onClick={() => {
-                  setAON(false)
-                  setAON2(!aOn2)
-                }} className="common-hover">
-                  <div className="w-full flex justify-between items-center"><Link href="/">Shop By Car</Link> <span className="text-xl">{aOn ? <>-</> : <>+</>}</span> </div>
-                  <div className={`${aOn2 ? 'h-[400px] p-4 overflow-y-scroll mt-3' : 'h-[0px] '} rounded-lg bg-[#243c72]   duration-300 overflow-hidden`}>
-                    {/* <div className="grid grid-cols-3 gap-3">
-                       {
-                          carsInfo?.map((item, index) => {
-                            return (
-                              <div key={index} >
-                                <Link href={`/category/${item?.name}`}
-                                  className='cursor-pointer  hover:scale-105 flex justify-center flex-col gap-2 duration-300 transform'
-                                >
-                                  <Image className="w-[70px] h-[70px] m-auto" src={item?.image} width={90} height={90} alt="" />
-                                  <h1 className="font-normal text-center pb-4 text-white">
-                                    {item?.name}
-                                  </h1>
-                                </Link>
-                              </div>
-                            )
-                          })
-                        }
-                    </div> */}
-                  </div>
-                </li>
 
                 <li onClick={() => setOpen(!open)} className="common-hover">
                   <Link href="/">Home</Link>
                 </li>
                 <li onClick={() => setOpen(!open)} className="common-hover">
-                  <Link href="/products">Products</Link>
-                </li>
-                <li onClick={() => setOpen(!open)} className="common-hover">
-                  <Link href="/blogs">Blogs</Link>
+                  <Link
+                    href={`/product?categoryName=${encodeURIComponent("Bags")}`}
+                    className={`common-hover ${selectedMenu === "Bags" ? "selected-manu" : ""
+                      }`}
+                    onClick={() => setSelectedMenu("Bags")}
+                  >
+                    Bags
+                  </Link>
                 </li>
 
+                <li onClick={() => setOpen(!open)} className="common-hover">
+                  <Link
+                    href={`/product?categoryName=${encodeURIComponent("Belts")}`}
+                    className={`common-hover ${selectedMenu === "Belts" ? "selected-manu" : ""
+                      }`}
+                    onClick={() => setSelectedMenu("Belts")}
+                  >
+                    Belts
+                  </Link>
+                </li>
+                <li onClick={() => setOpen(!open)} className="common-hover">
+                  <Link
+                    href={`/product?categoryName=${encodeURIComponent("Card Holders")}`}
+                    className={`common-hover ${selectedMenu === "Card Holders" ? "selected-manu" : ""
+                      }`}
+                    onClick={() => setSelectedMenu("Card Holders")}
+                  >
+                    Card Holders
+                  </Link>
+                </li>
+                <li onClick={() => setOpen(!open)} className="common-hover">
+                  <Link
+                    href={`/product?categoryName=${encodeURIComponent("Wallets")}`}
+                    className={`common-hover ${selectedMenu === "Wallets" ? "selected-manu" : ""
+                      }`}
+                    onClick={() => setSelectedMenu("Wallets")}
+                  >
+                    Wallets
+                  </Link>
+                </li>
+                <li onClick={() => setOpen(!open)} className="common-hover">
+                  <Link
+                    href="/product"
+                    className={`common-hover ${selectedMenu === "Product" ? "selected-manu" : ""
+                      }`}
+                    onClick={() => setSelectedMenu("Product")}
+                  >
+                    Product
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

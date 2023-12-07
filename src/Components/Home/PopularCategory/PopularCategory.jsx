@@ -107,10 +107,11 @@ const PopualrCategory = () => {
                       >
                         <div
                           className="color-b  p-2 md:p-3 text-center rounded-md duration-300 transform   hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500 m-4"
-                          data-aos="fade-up"  
-                          data-aos-duration="1000"  
+                          data-aos="fade-up"
+                          data-aos-duration="1000"
                         >
-                          <Link href={`/category-product/${categoryName}`}
+                          <Link
+                            href={`/product?categoryName=${encodeURIComponent(categoryName)}`}
                             className="flex flex-col items-center gap-2"
                           >
                             <Image

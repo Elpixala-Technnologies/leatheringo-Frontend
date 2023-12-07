@@ -3,7 +3,6 @@ import "aos/dist/aos.css";
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ProductSlide from "./ProductSlide";
 import useHomeSlider from "@/src/Hooks/useHomeSlider";

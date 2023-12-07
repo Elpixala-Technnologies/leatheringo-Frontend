@@ -15,6 +15,7 @@ import Image from 'next/image';
 import { HomeSliderTwo } from '@/src/Assets';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 import { FaCartPlus } from 'react-icons/fa';
+import { useRouter } from 'next/router';
 
 
 
@@ -45,6 +46,8 @@ const ProductPage = () => {
   const [page, setPage] = useState(1);
   const itemsPerPage = 9;
 
+  const router = useRouter();
+
 
   function valuetext(value) {
     return `${value} Rs.`;
@@ -67,19 +70,50 @@ const ProductPage = () => {
     }
   }, [page, productData]);
 
+
+
   const handleToggleFilter = (filter) => {
-    setActiveFilter(activeFilter === filter ? null : filter);
+    if (activeFilter === filter) {
+      setActiveFilter(null);
+    } else {
+      setActiveFilter(filter);
+    }
+    console.log("Toggled Filter: ", filter, "Active Filter: ", activeFilter);
   };
 
+
+  // const handleCategoryChange = (category) => {
+  //   setSelectedCategories((prevSelected) => {
+  //     if (Array.isArray(prevSelected) && prevSelected?.includes(category)) {
+  //       return prevSelected.filter((c) => c !== category);
+  //     }
+  //     return [...(Array.isArray(prevSelected) ? prevSelected : []), category];
+  //   });
+  // };
 
   const handleCategoryChange = (category) => {
     setSelectedCategories((prevSelected) => {
-      if (prevSelected.includes(category)) {
+      const isSelected = prevSelected.includes(category);
+      if (isSelected) {
         return prevSelected.filter((c) => c !== category);
+      } else {
+        return [...prevSelected, category];
       }
-      return [...prevSelected, category];
     });
   };
+
+
+  useEffect(() => {
+    const categoryName = router.query.categoryName;
+    if (categoryName) {
+      const selectedCat = Array.isArray(categoryName) ? categoryName : [categoryName];
+      setSelectedCategories(selectedCat);
+      setActiveFilter('category');
+    } else {
+      setSelectedCategories(['All']);
+      setActiveFilter(null);
+    }
+  }, [router.query]);
 
   const handleSizeChange = (size) => {
     setSelectedSizes((prevSizes) => {
@@ -96,23 +130,6 @@ const ProductPage = () => {
   const handlePriceChange = (event, newValue) => {
     setSelectedPriceRange(newValue);
   };
-
-  // const handleSortChange = (option) => {
-  //   setSelectedSortOption(option);
-  // };
-
-  const handleSortChange = (option) => {
-    event.preventDefault(); // Prevent default if it's form/button
-    const currentScrollPosition = window.scrollY; // Get current scroll position
-
-    setSelectedSortOption(option); // Update the sort option
-
-    // After state update and re-render, set the scroll position back
-    useEffect(() => {
-      window.scrollTo(10, currentScrollPosition);
-    }, [selectedSortOption]);
-  };
-
 
   const handleSearchChange = (event) => {
     setSearchInput(event.target.value);
@@ -147,17 +164,22 @@ const ProductPage = () => {
     }
 
     // Apply category filter
-    if (!selectedCategories.includes('All')) {
+    // if (!selectedCategories?.includes('All')) {
+    //   result = result?.filter(product =>
+    //     selectedCategories?.some(category => product?.categories?.includes(category))
+    //   );
+    // }
+    if (Array.isArray(selectedCategories) && !selectedCategories?.includes('All')) {
       result = result.filter(product =>
-        selectedCategories.some(category => product.categories.includes(category))
+        selectedCategories.some(category => product?.categories.includes(category))
       );
     }
 
     // Apply size filter
     if (selectedSizes.size > 0) {
-      result = result.filter(product =>
-        product.colors.some(color =>
-          color.sizes.some(sizeObj => selectedSizes.has(sizeObj.size))
+      result = result?.filter(product =>
+        product?.colors?.some(color =>
+          color?.sizes?.some(sizeObj => selectedSizes?.has(sizeObj.size))
         )
       );
     }
@@ -426,7 +448,6 @@ const ProductPage = () => {
 
             <div className="flex gap-10  justify-center md:flex-row flex-col">
               <div className="hidden lg:block w-[14rem]">
-
                 <div className="border-b border-gray-200 py-6">
                   <button onClick={() => handleToggleFilter('category')} className=" font-semibold w-full flex gap-4 justify-between items-center">
                     Category
@@ -444,7 +465,7 @@ const ProductPage = () => {
                           <input
                             type="checkbox"
                             checked={selectedCategories.includes(option.value)}
-                            readOnly
+                            onChange={() => handleCategoryChange(option.value)}
                             className="mr-2"
                           />
                           {option.label}
@@ -538,55 +559,86 @@ const ProductPage = () => {
                   <div className="lg:col-span-4">
                     <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                       {currentPageData && currentPageData?.map((product) => {
+                        const { colors } = product
+
                         return (
-                          <div className="cardBody md:m-0  mx-auto  flex flex-col hover:border-red-500  color-b bg-white p-2 md:p-3 rounded-md duration-300 transform  shadow hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 ">
-                            <div className="productImage">
-                              <div className="h-menu border rounded-[1rem] overflow-hidden relative">
-                                <img
-                                  src={product?.colors[0]?.images[0]}
-                                  alt="First Image"
-                                  className="h-full w-full object-cover duration-200"
-                                />
-                                <img
-                                  src={product?.colors[0]?.images[1]}
-                                  alt="Second Image"
-                                  className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
-                                />
-                              </div>
+                          <div className='border rounded-[0.6rem] relative'>
+                            <div>
+                              <Link href={`/product/${product?._id}`}>
+                                <div className="productImage">
+                                  <div className="h-menu border rounded-t-[0.6rem] overflow-hidden relative">
+                                    <img
+                                      src={product?.colors[0]?.images[0]}
+                                      alt="First Image"
+                                      className="h-full w-full object-cover duration-200"
+                                    />
+                                    <img
+                                      src={product?.colors[0]?.images[1]}
+                                      alt="Second Image"
+                                      className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
+                                    />
+                                  </div>
+                                </div>
+                              </Link>
                             </div>
 
-                            <div className="productInfo mt-2 p-2">
-                              <p className="text-left text-gray-600">{product?.brand}</p>
-                              <h2 className="productName font-bold text-left ">
-                                {product?.name}
-                              </h2>
-                              <div className='flex gap-4'>
-                                <h1 className="font-bold text-slate-900">
-                                  {product?.discount
-                                    ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
-                                    : `₹ ${Math.floor(product?.price)}`
-                                  }
-                                </h1>
-                                <span className="text-sm text-slate-900 line-through mt-1">
-                                  ₹ {Math.floor(product?.price)}
-                                </span>
-                                <span className='text-[#eec75b]'>
-                                  {Math.floor(product?.discount)} % off
-                                </span>
+                            <div className='px-4 w-[60%] py-1 bg-[#000] rounded-r absolute top-4 text-[#fff] text-[0.6rem] font-semibold'>
+                              🎉 New Launch
+                            </div>
+
+                            <div className='rounded-b-[0.6rem] bg-[#fafafa] p-4 relative'>
+                              <div className='px-6 py-1 bg-yellow-500 rounded-md w-[60%] absolute top-[-1rem] text-center font-semibold left-[15%]'>
+                                {product.status}
                               </div>
-                              <div className="productAddToCart flex justify-between gap-10 items-center my-4  ">
-                                <div>
-                                  <Link className="border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-md duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500" href={`/product/${product?._id}`}>
-                                    <FaCartPlus />
-                                    Product Details
-                                  </Link>
+
+                              <div className='my-2 text-left'>
+                                <Link href={`/product/${product?._id}`} className='font-semibold'>{product?.name.slice(0, 30)}</Link>
+                                <div className='flex justify-end'>
+                                  <div className="flex items-center flex-wrap gap-2">
+                                    {colors && colors?.slice(0, 3)?.map((color, index) => {
+                                      return (
+                                        <div key={index} className="flex flex-col justify-center gap-2">
+                                          <div
+                                            className={`bg-[#f1e8e8]  rounded-full w-[2rem] h-[2rem] cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 `}
+                                            style={{
+                                              '2px solid #ff5733': '2px solid #3aa1b8',
+                                            }}
+                                            title={color.color}
+                                            onClick={() => handleColorClick(index)}
+                                          >
+                                            <img
+                                              src={color?.images[0]}
+                                              alt={color.color}
+                                              className='rounded-full'
+                                            />
+                                          </div>
+                                        </div>
+                                      );
+                                    })} {colors.length} +
+                                  </div>
                                 </div>
-                                <div
-                                  className='border  px-4 py-4 flex justify-center items-center gap-4 hover:border-red-500 color-b bg-white p-2 md:p-3 text-center rounded-full duration-300 transform  shadow-sm hover:-translate-y-1.5 border-t border-slate-100 hover:bg-red-10 hover:text-red-500 cursor-pointer'
-                                >
-                                  <BsCartCheck
-                                    className='text-[2rem] '
-                                  />
+
+                                <div className='flex gap-4'>
+                                  <h1 className="font-bold text-slate-900">
+                                    {product?.discount
+                                      ? `₹ ${Math.floor(product?.price - (product?.price * product?.discount) / 100)}`
+                                      : `₹ ${Math.floor(product?.price)}`
+                                    }
+                                  </h1>
+                                  <span className="text-sm text-slate-900 line-through mt-1">
+                                    ₹ {Math.floor(product?.price)}
+                                  </span>
+                                  <span className='text-[#eec75b]'>
+                                    {Math.floor(product?.discount)} % off
+                                  </span>
+                                </div>
+
+                                <div className='flex justify-end mt-2'>
+                                  <Link href={`/product/${product?._id}`}
+                                    className='border px-4  rounded py-1 bg-black text-white flex items-center gap-2'
+                                  >
+                                    <FaCartPlus /> Add To Cart
+                                  </Link>
                                 </div>
                               </div>
                             </div>

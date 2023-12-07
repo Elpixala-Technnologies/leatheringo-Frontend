@@ -7,88 +7,66 @@ import { Fragment, useEffect, useState } from 'react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import useProducts from '@/src/Hooks/useProducts';
 
-const navigation = {
-    categories: [
-        {
-            id: 'Shoes',
-            name: 'Shoes',
-            featured: [
-                {
-                    name: 'Formal wholecut Shoes',
-                    href: '/product/65646fd534dcce431476edc9',
-                    imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700116313/cvywhqscos2srl54sxpy.jpg',
-                    imageSrcHover: "https://res.cloudinary.com/elpixala/image/upload/v1700116313/n1fftpexkqdduledm4aw.jpg",
-                    imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-                    price: 2609,
-                },
-                {
-                    name: 'Olive swede chelsea Shoes',
-                    href: '/product/655660fa699dfa36877d6c3a',
-                    imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700119214/gyioogroac77mpw1weam.jpg',
-                    imageSrcHover: "https://res.cloudinary.com/elpixala/image/upload/v1700119214/gyioogroac77mpw1weam.jpg",
-                    imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-                    price: 3537,
-                },
-                {
-                    name: 'Aldo Chealsea boot Shoes',
-                    href: '/product/655660fa699dfa36877d6c39',
-                    imageSrc: 'https://res.cloudinary.com/elpixala/image/upload/v1700117947/c74feggbi0tphlsdpopt.jpg',
-                    imageSrcHover: "https://res.cloudinary.com/elpixala/image/upload/v1700117947/c74feggbi0tphlsdpopt.jpg",
-                    imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-                    price: 4714
-                },
-            ],
-            sections: [
-                {
-                    id: 'Trending',
-                    name: 'Trending',
-                    items: [
-
-                        { name: 'Formal', href: '/category-product/Formal' },
-                        { name: 'Sneakers', href: '/category-product/Sneakers' },
-                        { name: 'Casual', href: '/category-product/Casual' },
-                        { name: 'Brogues', href: '/category-product/Brogues' },
-
-                    ],
-                },
-                {
-                    id: 'New Arrival',
-                    name: 'New Arrival',
-                    items: [
-                        { name: 'Chelsea Boots', href: '/category-product/Chelsea Boots' },
-                        { name: 'Whole Cut Shoes', href: '/category-product/Whole Cut Shoes' },
-                        { name: 'Derbies', href: '/category-product/Derbies' },
-                    ],
-                },
-                {
-                    id: 'Popular Products',
-                    name: 'Popular',
-                    items: [
-
-                        { name: 'Single Monk', href: '/category-product/Single Monk' },
-                        { name: 'Double Monk', href: '/category-product/Double Monk' },
-                    ],
-                },
-            ],
-        },
-
-    ],
-    pages: [
-        { name: 'Bags', href: '/category-product/Bags' },
-        { name: 'Belts', href: '/category-product/Belts' },
-        { name: 'Card Holders', href: '/category-product/Card Holders' },
-        { name: 'Wallets', href: '/category-product/Wallets' }
-    ],
-}
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
 
 const Navbar = () => {
-    const { productData } = useProducts()
+    const { productData, } = useProducts()
     const [hoveredCategory, setHoveredCategory] = useState(null);
+
+
+
+    const navigation = {
+        categories: [
+            {
+                id: 'Shoes',
+                name: 'Shoes',
+                featured: productData,
+                sections: [
+                    {
+                        id: 'Trending',
+                        name: 'Trending',
+                        items: [
+
+                            { name: 'Formal', href: '/category-product/Formal' },
+                            { name: 'Sneakers', href: '/category-product/Sneakers' },
+                            { name: 'Casual', href: '/category-product/Casual' },
+                            { name: 'Brogues', href: '/category-product/Brogues' },
+
+                        ],
+                    },
+                    {
+                        id: 'New Arrival',
+                        name: 'New Arrival',
+                        items: [
+                            { name: 'Chelsea Boots', href: '/category-product/Chelsea Boots' },
+                            { name: 'Whole Cut Shoes', href: '/category-product/Whole Cut Shoes' },
+                            { name: 'Derbies', href: '/category-product/Derbies' },
+                        ],
+                    },
+                    {
+                        id: 'Popular Products',
+                        name: 'Popular',
+                        items: [
+
+                            { name: 'Single Monk', href: '/category-product/Single Monk' },
+                            { name: 'Double Monk', href: '/category-product/Double Monk' },
+                        ],
+                    },
+                ],
+            },
+
+        ],
+        pages: [
+            { name: 'Bags', href: '/category-product/Bags' },
+            { name: 'Belts', href: '/category-product/Belts' },
+            { name: 'Card Holders', href: '/category-product/Card Holders' },
+            { name: 'Wallets', href: '/category-product/Wallets' }
+        ],
+    }
+
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(' ')
+    }
+
 
     const handleCategoryMouseEnter = (categoryName) => {
         setHoveredCategory(categoryName);
@@ -99,18 +77,6 @@ const Navbar = () => {
     };
 
     const [open, setOpen] = useState(false)
-    // const [fix,setFix] = useState(false)
-
-    // const setFixedPosition = ()=>{
-    //     if(window.scrollY >=392){
-    //         setFix(true)
-    //     } else {
-    //         setFix(false)
-    //     }
-    // }
-
-    // window.addEventListener('scroll', setFixedPosition)
-
     const [fix, setFix] = useState(false);
 
     const setFixedPosition = () => {
@@ -208,47 +174,44 @@ const Navbar = () => {
                                             <Tab.Panel key={category.name} className="space-y-10 px-4 pb-8 ">
                                                 <div className="grid grid-cols-3 gap-x-4"
                                                 >
-                                                    {productData & productData?.slice(0, 3)?.map((item) => (
-                                                        <Link
-                                                            href={`/product/${item?._id}`}
-                                                            className='cursor-pointer'
-                                                        >
-                                                            <div className="group relative text-base border rounded p-4">
-                                                                <div className="h-menu border rounded-[1rem] overflow-hidden relative">
-                                                                    <img
-                                                                        src={item?.colors[0]?.images[1]}
-                                                                        alt={item.name}
-                                                                        className="h-full w-full object-cover duration-200"
-                                                                    />
-                                                                    <img
-                                                                        src={item?.colors[0]?.images[1]}
-                                                                        alt={item.name}
-                                                                        className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
-                                                                    />
-                                                                </div>
-                                                                <Link href={`/product/${item?._id}`} className="my-2 block font-semibold text-gray-900">
-                                                                    <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                                    {item.name}
-                                                                </Link>
-                                                                {/* <p className="block font-medium text-gray-900">
-                                                                                            <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                                                            Rs. {item.price}
-                                                                                        </p> */}
-                                                                <div className='flex gap-4'>
-                                                                    <h1 className="font-bold text-slate-900">
-                                                                        {item?.discount
-                                                                            ? `₹ ${Math.floor(item?.price - (item?.price * item?.discount) / 100)}`
-                                                                            : `₹ ${Math.floor(item?.price)}`
-                                                                        }
-                                                                    </h1>
-                                                                    <span className="text-sm text-slate-900 line-through mt-1">
-                                                                        ₹ {Math.floor(item?.price)}
-                                                                    </span>
-
-                                                                </div>
+                                                    {category.featured?.slice(0, 3)?.map((item) => {
+                                                        return (
+                                                    <Link
+                                                        href={`/product/${item?._id}`}
+                                                        className='cursor-pointer'
+                                                    >
+                                                        <div className="group relative text-base border rounded p-4">
+                                                            <div className="h-menu border rounded-[1rem] overflow-hidden relative">
+                                                                <img
+                                                                    src={item?.colors[0]?.images[0]}
+                                                                    alt={item?.name}
+                                                                    className="h-full w-full object-cover duration-200"
+                                                                />
+                                                                <img
+                                                                    src={item?.colors[0]?.images[1]}
+                                                                    alt={item?.name}
+                                                                    className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
+                                                                />
                                                             </div>
-                                                        </Link>
-                                                    ))}
+                                                            <Link href={`/product/${item?._id}`} className="my-2 block font-semibold text-gray-900">
+                                                                <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                                                {item.name.slice(0, 30)}
+                                                            </Link>
+                                                            <div className='flex gap-4'>
+                                                                <h1 className="font-bold text-slate-900">
+                                                                    {item?.discount
+                                                                        ? `₹ ${Math.floor(item?.price - (item?.price * item?.discount) / 100)}`
+                                                                        : `₹ ${Math.floor(item?.price)}`
+                                                                    }
+                                                                </h1>
+                                                                <span className="text-sm text-slate-900 line-through mt-1">
+                                                                    ₹ {Math.floor(item?.price)}
+                                                                </span>
+                                                                 
+                                                            </div>
+                                                        </div>
+                                                    </Link>)
+                                                    })}
                                                 </div>
                                                 {category.sections.map((section) => (
                                                     <div key={section.name}>
@@ -369,47 +332,45 @@ const Navbar = () => {
                                                                 <div className="mx-auto max-w-7xl px-8">
                                                                     <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
                                                                         <div className="col-start-2 grid grid-cols-3 gap-x-8">
-                                                                            {productData & productData?.slice(0, 3)?.map((item) => (
-                                                                                <Link
-                                                                                    href={`/product/${item?._id}`}
-                                                                                    className='cursor-pointer'
-                                                                                >
-                                                                                    <div className="group relative text-base border rounded p-4">
-                                                                                        <div className="h-menu border rounded-[1rem] overflow-hidden relative">
-                                                                                            <img
-                                                                                                src={item?.colors[0]?.images[1]}
-                                                                                                alt={item.name}
-                                                                                                className="h-full w-full object-cover duration-200"
-                                                                                            />
-                                                                                            <img
-                                                                                                src={item?.colors[0]?.images[1]}
-                                                                                                alt={item.name}
-                                                                                                className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
-                                                                                            />
-                                                                                        </div>
-                                                                                        <Link href={`/product/${item?._id}`} className="my-2 block font-semibold text-gray-900">
-                                                                                            <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                                                            {item.name}
-                                                                                        </Link>
-                                                                                        {/* <p className="block font-medium text-gray-900">
-                                                                                            <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                                                            Rs. {item.price}
-                                                                                        </p> */}
-                                                                                        <div className='flex gap-4'>
-                                                                                            <h1 className="font-bold text-slate-900">
-                                                                                                {item?.discount
-                                                                                                    ? `₹ ${Math.floor(item?.price - (item?.price * item?.discount) / 100)}`
-                                                                                                    : `₹ ${Math.floor(item?.price)}`
-                                                                                                }
-                                                                                            </h1>
-                                                                                            <span className="text-sm text-slate-900 line-through mt-1">
-                                                                                                ₹ {Math.floor(item?.price)}
-                                                                                            </span>
+                                                                            {category.featured?.slice(0, 3).map((item) => {
 
+                                                                                return (
+                                                                                    <Link
+                                                                                        href={`/product/${item?._id}`}
+                                                                                        className='cursor-pointer'
+                                                                                    >
+                                                                                        <div className="group relative text-base border rounded p-4">
+                                                                                            <div className="h-menu border rounded-[1rem] overflow-hidden relative">
+                                                                                                <img
+                                                                                                    src={item?.colors[0]?.images[0]}
+                                                                                                    alt={item?.name}
+                                                                                                    className="h-full w-full object-cover duration-200"
+                                                                                                />
+                                                                                                <img
+                                                                                                    src={item?.colors[0]?.images[1]}
+                                                                                                    alt={item?.name}
+                                                                                                    className="hover-img absolute top-0 left-0 w-full h-full object-cover duration-300"
+                                                                                                />
+                                                                                            </div>
+                                                                                            <Link href={`/product/${item?._id}`} className="my-2 block font-semibold text-gray-900">
+                                                                                                <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                                                                                {item.name.slice(0, 30)}
+                                                                                            </Link>
+                                                                                            <div className='flex gap-4'>
+                                                                                                <h1 className="font-bold text-slate-900">
+                                                                                                    {item?.discount
+                                                                                                        ? `₹ ${Math.floor(item?.price - (item?.price * item?.discount) / 100)}`
+                                                                                                        : `₹ ${Math.floor(item?.price)}`
+                                                                                                    }
+                                                                                                </h1>
+                                                                                                <span className="text-slate-900 line-through mt-1">
+                                                                                                    ₹ {Math.floor(item?.price)}
+                                                                                                </span>
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </div>
-                                                                                </Link>
-                                                                            ))}
+                                                                                    </Link>
+                                                                                )
+                                                                            })}
                                                                         </div>
                                                                         <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                                                             {category.sections.map((section) => (

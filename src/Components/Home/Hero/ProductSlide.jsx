@@ -177,20 +177,12 @@ const ProductSlide = () => {
                                                         <h1 className="text-sm text-slate-400">
                                                           Running Collection
                                                         </h1>
-                                                        {/* <span className="   text-slate-900 line-through">
-                                                            ₹ {Math.floor(product?.product?.price)}
-                                                        </span> */}
                                                     </div>
 
                                                     <div className='flex items-center  gap-6'>
-                                                        {/* <div>
-                                                            <span className='text-[#eec75b]'>
-                                                                {Math.floor(product?.product?.discount)} % off
-                                                            </span>
-                                                        </div> */}
                                                         <h1 className="font-bold text-2xl text-slate-900">
                                                             {
-                                                                `$ ${Math.floor(product.product?.price - (product?.product?.price * product?.product?.discount) / 100)}`
+                                                                `₹ ${Math.floor(product.product?.price - (product?.product?.price * product?.product?.discount) / 100)}`
                                                                 
                                                             }
                                                         </h1>

@@ -76,6 +76,8 @@ const HomeSliderProduct = () => {
 			});
 			const dataRes = await res.json();
 
+			console.log(res, "res++")
+
 			if (dataRes.success) {
 				Swal.fire({
 					position: 'center',

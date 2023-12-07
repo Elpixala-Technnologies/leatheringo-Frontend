@@ -59,7 +59,7 @@ const Hero = () => {
 
   return (
     <div className="hero-slider-container ">
-      <div className="hero-slider-container py-4 bg-[#E3E6F3] h-full">
+      <div className="hero-slider-container py-4 bg-[#0766AD] h-full">
         <div className='md:container'>
           <Swiper
             spaceBetween={30}
@@ -115,58 +115,7 @@ const Hero = () => {
                 </SwiperSlide>
               );
             })}
-
           </Swiper>
-
-          {/* <Carousel
-            {...settings}
-            className="hero-slider"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            {homeSliderData && homeSliderData?.map((item) => {
-              return (
-                <div key={item.id} data-aos="fade-up">
-                  <div className="flex justify-center md:flex-row flex-col items-center gap-6">
-                    <div
-                      className="flex justify-center items-center gap-2 flex-col  transition duration-700 ease-in-out"
-                      data-aos="fade-up"
-                    >
-                      <Image
-                        src={item.image}
-                        alt="Banner Image"
-                        className=" h-full hero-image"
-                        width={550}
-                        height={550}
-                        data-aos="fade-down"
-                      />
-                    </div>
-                    <div className="flex justify-center items-center gap-2 flex-col hero-text">
-                      <h1
-                        className="text-2xl font-bold text-center"
-                        data-aos="fade-up"
-                      >
-                        {item.title}
-                      </h1>
-                      <p
-                        className="text-sm px-4  text-gray-900 text-center first-letter: animate-pulse transition duration-600 ease-in-out"
-                        data-aos="fade-up"
-                      >
-                        {item.description}
-                      </p>
-                      <Link
-                        href="/product"
-                        className="cursor-pointer border-2 border-[#088178] px-6 rounded py-2 text-center capitalize animate-pulse transition duration-700 ease-in-out hover:bg-gray-800 hover:text-white"
-                        data-aos="fade-up"
-                      >
-                        Shop Now
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </Carousel> */}
         </div>
         <div className="my-4">
           <ProductSlide />

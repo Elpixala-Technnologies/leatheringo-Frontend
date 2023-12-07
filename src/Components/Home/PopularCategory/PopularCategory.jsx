@@ -4,18 +4,6 @@ import Link from "next/link";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TbArrowBigLeft, TbArrowBigRight } from "react-icons/tb";
-import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
-import {
-  BagsIcons,
-  Belts,
-  CardHolders,
-  DuffleBags,
-  LadiesBags,
-  Shoes,
-  Sneakers,
-  Wallets,
-  ChelseaBoots,
-} from "@/src/Assets";
 import usePopularCategory from "@/src/Hooks/useCategory";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles

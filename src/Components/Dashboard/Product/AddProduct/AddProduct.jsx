@@ -7,7 +7,7 @@ import { createProductUrl } from "@/src/Utils/Urls/ProductUrl";
 import useProducts from "@/src/Hooks/useProducts";
 import { FaTrashAlt } from "react-icons/fa";
 import LinearProgress from '@mui/material/LinearProgress';
- 
+
 import { Select, MenuItem, Checkbox, ListItemText, FormControl, InputLabel } from '@mui/material';
 
 const AddProduct = () => {
@@ -23,14 +23,14 @@ const AddProduct = () => {
   const [loading, setLoading] = useState(false);
 
   const [isSizeApplicable, setIsSizeApplicable] = useState(false);
- 
+
   const [color, setColor] = useState([
     {
       color: "",
       isSizeApplicable: isSizeApplicable,
       sizes: [{ size: "", quantity: "" }],
-      images: [],  
-      quantity: "",  
+      images: [],
+      quantity: "",
     },
   ]);
 
@@ -41,8 +41,8 @@ const AddProduct = () => {
         color: "",
         isSizeApplicable: isSizeApplicable,
         sizes: [{ size: "", quantity: "" }],
-        images: [],  
-        quantity: "",  
+        images: [],
+        quantity: "",
       },
     ]);
   };
@@ -54,14 +54,14 @@ const AddProduct = () => {
   };
 
   // const uploadImageToCloudinary = async (file) => {
- 
+
   const uploadImageToCloudinary = async (file, onUploadProgress) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("public_id", `${cloud_folder}/Product/${file?.name}`);
     formData.append("upload_preset", upload_preset);
     formData.append("cloud_name", cloud_name);
-  
+
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open("POST", cloud_api, true);
@@ -83,22 +83,22 @@ const AddProduct = () => {
       xhr.send(formData);
     });
   };
-  
+
 
   const [uploadProgress, setUploadProgress] = useState({});
- 
+
   const handleImageChange = async (event, colorIndex) => {
     const updatedColors = [...color];
     const selectedFiles = Array.from(event.target.files);
-  
+
     for (const file of selectedFiles) {
       setUploadProgress(prevProgress => ({ ...prevProgress, [file.name]: 0 }));
-  
+
       try {
         const imageUrl = await uploadImageToCloudinary(file, (progress) => {
           setUploadProgress(prevProgress => ({ ...prevProgress, [file.name]: progress }));
         });
-  
+
         if (imageUrl) {
           updatedColors[colorIndex].images.push(imageUrl);
           // Remove the file's progress from state to hide the progress bar
@@ -114,7 +114,7 @@ const AddProduct = () => {
     }
     setColor(updatedColors);
   };
-  
+
 
   const onChange = (event, colorIndex, sizeIndex) => {
     setColor((prevColors) => {
@@ -201,7 +201,7 @@ const AddProduct = () => {
     });
     setdescription(updatedDetails);
   };
-  
+
 
   const featuresTamplate = {
     heading: "",
@@ -256,30 +256,30 @@ const AddProduct = () => {
     setAdditonalInfo(updatedadditionalInfo);
   };
 
- 
+
   const handleDeleteImage = (colorIndex, imageIndex) => {
     const updatedColors = [...color];
     updatedColors[colorIndex].images.splice(imageIndex, 1);
     setColor(updatedColors);
   };
- 
- 
-const [selectedCategories, setSelectedCategories] = useState([]);
- 
-const prepareCategoryOptions = (categories = [], parentName = null, level = 0) => {
-  return categories?.filter(category => category?.parent === parentName)
-    .flatMap(category => ([
-      { value: category.name, label: category.name, level },
-      ...prepareCategoryOptions(categories, category.name, level + 1)
-    ]));
-};
 
-const handleCategoryChange = (event) => {
-  setSelectedCategories(event.target.value);
-};
 
-const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [];
- 
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const prepareCategoryOptions = (categories = [], parentName = null, level = 0) => {
+    return categories?.filter(category => category?.parent === parentName)
+      .flatMap(category => ([
+        { value: category.name, label: category.name, level },
+        ...prepareCategoryOptions(categories, category.name, level + 1)
+      ]));
+  };
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategories(event.target.value);
+  };
+
+  const categoryOptions = categoryData ? prepareCategoryOptions(categoryData) : [];
+
   const onSubmit = async (inputValue) => {
     try {
       setLoading(true);
@@ -369,7 +369,7 @@ const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [
     }
   };
 
- 
+
   return (
     <section className="my-4">
       <div className="flex flex-col w-full gap-4 mx-auto add-book-form">
@@ -381,24 +381,24 @@ const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [
             {...register("name")}
           />
 
-        <FormControl fullWidth>
-          <InputLabel>Categories</InputLabel>
-          <Select
-            multiple
-            value={selectedCategories}
-            onChange={handleCategoryChange}
-            renderValue={(selected) => selected.join(', ')}
-          >
-            {categoryOptions.map((category) => (
-              <MenuItem key={category.value} value={category.value} 
-                        style={{ marginLeft: `${category.level * 20}px` }}>
-                <Checkbox checked={selectedCategories.indexOf(category.value) > -1} />
-                <ListItemText primary={category.label} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
- 
+          <FormControl fullWidth>
+            <InputLabel>Categories</InputLabel>
+            <Select
+              multiple
+              value={selectedCategories}
+              onChange={handleCategoryChange}
+              renderValue={(selected) => selected.join(', ')}
+            >
+              {categoryOptions.map((category) => (
+                <MenuItem key={category.value} value={category.value}
+                  style={{ marginLeft: `${category.level * 20}px` }}>
+                  <Checkbox checked={selectedCategories.indexOf(category.value) > -1} />
+                  <ListItemText primary={category.label} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
           <input
             type="text"
             placeholder="Brand"
@@ -473,18 +473,21 @@ const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [
             </option>
           </select>
 
-          <Select
-            mode="tags"
-            style={{
-              width: "100%",
-            }}
-            placeholder="Coupon"
-            onChange={handleCouponChange}
-            options={couponOptions}
-          />
+          <div>
+            <h1 className='my-2'>Coupon</h1>
+            <Select
+              mode="tags"
+              style={{
+                width: "100%",
+              }}
+              placeholder="Coupon"
+              onChange={handleCouponChange}
+              options={couponOptions}
+            />
+          </div>
 
-          <div className='flex flex-col gap-4'>
-            <h1 className='my-2'>description</h1>
+          <div className='flex flex-col gap-4  p-2  border-2 border-gray-300 rounded-md' >
+            <h1 className='my-2'>Description</h1>
             {
               description.map((description, index) => {
                 return (
@@ -537,8 +540,8 @@ const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [
             </button>
           </div>
 
-          <div className='flex flex-col gap-4'>
-            <h1 className='my-2'>features</h1>
+          <div className='flex flex-col gap-4 border-2 border-gray-300 rounded-md p-2  '>
+            <h1 className='my-2'>Features</h1>
             {
               features.map((features, index) => {
                 return (
@@ -591,7 +594,7 @@ const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [
             </button>
           </div>
 
-          <div className='flex flex-col gap-4'>
+          <div className='flex flex-col gap-4 border-2 border-gray-300 rounded-md p-2 '>
             <h1 className='my-2'>Additional Info</h1>
             {
               additionalInfo.map((info, index) => {
@@ -793,33 +796,33 @@ const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [
                     <div>
                       {/* ------ show seleted image------- */}
 
-  
+
                       <div className="flex gap-4 my-4">
-                          {item.images &&
-                              item.images.map((image, index) => (
-                                  <div key={index} className="relative w-1/2">
-                                      <img
-                                          src={image}
-                                          alt=""
-                                          className="w-full h-full object-cover"
-                                      />
-                                      <button className="absolute top-0 right-0 m-2 p-2 bg-red-500 text-white rounded-full"
-                                         onClick={() => handleDeleteImage(colorIndex, index)}
-                                      >
-                                          {/* Replace with your preferred delete icon */}
-                                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                          </svg>
-                                      </button>
-                                  </div>
-                              ))
-                          }
-                   {Object.keys(uploadProgress).map((fileName) => (
-    <div key={fileName} className="w-full my-2">
-      <p className="text-sm text-gray-600 mb-1">{fileName}</p>
-      <LinearProgress variant="determinate" value={uploadProgress[fileName]} />
-    </div>
-  ))}
+                        {item.images &&
+                          item.images.map((image, index) => (
+                            <div key={index} className="relative w-1/2">
+                              <img
+                                src={image}
+                                alt=""
+                                className="w-full h-full object-cover"
+                              />
+                              <button className="absolute top-0 right-0 m-2 p-2 bg-red-500 text-white rounded-full"
+                                onClick={() => handleDeleteImage(colorIndex, index)}
+                              >
+                                {/* Replace with your preferred delete icon */}
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </button>
+                            </div>
+                          ))
+                        }
+                        {Object.keys(uploadProgress).map((fileName) => (
+                          <div key={fileName} className="w-full my-2">
+                            <p className="text-sm text-gray-600 mb-1">{fileName}</p>
+                            <LinearProgress variant="determinate" value={uploadProgress[fileName]} />
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -832,7 +835,7 @@ const categoryOptions =  categoryData ? prepareCategoryOptions(categoryData) : [
                   </button>
                 </div>
               ))}
-            <button className="btn btn-primary mx-4" onClick={addColor}>
+            <button className="btn btn-primary " onClick={addColor}>
               Add Color
             </button>
           </div>

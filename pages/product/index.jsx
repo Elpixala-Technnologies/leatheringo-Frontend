@@ -582,22 +582,26 @@ const ProductPage = () => {
                               </Link>
                             </div>
 
-                            <div className='px-4 w-[60%] py-1 bg-[#000] rounded-r absolute top-4 text-[#fff] text-[0.6rem] font-semibold'>
+                            <div className='px-4 w-[38%] py-1 bg-[#000] rounded-r absolute top-4 text-[#fff] text-[0.6rem] font-semibold'>
                               🎉 New Launch
                             </div>
 
                             <div className='rounded-b-[0.6rem] bg-[#fafafa] p-4 relative'>
-                              <div className='px-6 py-1 bg-yellow-500 rounded-md w-[60%] absolute top-[-1rem] text-center font-semibold left-[15%]'>
-                                {product.status}
-                              </div>
+                              {
+                                product?.brand !== "" && (
+                                  <div className='px-2 py-1 bg-yellow-500 rounded-md w-[60%] absolute top-[-1rem] text-center left-[15%]'>
+                                    {product?.brand}
+                                  </div>
+                                )
+                              }
 
-                              <div className='my-2 text-left'>
+                              <div className='my-1 text-left'>
                                 <Link href={`/product/${product?._id}`} className='font-semibold'>{product?.name.slice(0, 30)}</Link>
                                 <div className='flex justify-end'>
-                                  <div className="flex items-center flex-wrap gap-2">
+                                  <div className="flex items-center flex-wrap ml-10">
                                     {colors && colors?.slice(0, 3)?.map((color, index) => {
                                       return (
-                                        <div key={index} className="flex flex-col justify-center gap-2">
+                                        <div key={index} className="flex flex-col justify-center gap-2 border-2 border-[#000] rounded-full ">
                                           <div
                                             className={`bg-[#f1e8e8]  rounded-full w-[2rem] h-[2rem] cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 `}
                                             style={{
@@ -609,12 +613,12 @@ const ProductPage = () => {
                                             <img
                                               src={color?.images[0]}
                                               alt={color.color}
-                                              className='rounded-full'
+                                              className='rounded-full colro-shose'
                                             />
                                           </div>
                                         </div>
                                       );
-                                    })} {colors.length} +
+                                    })} +{colors.length} 
                                   </div>
                                 </div>
 
@@ -633,7 +637,7 @@ const ProductPage = () => {
                                   </span>
                                 </div>
 
-                                <div className='flex justify-end mt-2'>
+                                <div className='flex justify-end'>
                                   <Link href={`/product/${product?._id}`}
                                     className='border px-4  rounded py-1 bg-black text-white flex items-center gap-2'
                                   >

@@ -142,9 +142,6 @@ const MainNav = ({ isTransparent }) => {
   const [aOn2, setAON2] = useState(false);
 
   // =============
-  // const textColorClass = isTransparent && !isSticky ? 'text-[#fff]' : 'text-black' ;
-
-
 
   const isAnyMegaMenuOpen = Object.values(megaMenuVisible).some(value => value);
 
@@ -154,16 +151,16 @@ const MainNav = ({ isTransparent }) => {
   const textColorClass = isAnyMegaMenuOpen ? 'text-black' : isTransparent && !isSticky ? 'text-[#fff]' : 'text-black';
 
   const isNavbarTransparent = isTransparent && !isSticky && !isAnyMegaMenuOpen;
-
+  const navbarHeight = isSticky ? '60px' : '80px'; 
 
   return (
     <div>
       <header
         className={`${navbarClass} fixed top-0 w-full z-50 transition duration-200`}
-        style={{ zIndex: "9999" }}
+        style={{ zIndex: "9999" , fontSize: "10px"}}
       >
         <nav
-          className={`md:py-4 flex items-center ${textColorClass} md:container relative md:px-4 px-2`}
+          className={`flex items-center ${textColorClass} md:container relative md:px-4 px-2`}
         >
           <div className="flex items-center mx-2 justify-between w-full md:mx-auto ">
             <div className="flex items-center gap-2">
@@ -190,7 +187,7 @@ const MainNav = ({ isTransparent }) => {
                       alt="logo"
                       width={130}
                       height={80}
-                      className="cursor-pointer md:w-[115px] w-[110px] d-none hover:scale-105 duration-300 transform"
+                      className="cursor-pointer md:w-[115px] w-[110px] d-none hover:scale-105 duration-300 transform mt-4"
                     />
                   </Link>
                 </div>
@@ -205,7 +202,7 @@ const MainNav = ({ isTransparent }) => {
                             alt="logo"
                             width={130}
                             height={80}
-                            className="cursor-pointer md:w-[115px] w-[110px] d-none hover:scale-105 duration-300 transform"
+                            className="cursor-pointer md:w-[115px] w-[110px] d-none hover:scale-105 duration-300 transform mt-4"
                           />
                         </Link>
                       </div>
@@ -226,7 +223,6 @@ const MainNav = ({ isTransparent }) => {
                       </div>
                       {megaMenuVisible?.shose && (
                         <div
-                          // className={`${isSticky ? 'text-black bg-[white]' : 'text-black bg-[white]'}  mx-auto mega-menu border z-50 absolute top-[100%] rounded py-2 px-2  opacity-100  h-[100vh] left-0 right-0 `}
                           className={`text-black bg-white container mx-auto mega-menu border z-50 absolute top-[100%] rounded py-2 px-2 opacity-100 h-[100vh] left-0 right-0`}
                           onMouseLeave={() => toggleMegaMenu("shose")}
                           onMouseEnter={() => toggleMegaMenu("shose")}
@@ -401,7 +397,7 @@ const MainNav = ({ isTransparent }) => {
                   <li className={`${textColorClass} hover:font-semibold hover:underline`}>
                     <Link
                       href={`/product?categoryName=${encodeURIComponent("Bags")}`}
-                      className={`common-hover ${selectedMenu === "Products" ? "selected-manu" : ""
+                      className={` ${selectedMenu === "Products" ? "selected-manu" : ""
                         }`}
                       onClick={() => setSelectedMenu("Products")}
                     >
@@ -412,7 +408,7 @@ const MainNav = ({ isTransparent }) => {
                   <li className={`${textColorClass} hover:font-semibold hover:underline`}>
                     <Link
                       href={`/product?categoryName=${encodeURIComponent("Belts")}`}
-                      className={`common-hover ${selectedMenu === "Hot Deals" ? "selected-manu" : ""
+                      className={` ${selectedMenu === "Hot Deals" ? "selected-manu" : ""
                         }`}
                       onClick={() => setSelectedMenu("Hot Deals")}
                     >
@@ -422,7 +418,7 @@ const MainNav = ({ isTransparent }) => {
                   <li className={`${textColorClass} hover:font-semibold hover:underline`}>
                     <Link
                       href={`/product?categoryName=${encodeURIComponent("Card Holders")}`}
-                      className={`common-hover ${selectedMenu === "Blogs" ? "selected-manu" : ""
+                      className={` ${selectedMenu === "Blogs" ? "selected-manu" : ""
                         }`}
                       onClick={() => setSelectedMenu("Blogs")}
                     >
@@ -432,7 +428,7 @@ const MainNav = ({ isTransparent }) => {
                   <li className={`${textColorClass} hover:font-semibold hover:underline`}>
                     <Link
                       href={`/product?categoryName=${encodeURIComponent("Wallets")}`}
-                      className={`common-hover ${selectedMenu === "Blogs" ? "selected-manu" : ""
+                      className={` ${selectedMenu === "Blogs" ? "selected-manu" : ""
                         }`}
                       onClick={() => setSelectedMenu("Blogs")}
                     >
@@ -477,7 +473,7 @@ const MainNav = ({ isTransparent }) => {
                           <>
                             <Link
                               href="/auth/login"
-                              className="flex items-center  gap-2 border-common-btn common-hover"
+                              className="flex items-center  gap-2 border-common-btn "
                             >
                               <FaUserAlt /> SignIn
                             </Link>
@@ -487,7 +483,7 @@ const MainNav = ({ isTransparent }) => {
                             {isAdmin && (
                               <Link
                                 href="/dashboard"
-                                className="flex items-center  gap-2 border-common-btn common-hover"
+                                className="flex items-center  gap-2 border-common-btn "
                               >
                                 <FaMicrosoft /> Dashboard
                               </Link>
@@ -495,13 +491,13 @@ const MainNav = ({ isTransparent }) => {
                             {userEmail && !isAdmin && (
                               <Link
                                 href="/userdashboard"
-                                className="flex items-center  gap-2 border-common-btn common-hover"
+                                className="flex items-center  gap-2 border-common-btn "
                               >
                                 <FaUserAlt /> Profile
                               </Link>
                             )}
                             <button
-                              className="flex items-center gap-2 my-2 border-common-btn common-hover"
+                              className="flex items-center gap-2 my-2 border-common-btn "
                               onClick={() => handleLogout()}
                             >
                               <FaPowerOff /> Logout
@@ -547,7 +543,7 @@ const MainNav = ({ isTransparent }) => {
                   setAON(!aOn)
                   setAON2(false)
 
-                }} className="common-hover">
+                }} className="">
                   <div className="w-full flex justify-between items-center"><Link href="/">Shose</Link> <span className="text-xl">{aOn ? <>-</> : <>+</>}</span> </div>
                   <div className={`${aOn ? 'h-[70vh] p-4 overflow-y-scroll mt-3' : 'h-[0px] '} rounded-lg bg-[#243c72]  duration-300 overflow-hidden`}>
                     <ul className="border-t">
@@ -667,13 +663,13 @@ const MainNav = ({ isTransparent }) => {
                 </li>
 
 
-                <li onClick={() => setOpen(!open)} className="common-hover">
+                <li onClick={() => setOpen(!open)} className="">
                   <Link href="/">Home</Link>
                 </li>
-                <li onClick={() => setOpen(!open)} className="common-hover">
+                <li onClick={() => setOpen(!open)} className="">
                   <Link
                     href={`/product?categoryName=${encodeURIComponent("Bags")}`}
-                    className={`common-hover ${selectedMenu === "Bags" ? "selected-manu" : ""
+                    className={` ${selectedMenu === "Bags" ? "selected-manu" : ""
                       }`}
                     onClick={() => setSelectedMenu("Bags")}
                   >
@@ -681,40 +677,40 @@ const MainNav = ({ isTransparent }) => {
                   </Link>
                 </li>
 
-                <li onClick={() => setOpen(!open)} className="common-hover">
+                <li onClick={() => setOpen(!open)} className="">
                   <Link
                     href={`/product?categoryName=${encodeURIComponent("Belts")}`}
-                    className={`common-hover ${selectedMenu === "Belts" ? "selected-manu" : ""
+                    className={` ${selectedMenu === "Belts" ? "selected-manu" : ""
                       }`}
                     onClick={() => setSelectedMenu("Belts")}
                   >
                     Belts
                   </Link>
                 </li>
-                <li onClick={() => setOpen(!open)} className="common-hover">
+                <li onClick={() => setOpen(!open)} className="">
                   <Link
                     href={`/product?categoryName=${encodeURIComponent("Card Holders")}`}
-                    className={`common-hover ${selectedMenu === "Card Holders" ? "selected-manu" : ""
+                    className={` ${selectedMenu === "Card Holders" ? "selected-manu" : ""
                       }`}
                     onClick={() => setSelectedMenu("Card Holders")}
                   >
                     Card Holders
                   </Link>
                 </li>
-                <li onClick={() => setOpen(!open)} className="common-hover">
+                <li onClick={() => setOpen(!open)} className="">
                   <Link
                     href={`/product?categoryName=${encodeURIComponent("Wallets")}`}
-                    className={`common-hover ${selectedMenu === "Wallets" ? "selected-manu" : ""
+                    className={` ${selectedMenu === "Wallets" ? "selected-manu" : ""
                       }`}
                     onClick={() => setSelectedMenu("Wallets")}
                   >
                     Wallets
                   </Link>
                 </li>
-                <li onClick={() => setOpen(!open)} className="common-hover">
+                <li onClick={() => setOpen(!open)} className="">
                   <Link
                     href="/product"
-                    className={`common-hover ${selectedMenu === "Product" ? "selected-manu" : ""
+                    className={` ${selectedMenu === "Product" ? "selected-manu" : ""
                       }`}
                     onClick={() => setSelectedMenu("Product")}
                   >

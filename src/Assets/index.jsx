@@ -1,5 +1,6 @@
 import PreLoaderIcon from "./Logo/preloader.gif";
 import MainLogo from "./Logo/logo.png";
+import WhiteBgLogo from './Logo/white-bg-logo.png'
 
 import NotFoundIcon from "./Images/NotFoundImag.png";
 import AuthIcons from "./Images/usersignUp.jpeg";
@@ -49,6 +50,8 @@ import ShoseFour from "./ShoseBanner/shoe4.png"
 
 import BlackLogo from "./Logo/black-bg.png"
 
+import HeroBannerImage from "./banner/banner_hero_winter.jpg"
+
 export {
     PreLoaderIcon,
     MainLogo,
@@ -95,7 +98,10 @@ export {
     ShoseOne,
     ShoseTow,
     ShoseTheree,
-    ShoseFour
+    ShoseFour,
+    
+    HeroBannerImage,
+    WhiteBgLogo
 
 
 }

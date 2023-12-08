@@ -1,4 +1,4 @@
-import { MainLogo } from "@/src/Assets";
+import { MainLogo, WhiteBgLogo } from "@/src/Assets";
 import { AuthContext } from "@/src/Context/UserContext";
 import useAdmin from "@/src/Hooks/useAdmin";
 import useCommonApiData from "@/src/Hooks/useCommonApiData";
@@ -21,7 +21,7 @@ import useProducts from "@/src/Hooks/useProducts";
 
 
 
-const MainNav = () => {
+const MainNav = ({ isTransparent }) => {
   const [open, setOpen] = useState(false);
   const { user } = useContext(AuthContext);
   const { handleLogout } = useCommonApiData();
@@ -137,40 +137,46 @@ const MainNav = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-
   // acordion
   const [aOn, setAON] = useState(false);
   const [aOn2, setAON2] = useState(false);
 
-
   // =============
+  // const textColorClass = isTransparent && !isSticky ? 'text-[#fff]' : 'text-black' ;
 
+
+
+  const isAnyMegaMenuOpen = Object.values(megaMenuVisible).some(value => value);
+
+  // Conditional class for the navbar
+  const navbarClass = isAnyMegaMenuOpen ? 'bg-white text-black shadow' : isTransparent && !isSticky ? 'bg-transparent text-[#fff]' : 'bg-white text-black shadow';
+
+  const textColorClass = isAnyMegaMenuOpen ? 'text-black' : isTransparent && !isSticky ? 'text-[#fff]' : 'text-black';
+
+  const isNavbarTransparent = isTransparent && !isSticky && !isAnyMegaMenuOpen;
 
 
   return (
     <div>
-
       <header
-        // className={`${isSticky ? 'bg-white shadow' : 'bg-transparent'} fixed top-0 w-full z-50 transition duration-200`}
-        className={`${isSticky ? ' bg-[white] fixed top-0 duration-200' : 'md:bg-[white] bg-transparent duration-200 relative'} duration-200 w-full shadow z-50 mx-auto`}
-        style={{
-          zIndex: "9999",
-        }}
+        className={`${navbarClass} fixed top-0 w-full z-50 transition duration-200`}
+        style={{ zIndex: "9999" }}
       >
-        <nav className="py-4 flex items-center text-black md:container relative  md:px-4 px-2">
+        <nav
+          className={`md:py-4 flex items-center ${textColorClass} md:container relative md:px-4 px-2`}
+        >
           <div className="flex items-center mx-2 justify-between w-full md:mx-auto ">
             <div className="flex items-center gap-2">
               <div className="flex  md:gap-4 gap-2 md:hidden">
                 <button
-                  className={`${isSticky ? 'text-black' : 'text-black'} block md:hidden p-2 `}
+                  className={` block md:hidden p-2 `}
                   onClick={() => setOpen(!open)}>
-                  <AiOutlineMenu className="text-[1.5rem] " />
+                  <AiOutlineMenu className={`${textColorClass} text-[1.5rem]`} />
                 </button>
               </div>
-              <div className="md:block hidden">
+              <div className={`${isSticky ? 'text-white' : 'text-black'} md:block hidden `}>
                 <Link className="font-bold text-black gap-1 flex items-center" href="/">
-                  <FaMapMarkerAlt className="text-[1.6rem]" /> <span className="text-[0.8rem]">IND</span>
+                  <FaMapMarkerAlt className={`${textColorClass} text-[1.6rem]`} /> <span className={`${textColorClass} text-[0.8rem]`}>IND</span>
                 </Link>
               </div>
             </div>
@@ -180,7 +186,7 @@ const MainNav = () => {
                 <div className="md:hidden block">
                   <Link className="text-xl font-bold text-black" href="/">
                     <Image
-                      src={MainLogo}
+                      src={isNavbarTransparent ? WhiteBgLogo : MainLogo}
                       alt="logo"
                       width={130}
                       height={80}
@@ -195,7 +201,7 @@ const MainNav = () => {
                       <div>
                         <Link className="text-xl font-bold text-black" href="/">
                           <Image
-                            src={MainLogo}
+                            src={isNavbarTransparent ? WhiteBgLogo : MainLogo}
                             alt="logo"
                             width={130}
                             height={80}
@@ -208,19 +214,20 @@ const MainNav = () => {
                 </div>
               </div>
               <div className="manu-items md:flex  gap-4 justify-center items-center hidden ">
-                <ul className={`${isSticky ? 'bg-white text-black' : 'bg-transparent text-black'} flex gap-8 justify-center items-center  px-8 py-2 rounded-full`}>
+                <ul className={` flex gap-8 justify-center items-center  px-8 py-2 rounded-full`}>
                   <li>
                     <div onMouseEnter={() => toggleMegaMenu("shose")}>
                       <div className="group/edit relative hover:overflow-visible  group-hover/item:visible">
                         <button className="relative  cursor-pointer flex gap-2 text-[1.1rem] items-center  upercase   hover:font-semibold  transition duration-300 ease-in-out">
-                          Shoes{" "}
-                          <FaAngleDown className="text-[1.2rem] text-[#18568C] " />
+                          <span className={`${textColorClass} `}> Shoes{" "}</span>
+                          <FaAngleDown className={`${textColorClass} text-[1.5rem]`} />
                         </button>
                         <span class="group-hover/edit:border-red-500 h-0 absolute text-0 group-hover/edit:translate-x-1 pr-10 border-t-[2px] border-solid border-white transition-all duration-500 transform translate-x-full"></span>
                       </div>
                       {megaMenuVisible?.shose && (
                         <div
-                          className={`${isSticky ? 'text-black bg-[white]' : 'text-black bg-[white]'} container mx-auto mega-menu border z-50 absolute top-[100%]  left-[0%] rounded py-2 px-2  opacity-100  h-[70vh]`}
+                          // className={`${isSticky ? 'text-black bg-[white]' : 'text-black bg-[white]'}  mx-auto mega-menu border z-50 absolute top-[100%] rounded py-2 px-2  opacity-100  h-[100vh] left-0 right-0 `}
+                          className={`text-black bg-white container mx-auto mega-menu border z-50 absolute top-[100%] rounded py-2 px-2 opacity-100 h-[100vh] left-0 right-0`}
                           onMouseLeave={() => toggleMegaMenu("shose")}
                           onMouseEnter={() => toggleMegaMenu("shose")}
                         >
@@ -391,7 +398,7 @@ const MainNav = () => {
 
 
 
-                  <li className="hover:font-semibold hover:underline">
+                  <li className={`${textColorClass} hover:font-semibold hover:underline`}>
                     <Link
                       href={`/product?categoryName=${encodeURIComponent("Bags")}`}
                       className={`common-hover ${selectedMenu === "Products" ? "selected-manu" : ""
@@ -402,7 +409,7 @@ const MainNav = () => {
                     </Link>
                   </li>
 
-                  <li className="hover:font-semibold hover:underline">
+                  <li className={`${textColorClass} hover:font-semibold hover:underline`}>
                     <Link
                       href={`/product?categoryName=${encodeURIComponent("Belts")}`}
                       className={`common-hover ${selectedMenu === "Hot Deals" ? "selected-manu" : ""
@@ -412,7 +419,7 @@ const MainNav = () => {
                       Belts
                     </Link>
                   </li>
-                  <li className="hover:font-semibold hover:underline">
+                  <li className={`${textColorClass} hover:font-semibold hover:underline`}>
                     <Link
                       href={`/product?categoryName=${encodeURIComponent("Card Holders")}`}
                       className={`common-hover ${selectedMenu === "Blogs" ? "selected-manu" : ""
@@ -422,7 +429,7 @@ const MainNav = () => {
                       Card Holders
                     </Link>
                   </li>
-                  <li className="hover:font-semibold hover:underline">
+                  <li className={`${textColorClass} hover:font-semibold hover:underline`}>
                     <Link
                       href={`/product?categoryName=${encodeURIComponent("Wallets")}`}
                       className={`common-hover ${selectedMenu === "Blogs" ? "selected-manu" : ""
@@ -432,10 +439,12 @@ const MainNav = () => {
                       Wallets
                     </Link>
                   </li>
-                  <li className="hover:font-semibold hover:underline">
+                  <li
+                    className={`${textColorClass} hover:font-semibold hover:underline`}
+                  >
                     <Link
                       href="/product"
-                      className={`common-hover ${selectedMenu === "Blogs" ? "selected-manu" : ""
+                      className={` ${selectedMenu === "Blogs" ? "selected-manu" : ""
                         }`}
                       onClick={() => setSelectedMenu("Blogs")}
                     >
@@ -455,7 +464,7 @@ const MainNav = () => {
                 onClick={() => handelProfileToggle()}
               >
                 <h1 className="p-2 rounded-full ">
-                  <CiUser className="text-[1.5rem] text-[#332828] " />
+                  <CiUser className={`${textColorClass} text-[1.5rem]`} />
                 </h1>
                 <div>
                   {profileToggle && (
@@ -509,7 +518,9 @@ const MainNav = () => {
                   href="/cart"
                   className="relative  p-2 rounded-full"
                 >
-                  <BsCartPlus className="text-[1.5rem] text-[#484343]" />
+                  <BsCartPlus
+                    className={`${textColorClass} text-[1.5rem]`}
+                  />
                 </Link>
               </div>
             </div>

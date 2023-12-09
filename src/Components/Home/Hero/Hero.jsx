@@ -126,7 +126,6 @@
 // };
 
 // export default Hero;
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { gsap } from "gsap";
@@ -136,13 +135,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ProductSlide from "./ProductSlide";
 import useHomeSlider from "@/src/Hooks/useHomeSlider";
 
-import React, { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useEffect } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper";
-import { ClassiceText, HeroBannerImage } from "@/src/Assets";
+import {
+  ClassiceText,
+  HeroBannerImage,
+  HeroBannerImageMobile,
+} from "@/src/Assets";
 
 const Hero = () => {
   useEffect(() => {
@@ -167,40 +168,46 @@ const Hero = () => {
     );
   }, []);
 
-
-
-  const { homeSliderData } = useHomeSlider()
+  const { homeSliderData } = useHomeSlider();
 
   return (
-    <div className="hero-slider-container">
-      <div className="hero-slider-container relative  h-full w-full">
-        <Image
-          src={HeroBannerImage}
-          alt="Home Banner"
-          className="h-full w-full hero-image"
-          width={1920}
-        />
+    <div className="hero-slider-container relative h-full w-full">
+      {/* Desktop Image */}
+      <Image
+        src={HeroBannerImage}
+        alt="Home Banner"
+        className="h-full w-full hero-image hidden md:block"
+        width={1920}
+      />
 
-        <div className="absolute md:right-[12%] top-[30%] text-white">
-          <div className="text-center">
-            <h3 className="font-semibold text-[16px] mb-2">WINTER  BOOT SEASON </h3>
-            <div className="flex items-center justify-center">
-              <Image
-                src={ClassiceText}
-                alt="ClassiceText"
-                className="w-[80%] md:w-full"
-                width={200}
-                height={30}
-              />
-            </div>
-            <div className="mt-[2rem]">
-              <Link
-                href="/product"
-                className="border-2 font-semibold text-[14px] border-[#fff] px-8 py-2 rounded "
-              >
-                SHOP MEN'S BOOTS
-              </Link>
-            </div>
+      {/* Mobile Image */}
+      <Image
+        src={HeroBannerImageMobile}
+        alt="Home Banner Mobile"
+        className="h-full w-full hero-image md:hidden"
+        width={750} // Set an appropriate width for mobile
+        height={500} // Set an appropriate height for mobile
+      />
+
+      <div className="absolute md:right-[12%] top-[68%] md:top-[30%] text-white">
+        <div className="text-center">
+          <h3 className="font-semibold text-[16px] mb-2">WINTER BOOT SEASON </h3>
+          <div className="flex items-center justify-center">
+            <Image
+              src={ClassiceText}
+              alt="ClassiceText"
+              className="w-[80%] md:w-full"
+              width={200}
+              height={30}
+            />
+          </div>
+          <div className="mt-[2rem]">
+            <Link
+              href="/product"
+              className="border-2 font-semibold text-[14px] border-[#fff] px-8 py-2 rounded"
+            >
+              SHOP MEN'S BOOTS
+            </Link>
           </div>
         </div>
       </div>

@@ -133,7 +133,7 @@ const FeaturedProducts = () => {
                                             <div className='rounded-b-[0.6rem] bg-[#fafafa] p-4 relative'>
                                                 {
                                                     product?.brand !== "" && (
-                                                        <div className='px-6 py-1 bg-[#fcc50b] rounded-md w-[50%] absolute top-[-1rem] text-center left-[22%] font-semibold text-white text-[14px]'>
+                                                        <div className='px-6 py-1 bg-[#fcc50b] rounded-md md:w-[50%] absolute top-[-1rem] text-center left-[22%] font-semibold text-white text-[14px]'>
                                                             {product?.brand}
                                                         </div>
                                                     )

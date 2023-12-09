@@ -466,9 +466,34 @@ const MainNav = ({ isTransparent, style }) => {
               style={{ display: "flex", gap: "0.2rem" }}
               className="flex  justify-center items-center"
             >
-              <div>
-                <CiSearch className={`${textColorClass} text-[1.5rem]`} />
+
+              <div
+                className="cursor-pointer"
+
+              >
+                <h1 className="p-2 rounded-full "
+                  onClick={() => handelSearchBarToggle()}
+                >
+                  <CiSearch className={`${textColorClass} text-[1.5rem]`} />
+                </h1>
+                <div className={`${textColor}`}>
+                  {searchBarToggle && (
+                    <div className="absolute right-0 w-full px-5 py-3 dark:bg-gray-800 bg-white rounded-lg shadow border dark:border-transparent mt-2">
+                      <div className="flex items-center border p-4 bg-[white] p-1 rounded-md gap-2">
+                        <input
+                          type="text"
+                          className="w-full pl-2 text-black"
+                          placeholder="Search"
+                        />
+                        <AiOutlineSearch className="text-black" />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
+
+
+
               <div
                 className="cursor-pointer"
                 onClick={() => handelProfileToggle()}
@@ -570,7 +595,7 @@ const MainNav = ({ isTransparent, style }) => {
                   setAON2(false)
 
                 }} className="">
-                  <div className="w-full flex justify-between items-center"><Link href="/">Shose</Link> <span className="text-xl">{aOn ? <>-</> : <>+</>}</span> </div>
+                  <div className="w-full flex justify-between items-center"><Link href="/">Shoes</Link> <span className="text-xl">{aOn ? <>-</> : <>+</>}</span> </div>
                   <div className={`${aOn ? 'h-[70vh] p-4 overflow-y-scroll mt-3' : 'h-[0px] '} rounded-lg bg-[#243c72]  duration-300 overflow-hidden`}>
                     <ul className="border-t">
                       <div className="flex flex-col  gap-4">

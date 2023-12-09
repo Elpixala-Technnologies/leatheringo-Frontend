@@ -51,7 +51,7 @@ import ShoseFour from "./ShoseBanner/shoe4.png"
 import BlackLogo from "./Logo/black-bg.png"
 
 import HeroBannerImage from "./banner/banner_hero_winter.jpg"
-
+import HeroBannerImageMobile from "./banner/banner_hero_winter_mobile.jpg"
 import ClassiceText from "./Images/modern_classics.svg"
 
 export {
@@ -103,8 +103,10 @@ export {
     ShoseFour,
     
     HeroBannerImage,
+    
     WhiteBgLogo,
-    ClassiceText
+    ClassiceText,
+    HeroBannerImageMobile
 
 
 }

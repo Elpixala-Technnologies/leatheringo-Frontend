@@ -213,9 +213,9 @@ const ProductDetails = () => {
 
   return (
     <RootLayout>
-      <div className='pb-4 md:container h-full mt-[6rem]'>
+      <div className='pb-4 md:container h-full mt-[4rem] md:mt-[6rem]'>
         <div className="md:container mx-auto mt-3 flex justify-between items-center">
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-8  ">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-6  ">
             <div className="">
               <div className=" shadow w-full items-center rounded p-2 flex justify-center">
                 {selectedImage ? (
@@ -236,7 +236,6 @@ const ProductDetails = () => {
                   />
                 )}
               </div>
-
               <br />
               <div className="md:h-[12%] h-[15%]">
                 <Swiper
@@ -265,12 +264,11 @@ const ProductDetails = () => {
                   }
                 </Swiper>
               </div>
-
               <br />
-
             </div>
-            <div className="md:col-span-1">
-              <h1 className="text-xl font-[500] md:w-[500px]">{name}</h1>
+            
+            <div className="md:col-span-1 mx-4">
+              <h1 className="text-xl font-semibold md:w-[500px]">{name}</h1>
               <br />
               <div className='flex items-center gap-4'>
                 <h1 className="font-bold text-slate-900">
@@ -436,7 +434,7 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-        <div className='grid md:grid-cols-2 gap-6 mt-2'>
+        <div className='grid md:grid-cols-2 gap-6 md:mt-2 mx-4'>
           <div className='flex flex-col gap-4'>
             <h1 className="  text-3xl font-bold">
               Additional Infomation
@@ -473,12 +471,12 @@ const ProductDetails = () => {
           className='my-4 bg-[#000] '
         />
         <div className="flex mx-4 flex-col">
-          <h1 className="mt-6  text-3xl font-bold">
+          <h1 className="md:mt-4  text-3xl font-bold">
             Product Description
           </h1>
 
           <div className="flex flex-col md:flex-row gap-4">
-            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 my-4 w-full">
+            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 mt-2 md:my-4 w-full">
               <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div className="overflow-hidden">
                   <hr />
@@ -515,36 +513,17 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 my-4 w-full">
+            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 md:my-4 w-full">
               <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div className="overflow-hidden">
                   <hr />
-                  <table className=" w-full text-left text-sm font-light">
+                  <table className="w-full text-left text-sm font-light">
                     <tbody className='flex flex-col gap-2'>
                       <tr className="w-full bg-slate-200 rounded">
                         <td className="whitespace-nowrap px-2 py-4 font-bold">
                           Sizes :
                         </td>
                         <td className="whitespace-nowrap pr-2  py-4 ">
-                          {/* <div className='flex gap-2 '>
-                            {
-                              colors && colors?.map((color, index) => {
-                                return (
-                                  <div key={index + `colorIdx`} className='flex items-center gap-2'>
-                                    <div className='text-[0.9rem] text-center flex gap-2 items-center border px-2'>
-                                      {color.sizes.map((size) => {
-                                        return (
-                                          <p className='text-[0.9rem] text-center  '>
-                                            {size.size}{index !== color.sizes?.length - 1 ? ',' : ''}
-                                          </p>
-                                        )
-                                      })}
-                                    </div>
-                                  </div>
-                                );
-                              })
-                            }
-                          </div> */}
                           <div className='flex gap-2 '>
                             {
                               colors && colors.slice(0, 1).map((color, index) => {

@@ -163,7 +163,7 @@ const ProductPage = () => {
       );
     }
 
- 
+
     if (Array.isArray(selectedCategories) && !selectedCategories?.includes('All')) {
       result = result.filter(product =>
         selectedCategories.some(category => product?.categories.includes(category))
@@ -216,7 +216,7 @@ const ProductPage = () => {
 
   return (
     <RootLayout>
-      <div className='mt-[4.5rem]'>
+      <div className='mt-[3.6rem] md:mt-[4.5rem]'>
         <Image
           src={HomeSliderTwo}
           alt='Product'
@@ -227,7 +227,9 @@ const ProductPage = () => {
       </div>
       <div className="md:container bg-[#fff]">
         {/* Mobile filter dialog */}
-        <Transition.Root show={mobileFiltersOpen} as={Fragment}>
+        <Transition.Root show={mobileFiltersOpen} as={Fragment}
+          style={{ zIndex: 999999 }}
+        >
           <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
             <Transition.Child
               as={Fragment}
@@ -241,7 +243,9 @@ const ProductPage = () => {
               <div className="fixed inset-0 bg-black bg-opacity-25" />
             </Transition.Child>
 
-            <div className="fixed inset-0 z-40 flex">
+            <div className="fixed inset-0 z-80  flex"
+              style={{ zIndex: 999999 }}
+            >
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
@@ -266,7 +270,7 @@ const ProductPage = () => {
 
                   {/* Filters */}
                   <div className="mt-4 border-t border-gray-200">
-                    <Disclosure as="div" className="border-b border-gray-200 py-6">
+                    <Disclosure as="div" className="border-b border-gray-200 py-2 px-4">
                       {({ open }) => (
                         <>
                           <div className="border-b border-gray-200 py-6">
@@ -355,7 +359,7 @@ const ProductPage = () => {
                             )}
                           </div>
 
-                          <div className="border-b border-gray-200 py-6">
+                          <div className=" border-gray-200 py-6">
                             <button
                               className=" font-semibold w-full flex gap-4 border p-2 rounded justify-between items-center"
                               onClick={() => resetFilters()}

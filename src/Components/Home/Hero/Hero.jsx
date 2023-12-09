@@ -189,7 +189,7 @@ const Hero = () => {
         height={500} // Set an appropriate height for mobile
       />
 
-      <div className="absolute md:right-[12%] top-[68%] md:top-[30%] text-white">
+      <div className="absolute md:right-[12%] md:block flex justify-center items-center top-[68%] md:top-[30%] text-white">
         <div className="text-center">
           <h3 className="font-semibold text-[16px] mb-2">WINTER BOOT SEASON </h3>
           <div className="flex items-center justify-center">

@@ -1,0 +1,406 @@
+///////////////////////////////////////////////
+//                Common Css Style           //
+/////////////////////////////////////////////*/
+/**
+ * All Import 
+ */
+//font**
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/**
+  * Tailwind CSS
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Custom Css (Common Css Style)
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif !important;
+  background-color: #f9f9f9dc;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+textarea {
+  outline: none;
+  border: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  // height: auto;
+  // object-fit: cover
+}
+
+$primary_color: #ffffff;
+$secondary_color: #29679e;
+$common_color: #000000;
+$card_color: #eff4f7;
+
+@layer base {
+  .container {
+    @apply mx-auto;
+    max-width: 1640px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+    @screen sm {
+      max-width: 720px;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md text-white;
+    background-color: #000;
+    @apply transition-all duration-300;
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+}
+
+.common-btn {
+  @apply px-4 py-2 rounded-md text-white;
+  background-color: #088178;
+  @apply transition-all duration-300;
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #088178;
+  }
+}
+
+.border-common-btn {
+  @apply px-4 py-1 rounded-md;
+  border: 2px solid #000;
+  color: inherit;
+  @apply transition-all duration-300;
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+  }
+}
+
+.hover {
+  @apply transition-all duration-300;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.text-hover {
+  @apply transition-all duration-300;
+
+  &:hover {
+    color: inherit;
+    box-shadow: 0 0 10px rgba(227, 224, 224, 0.51);
+  }
+}
+
+.common-hover {
+  @apply transition-all duration-300;
+
+  &:hover {
+    color: inherit;
+    box-shadow: 0 0 10px rgba(221, 218, 218, 0.51);
+  }
+}
+
+// =====
+ 
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.mega-menu-visible {
+  animation: slideDown 0.5s forwards;
+}
+
+
+// dropdown
+.dropdown:hover .dropdown-menu {
+  display: block;
+  z-index: 99999;
+}
+
+/* tile uploaded pictures */
+.upload-list-inline .ant-upload-list-item {
+  float: left;
+  width: 200px;
+  margin-inline-end: 8px;
+}
+
+.ant-upload-rtl.upload-list-inline .ant-upload-list-item {
+  float: right;
+}
+
+.control-dots {
+  display: none;
+}
+
+.category-level-0 {
+  padding-left: 10px;
+}
+
+.category-level-1 {
+  padding-left: 30px;
+}
+
+.category-level-2 {
+  padding-left: 50px;
+}
+
+///////      End of Common Css Style  ////////
+
+///////////////////////////////////////////////
+//                 Slider Section           //
+/////////////////////////////////////////////*/
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 0 !important;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: transparent !important;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ 
+
+///////       End of Slider Section     ////////
+
+.offer-banner-section {
+  background-image: url("../src/Assets/banner/offer-banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+}
+
+// ///////       Belt Banner section     ////////
+
+.belt-banner-section {
+  background-image: url("../src/Assets/banner/belt-banner-02.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  background-blend-mode: color;
+  background-color: #000000a6;
+}
+
+// .....
+
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  color: #000 !important;
+  font-size: 1.5rem !important;
+  position: absolute !important;
+  // left: -84% !important;
+  //  right: -90% !important;
+  background: #ffffff79 !important;
+  padding: 1rem !important;
+  z-index: 9999rem !important;
+}
+
+.detailImageContent {
+  position: sticky !important;
+  top: 10% !important;
+}
+
+
+.one:hover span:last-child {
+  width: 100%;
+}
+
+.two:hover span {
+  width: 50%;
+}
+
+.three:hover span {
+  height: 100%;
+}
+
+// ==========
+
+.swiper-pagination {
+  font-size: 0 !important;
+  padding: 3px 0 !important;
+  width: 70px !important;
+  background-color: #34333379 !important;
+  border-radius: 0.5rem !important;
+  color: black !important;
+  margin: auto !important;
+  z-index: 100;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+
+  .swiper-pagination-bullet {
+    background-color: #000 !important;
+    opacity: 1 !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #f9f7f7 !important;
+  }
+}
+ 
+.title {
+  font-size: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+
+  & span {
+    color: $secondary_color;
+    font-weight: 800;
+
+    ::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: $secondary_color;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// ===
+.category-product {
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+}
+
+.product-slider-img {
+  width: 8rem !important;
+  object-fit: cover !important;
+  height: auto !important;
+}
+
+//=====
+
+
+.h-menu .hover-img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.h-menu:hover .hover-img {
+  opacity: 1;
+}
+
+.home-info-image {
+  width: 4rem !important;
+}
+
+
+.colro-shose {
+  width: 2rem !important;
+  height: 2rem !important;
+  border-radius: 50% !important;
+
+}
+
+// =======
+  
+.homeInfoCards{
+  
+}
+
+.cardBody{
+  margin-left: -5rem;
+}
+
+ 

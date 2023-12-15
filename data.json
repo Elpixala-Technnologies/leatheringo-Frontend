@@ -1,0 +1,1020 @@
+[
+    {
+        "name": "Classic Leather Dress Shoes",
+        "mainCategories": "Shoes",
+        "categories": [
+            "Formal"
+        ],
+        "brand": "Elegance Footwear",
+        "price": 89.99,
+        "discount": 10,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Men's",
+        "status": "Featured",
+        "details": "Premium leather dress shoes for formal occasions.",
+        "features": [
+            "Genuine leather",
+            "Classic design",
+            "Comfortable insole"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 20
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 15
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 12
+                    }
+                ],
+                "quantity": 47,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 18
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 14
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 10
+                    }
+                ],
+                "quantity": 42,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "SALE10OFF"
+        ]
+    },
+    {
+        "name": "Casual Canvas Sneakers",
+        "mainCategories": "Shoes",
+        "categories": [
+            "Casual"
+        ],
+        "brand": "UrbanTrend",
+        "price": 34.99,
+        "discount": 0,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "Featured",
+        "details": "Comfortable canvas sneakers for a casual look.",
+        "features": [
+            "Canvas upper",
+            "Rubber sole"
+        ],
+        "colors": [
+            {
+                "color": "Navy Blue",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "7",
+                        "quantity": 15
+                    },
+                    {
+                        "size": "8",
+                        "quantity": 20
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 18
+                    }
+                ],
+                "quantity": 53,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Gray",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "7",
+                        "quantity": 14
+                    },
+                    {
+                        "size": "8",
+                        "quantity": 19
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 17
+                    }
+                ],
+                "quantity": 50,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Double Monk Strap Shoes",
+        "mainCategories": "Shoes",
+        "categories": [
+            "Formal"
+        ],
+        "brand": "ElegantStyle",
+        "price": 109.99,
+        "discount": 10,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Men's",
+        "status": "Featured",
+        "details": "Stylish double monk strap shoes for a unique look.",
+        "features": [
+            "Genuine leather",
+            "Double buckle design"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 10
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 8
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 6
+                    }
+                ],
+                "quantity": 24,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 9
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 7
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 5
+                    }
+                ],
+                "quantity": 21,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Whole Cut Leather Shoes",
+        "mainCategories": "Shoes",
+        "categories": [
+            "Whole Cut Shoes"
+        ],
+        "brand": "ClassyFeet",
+        "price": 119.99,
+        "discount": 5,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Men's",
+        "status": "Featured",
+        "details": "Elegant whole cut leather shoes for a sophisticated look.",
+        "features": [
+            "Premium leather",
+            "Sleek design",
+            "Leather sole"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 12
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 10
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 8
+                    }
+                ],
+                "quantity": 30,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 11
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 9
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 7
+                    }
+                ],
+                "quantity": 27,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Leather Brogue Shoes",
+        "mainCategories": "Shoes",
+        "categories": [
+            "Brogues"
+        ],
+        "brand": "HeritageStyle",
+        "price": 99.99,
+        "discount": 15,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Men's",
+        "status": "Featured",
+        "details": "Classic leather brogue shoes for a timeless look.",
+        "features": [
+            "Genuine leather",
+            "Wingtip design"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 14
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 12
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 10
+                    }
+                ],
+                "quantity": 36,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 13
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 11
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 9
+                    }
+                ],
+                "quantity": 33,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Derby Shoes",
+        "mainCategories": "Shoes",
+        "categories": [
+            "Derbies"
+        ],
+        "brand": "ModernStyle",
+        "price": 79.99,
+        "discount": 10,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Men's",
+        "status": "Featured",
+        "details": "Stylish derby shoes for a contemporary look.",
+        "features": [
+            "Suede upper",
+            "Rubber sole",
+            "Lace-up closure"
+        ],
+        "colors": [
+            {
+                "color": "Gray",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 10
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 8
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 6
+                    }
+                ],
+                "quantity": 24,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Navy Blue",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 9
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 7
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 5
+                    }
+                ],
+                "quantity": 21,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Chelsea Boots",
+        "mainCategories": "Shoes",
+        "categories": [
+            "Chelsea Boots"
+        ],
+        "brand": "TrendyFootwear",
+        "price": 129.99,
+        "discount": 20,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "New Arrival",
+        "details": "Fashionable Chelsea boots for a trendy look.",
+        "features": [
+            "Suede leather",
+            "Elastic side panels"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "7",
+                        "quantity": 10
+                    },
+                    {
+                        "size": "8",
+                        "quantity": 8
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 6
+                    }
+                ],
+                "quantity": 24,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "7",
+                        "quantity": 9
+                    },
+                    {
+                        "size": "8",
+                        "quantity": 7
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 5
+                    }
+                ],
+                "quantity": 21,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Leather Duffle Bag",
+        "mainCategories": "Bags",
+        "categories": [
+            "Duffle Bags"
+        ],
+        "brand": "Traveler's Choice",
+        "price": 79.99,
+        "discount": 15,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "New Arrival",
+        "details": "Spacious leather duffle bag for travel enthusiasts.",
+        "features": [
+            "Genuine leather",
+            "Multiple compartments"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 30,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 25,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Laptop Backpack",
+        "mainCategories": "Bags",
+        "categories": [
+            "Laptop Bags"
+        ],
+        "brand": "TechPro",
+        "price": 49.99,
+        "discount": 5,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "New Arrival",
+        "details": "Stylish and functional laptop backpack for professionals.",
+        "features": [
+            "Dedicated laptop compartment",
+            "USB charging port"
+        ],
+        "colors": [
+            {
+                "color": "Gray",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 35,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Navy Blue",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 28,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Ladies Tote Bag",
+        "mainCategories": "Bags",
+        "categories": [
+            "Ladies Bags"
+        ],
+        "brand": "ChicStyle",
+        "price": 59.99,
+        "discount": 10,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Women's",
+        "status": "New Arrival",
+        "details": "Fashionable ladies tote bag for everyday use.",
+        "features": [
+            "Faux leather",
+            "Spacious interior",
+            "Detachable strap"
+        ],
+        "colors": [
+            {
+                "color": "Pink",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 20,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Beige",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 18,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Leather Sling Bag",
+        "mainCategories": "Bags",
+        "categories": [
+            "Slings"
+        ],
+        "brand": "UrbanChic",
+        "price": 39.99,
+        "discount": 0,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "New Arrival",
+        "details": "Compact leather sling bag for on-the-go style.",
+        "features": [
+            "Crossbody design",
+            "Adjustable strap"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 28,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 25,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Men's Leather Belt",
+        "mainCategories": "Belts",
+        "categories": [
+            "Mens"
+        ],
+        "brand": "ClassicBelt",
+        "price": 29.99,
+        "discount": 0,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Men's",
+        "status": "New Arrival",
+        "details": "Classic leather belt for a polished look.",
+        "features": [
+            "Genuine leather",
+            "Silver-tone buckle"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "32",
+                        "quantity": 20
+                    },
+                    {
+                        "size": "34",
+                        "quantity": 18
+                    },
+                    {
+                        "size": "36",
+                        "quantity": 15
+                    }
+                ],
+                "quantity": 53,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "32",
+                        "quantity": 19
+                    },
+                    {
+                        "size": "34",
+                        "quantity": 17
+                    },
+                    {
+                        "size": "36",
+                        "quantity": 14
+                    }
+                ],
+                "quantity": 50,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Women's Leather Belt",
+        "mainCategories": "Belts",
+        "categories": [
+            "Womens"
+        ],
+        "brand": "ElegantBelt",
+        "price": 27.99,
+        "discount": 0,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Women's",
+        "status": "Tranding",
+        "details": "Stylish leather belt for a fashionable look.",
+        "features": [
+            "Genuine leather",
+            "Gold-tone buckle"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "28",
+                        "quantity": 20
+                    },
+                    {
+                        "size": "30",
+                        "quantity": 18
+                    },
+                    {
+                        "size": "32",
+                        "quantity": 15
+                    }
+                ],
+                "quantity": 53,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "28",
+                        "quantity": 19
+                    },
+                    {
+                        "size": "30",
+                        "quantity": 17
+                    },
+                    {
+                        "size": "32",
+                        "quantity": 14
+                    }
+                ],
+                "quantity": 50,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Leather Card Holder",
+        "mainCategories": "Card Holders",
+        "categories": [
+            "Card Holders"
+        ],
+        "brand": "SlimStyle",
+        "price": 19.99,
+        "discount": 0,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "Tranding",
+        "details": "Slim and compact leather card holder for your essentials.",
+        "features": [
+            "Genuine leather",
+            "Multiple card slots"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 28,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 25,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Leather Wallet",
+        "mainCategories": "Wallets",
+        "categories": [
+            "Wallets"
+        ],
+        "brand": "ClassicWallets",
+        "price": 39.99,
+        "discount": 5,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "Tranding",
+        "details": "Classic leather wallet with plenty of card slots and compartments.",
+        "features": [
+            "Genuine leather",
+            "Multiple card slots"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 30,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 25,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Leather Wallet",
+        "mainCategories": "Wallets",
+        "categories": [
+            "Wallets"
+        ],
+        "brand": "ClassicWallets",
+        "price": 39.99,
+        "discount": 5,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "Tranding",
+        "details": "Classic leather wallet with plenty of card slots and compartments.",
+        "features": [
+            "Genuine leather",
+            "Multiple card slots"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 30,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 25,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    },
+    {
+        "name": "Leather Wallet",
+        "mainCategories": "Wallets",
+        "categories": [
+            "Wallets"
+        ],
+        "brand": "ClassicWallets",
+        "price": 39.99,
+        "discount": 5,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Unisex",
+        "status": "Tranding",
+        "details": "Classic leather wallet with plenty of card slots and compartments.",
+        "features": [
+            "Genuine leather",
+            "Multiple card slots"
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 30,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": false,
+                "sizes": [],
+                "quantity": 25,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "65280b50d97c204d37edbf8b",
+            "65280b6ed97c204d37edc09b",
+            "65280b92d97c204d37edc1aa"
+        ]
+    }
+]

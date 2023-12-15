@@ -1,0 +1,84 @@
+[
+    {
+        "name": "Classic Leather Dress Shoes",
+        "categories": [
+            "Formal" 
+        ],
+        "brand": "Elegance Footwear",
+        "price": 89.99,
+        "discount": 10,
+        "minimumQuantity": 20,
+        "extraDiscount": 25,
+        "type": "Men's",
+        "status": "Featured",
+        "details": [
+            {
+                "heading": "Material",
+                "description": "Leather"
+            }
+        ],
+        "features": [
+            {
+                "heading": "Material",
+                "description": "Leather"
+            }
+        ],
+        "additionalInfo": [
+            {
+                "heading": "Material",
+                "description": "Leather"
+            }
+        ],
+        "colors": [
+            {
+                "color": "Black",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 20
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 15
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 12
+                    }
+                ],
+                "quantity": 47,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            },
+            {
+                "color": "Brown",
+                "isSizeApplicable": true,
+                "sizes": [
+                    {
+                        "size": "8",
+                        "quantity": 18
+                    },
+                    {
+                        "size": "9",
+                        "quantity": 14
+                    },
+                    {
+                        "size": "10",
+                        "quantity": 10
+                    }
+                ],
+                "quantity": 42,
+                "images": [
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696283330/leatheringo/dzsttndrvhmeyceeqcym.png",
+                    "https://res.cloudinary.com/elpixala/image/upload/v1696972480/leatheringo/Product/nazs2hd75weegcesp6b7.png"
+                ]
+            }
+        ],
+        "coupon": [
+            "SALE10OFF"
+        ]
+    }
+]
